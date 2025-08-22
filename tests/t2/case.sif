@@ -1,0 +1,284 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "."
+  Include Path ""
+  Results Directory ""
+End
+
+Simulation
+  Max Output Level = 5
+  Coordinate System = Cartesian
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = Steady state
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+  Solver Input File = case.sif
+  Post File = case.vtu
+End
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+  Stefan Boltzmann = 5.670374419e-08
+  Permittivity of Vacuum = 8.85418781e-12
+  Permeability of Vacuum = 1.25663706e-6
+  Boltzmann Constant = 1.380649e-23
+  Unit Charge = 1.6021766e-19
+End
+
+Body 1
+  Target Bodies(1) = 1
+  Name = "Body 1"
+  Equation = 1
+  Material = 1
+End
+
+Body 2
+  Target Bodies(1) = 2
+  Name = "Body 2"
+  Equation = 1
+  Material = 2
+End
+
+Body 3
+  Target Bodies(1) = 3
+  Name = "Body 3"
+  Equation = 1
+  Material = 2
+End
+
+Body 4
+  Target Bodies(1) = 4
+  Name = "Body 4"
+  Equation = 1
+  Material = 2
+End
+
+Body 5
+  Target Bodies(1) = 5
+  Name = "Body 5"
+  Equation = 1
+  Material = 2
+End
+
+Body 6
+  Target Bodies(1) = 6
+  Name = "Body 6"
+  Equation = 1
+  Material = 2
+End
+
+Body 7
+  Target Bodies(1) = 7
+  Name = "Body 7"
+  Equation = 1
+  Material = 2
+End
+
+Body 8
+  Target Bodies(1) = 8
+  Name = "Body 8"
+  Equation = 1
+  Material = 2
+End
+
+Body 9
+  Target Bodies(1) = 9
+  Name = "Body 9"
+  Equation = 1
+  Material = 2
+End
+
+Solver 1
+  Equation = Static Current Conduction
+  Calculate Volume Current = True
+  Procedure = "StatCurrentSolve" "StatCurrentSolver"
+  Calculate Joule Heating = True
+  Constant Weights = True
+  Variable = Potential
+  Exec Solver = Always
+  Stabilize = True
+  Optimize Bandwidth = True
+  Steady State Convergence Tolerance = 1.0e-5
+  Nonlinear System Convergence Tolerance = 1.0e-7
+  Nonlinear System Max Iterations = 20
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-3
+  Nonlinear System Relaxation Factor = 1
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Max Iterations = 500
+  Linear System Convergence Tolerance = 1.0e-10
+  BiCGstabl polynomial degree = 2
+  Linear System Preconditioning = ILU0
+  Linear System ILUT Tolerance = 1.0e-3
+  Linear System Abort Not Converged = False
+  Linear System Residual Output = 10
+  Linear System Precondition Recompute = 1
+  Calculate Reaction = Logical True       ! Enables total current reporting on Dirichlet/Neumann BCs
+End
+
+
+! ------------------------------
+! Solver 2: Save full field results (for Paraview or similar)
+Solver 2
+  Equation = "ResultOutputSolver"
+  Output Format = VTK            ! Produces .vtu file
+  Output File Name = case        ! Prefix for output files
+  Procedure = "ResultOutputSolve" "ResultOutputSolver"
+  Variable 1 = Potential
+  Variable 2 = Current Density
+End
+
+! ------------------------------
+! Solver 3: Save scalars (contact potentials, etc.)
+Solver 3
+Equation = "SaveScalars"
+  Procedure = "SaveData" "SaveScalars"
+  Filename = "scalars.dat"
+  
+  Variable 1  = Potential
+  Operator 1  = Boundary Average
+  Target Boundaries(1) = 25
+
+  Variable 2  = Potential
+  Operator 2  = Boundary Average
+  Target Boundaries(1) = 26
+
+  Variable 3  = Potential
+  Operator 3  = Boundary Average
+  Target Boundaries(1) = 27
+
+  Variable 4  = Potential
+  Operator 4  = Boundary Average
+  Target Boundaries(1) = 28
+
+  Variable 5  = Potential
+  Operator 5  = Boundary Average
+  Target Boundaries(1) = 29
+
+  Variable 6  = Potential
+  Operator 6  = Boundary Average
+  Target Boundaries(1) = 30
+
+  Variable 7  = Potential
+  Operator 7  = Boundary Average
+  Target Boundaries(1) = 31
+
+  Variable 8  = Potential
+  Operator 8  = Boundary Average
+  Target Boundaries(1) = 32
+
+  Variable 9  = Potential
+  Operator 9  = Boundary Average
+  Target Boundaries(1) = 33
+
+  Variable 10 = Potential
+  Operator 10 = Boundary Average
+  Target Boundaries(1) = 34
+
+  Variable 11 = Potential
+  Operator 11 = Boundary Average
+  Target Boundaries(1) = 35
+
+  Variable 12 = Potential
+  Operator 12 = Boundary Average
+  Target Boundaries(1) = 36
+
+  Variable 13 = Potential
+  Operator 13 = Boundary Average
+  Target Boundaries(1) = 37
+
+  Variable 14 = Potential
+  Operator 14 = Boundary Average
+  Target Boundaries(1) = 38
+
+  Variable 15 = Potential
+  Operator 15 = Boundary Average
+  Target Boundaries(1) = 39
+
+  Variable 16 = Potential
+  Operator 16 = Boundary Average
+  Target Boundaries(1) = 40
+
+  Variable 17 = Potential
+  Operator 17 = Boundary Average
+  Target Boundaries(1) = 41
+
+  Variable 18 = Potential
+  Operator 18 = Boundary Average
+  Target Boundaries(1) = 42
+
+  Variable 19 = Potential
+  Operator 19 = Boundary Average
+  Target Boundaries(1) = 43
+
+  Variable 20 = Potential
+  Operator 20 = Boundary Average
+  Target Boundaries(1) = 44
+
+  Variable 21 = Potential
+  Operator 21 = Boundary Average
+  Target Boundaries(1) = 45
+
+  Variable 22 = Potential
+  Operator 22 = Boundary Average
+  Target Boundaries(1) = 46
+
+  Variable 23 = Potential
+  Operator 23 = Boundary Average
+  Target Boundaries(1) = 47
+
+  Variable 24 = Potential
+  Operator 24 = Boundary Average
+  Target Boundaries(1) = 48
+End
+
+Equation 1
+  Name = "Equation 1"
+  Active Solvers(1) = 1
+End
+
+Material 1
+  Name = "Silicon (solid)"
+  Electric Conductivity = 1.0e-3
+  Sound speed = 8433.0
+  Heat Conductivity = Variable Temperature; Real; 0 156; 300 156; 550 72; 800 43; 1050 29; 1300 25; 1550 23; 1800 21; 3000 21; End
+  Poisson ratio = 0.28
+  Emissivity = 0.7
+  Density = 2330.0
+  Heat expansion Coefficient = 4.68e-6
+  Youngs modulus = 185.0e9
+  Electric Conductivity = 1.56e-3
+  Heat Capacity = 555.8
+End
+
+Material 2
+  Name = "Silver (generic)"
+  Electric Conductivity = 63.01e6
+  Density = 10490.0
+  Sound speed = 2680.0
+  Youngs modulus = 83.0e9
+  Poisson ratio = 0.37
+  Electric Conductivity = 6.3e7
+  Heat expansion Coefficient = 18.9e-6
+  Heat Capacity = 235.0
+  Heat Conductivity = 429.0
+End
+
+Boundary Condition 1
+  Target Boundaries(12) = 1 2 3 4 5 6 7 8 9 10 11 12 
+  Name = "+"
+  Current Density = 444.44
+End
+
+Boundary Condition 2
+  Target Boundaries(12) = 13 14 15 16 17 18 19 20 21 22 23 24 
+  Name = "-"
+  Current Density = -444.44
+End
+
+Boundary Condition 3
+  Target Boundaries(24) = 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 
+  Name = "N"
+  Current Density = 0
+End
