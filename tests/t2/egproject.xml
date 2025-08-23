@@ -49,7 +49,7 @@
       </widget>
       <widget type="LineEdit">
          <objectName>coordinateScalingEdit</objectName>
-         <text></text>
+         <text>0.005</text>
       </widget>
       <widget type="LineEdit">
          <objectName>angularFrequencyEdit</objectName>
@@ -501,26 +501,6 @@
             <isChecked>0</isChecked>
          </widget>
          <widget type="CheckBox">
-            <objectName>stabilizeCheck</objectName>
-            <isChecked>1</isChecked>
-         </widget>
-         <widget type="CheckBox">
-            <objectName>bubblesCheck</objectName>
-            <isChecked>0</isChecked>
-         </widget>
-         <widget type="CheckBox">
-            <objectName>lumpedMassCheck</objectName>
-            <isChecked>0</isChecked>
-         </widget>
-         <widget type="CheckBox">
-            <objectName>optimizeBandwidthCheck</objectName>
-            <isChecked>1</isChecked>
-         </widget>
-         <widget type="CheckBox">
-            <objectName>linearSystemAbortWhenNotConvergedCheck</objectName>
-            <isChecked>0</isChecked>
-         </widget>
-         <widget type="CheckBox">
             <objectName>useHypre</objectName>
             <isChecked>0</isChecked>
          </widget>
@@ -552,49 +532,25 @@
             <objectName>mgEqualSplitCheck</objectName>
             <isChecked>0</isChecked>
          </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemConvergenceToleranceEdit</objectName>
-            <text>1.0e-7</text>
+         <widget type="CheckBox">
+            <objectName>stabilizeCheck</objectName>
+            <isChecked>1</isChecked>
          </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemMaxIterationEdit</objectName>
-            <text>20</text>
+         <widget type="CheckBox">
+            <objectName>bubblesCheck</objectName>
+            <isChecked>0</isChecked>
          </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemRelaxationFactorEdit</objectName>
-            <text>1</text>
+         <widget type="CheckBox">
+            <objectName>lumpedMassCheck</objectName>
+            <isChecked>0</isChecked>
          </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemNewtonAfterIterEdit</objectName>
-            <text>3</text>
+         <widget type="CheckBox">
+            <objectName>optimizeBandwidthCheck</objectName>
+            <isChecked>1</isChecked>
          </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemNewtonAfterTolEdit</objectName>
-            <text>1.0e-3</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>linearSystemMaxIterationsEdit</objectName>
-            <text>500</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>linearSystemConvergenceToleranceEdit</objectName>
-            <text>1.0e-10</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>linearSystemILUTToleranceEdit</objectName>
-            <text>1.0e-3</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>linearSystemResiduaOutputEdit</objectName>
-            <text>10</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>linearSystemPreconditionRecomputeEdit</objectName>
-            <text>1</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>linearSystemBiCGstablPolDeg</objectName>
-            <text>2</text>
+         <widget type="CheckBox">
+            <objectName>linearSystemAbortWhenNotConvergedCheck</objectName>
+            <isChecked>0</isChecked>
          </widget>
          <widget type="LineEdit">
             <objectName>thresholdEdit</objectName>
@@ -672,25 +628,49 @@
             <objectName>steadyStateConvergenceToleranceEdit</objectName>
             <text>1.0e-5</text>
          </widget>
-         <widget type="ComboBox">
-            <objectName>nonlinSystemConvergenceMeasureCombo</objectName>
-            <currentIndex>0</currentIndex>
+         <widget type="LineEdit">
+            <objectName>linearSystemMaxIterationsEdit</objectName>
+            <text>500</text>
          </widget>
-         <widget type="ComboBox">
-            <objectName>linearSystemMultigridMethod</objectName>
-            <currentIndex>0</currentIndex>
+         <widget type="LineEdit">
+            <objectName>linearSystemConvergenceToleranceEdit</objectName>
+            <text>1.0e-10</text>
          </widget>
-         <widget type="ComboBox">
-            <objectName>linearSystemDirectMethod</objectName>
-            <currentIndex>0</currentIndex>
+         <widget type="LineEdit">
+            <objectName>linearSystemILUTToleranceEdit</objectName>
+            <text>1.0e-3</text>
          </widget>
-         <widget type="ComboBox">
-            <objectName>linearSystemIterativeMethod</objectName>
-            <currentIndex>0</currentIndex>
+         <widget type="LineEdit">
+            <objectName>linearSystemResiduaOutputEdit</objectName>
+            <text>10</text>
          </widget>
-         <widget type="ComboBox">
-            <objectName>linearSystemPreconditioning</objectName>
-            <currentIndex>3</currentIndex>
+         <widget type="LineEdit">
+            <objectName>linearSystemPreconditionRecomputeEdit</objectName>
+            <text>1</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>linearSystemBiCGstablPolDeg</objectName>
+            <text>2</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemConvergenceToleranceEdit</objectName>
+            <text>1.0e-7</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemMaxIterationEdit</objectName>
+            <text>20</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemRelaxationFactorEdit</objectName>
+            <text>1</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemNewtonAfterIterEdit</objectName>
+            <text>3</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemNewtonAfterTolEdit</objectName>
+            <text>1.0e-3</text>
          </widget>
          <widget type="ComboBox">
             <objectName>boomerCycle</objectName>
@@ -714,6 +694,26 @@
          </widget>
          <widget type="ComboBox">
             <objectName>steadyStateConvergenceMeasureCombo</objectName>
+            <currentIndex>0</currentIndex>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>linearSystemMultigridMethod</objectName>
+            <currentIndex>0</currentIndex>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>linearSystemDirectMethod</objectName>
+            <currentIndex>0</currentIndex>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>linearSystemIterativeMethod</objectName>
+            <currentIndex>0</currentIndex>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>linearSystemPreconditioning</objectName>
+            <currentIndex>3</currentIndex>
+         </widget>
+         <widget type="ComboBox">
+            <objectName>nonlinSystemConvergenceMeasureCombo</objectName>
             <currentIndex>0</currentIndex>
          </widget>
       </item>
@@ -2358,7 +2358,7 @@
          </widget>
          <widget type="Edit">
             <key>/Static Current Conduction/BoundaryCondition/Current Density/0</key>
-            <value>444.44</value>
+            <value></value>
          </widget>
          <widget type="CheckBox">
             <key>/Navier-Stokes/BoundaryCondition/Use normal-tangential coordinate system/0</key>
@@ -2718,7 +2718,7 @@
          </widget>
          <widget type="Edit">
             <key>/Static Current Conduction/BoundaryCondition/Potential/0</key>
-            <value></value>
+            <value>1</value>
          </widget>
          <widget type="TextEdit">
             <key>/Helmholtz Equation/BoundaryCondition/Free text/0</key>
@@ -3238,7 +3238,7 @@
          </widget>
          <widget type="Edit">
             <key>/Static Current Conduction/BoundaryCondition/Current Density/1</key>
-            <value>-444.44</value>
+            <value></value>
          </widget>
          <widget type="Edit">
             <key>/Heat Equation/BoundaryCondition/Phase Velocity 3/1</key>
@@ -3298,7 +3298,7 @@
          </widget>
          <widget type="Edit">
             <key>/Static Current Conduction/BoundaryCondition/Potential/1</key>
-            <value></value>
+            <value>0</value>
          </widget>
          <widget type="Edit">
             <key>/Helmholtz Equation/BoundaryCondition/Real part of the flux/1</key>
