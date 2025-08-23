@@ -1,30 +1,30 @@
 SetFactory("OpenCASCADE");
 Mesh.SaveAll=1;
 
-lc = 0.0105; //2.5e-2
-radius=0.508;
-height=0.00279;
-activeRadius=0.41/2; //0.438/2?
+trueLc = 0.0105; //2.5e-2
+trueRadius=0.508;
+trueHeight=0.00279;
+trueActiveRadius=0.41/2; //0.438/2?
+trueEqualSideLength=2*activeRadius*Sin(Pi/8);
+truePadSpacing=((activeRadius-0.01)*Sqrt(2))/2; //padSpacing=0.1925?
+trueBiasingThickness=0.0005;
+trueBiasingSideLength=0.015;
+trueReadOutThickness=biasingThickness;
+trueReadOutSideLength=0.007;
+
+genScaleFactor = 20;
+heightScaleFactor = 25;
+lcScaleFactor = 40;
+lc = lcScaleFactor*0.0105; //2.5e-2
+radius=genScaleFactor*0.508;
+height=heightScaleFactor*genScaleFactor*0.00279;
+activeRadius=genScaleFactor*0.41/2; //0.438/2?
 equalSideLength=2*activeRadius*Sin(Pi/8);
 padSpacing=((activeRadius-0.01)*Sqrt(2))/2; //padSpacing=0.1925?
-biasingThickness=0.0005;
-biasingSideLength=0.015;
+biasingThickness=heightScaleFactor*genScaleFactor*0.0005;
+biasingSideLength=genScaleFactor*0.015;
 readOutThickness=biasingThickness;
-readOutSideLength=0.007;
-
-//genScaleFactor = 20;
-//heightScaleFactor = 25;
-//lcScaleFactor = 40;
-//lc = lcScaleFactor*0.0105; //2.5e-2
-//radius=genScaleFactor*0.508;
-//height=heightScaleFactor*genScaleFactor*0.00279;
-//activeRadius=genScaleFactor*0.41/2; //0.438/2?
-//equalSideLength=2*activeRadius*Sin(Pi/8);
-//padSpacing=((activeRadius-0.01)*Sqrt(2))/2; //padSpacing=0.1925?
-//biasingThickness=heightScaleFactor*genScaleFactor*0.0005;
-//biasingSideLength=genScaleFactor*0.015;
-//readOutThickness=biasingThickness;
-//readOutSideLength=genScaleFactor*0.007;
+readOutSideLength=genScaleFactor*0.007;
 
 
 //Volume Grabs
@@ -58,12 +58,11 @@ tempVolumeStore9=newreg;
 	Plane Surface(100)={100};
 
 	//volume
-	wafer[]=Extrude {0,0,height} {Surface{100};} ;
+	wafer[]=Extrude {0,0,height} {Surface{100};} Using Volume{tempVolumeStore1};
 	
 	//boundaries and bodies
-	Physical Surface(1)={100};
-    Physical Surface(2)={wafer[0]};
-	//Physical Surface(2)={100,101,102};
+	Physical Surface(0)={103};
+	Physical Surface(1)={100,101,102};
 	Physical Volume("Wafer",100)={tempVolumeStore1};
 
 //Contacts:
@@ -111,7 +110,7 @@ tempVolumeStore9=newreg;
 		Line(234)={234,231};
 		Curve Loop(230)={231,232,233,234};
 		Plane Surface(230)={230};
-		bias1[]=Extrude {0,0,biasingThickness} {Surface{230};} ;
+		bias1[]=Extrude {0,0,biasingThickness} {Surface{230};} Using Volume{tempVolumeStore2};
 
 		//biasing2
 		Point(251)={-padSpacing+biasingSideLength/2,-0+biasingSideLength/2,height,lc};
@@ -124,7 +123,7 @@ tempVolumeStore9=newreg;
 		Line(254)={254,251};
 		Curve Loop(250)={251,252,253,254};
 		Plane Surface(250)={250};
-		bias2[]=Extrude {0,0,biasingThickness} {Surface{250};} ;
+		bias2[]=Extrude {0,0,biasingThickness} {Surface{250};} Using Volume{tempVolumeStore3};
 
 		//biasing3
 		Point(271)={-0+biasingSideLength/2,-padSpacing+biasingSideLength/2,height,lc};
@@ -137,7 +136,7 @@ tempVolumeStore9=newreg;
 		Line(274)={274,271};
 		Curve Loop(270)={271,272,273,274};
 		Plane Surface(270)={270};
-		bias3[]=Extrude {0,0,biasingThickness} {Surface{270};} ;
+		bias3[]=Extrude {0,0,biasingThickness} {Surface{270};} Using Volume{tempVolumeStore4};
 
 		//biasing4
 		Point(291)={-0+biasingSideLength/2,padSpacing+biasingSideLength/2,height,lc};
@@ -150,7 +149,7 @@ tempVolumeStore9=newreg;
 		Line(294)={294,291};
 		Curve Loop(290)={291,292,293,294};
 		Plane Surface(290)={290};
-		bias4[]=Extrude {0,0,biasingThickness} {Surface{290};} ;
+		bias5[]=Extrude {0,0,biasingThickness} {Surface{290};} Using Volume{tempVolumeStore5};
 
 	//readOut
 		//readOut1
@@ -164,7 +163,7 @@ tempVolumeStore9=newreg;
 		Line(334)={334,331};
 		Curve Loop(330)={331,332,333,334};
 		Plane Surface(330)={330};
-		read1[]=Extrude {0,0,biasingThickness} {Surface{330};} ;
+		read1[]=Extrude {0,0,biasingThickness} {Surface{330};} Using Volume{tempVolumeStore6};
 
 		//readOut2
 		Point(351)={padSpacing+readOutSideLength/2,-padSpacing+readOutSideLength/2,height,lc};
@@ -177,7 +176,7 @@ tempVolumeStore9=newreg;
 		Line(354)={354,351};
 		Curve Loop(350)={351,352,353,354};
 		Plane Surface(350)={350};
-		read2[]=Extrude {0,0,biasingThickness} {Surface{350};} ;
+		read2[]=Extrude {0,0,biasingThickness} {Surface{350};} Using Volume{tempVolumeStore7};
 
 		//readOut3
 		Point(371)={-padSpacing+readOutSideLength/2,padSpacing+readOutSideLength/2,height,lc};
@@ -190,7 +189,7 @@ tempVolumeStore9=newreg;
 		Line(374)={374,371};
 		Curve Loop(370)={371,372,373,374};
 		Plane Surface(370)={370};
-		read3[]=Extrude {0,0,biasingThickness} {Surface{370};} ;
+		read3[]=Extrude {0,0,biasingThickness} {Surface{370};} Using Volume{tempVolumeStore8};
 
 		//readOut4
 		Point(391)={-padSpacing+readOutSideLength/2,-padSpacing+readOutSideLength/2,height,lc};
@@ -203,13 +202,13 @@ tempVolumeStore9=newreg;
 		Line(394)={394,391};
 		Curve Loop(390)={391,392,393,394};
 		Plane Surface(390)={390};
-		read4[]=Extrude {0,0,biasingThickness} {Surface{390};} ;
+		read4[]=Extrude {0,0,biasingThickness} {Surface{390};} Using Volume{tempVolumeStore9};
 
 	//boundaries and bodies
 
 		//use of arrays preffered
-		compVol[] = BooleanFragments{ Volume{wafer[1], bias1[1], bias2[1], bias3[1], bias4[1], read1[1], read2[1], read3[1], read4[1]}; Delete; }{};
-		//compVol[] = BooleanFragments{ Volume{tempVolumeStore1, tempVolumeStore2, tempVolumeStore3, tempVolumeStore4, tempVolumeStore5, tempVolumeStore6, tempVolumeStore7, tempVolumeStore8, tempVolumeStore9}; Delete; }{};
+		//compVol[] = BooleanFragments{ Volume{wafer[1], bias1[1], bias2[1], bias3[1], bias4[1], read1[1], read2[1], read3[1], read4[1]}; Delete; }{};
+		compVol[] = BooleanFragments{ Volume{tempVolumeStore1, tempVolumeStore2, tempVolumeStore3, tempVolumeStore4, tempVolumeStore5, tempVolumeStore6, tempVolumeStore7, tempVolumeStore8, tempVolumeStore9}; Delete; }{};
 
 		//wafer
 
@@ -222,4 +221,4 @@ tempVolumeStore9=newreg;
 
 Mesh 3;
 Mesh.MshFileVersion = 2.2;
-Save "constructv3.2.msh";
+Save "constructv3.1.msh";

@@ -49,7 +49,7 @@
       </widget>
       <widget type="LineEdit">
          <objectName>coordinateScalingEdit</objectName>
-         <text>0.005</text>
+         <text>0.05</text>
       </widget>
       <widget type="LineEdit">
          <objectName>angularFrequencyEdit</objectName>
@@ -501,15 +501,7 @@
             <isChecked>0</isChecked>
          </widget>
          <widget type="CheckBox">
-            <objectName>useHypre</objectName>
-            <isChecked>0</isChecked>
-         </widget>
-         <widget type="CheckBox">
-            <objectName>useParasails</objectName>
-            <isChecked>0</isChecked>
-         </widget>
-         <widget type="CheckBox">
-            <objectName>useBoomerAMG</objectName>
+            <objectName>mgEqualSplitCheck</objectName>
             <isChecked>0</isChecked>
          </widget>
          <widget type="CheckBox">
@@ -529,7 +521,15 @@
             <isChecked>0</isChecked>
          </widget>
          <widget type="CheckBox">
-            <objectName>mgEqualSplitCheck</objectName>
+            <objectName>useHypre</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="CheckBox">
+            <objectName>useParasails</objectName>
+            <isChecked>0</isChecked>
+         </widget>
+         <widget type="CheckBox">
+            <objectName>useBoomerAMG</objectName>
             <isChecked>0</isChecked>
          </widget>
          <widget type="CheckBox">
@@ -551,50 +551,6 @@
          <widget type="CheckBox">
             <objectName>linearSystemAbortWhenNotConvergedCheck</objectName>
             <isChecked>0</isChecked>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>thresholdEdit</objectName>
-            <text>-0.8</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>filterEdit</objectName>
-            <text>-0.8</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>maxLevelEdit</objectName>
-            <text>1</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>symmetryEdit</objectName>
-            <text>0</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>boomerMaxLevels</objectName>
-            <text>25</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>boomerSweeps</objectName>
-            <text>1</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>adaptiveMeshNameEdit</objectName>
-            <text></text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>adaptiveErrorLimitEdit</objectName>
-            <text>0.1</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>adaptiveMinHEdit</objectName>
-            <text></text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>adaptiveMaxHEdit</objectName>
-            <text></text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>adaptiveMaxChangeEdit</objectName>
-            <text>2</text>
          </widget>
          <widget type="LineEdit">
             <objectName>mgLevelsEdit</objectName>
@@ -625,6 +581,70 @@
             <text>1.0e-3</text>
          </widget>
          <widget type="LineEdit">
+            <objectName>adaptiveMeshNameEdit</objectName>
+            <text></text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>adaptiveErrorLimitEdit</objectName>
+            <text>0.1</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>adaptiveMinHEdit</objectName>
+            <text></text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>adaptiveMaxHEdit</objectName>
+            <text></text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>adaptiveMaxChangeEdit</objectName>
+            <text>2</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>thresholdEdit</objectName>
+            <text>-0.8</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>filterEdit</objectName>
+            <text>-0.8</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>maxLevelEdit</objectName>
+            <text>1</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>symmetryEdit</objectName>
+            <text>0</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>boomerMaxLevels</objectName>
+            <text>25</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>boomerSweeps</objectName>
+            <text>1</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemConvergenceToleranceEdit</objectName>
+            <text>1.0e-7</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemMaxIterationEdit</objectName>
+            <text>20</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemRelaxationFactorEdit</objectName>
+            <text>1</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemNewtonAfterIterEdit</objectName>
+            <text>3</text>
+         </widget>
+         <widget type="LineEdit">
+            <objectName>nonlinSystemNewtonAfterTolEdit</objectName>
+            <text>1.0e-3</text>
+         </widget>
+         <widget type="LineEdit">
             <objectName>steadyStateConvergenceToleranceEdit</objectName>
             <text>1.0e-5</text>
          </widget>
@@ -652,26 +672,6 @@
             <objectName>linearSystemBiCGstablPolDeg</objectName>
             <text>2</text>
          </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemConvergenceToleranceEdit</objectName>
-            <text>1.0e-7</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemMaxIterationEdit</objectName>
-            <text>20</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemRelaxationFactorEdit</objectName>
-            <text>1</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemNewtonAfterIterEdit</objectName>
-            <text>3</text>
-         </widget>
-         <widget type="LineEdit">
-            <objectName>nonlinSystemNewtonAfterTolEdit</objectName>
-            <text>1.0e-3</text>
-         </widget>
          <widget type="ComboBox">
             <objectName>boomerCycle</objectName>
             <currentIndex>1</currentIndex>
@@ -693,6 +693,10 @@
             <currentIndex>6</currentIndex>
          </widget>
          <widget type="ComboBox">
+            <objectName>nonlinSystemConvergenceMeasureCombo</objectName>
+            <currentIndex>0</currentIndex>
+         </widget>
+         <widget type="ComboBox">
             <objectName>steadyStateConvergenceMeasureCombo</objectName>
             <currentIndex>0</currentIndex>
          </widget>
@@ -711,10 +715,6 @@
          <widget type="ComboBox">
             <objectName>linearSystemPreconditioning</objectName>
             <currentIndex>3</currentIndex>
-         </widget>
-         <widget type="ComboBox">
-            <objectName>nonlinSystemConvergenceMeasureCombo</objectName>
-            <currentIndex>0</currentIndex>
          </widget>
       </item>
    </solverparameters>
@@ -1490,7 +1490,7 @@
          </widget>
          <widget type="Edit">
             <key>/Navier-Stokes/Material/Yasuda Coefficient/0</key>
-            <value></value>
+            <value>2</value>
          </widget>
          <widget type="TextEdit">
             <key>/Heat Equation/Material/Free text/0</key>
@@ -1590,7 +1590,7 @@
          </widget>
          <widget type="Edit">
             <key>/Heat Equation/Material/Turbulent Prandtl Number/0</key>
-            <value></value>
+            <value>0.85</value>
          </widget>
          <widget type="Label">
             <key>/Linear elasticity/Material/Material principal directions/0</key>
@@ -1826,7 +1826,7 @@
          </widget>
          <widget type="Edit">
             <key>/Navier-Stokes/Material/Yasuda Coefficient/1</key>
-            <value></value>
+            <value>2</value>
          </widget>
          <widget type="Edit">
             <key>/MgDyn2DHarmonic/Material/Electric Conductivity/1</key>
@@ -1978,7 +1978,7 @@
          </widget>
          <widget type="Edit">
             <key>/Heat Equation/Material/Turbulent Prandtl Number/1</key>
-            <value></value>
+            <value>0.85</value>
          </widget>
          <widget type="Label">
             <key>/Helmholtz Equation/Material/Free text input/1</key>
