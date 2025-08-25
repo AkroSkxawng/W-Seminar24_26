@@ -14,7 +14,17 @@ Simulation
   Output Intervals(1) = 1
   Coordinate Scaling = 0.1
   Solver Input File = case.sif
-  Post File = case.vtu
+  Post File = case2.vtu
+
+Result
+  File = "case.vtu"
+  !Write Precision = 12
+  
+  Output = Ep
+  Output = Electric Field
+  Output = Current Density
+  Output = Heat Source
+
 End
 
 Constants
@@ -24,6 +34,7 @@ Constants
   Permeability of Vacuum = 1.25663706e-6
   Boltzmann Constant = 1.380649e-23
   Unit Charge = 1.6021766e-19
+End
 End
 
 Body 1
@@ -91,11 +102,11 @@ End
 
 Solver 1
   Equation = Static Current Conduction
-  Calculate Volume Current = True
   Procedure = "StatCurrentSolve" "StatCurrentSolver"
   Calculate Joule Heating = True
-  Constant Weights = True
+  Calculate Volume Current = True
   Variable = Potential
+  Constant Weights = True
   Exec Solver = Always
   Stabilize = True
   Optimize Bandwidth = True
@@ -124,35 +135,35 @@ End
 
 Material 1
   Name = "Silver (generic)"
-  Electric Conductivity = 63.01e6
-  Sound speed = 2680.0
-  Heat Conductivity = 429.0
-  Poisson ratio = 0.37
   Density = 10490.0
+  Sound speed = 2680.0
   Heat expansion Coefficient = 18.9e-6
+  Electric Conductivity = 63.01e6
+  Heat Capacity = 235.0
   Youngs modulus = 83.0e9
   Electric Conductivity = 6.3e7
-  Heat Capacity = 235.0
+  Poisson ratio = 0.37
+  Heat Conductivity = 429.0
 End
 
 Material 2
   Name = "Silicon (solid)"
+  Emissivity = 0.7
+  Youngs modulus = 185.0e9
+  Heat expansion Coefficient = 4.68e-6
   Electric Conductivity = 1.0e-3
   Density = 2330.0
   Sound speed = 8433.0
-  Youngs modulus = 185.0e9
   Poisson ratio = 0.28
-  Electric Conductivity = 1.56e-3
-  Emissivity = 0.7
-  Heat expansion Coefficient = 4.68e-6
   Heat Capacity = 555.8
+  Electric Conductivity = 1.56e-3
   Heat Conductivity = Variable Temperature; Real; 0 156; 300 156; 550 72; 800 43; 1050 29; 1300 25; 1550 23; 1800 21; 3000 21; End
 End
 
 Boundary Condition 1
   Target Boundaries(12) = 1 2 3 4 5 6 7 8 9 10 11 12 
   Name = "+"
-  Potential = 100
+  Potential = 1
 End
 
 Boundary Condition 2
@@ -166,3 +177,5 @@ Boundary Condition 3
   Name = "n"
   Current Density = 0
 End
+
+

@@ -1,7 +1,7 @@
 SetFactory("OpenCASCADE");
 Mesh.SaveAll=1;
 
-lc = 0.0105; //2.5e-2
+lc = 0.0125; //2.5e-2
 radius=0.508;
 height=0.00279;
 activeRadius=0.41/2; //0.438/2?
