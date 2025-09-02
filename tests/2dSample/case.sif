@@ -14,6 +14,7 @@ Simulation
   Output Intervals(1) = 1
   Solver Input File = case.sif
   Post File = case.vtu
+  Coordinate Scaling = 0.001
 End
 
 Constants
@@ -138,9 +139,11 @@ Material 1
   !                            $syx  $syy  0.0
   !                            0.0   0.0   $szz
 
-  Electric Conductivity(3,3) = 160.0 -40.0 0.0
-                               40.0  160.0 0.0
-                               0.0   0.0  160.0
+
+  !current scaling x100
+  Electric Conductivity(3,3) = 1.56   -7.8e-1     0.0
+                              7.8e-1    1.56  0.0
+                              0.0     0.0   1.56
 
 
   !0conductivity
