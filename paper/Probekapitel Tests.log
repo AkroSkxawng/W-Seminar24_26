@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.26)  26 JUN 2025 23:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.5)  5 OCT 2025 01:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **"./Probekapitel Tests.tex"
 (Probekapitel Tests.tex
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-05-26>
+L3 programming layer <2025-09-02>
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
@@ -29,23 +29,23 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@posthook=\toks18
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2025/05/14 v25.9 The multilingual framework for pdfLaTeX, LuaLaT
-eX and XeLaTeX
+Package: babel 2025/08/03 v25.12 The multilingual framework for LuaLaTeX, pdfLa
+TeX and XeLaTeX
 \babel@savecnt=\count283
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
-ne 2043.
-LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
 ne 2045.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2047.
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
-e 2047.
+e 2049.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
-e 2048.
+e 2050.
 LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
-on input line 2049.
-LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
 on input line 2051.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2053.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
-on input line 2076.
+on input line 2078.
 \U@D=\dimen149
 \l@unhyphenated=\language79
 
@@ -68,7 +68,7 @@ phy)
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/de\babel
 -ngerman.tex
 Package babel Info: Importing font and identification data for ngerman
-(babel)             from babel-de.ini. Reported on input line 11.
+(babel)             from babel-de.ini. Reported on input line 12.
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/babel-german\ngermanb.l
 df
@@ -269,11 +269,11 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 618
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
-File: l3backend-pdftex.def 2025-04-14 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count304
 ) (Probekapitel Tests.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
-(babel)             Reported  on input line 5.
+(babel)             Reported on input line 5.
 )
 \openout1 = `"Probekapitel Tests.aux"'.
 
@@ -407,14 +407,14 @@ Package pdftex.def Info: Image Sources/Fig2.png  used on input line 139.
 [8] (Probekapitel Tests.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-05-26>
+L3 programming layer <2025-09-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6408 strings out of 468219
- 108317 string characters out of 5432869
- 523095 words of memory out of 5000000
- 34872 multiletter control sequences out of 15000+600000
+ 6410 strings out of 468130
+ 108212 string characters out of 5430633
+ 526446 words of memory out of 5000000
+ 34963 multiletter control sequences out of 15000+600000
  636878 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,12n,65p,895b,401s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -433,7 +433,7 @@ rmin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
 cm/cmr7.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmr8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb>
-Output written on "Probekapitel Tests.pdf" (8 pages, 280918 bytes).
+Output written on "Probekapitel Tests.pdf" (8 pages, 280797 bytes).
 PDF statistics:
  101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
