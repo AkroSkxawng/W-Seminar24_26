@@ -65,26 +65,54 @@ Body 6
   Target Bodies(1) = 6
   Name = "Body 6"
   Equation = 1
-  Material = 1
+  Material = 3
 End
 
 Body 7
   Target Bodies(1) = 7
   Name = "Body 7"
   Equation = 1
-  Material = 1
+  Material = 3
 End
 
 Body 8
   Target Bodies(1) = 8
   Name = "Body 8"
   Equation = 1
-  Material = 1
+  Material = 3
 End
 
 Body 9
   Target Bodies(1) = 9
   Name = "Body 9"
+  Equation = 1
+  Material = 3
+End
+
+Body 10
+  Target Bodies(1) = 10
+  Name = "Body 10"
+  Equation = 1
+  Material = 1
+End
+
+Body 11
+  Target Bodies(1) = 11
+  Name = "Body 11"
+  Equation = 1
+  Material = 1
+End
+
+Body 12
+  Target Bodies(1) = 12
+  Name = "Body 12"
+  Equation = 1
+  Material = 1
+End
+
+Body 13
+  Target Bodies(1) = 13
+  Name = "Body 13"
   Equation = 1
   Material = 1
 End
@@ -179,15 +207,15 @@ Material 2
 
 
   !current scaling x1.000.000, additional oxy x1e3, 0.5mT
-  Electric Conductivity(3,3) = 1.56e3   -7.8     0.0
-                              7.8    1.56e3  0.0
-                              0.0     0.0   1.56e3
+  !Electric Conductivity(3,3) = 1.56e3   -7.8     0.0
+  !                            7.8    1.56e3  0.0
+  !                            0.0     0.0   1.56e3
 
 
   !0conductivity (don't forget that scaling x1000)
-  !Electric Conductivity(3,3) = 1.56e-3   0     0.0
-  !                            0    1.56e-3    0.0
-  !                            0.0     0.0   1.56e-3
+  Electric Conductivity(3,3) = 1.56e-3   -1.3e-3     0.0
+                              1.3e-3    1.56e-3    0.0
+                              0.0     0.0   1.56e-3
 End
 
 Boundary Condition 1
@@ -206,4 +234,8 @@ Boundary Condition 3
   Target Boundaries(24) = 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 
   Name = "n"
   Current Density = 0
+End
+
+Material 3
+    Electric Conductivity = 5e-10
 End
