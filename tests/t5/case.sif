@@ -65,28 +65,28 @@ Body 6
   Target Bodies(1) = 6
   Name = "Body 6"
   Equation = 1
-  Material = 1
+  Material = 3
 End
 
 Body 7
   Target Bodies(1) = 7
   Name = "Body 7"
   Equation = 1
-  Material = 1
+  Material = 3
 End
 
 Body 8
   Target Bodies(1) = 8
   Name = "Body 8"
   Equation = 1
-  Material = 1
+  Material = 3
 End
 
 Body 9
   Target Bodies(1) = 9
   Name = "Body 9"
   Equation = 1
-  Material = 1
+  Material = 3
 End
 
 Solver 1
@@ -106,22 +106,19 @@ Solver 1
   Nonlinear System Newton After Tolerance = 1.0e-3
   Nonlinear System Relaxation Factor = 1
 
-  !Linear System Solver = Direct
-  !Linear System Direct Method = MUMPS
-  !Linear System Convergence Tolerance = 1e-12
-  !Linear System Max Iterations = 1000
-  ! Preconditioning/ordering (optional)
+  Linear System Solver = Direct
+  Linear System Direct Method = UMFPACK
 
-  Linear System Solver = Iterative
-  Linear System Iterative Method = BiCGStab
-  Linear System Max Iterations = 10000
-  Linear System Convergence Tolerance = 1.0e-10
-  BiCGstabl polynomial degree = 2
-  Linear System Preconditioning = ILU1
-  Linear System ILUT Tolerance = 1.0e-8   
-  Linear System Abort Not Converged = False
-  Linear System Residual Output = 10
-  Linear System Precondition Recompute = 50
+  !Linear System Solver = Iterative
+  !Linear System Iterative Method = BiCGStab
+  !Linear System Max Iterations = 10000
+  !Linear System Convergence Tolerance = 1.0e-10
+  !BiCGstabl polynomial degree = 2
+  !Linear System Preconditioning = ILU1
+  !Linear System ILUT Tolerance = 1.0e-8   
+  !Linear System Abort Not Converged = False
+  !Linear System Residual Output = 10
+  !Linear System Precondition Recompute = 50
 
   Calculate Electric Field = Logical True
   Calculate Current Density = Logical True
@@ -166,8 +163,8 @@ Material 2
   !schematic for custom conductivity
   ! ---- Parameters ----
   ! Bz = 0.5          ! Tesla
-  ! mu = 0.01         ! mobility [m^2/Vs]
-  ! sigma = 1.56e-3    ! base conductivity [S/m]!
+  ! mu = 0.045         ! mobility [m^2/Vs]
+  ! sigma = 10    ! base conductivity [S/m]!
   ! sxx = sigma
   ! syy = sigma
   ! szz = sigma
@@ -178,22 +175,22 @@ Material 2
   !                            0.0   0.0   $szz
 
 
-  !current scaling x1.000.000, additional oxy x1e3, 0.5mT
-  Electric Conductivity(3,3) = 1.56e3   -7.8     0.0
-                              7.8    1.56e3  0.0
-                              0.0     0.0   1.56e3
+  !current scaling x0, additional oxy x1e3, 0.05mT
+  Electric Conductivity(3,3) = 10   -3.15e-4     0.0
+                              3.15e-4    10  0.0
+                              0.0     0.0   10
 
 
   !0conductivity (don't forget that scaling x1000)
-  !Electric Conductivity(3,3) = 1.56e-3   0     0.0
-  !                            0    1.56e-3    0.0
-  !                            0.0     0.0   1.56e-3
+  !Electric Conductivity(3,3) = 10   -0     0.0
+  !                            0    10    0.0
+  !                            0.0     0.0   10
 End
 
 Boundary Condition 1
   Target Boundaries(12) = 1 2 3 4 5 6 7 8 9 10 11 12 
   Name = "+"
-  Potential = 1
+  Potential = 10
 End
 
 Boundary Condition 2
@@ -202,8 +199,6 @@ Boundary Condition 2
   Potential = 0
 End
 
-Boundary Condition 3
-  Target Boundaries(24) = 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 
-  Name = "n"
-  Current Density = 0
+Material 3
+    Electric Conductivity = 5e-10
 End
