@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  20 OCT 2025 01:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  21 OCT 2025 00:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./PaperV2.tex
-(PaperV2.tex
+**./PaperV3.tex
+(PaperV3.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -402,11 +402,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count316
-) (PaperV2.aux
+) (PaperV3.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported on input line 8.
 )
-\openout1 = `PaperV2.aux'.
+\openout1 = `PaperV3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
@@ -491,9 +491,9 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 42.
- (PaperV2.out) (PaperV2.out)
+ (PaperV3.out) (PaperV3.out)
 \@outlinefile=\write3
-\openout3 = `PaperV2.out'.
+\openout3 = `PaperV3.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
 
@@ -511,90 +511,78 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/armin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(PaperV2.toc)
+(PaperV3.toc)
 \tf@toc=\write4
-\openout4 = `PaperV2.toc'.
+\openout4 = `PaperV3.toc'.
 
 
 
 [2]
-<Image Sources/Fig1.jpeg, id=117, 862.72313pt x 689.57625pt>
-File: Image Sources/Fig1.jpeg Graphic file (type jpg)
-<use Image Sources/Fig1.jpeg>
-Package pdftex.def Info: Image Sources/Fig1.jpeg  used on input line 70.
-(pdftex.def)             Requested size: 284.77849pt x 227.62204pt.
-<Image Sources/Fig2.jpeg, id=121, 1225.57875pt x 834.86906pt>
-File: Image Sources/Fig2.jpeg Graphic file (type jpg)
-<use Image Sources/Fig2.jpeg>
-Package pdftex.def Info: Image Sources/Fig2.jpeg  used on input line 80.
-(pdftex.def)             Requested size: 417.6824pt x 284.52756pt.
 
+[3]
 
-[3 <./Image Sources/Fig1.jpeg>]
-
-[4 <./Image Sources/Fig2.jpeg>]
-
-[5]
-
-[6]
-
-[7]
-<Image Sources/Fig3.1.png, id=208, 182.93344pt x 152.06813pt>
+[4]
+<Image Sources/Fig3.1.png, id=162, 182.93344pt x 152.06813pt>
 File: Image Sources/Fig3.1.png Graphic file (type png)
 <use Image Sources/Fig3.1.png>
-Package pdftex.def Info: Image Sources/Fig3.1.png  used on input line 168.
+Package pdftex.def Info: Image Sources/Fig3.1.png  used on input line 125.
 (pdftex.def)             Requested size: 171.14238pt x 142.26378pt.
-<Image Sources/Fig3.2.png, id=210, 231.11343pt x 188.20313pt>
+<Image Sources/Fig3.2.png, id=164, 231.11343pt x 188.20313pt>
 File: Image Sources/Fig3.2.png Graphic file (type png)
 <use Image Sources/Fig3.2.png>
-Package pdftex.def Info: Image Sources/Fig3.2.png  used on input line 171.
+Package pdftex.def Info: Image Sources/Fig3.2.png  used on input line 128.
 (pdftex.def)             Requested size: 174.7135pt x 142.26378pt.
 
 
-[8]
-<Image Sources/Fig4.png, id=228, 466.74374pt x 246.9225pt>
+[5]
+
+[6 <./Image Sources/Fig3.1.png> <./Image Sources/Fig3.2.png>]
+<Image Sources/Fig4.png, id=193, 466.74374pt x 246.9225pt>
 File: Image Sources/Fig4.png Graphic file (type png)
 <use Image Sources/Fig4.png>
-Package pdftex.def Info: Image Sources/Fig4.png  used on input line 190.
+Package pdftex.def Info: Image Sources/Fig4.png  used on input line 147.
 (pdftex.def)             Requested size: 268.90971pt x 142.26378pt.
 
 
-[9 <./Image Sources/Fig3.1.png> <./Image Sources/Fig3.2.png>]
+[7 <./Image Sources/Fig4.png>]
 
-[10 <./Image Sources/Fig4.png>]
+[8]
 
-[11]
-Underfull \hbox (badness 1342) in paragraph at lines 243--245
-[]\OT1/cmr/bx/n/12 John A. Tar-du-no, Ting-hong Zhou, Wen-tao Huang, Ja-gan-moy
- Jod-
- []
+[9]
 
-
-
-[12]
-Overfull \hbox (21.25496pt too wide) in paragraph at lines 306--307
+[10]
+Overfull \hbox (21.25496pt too wide) in paragraph at lines 251--252
 []\OT1/cmr/bx/n/12 Fig. 1\OT1/cmr/m/n/12 : []$\OT1/cmtt/m/n/12 https : / / www 
 . esa . int / Science _ Exploration / Human _ and _ Robotic _ Exploration /
  []
 
 
+LaTeX Warning: Citation `tarduno25' on page 11 undefined on input line 252.
 
-[13] (PaperV2.aux)
+
+
+[11]
+
+[12] (PaperV3.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
-Package rerunfilecheck Info: File `PaperV2.out' has not changed.
-(rerunfilecheck)             Checksum: B05B0C155DCFB6A8ADF2E7BF3283F57E;4065.
+
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `PaperV3.out' has not changed.
+(rerunfilecheck)             Checksum: AB252C6CDC3A9A2A1C48F587B7435910;4618.
  ) 
 Here is how much of TeX's memory you used:
- 13492 strings out of 468130
- 217461 string characters out of 5430632
- 642341 words of memory out of 5000000
- 41878 multiletter control sequences out of 15000+600000
+ 13439 strings out of 468130
+ 216552 string characters out of 5430632
+ 642732 words of memory out of 5000000
+ 41832 multiletter control sequences out of 15000+600000
  637047 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,891b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,891b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -611,9 +599,9 @@ cm/cmr7.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmr8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on PaperV2.pdf (13 pages, 677375 bytes).
+Output written on PaperV3.pdf (12 pages, 338301 bytes).
 PDF statistics:
- 360 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
 
