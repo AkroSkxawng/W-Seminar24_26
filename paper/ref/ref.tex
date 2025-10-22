@@ -146,9 +146,115 @@
 		
 		
 	\section{Praktische Umsetzung des X-Hall-Sensors}
+		Das wichtigste Element einer erfolgreichen praktischen Umsetzung ist eine sorgfältige Planung und Vorbereitung.\newline 
+	Da im Rahmen dieser Arbeit der Schwerpunkt aus zeitlichen Einschränkungen auf der Konzeption und technischen Auslegung des Sensors liegt, wird im Folgenden die Planung der Umsetzung vorgestellt. Dabei werden insbesondere die Materialauswahl, die geometrische Gestaltung der Sensorstruktur sowie der geplante elektrische Aufbau behandelt.\newline
+	Ein wesentlicher Bestandteil dieser Planungsphase ist die Simulation der Sensorstruktur mithilfe numerischer Verfahren, um die Funktion und Effizienz des Layouts bereits vor der praktischen Realisierung zu überprüfen.
+	
 	\subsection{Die Finite Element Methode}
+	Da die Ausgangsmaterialien für den Sensor nicht leicht erhältlich sind, empfiehlt es sich, vor tatsächlichen praktischen Versuchen zunächst den Sensor und dessen Verhalten zu simulieren, um leicht vermeidbare Fehler zu identifizieren und zu vermeiden. In diesem Fall betrifft das insbesondere das Layout des Sensors und seiner Kontakte.\paragraph{}
+	
+	Eine weit verbreitete Methode solche Simulationen durchzuführen sind Programme, die auf der Finite-Elemente-Methode (FEM) basieren. Typische in der Forschung verwendete Programme sind unter anderem Abaqus, Ansys, COMSOL Multiphysics, SimScale und ElmerFEM.\newline
+	Für diese Arbeit wurde \textbf{ElmerFEM in der Version 9.0} verwendet, da es eines in der Wissenschaft verbreitetsten OpenSource FEM-Programme ist und ein sehr breites Spektrum für verschiedenste Simulationen bietet.\paragraph{}
+	
+	Die Finite-Element-Methode ist einfach gesagt ein numerisches Verfahren, um Randwertprobleme zu lösen, die durch partielle Differentialgleichungen beschrieben werden. \newline
+	Dabei wird das kontinuierliche physikalische Gebiet zunächst in viele kleine Unterelemente wie beispielsweise Dreiecke oder Tetraeder unterteilt. In jedem dieser Unterelemente wird anschließend die gesuchte physikalische Größe mit einfachen Ansatz- beziehungsweise Formfunktionen angenähert. Aus diesen lokalen Näherungen werden anschließend zuerst lokale Elementgleichungen hergeleitet, bevor diese zu einem globalen Gleichungssystem zusammengesetzt werden. \newline
+	Nach Anwendung der Rand- und Übergangsbedingungen wird dieses System gelöst, um die Werte an Knotenpunkten zu bestimmen, aus welchen letztendlich die globale, angenäherte Lösung resultiert\,\cite{sukumar07}.\paragraph{}
+	
+	Elmer kann zwei primäre Arten von Systemen lösen\,\cite{elmerSolve}:
+	\begin{itemize}
+		\item Lineare Systeme der Form $Ax=b$
+		\item Nichtlineare Systeme der Form $A(u_{i-1}u_i=b(u_{i-1}))$\footnote{Nichtlineare Systeme werden immer direkt linearisiert, wie hier ersichtlich}
+	\end{itemize}
+	Es soll sich hier auf die lineare Methode fokussiert werden, da das simulierte Problem  linearer Natur ist.\paragraph{}
+	
+	Lineare Systeme werden in Elmer entweder direkt, iterativ oder über Multilevel-Methoden gelöst, wobei letztere zu den iterativen Methoden zählen und in den meisten Fällen zu vernachlässigen sind.\paragraph{}
+	
+	Direkte Methoden bestimmen die Lösung eines linearen Systems exakt bis zu einer vorher definierten Genauigkeit. Sie sind aber sehr rechenintensiv und dementsprechend sollten sie nicht für zu große Systeme verwendet werden\,\cite{elmerSolve}.\newline
+	Die wichtigsten von Elmer zur Auswahl gestellten direkten Lösungsmethoden sind die Linear Algebra PACKage (LAPACK) Subroutine für Bandmatrizen, die Unsymmetric MultiFrontal Methode (UMFPACK) für dünnbesetzte Systeme und der MUltifrontal Massively Parallel sparse direct Solver (MUMPS) für sehr große, dünnbesetzte Systeme.\paragraph{}
+	
+	Iterative Methoden generieren eine Sequenz sukzessive genauerer Näherungslösungen. In den meisten Fällen wird die iterative Methode über vorkonditionierte Krylowraum-Methoden gelöst werden. Eine möglichst gute Vorkonditionierung ist hier essenziell, da so das System wesentlich schneller konvergieren kann\,\cite{elmerSolve}.\newline
+	Typische iterative Methoden sind die Conjugate Gradient (CG) Methode, die Conjugate Gradient Squared (CGS) Methode, die Biconjugate Gradient Stabilized (BiCGStab) Methode und die Transpose-Free Quasi-Minimal Residual (TFQMR) Methode.\paragraph{}
+	
+	Bei der für die Simulationen genutzten Methode handelt es sich um die MUMPS-Methode, da so nicht nur möglichst genaue sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa 30,000 Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 	
+	
 	
 	\subsection{Entwicklung eines Sensor-Layouts}
+		Diese Simulationen bilden die Grundlage für die Entwicklung eines optimalen Sensor-Layouts, da die Anordnung der Kontakte entscheidend dafür ist, ob der Sensor zuverlässige und aussagekräftige Messwerte liefert.\paragraph{}
+	
+	Das für die Simulationen gewählte Modell ist Elmers Static Current Conduction Model, kurz StatCurrentSolve.\newline 
+	Dieses Modell funktioniert einfach gesagt, indem es die Maxwell-Gleichungen für das elektrostatische Potential in einem leitenden Medium löst. So können nicht nur Verteilung des Potentials selber, sondern auch Volumenströme und Joule-Wärme berechnet werden\,\cite{elmerModel}.\newline
+	Für die elektro-quasistatische Annäherung\footnote{Sich langsam ändernde elektrische Felder erlauben eine Vernachlässigung magnetischer Effekte} lauten die Maxwell-Gleichungen wie folgt:
+	\begin{equation}
+		\nabla\cdot\vec{D}=\rho
+		\tag{4.1}
+		\label{4.1}
+	\end{equation}
+	\begin{equation}
+		\nabla\times\vec{E}\simeq0
+		\tag{4.2}
+		\label{4.2}
+	\end{equation}
+	\begin{equation}
+		\nabla\times\vec{H}=\vec{J}+\frac{\partial\vec{D}}{\partial{t}}
+		\tag{4.3}
+		\label{4.3}
+	\end{equation}
+	Das elektrische Feld kann nun als elektrisches, skalares Potential $\phi$ geschrieben werden:
+	\begin{equation}
+		\vec{E}=-\nabla\phi
+		\tag{4.4}
+		\label{4.4}
+	\end{equation}
+	Aus (\ref{4.1}) und (\ref{4.3}) ergibt sich außerdem die Kontinuitätsgleichung für elektrische Ladungen:
+	\begin{equation}
+		\frac{\partial\rho}{\partial{t}}+\nabla\cdot\vec{J}=0
+		\tag{4.5}
+		\label{4.5}
+	\end{equation}
+	Mithilfe des Ohmschen Gesetzes für leitende Materialien ergibt sich für die Beziehung zwischen Stromdichte und elektrischem Feld die Beziehung
+	\begin{equation}
+		\vec{J}=\sigma\vec{E}
+		\tag{4.6}
+		\label{4.6}
+	\end{equation}
+	Mit elektrischer Leitfähigkeit $\sigma$. Mit (\ref{4.5}) als Grundlage und mithilfe von (\ref{4.4}) und (\ref{4.6}) ergibt sich schließlich
+	\begin{equation}
+		-\nabla\cdot\sigma\nabla\phi=\rho_t
+		\tag{4.7}
+		\label{4.7}
+	\end{equation}
+	beziehungsweise die generalisierte Form
+	\begin{equation}
+	-\nabla\cdot\vec{J}-\nabla\cdot(\epsilon\frac{\partial\vec{E}}{\partial{t}})=0
+	\tag{4.8}
+	\label{4.8}
+	\end{equation}
+	mit Permitivität $\epsilon$. Genaueres zu diesem Thema kann in \cite{elmerModel} nachgelesen werden.
+	
+		Es ergeben sich zwei valide Möglichkeiten, mithilfe des StatCurrentSolve-Modells den Hall-Effekt zu simulieren:\paragraph{}
+	Die erste Möglichkeit wäre eine Verkopplung des StatCurrentSolve-Models mit einem anderen physikalischen Simulationsmodel. Elmer ist zwar grundlegend dafür ausgelegt, solch eine Verkopplung problemlos zu unterstützen, aber insbesondere für unerfahrene und neue Programmnutzer kann es bereits schwierig sein, Simulationen die auf nur einem einzelnen Modell beruhen fehlerfrei zu bedienen. Daher wird für diese Arbeit von dieser Möglichkeit der Simulation abgesehen.\paragraph{}
+	Bei der zweiten, für diese Arbeit gewählten, Simulationsoption handelt es sich zwar immer noch um eine Art Verkopplung, diese findet aber im StatCurrentSolve-Modell selbst statt.\newline
+	In einem Leiter ohne Einfluss eines magnetischen Felds bewegen sich Ladungsträger unter Einfluss des elektrischen Feldes. Die sich ergebende Stromdichte ist parallel zum Feld
+	\begin{equation}
+		J=\sigma_0E.
+		\tag{4.9}
+		\label{4.9}
+	\end{equation}
+	Wirkt nun ein Magnetfeld B, erfahren die Ladungsträger eine Lorentzkraft $F_L$, die sie seitlich ablenkt. Praktisch gesehen bedeutet das, dass die Stromdichte $J$ nicht mehr parallel zu $E$ verläuft. Der Leiter verhält sich also so, als ob er eine anisotrope Leitfähigkeit hätte.\newline
+	Aus dem Drude-Modell für Ladungstransport lässt sich über einige Schritte ableiten, dass für ein Magnetfeld $B_z$ entlang der z-Achse, wie in den Simulationen angenommen wird, sich ergibt:
+	\begin{equation}
+		\begin{pmatrix} J_x \\ J_y \\ J_z \end{pmatrix}=\begin{pmatrix} \sigma_0 & -\sigma_H & 0 \\ \sigma_H & \sigma_0 & 0 \\ 0 & 0 & \sigma_0\end{pmatrix} \begin{pmatrix} E_x \\ E_y \\ E_z \end{pmatrix}
+		\tag{4.10}
+		\label{4.10}
+	\end{equation}
+	wobei $\sigma_H=\sigma_0^2R_HB_Z$ die Leitfähigkeitsänderung im Sinne des Hall Effekts darstellt.\newline%paragraph?
+	Dementsprechend wird für die Imitation des Hall-Effekts jeweils ein Leitfähigkeitstensor 
+	\begin{equation}
+		\sigma=\begin{pmatrix} \sigma_0 & -\sigma_H & 0 \\ \sigma_H & \sigma_0 & 0 \\ 0 & 0 & \sigma_0\end{pmatrix}
+		\tag{4.11}
+		\label{4.11}
+	\end{equation}
+	verwendet werden.
 	
 	\subsection{Praktische Implementierung des Sensors}
 		
