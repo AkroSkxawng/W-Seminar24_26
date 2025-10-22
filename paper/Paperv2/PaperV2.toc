@@ -1,0 +1,28 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Abstract}{3}{section.1}%
+\contentsline {section}{\numberline {2}Einleitung}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Geschichte und Bedeutung von Magnetfeldern und ihrer Messung}{3}{subsection.2.1}%
+\contentsline {paragraph}{}{3}{section*.2}%
+\contentsline {paragraph}{}{4}{section*.5}%
+\contentsline {paragraph}{}{4}{section*.6}%
+\contentsline {paragraph}{}{5}{section*.7}%
+\contentsline {paragraph}{}{5}{section*.8}%
+\contentsline {paragraph}{}{5}{section*.9}%
+\contentsline {subsection}{\numberline {2.2}Magnetfeldmessungen und der Hall-Effekt}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Projektziel und thematischer Bezug}{7}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Funktionsweise der X-Hall-Architektur}{7}{section.3}%
+\contentsline {paragraph}{}{7}{section*.10}%
+\contentsline {subsection}{\numberline {3.1}Geschichte und Konzept}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Aufbau und Funktionsweise}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Vorteile und Nachteile der Architektur}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}(Erwartete) Leistungscharakteristika der Architektur}{11}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Praktische Umsetzung des X-Hall-Sensors}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Die Finite Element Methode}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Entwicklung eines Sensor-Layouts}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Praktische Implementierung des Sensors}{11}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Vergleich mit anderen Hall-Sensoren}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Quantitativer Vergleich}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Qualitativer Vergleich}{11}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Fazit}{11}{section.6}%
+\contentsline {section}{Literaturverzeichnis}{12}{section*.14}%
+\contentsline {section}{Grafikquellen}{13}{section*.15}%
