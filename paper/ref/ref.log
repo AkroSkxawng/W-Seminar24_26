@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  22 OCT 2025 22:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  22 OCT 2025 23:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -782,7 +782,9 @@ has been already used, duplicate ignored
 l.252 	\begin{equation}
                        
 
-[9] (ref.aux)
+[9]
+
+[10] (ref.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -795,9 +797,9 @@ Package rerunfilecheck Info: File `ref.out' has not changed.
 (rerunfilecheck)             Checksum: 4F4E8F7C0348EDF12E11906F0ADC6396;4135.
  ) 
 Here is how much of TeX's memory you used:
- 13379 strings out of 468130
- 214934 string characters out of 5430632
- 641495 words of memory out of 5000000
+ 13383 strings out of 468130
+ 214974 string characters out of 5430632
+ 641497 words of memory out of 5000000
  41771 multiletter control sequences out of 15000+600000
  635332 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -816,9 +818,9 @@ Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.p
 fb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb>
-Output written on ref.pdf (9 pages, 203193 bytes).
+Output written on ref.pdf (10 pages, 206633 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

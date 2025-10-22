@@ -254,7 +254,15 @@
 		\tag{4.11}
 		\label{4.11}
 	\end{equation}
-	verwendet werden.
+	verwendet werden.\paragraph{}
+	
+	Wie bereits in Kapitel 4.1 beschrieben, erfordert die Finite-Elemente-Simulation die Unterteilung einer kontinuierlichen physikalischen Fläche in viele kleine, endlich große Elemente. Dieser Prozess wird als Meshing bezeichnet. Dabei wird die zu simulierende Geometrie in eine Vielzahl einfacher Unterabschnitte zerlegt, auf denen die zugrunde liegenden Gleichungen jeweils lokal gelöst werden können.\newline
+	Für die in dieser Arbeit durchgeführten Simulationen wird das Programm \textbf{Gmsh in der Version 4.13.1} verwendet. Es dient sowohl zur Erstellung der 3D-Modelle als auch zur Erzeugung der Finite-Elemente-Netze und ermöglicht damit eine konsistente Vorbereitung der Eingabedaten für Elmer.\paragraph{}
+	
+	Als aktives Sensorelement kommen im gesamten Projektverlauf dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5.08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in Kapitel 4.3 behandelt.\newline
+	Die elektrischen Kontakte werden mithilfe von Silberleitlack als Kontaktpads realisiert, deren Schichtdicke für die Simulation mit $150\,\mu{m}$ angenommen wird. Weitere Details hierzu finden sich ebenfalls in Kapitel 4.3.\paragraph{}
+	
+	Für jedes zu meshende Modell werden zuerst der Wafer und alle Kontakte separat konstruiert und korrekt zueinander positioniert. Anschließend werden all diese Einzelteine mittels einer Boolean-Operation zusammengefügt, damit in der Simulation auch der Übergang von den Kontakten in den Wafer und umgekehrt errechnet werden kann, und zum Schluss das fertige 3D-Modell in einzelne Tetraeder unterteilt.
 	
 	\subsection{Praktische Implementierung des Sensors}
 		
