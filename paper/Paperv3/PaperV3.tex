@@ -5,6 +5,8 @@
 \usepackage{amsmath, amssymb}
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
 \usepackage{fancyhdr}
 \usepackage{titling}
 \usepackage{caption}
@@ -14,6 +16,28 @@
 \usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
 \usepackage[font=footnotesize,labelfont=bf]{caption}
 \usepackage[format=plain, indention=2em]{caption}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	numberstyle=\tiny\color{codegray},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
 \graphicspath{{Image Sources/}}
 
 \newcommand{\subtitle}[1]{%
@@ -215,7 +239,7 @@
 	Iterative Methoden generieren eine Sequenz sukzessive genauerer Näherungslösungen. In den meisten Fällen wird die iterative Methode über vorkonditionierte Krylowraum-Methoden gelöst werden. Eine möglichst gute Vorkonditionierung ist hier essenziell, da so das System wesentlich schneller konvergieren kann\,\cite{elmerSolve}.\newline
 	Typische iterative Methoden sind die Conjugate Gradient (CG) Methode, die Conjugate Gradient Squared (CGS) Methode, die Biconjugate Gradient Stabilized (BiCGStab) Methode und die Transpose-Free Quasi-Minimal Residual (TFQMR) Methode.\paragraph{}
 	
-	Bei der für die Simulationen genutzten Solver handelt es sich um den MUMPS-Solver, da so nicht nur möglichst genaue sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa 30,000 Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 
+	Bei der für die Simulationen genutzten Solver handelt es sich um den MUMPS-Solver, da so nicht nur möglichst genaue sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa 60,000 Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 
 	
 	
 	
@@ -304,7 +328,138 @@
 	Als aktives Sensorelement kommen im gesamten Projektverlauf dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5.08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in Kapitel 4.3 behandelt.\newline
 	Die elektrischen Kontakte werden mithilfe von Silberleitlack als Kontaktpads realisiert, deren Schichtdicke für die Simulation mit $150\,\mu{m}$ angenommen wird. Weitere Details hierzu finden sich ebenfalls in Kapitel 4.3.\paragraph{}
 	
-	Für jedes zu meshende Modell werden zuerst der Wafer und alle Kontakte separat konstruiert und korrekt zueinander positioniert. Anschließend werden all diese Einzelteine mittels einer Boolean-Operation zusammengefügt, damit in der Simulation auch der Übergang von den Kontakten in den Wafer und umgekehrt errechnet werden kann, und zum Schluss das fertige 3D-Modell in einzelne Tetraeder unterteilt.
+	Für jedes Modell werden zunächst Wafer und Kontakte separat konstruiert, korrekt positioniert und anschließend mittels Boolean-Operation zusammengefügt, um die Kontaktübergänge zwischen Wafer und Pads in der Simulation korrekt abzubilden. Abschließend wird das 3D-Modell in Tetraederelemente unterteilt.\paragraph{}
+	
+	Da die praktischen Verarbeitungsmethoden für den Wafer aus Kosten- und Komplexitätsgründen stark eingeschränkt sind, ist die Größe des Sensors – anders als in den Referenzarbeiten – auf eine makroskopische Skala beschränkt.\paragraph{}
+		
+	Die erste Generation des Sensorlayouts orientiert sich an Fig. 3 aus \cite{cres23}. Die für dieses Layout gewählten Maße sind in \ref{fig:3} (\textbf{unbedingt lösung gegen verwirring finden!}) dargestellt.\newline
+	Aufgrund der begrenzten Angaben zu konkreten Kontaktgrößen, -abständen und weiteren geometrischen Parametern in der Literatur wurden die Abmessungen der ersten Layoutgeneration auf Grundlage allgemeiner Verarbeitungsüberlegungen - nachzulesen in Kapitel 4.3 - festgelegt und dienen als Ausgangspunkt für spätere Optimierungen.\paragraph{}
+	
+	Das in rund 75 000 Elemente unterteilte Modell wurde anschließend in Elmer importiert. Nachfolgend ist die zugehörige Solver-Konfiguration dargestellt:
+	\begin{lstlisting}[language=Python]
+	!Kommentare sind im folgenden als "#" angegeben, die .sif Datei nutzt aber standardmaessig "!" um Code Auszukommentieren
+		
+		Simulation
+			Max Output Level = 1
+			Coordinate System = Cartesian
+			Coordinate Mapping(3) = 1 2 3
+			Simulation Type = Steady state
+			Steady State Max Iterations = 1
+			#Die Simulation ist statischer Natur und wird nicht wiederholt
+			Output Intervals(1) = 1
+			Coordinate Scaling = 0.1
+			#Sorgt fuer korrekte Skalierung von Laengen
+			Solver Input File = case.sif
+			Post File = case.vtu
+		End	
+		
+		Constants
+			Gravity(4) = 0 -1 0 9.82
+			Stefan Boltzmann = 5.670374419e-08
+			Permittivity of Vacuum = 8.85418781e-12
+			Permeability of Vacuum = 1.25663706e-6
+			Boltzmann Constant = 1.380649e-23
+			Unit Charge = 1.6021766e-19
+		End
+		
+		#Es folgen zuweisungen der Volumen zu IDs nach dem Schema:
+		Body n
+			Target Bodies(n) = n
+			Name = "Body n"
+			Equation = x
+			#Das dem Volumen zugeordnete, konfigurierte Simulationsmodell
+			Material = y
+			#Das dem Volumen zugeordnete Material
+		End
+		
+		Solver 1
+			Equation = Static Current Conduction
+			Procedure = "StatCurrentSolve" "StatCurrentSolver"
+			Calculate Joule Heating = True
+			Calculate Volume Current = True
+			Variable = Potential
+			Constant Weights = True
+			Exec Solver = Always
+			Stabilize = True
+			Optimize Bandwidth = True
+			Steady State Convergence Tolerance = 1.0e-5
+			Nonlinear System Convergence Tolerance = 1.0e-7
+			Nonlinear System Max Iterations = 20
+			Nonlinear System Newton After Iterations = 3
+			Nonlinear System Newton After Tolerance = 1.0e-3
+			Nonlinear System Relaxation Factor = 1	
+			Linear System Solver = Direct
+			Linear System Direct Method = UMFPACK	
+		End
+		
+		Equation 1
+			Name = "Equation 1"
+			Active Solvers(1) = 1
+		End
+		
+		Material 1
+			Name = "Silver (generic)"
+			Density = 10490.0
+			Sound speed = 2680.0
+			Heat expansion Coefficient = 18.9e-6
+			Electric Conductivity = 63.01e6
+			Heat Capacity = 235.0
+			Youngs modulus = 83.0e9
+			Electric Conductivity = 6.3e7
+			Poisson ratio = 0.37
+			Heat Conductivity = 429.0
+		End
+		
+		Material 2
+			Name = "Silicon (solid)"
+			Emissivity = 0.7
+			Youngs modulus = 185.0e9
+			Heat expansion Coefficient = 4.68e-6
+			Density = 2330.0
+			Sound speed = 8433.0
+			Poisson ratio = 0.28
+			Heat Capacity = 555.8
+			Heat Conductivity = Variable Temperature; Real; 0 156; 300 156; 550 72; 800 43; 1050 29; 1300 25; 1550 23; 1800 21; 3000 21; End
+			
+			Permittivity 3 = Real 0.0   
+			Permittivity 2 = Real 0.0
+			Permittivity 1 = Real 0.0
+			
+			
+			# Schema fuer selbstdefinierte Leitfaehigkeit
+			# ---- Parameter ----
+			# Bz = 0.5  -> Tesla
+			# mu = 0.045  -> Mobilitaet [m^2/Vs]
+			# sigma = 10  -> Leitfaehigkeit ohne Magnetfeld [S/m]
+			# sxx = sigma
+			# syy = sigma
+			# szz = sigma
+			# sxy = -sigma*mu*Bz
+			# syx =  sigma*mu*Bz
+			
+			Electric Conductivity(3,3) = sxx  sxy  0.0
+			                            syx  syy  0.0
+			                            0.0   0.0   szz
+		End
+		
+		Material 3
+			Electric Conductivity = 5e-10
+		End
+			
+		Boundary Condition 1
+			Target Boundaries(12) = 1 2 3 4 5 6 7 8 9 10 11 12 
+			Name = "+"
+			Potential = 10
+			# Grenzwertbedingung fuer Vorspannungskontakte
+		End
+			
+		Boundary Condition 2
+			Target Boundaries(12) = 13 14 15 16 17 18 19 20 21 22 23 24 
+			Name = "-"
+			Potential = 0
+			# Grenzwertbedingung fuer geerdete Kontakte
+		End	\end{lstlisting}
+	Das mit "Material 3" betitelte Material wird in der Simulation für die Auslesekontakte genutzt. Es imitiert den Anschluss dieser an ein Voltmeter mit verlustfreier Spannungsmessung. 
 	
 	
 	\subsection{Praktische Implementierung des Sensors - begründung für silberpaddaten}

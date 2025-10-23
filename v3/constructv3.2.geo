@@ -69,25 +69,25 @@ tempVolumeStore9=newreg;
 //Contacts:
 
 	//pointsOfBase 
-	Point(211)={equalSideLength/2,activeRadius,height,lc};
-	Point(212)={-equalSideLength/2,activeRadius,height,lc};
-	Point(213)={equalSideLength/2,-activeRadius,height,lc};
-	Point(214)={-equalSideLength/2,-activeRadius,height,lc};
-	Point(215)={activeRadius,equalSideLength/2,height,lc};
-	Point(216)={activeRadius,-equalSideLength/2,height,lc};
-	Point(217)={-activeRadius,equalSideLength/2,height,lc};
-	Point(218)={-activeRadius,-equalSideLength/2,height,lc};
+	//Point(211)={equalSideLength/2,activeRadius,height,lc};
+	//Point(212)={-equalSideLength/2,activeRadius,height,lc};
+	//Point(213)={equalSideLength/2,-activeRadius,height,lc};
+	//Point(214)={-equalSideLength/2,-activeRadius,height,lc};
+	//Point(215)={activeRadius,equalSideLength/2,height,lc};
+	//Point(216)={activeRadius,-equalSideLength/2,height,lc};
+	//Point(217)={-activeRadius,equalSideLength/2,height,lc};
+	//Point(218)={-activeRadius,-equalSideLength/2,height,lc};
 
 
 	//linesOfBase
-	Line(211)={215,211};
-	Line(212)={212,211};
-	Line(213)={213,214};
-	Line(214)={214,218};
-	Line(215)={215,216};
-	Line(216)={216,213};
-	Line(217)={217,212};
-	Line(218)={218,217};
+	//Line(211)={215,211};
+	//Line(212)={212,211};
+	//Line(213)={213,214};
+	//Line(214)={214,218};
+	//Line(215)={215,216};
+	//Line(216)={216,213};
+	//Line(217)={217,212};
+	//Line(218)={218,217};
 
 	//pointsOfContacts 
 	Point(221)={padSpacing,padSpacing,height,lc};

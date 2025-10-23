@@ -262,7 +262,7 @@
 	Als aktives Sensorelement kommen im gesamten Projektverlauf dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5.08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in Kapitel 4.3 behandelt.\newline
 	Die elektrischen Kontakte werden mithilfe von Silberleitlack als Kontaktpads realisiert, deren Schichtdicke für die Simulation mit $150\,\mu{m}$ angenommen wird. Weitere Details hierzu finden sich ebenfalls in Kapitel 4.3.\paragraph{}
 	
-	Für jedes zu meshende Modell werden zuerst der Wafer und alle Kontakte separat konstruiert und korrekt zueinander positioniert. Anschließend werden all diese Einzelteine mittels einer Boolean-Operation zusammengefügt, damit in der Simulation auch der Übergang von den Kontakten in den Wafer und umgekehrt errechnet werden kann, und zum Schluss das fertige 3D-Modell in einzelne Tetraeder unterteilt.
+	Für jedes Modell werden zunächst Wafer und Kontakte separat konstruiert, korrekt positioniert und anschließend mittels Boolean-Operation zusammengefügt, um die Kontaktübergänge zwischen Wafer und Pads in der Simulation korrekt abzubilden. Abschließend wird das 3D-Modell in Tetraederelemente unterteilt.
 	
 	\subsection{Praktische Implementierung des Sensors}
 		
