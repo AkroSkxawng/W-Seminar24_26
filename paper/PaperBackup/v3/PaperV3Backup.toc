@@ -29,10 +29,16 @@
 \contentsline {paragraph}{}{12}{section*.26}%
 \contentsline {paragraph}{}{12}{section*.27}%
 \contentsline {paragraph}{}{12}{section*.28}%
-\contentsline {subsection}{\numberline {4.3}Praktische Implementierung des Sensors}{13}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Vergleich mit anderen Hall-Sensoren}{13}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Quantitativer Vergleich}{13}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Qualitativer Vergleich}{13}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Fazit}{13}{section.6}%
-\contentsline {section}{Literaturverzeichnis}{14}{section*.33}%
-\contentsline {section}{Grafikquellen}{15}{section*.34}%
+\contentsline {paragraph}{}{13}{section*.32}%
+\contentsline {paragraph}{}{13}{section*.33}%
+\contentsline {paragraph}{}{13}{section*.34}%
+\contentsline {paragraph}{}{14}{section*.35}%
+\contentsline {paragraph}{}{14}{section*.36}%
+\contentsline {paragraph}{}{14}{section*.37}%
+\contentsline {subsection}{\numberline {4.3}Praktische Implementierung des Sensors - begründung für silberpaddaten}{17}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Vergleich mit anderen Hall-Sensoren}{17}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Quantitativer Vergleich}{17}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Qualitativer Vergleich}{17}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Fazit}{17}{section.6}%
+\contentsline {section}{Literaturverzeichnis}{18}{section*.39}%
+\contentsline {section}{Grafikquellen}{19}{section*.40}%
