@@ -5,14 +5,22 @@
 \usepackage{amsmath, amssymb}
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 \usepackage{graphicx}
+\usepackage{pgfplots}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
 \usepackage{titling}
 \usepackage{caption}
+\usepackage{newfloat}
 \usepackage{subcaption}
 \usepackage{setspace}
 \usepackage{footmisc}
+\DeclareFloatingEnvironment[
+	fileext=log,          % auxiliary file extension
+	listname=Liste der Graphen,  % heading for list of graphs
+	name=Graph            % caption prefix
+	]{graph}
+\pgfplotsset{width=10cm}
 \usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
 \usepackage[font=footnotesize,labelfont=bf]{caption}
 \usepackage[format=plain, indention=2em]{caption}
@@ -141,17 +149,18 @@
 		sollte jedoch  angestrebt werden, da nur so eine effektive elektrische Isolation gegenüber dem Substrat erreicht werden kann\,\cite{cres20}.\newline
 		Der Zugang zur aktiven Fläche erfolgt über insgesamt acht Kontakte, die sich in vier großflächige Vorspannungskontakte und vier möglichst kleine Auslesekontakte unterteilen lassen. Die Vorspannungskontakte profitieren aufgrund ihrer Größe von sehr niedrigen Widerständen beim Anlegen der Vorspannung, während die Auslesekontakte so klein wie möglich sein sollten, da so mögliche parasitäre Kapazitätseffekte\footnote{Unerwünschte Kapazität, die durch geringe physische Nähe zwischen elektrischen Bauteilen entsteht} % , ???
 		wie Signalverzerrungen oder Rauschen minimiert werden können\,\cite{cres19}.\newline
-		An die in Fig.~\ref{fig:3}(a) als B und T bezeichneten Vorspannungskontakte werden nominal gleiche Vorspannungsströme ($I_A=I_B$) angelegt, während die als L und R bezeichneten Kontakte jeweils als Erdungskontakte dienen\,\cite{cres19}. Die Auslesekontakte sind von 1 bis 4 durchnummeriert.\newline
-		In der aktuellen Konfiguration kann die gesamte Sensorsonde in zwei innere Sensorsonden untergliedert werden, die in Fig.~\ref{fig:3}(a) als Probe A und Probe B bezeichnet sind. Dies Aufteilung ergibt sich direkt aus der in Fig.~\ref{fig:3}(b) dargestellten Stromstärkeverteilung zwischen den Kontakten auf dem Halbleiter, da der Strom über die Erdung bereits abgeführt wird, bevor er die zweite innere Sonde erreichen kann\,\cite{cres20}.
+		An die in Fig.~\ref{fig:1}(a) als B und T bezeichneten Vorspannungskontakte werden nominal gleiche Vorspannungsströme ($I_A=I_B$) angelegt, während die als L und R bezeichneten Kontakte jeweils als Erdungskontakte dienen\,\cite{cres19}. Die Auslesekontakte sind von 1 bis 4 durchnummeriert.\newline
+		In der aktuellen Konfiguration kann die gesamte Sensorsonde in zwei innere Sensorsonden untergliedert werden, die in Fig.~\ref{fig:1}(a) als Probe A und Probe B bezeichnet sind. Dies Aufteilung ergibt sich direkt aus der in Fig.~\ref{fig:1}(b) dargestellten Stromstärkeverteilung zwischen den Kontakten auf dem Halbleiter, da der Strom über die Erdung bereits abgeführt wird, bevor er die zweite innere Sonde erreichen kann\,\cite{cres20}.
 		\begin{figure}
 			\centering
 				%Fig. 1-a
-				\includegraphics[height=5cm]{Fig3.1}	
+				\includegraphics[height=5cm]{Fig1.1}	
 				\hspace{0.5cm}
 				%Fig. 1-b
-				\includegraphics[height=5cm]{Fig3.2}
+				\includegraphics[height=5cm]{Fig1.2}
+				\captionsetup{type=figure}
 				\caption{(a) Skizze des Aufbaus der X-Hall-Sonde, (b) Stromstärkeverteilung auf der X-Hall-Sonde, basierend auf einer beispielhaften Vorstromstärke von $I_A=I_B=500\mu{A}$}
-				\label{fig:3}
+				\label{fig:1}
 		\end{figure}\newline
 		Diese inneren Sonden funktionieren, unabhängig voneinander, jeweils wie gewöhnliche stromverzweigende Hall-Sonden, bei denen die jeweilige Stromdichte $J_A$ oder $J_B$ in zwei gleiche Stromdichten $J_{A,L}$ und $J_{A,R}$ beziehungsweise $J_{B,L}$ und $J_{B,R}$ aufgespalten werden. Dementsprechend gilt für jeweiligen Potentiale zwischen den Messkontakten 1 und 2 beziehungsweise 3 und 4 in Abwesenheit eines Magnetfelds: $V_A=V_B=0$\,\cite{cres21}.\newline
 		Liegt nun ein Magnetfeld $B_Z$ vor, entsteht aufgrund der Lorentzkräfte die auf die Ladungsträger wirken ein Ungleichgewicht im Stromfluss, was dazu führt, dass nun vereinfacht $V_A=V_\mathrm{Hall}$ und $V_B=-V_\mathrm{Hall}$ (Da der Stromfluss in der zweiten inneren Sonde in die entgegengesetzte Richtung des Stroms von Sonde A verläuft).\newline
@@ -168,11 +177,12 @@
 		Da beide inneren Sonden sich nichtsdestotrotz die gleiche aktive Sensorfläche teilen, kann angenommen werden, dass das Vorzeichen von $V_\mathrm{OS}^{(A)}$ und $V_\mathrm{OS}^{(B)}$ identisch ist, auch wenn sich ihre jeweiligen Werte aufgrund lokaler Defekte unterscheiden können\,\cite{cres21}. Deshalb kann angenommen werden, dass die Hauptquelle der Offsets sehr wahrscheinlich für beide inneren Sonden die selbe ist\,\cite{cres20}.\newline
 		\begin{figure}
 			\centering
-			\includegraphics[height=5cm]{Fig4}
+			\includegraphics[height=5cm]{Fig2}
+			\captionsetup{type=figure}
 			\caption{Schematischer Schaltplan einer X-Hall-Sonde}
-			\label{fig:4}
+			\label{fig:2}
 		\end{figure}
-		Wie in Fig.~\ref{fig:4} gezeigt besteht die eigentliche und namensgebende Besonderheit der X-Hall-Architektur in einer Überkreuzverbindung der diagonal gegenüberliegenden Paare von Auslesekontakte (1 mit 3 und 2 mit 4). Daraus folgt:
+		Wie in Fig.~\ref{fig:2} gezeigt besteht die eigentliche und namensgebende Besonderheit der X-Hall-Architektur in einer Überkreuzverbindung der diagonal gegenüberliegenden Paare von Auslesekontakte (1 mit 3 und 2 mit 4). Daraus folgt:
 		\begin{equation}
 			V_A=-V_B=V_\mathrm{H,Sonde}
 			\label{eq:3}
@@ -244,7 +254,7 @@
 	
 	
 	
-	\subsection{Entwicklung eines Sensor-Layouts}
+	\subsection{Entwicklung eines Sensor-Layouts - weiter untergliedern oder umarrangieren?}
 	Diese Simulationen bilden die Grundlage für die Entwicklung eines optimalen Sensor-Layouts, da die Anordnung der Kontakte entscheidend dafür ist, ob der Sensor zuverlässige und aussagekräftige Messwerte liefert.\paragraph{}
 	
 	Das für die Simulationen gewählte Modell ist Elmers Static Current Conduction Model, kurz StatCurrentSolve.\newline 
@@ -459,7 +469,40 @@
 			Potential = 0
 			# Grenzwertbedingung fuer geerdete Kontakte
 		End	\end{lstlisting}
-	Das mit "Material 3" betitelte Material wird in der Simulation für die Auslesekontakte genutzt. Es imitiert den Anschluss dieser an ein Voltmeter mit verlustfreier Spannungsmessung. 
+	Das mit ``Material 3'' betitelte Material wird in der Simulation für die Auslesekontakte genutzt. Es imitiert den Anschluss dieser an ein Voltmeter mit verlustfreier Spannungsmessung.\paragraph{}
+	Es ist auffällig, dass in der Simulations-Konfiguration die veränderte Leitfähigkeit durch $\sigma_H=\sigma\mu{B_Z}$ ausgedrückt wird. Dies ist eine simple Umformulierung von $\sigma_H=\sigma_0^2R_HB_Z$, wobei $\mu$ die Mobilität des Wafers beschreibt.\newline
+	Der Widerstand der verwendeten Wafer liegt zwischen $1-10\,\Omega$ pro cm. Da es sich um p-dotierte Wafer handelt, sind die Majoritätsladungsträger Löcher. Laut \cite{bowdenDopes} ergibt sich dementsprechend für einen angenommenen Widerstand von $10\,\Omega$ \footnote{Zur Absicherung wird der maximal erwartbare Widerstand angenommen} ein $\mu_h$ von etwa $450\,\frac{cm^2}{Vs}$ und eine Dotierkonzentration von etwa $1.39\cdot10^{15}\,cm^{-3}$. Aus der Relation $\sigma_0=pq\mu$ folgt schließlich, dass $\sigma_0=10\,\frac{S}{m}$. Diese Werte dienen als Basis des Wertes $\sigma_H$ in den folgenden Simulationen.\paragraph{}
+	Ausgewertet wurden Simulationsergebnisse in \textbf{ParaView in der Version 6.0.0-RC1}. Es wurden aus dem Modell die Regionen der Kontaktpads mittels eines ``Clip''-Filters isoliert und anschließend per ``Python Calculator''-Filter der Durchschnitt der Potentialwerte in den einzelnen Clips genommen.\newline
+	Da es keinen Unterschied macht, ob die für X-Hall übliche Mittelung der gemessenen Spannungen vor der Berechnung der einzelnen Hall-Spannungen der beiden inneren Sensorsonden oder nach dieser geschieht, wurden hier jeweils zuerst die Potentialdifferenzen zwischen den in Fig.~\ref{fig:1}(a) als ``1'' und ``2'' bezeichneten Kontakten und den als ``3'' und ``4'' bezeichneten Kontakten bestimmt. Von diesen wurde dann der Durchschnitt genommen und von diesem die Offsetspannung, die sich bei $B_Z=0\,T$ ergibt, subtrahiert.\paragraph{}
+	
+	Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homogenes, stabiles und kontrollierbares Magnetfeld zu schaffen. Da die maximal erreichbare Feldstärke mit diesen bei $0.7\,mT$ liegt, wurden jeweils Messungen und Simulationen für $B=0\,mT$, $B=0.05\,mT$ und $B=0.1\,mT$ bis $B=0.7\,mT$ mit Abständen von je $0.1\,mT$ durchgeführt.
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				clip=false,
+				xlabel={Magnetfeldstärke in $mT$},
+				ylabel={Hall-Spannung in $nV$},
+				xmin=0, xmax=0.7,
+				ymin=0, ymax=100,
+				minor x tick num=1,
+				minor y tick num=3,
+				ymajorgrids=true,
+				grid style=dashed
+				]
+				\addplot [
+				color=blue,
+				mark=square,
+				]
+				coordinates {(0,0)(0.05, 6.77051)(0.1, 13.54074)(0.2, 27.081395)(0.3, 40.621945)(0.4, 54.162475)(0.5, 67.70305)(0.6, 81.243465)(0.7, 94.78386)};	
+		\end{axis}
+		\end{tikzpicture}
+		\captionsetup{type=graph,name=Graph}
+		\captionof{graph}{Hall-Spannung in der ersten Generation des Layout}	
+		\label{hallV1}
+	\end{figure}\paragraph{}
+	In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline
+	In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: %insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing 
 	
 	
 	\subsection{Praktische Implementierung des Sensors - begründung für silberpaddaten}
@@ -526,12 +569,10 @@
 		
 	\section*{Grafikquellen}
 		\addcontentsline{toc}{section}{Grafikquellen}
-		\begin{description}
-			\item \textbf{Fig. 1}: \url{https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Lessons_online/The_effects_of_magnetic_fields}; Zugriff am 19.10.2025, 20:34
-			\item \textbf{Fig. 2}: Übernommen aus \cite{tarduno25}, Fig. 9
-			\item \textbf{Fig. 3-a}: Übernommen aus \cite{cres18}, Fig. 1a
-			\item \textbf{Fig. 3-b}: Übernommen aus \cite{cres20}, Fig. 2
-			\item \textbf{Fig. 4}: Übernommen aus \cite{cres18}, Fig. 2a
+		\begin{description}			
+			\item \textbf{Fig. 1-a}: Übernommen aus \cite{cres18}, Fig. 1a
+			\item \textbf{Fig. 1-b}: Übernommen aus \cite{cres20}, Fig. 2
+			\item \textbf{Fig. 2}: Übernommen aus \cite{cres18}, Fig. 2a
 			
 		\end{description}
 		

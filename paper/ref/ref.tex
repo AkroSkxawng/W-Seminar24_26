@@ -262,7 +262,22 @@
 	Als aktives Sensorelement kommen im gesamten Projektverlauf dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5.08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in Kapitel 4.3 behandelt.\newline
 	Die elektrischen Kontakte werden mithilfe von Silberleitlack als Kontaktpads realisiert, deren Schichtdicke für die Simulation mit $150\,\mu{m}$ angenommen wird. Weitere Details hierzu finden sich ebenfalls in Kapitel 4.3.\paragraph{}
 	
-	Für jedes Modell werden zunächst Wafer und Kontakte separat konstruiert, korrekt positioniert und anschließend mittels Boolean-Operation zusammengefügt, um die Kontaktübergänge zwischen Wafer und Pads in der Simulation korrekt abzubilden. Abschließend wird das 3D-Modell in Tetraederelemente unterteilt.
+	Für jedes Modell werden zunächst Wafer und Kontakte separat konstruiert, korrekt positioniert und anschließend mittels Boolean-Operation zusammengefügt, um die Kontaktübergänge zwischen Wafer und Pads in der Simulation korrekt abzubilden. Abschließend wird das 3D-Modell in Tetraederelemente unterteilt.\paragraph{}
+	
+	Da die praktischen Verarbeitungsmethoden für den Wafer aus Kosten- und Komplexitätsgründen stark eingeschränkt sind, ist die Größe des Sensors – anders als in den Referenzarbeiten – auf eine makroskopische Skala beschränkt.\paragraph{}
+	
+	Die erste Generation des Sensorlayouts orientiert sich an Fig. 3 aus \cite{cres23}. Die für dieses Layout gewählten Maße sind in \ref{fig:3} (\textbf{unbedingt lösung gegen verwirring finden!}) dargestellt.\newline
+	Aufgrund der begrenzten Angaben zu konkreten Kontaktgrößen, -abständen und weiteren geometrischen Parametern in der Literatur wurden die Abmessungen der ersten Layoutgeneration auf Grundlage allgemeiner Verarbeitungsüberlegungen - nachzulesen in Kapitel 4.3 - festgelegt und dienen als Ausgangspunkt für spätere Optimierungen.\paragraph{}
+	
+	Das in rund 75 000 Elemente unterteilte Modell wurde anschließend in Elmer importiert. Nachfolgend ist die zugehörige Solver-Konfiguration dargestellt:\paragraph{}
+	
+		Das mit ``Material 3'' betitelte Material wird in der Simulation für die Auslesekontakte genutzt. Es imitiert den Anschluss dieser an ein Voltmeter mit verlustfreier Spannungsmessung.\paragraph{}
+	Es ist auffällig, dass in der Simulations-Konfiguration die veränderte Leitfähigkeit durch $\sigma_H=\sigma\mu{B_Z}$ ausgedrückt wird. Dies ist eine simple Umformulierung von $\sigma_H=\sigma_0^2R_HB_Z$, wobei $\mu$ die Mobilität des Wafers beschreibt.\newline
+	Der Widerstand der verwendeten Wafer liegt zwischen $1-10\,\Omega$ pro cm. Da es sich um p-dotierte Wafer handelt, sind die Majoritätsladungsträger Löcher. Laut \cite{bowdenDopes} ergibt sich dementsprechend für einen angenommenen Widerstand von $10\,\Omega$ \footnote{Zur Absicherung wird der maximal erwartbare Widerstand angenommen} ein $\mu_h$ von etwa $450\,\frac{cm^2}{Vs}$ und eine Dotierkonzentration von etwa $1.39\cdot10^{15}\,cm^{-3}$. Aus der Relation $\sigma_0=pq\mu$ folgt schließlich, dass $\sigma_0=10\,\frac{S}{m}$. Diese Werte dienen als Basis des Wertes $\sigma_H$ in den folgenden Simulationen.\paragraph{}
+	Ausgewertet wurden Simulationsergebnisse in \textbf{ParaView in der Version 6.0.0-RC1}. Es wurden aus dem Modell die Regionen der Kontaktpads mittels eines ``Clip''-Filters isoliert und anschließend per ``Python Calculator''-Filter der Durchschnitt der Potentialwerte in den einzelnen Clips genommen.\newline
+	Da es keinen Unterschied macht, ob die für X-Hall übliche Mittelung der gemessenen Spannungen vor der Berechnung der einzelnen Hall-Spannungen der beiden inneren Sensorsonden oder nach dieser geschieht, wurden hier jeweils zuerst die Potentialdifferenzen zwischen den in Fig.~\ref{fig:1}(a) als ``1'' und ``2'' bezeichneten Kontakten und den als ``3'' und ``4'' bezeichneten Kontakten bestimmt. Von diesen wurde dann der Durchschnitt genommen und von diesem die Offsetspannung, die sich bei $B_Z=0\,T$ ergibt, subtrahiert.
+	
+	
 	
 	\subsection{Praktische Implementierung des Sensors}
 		
