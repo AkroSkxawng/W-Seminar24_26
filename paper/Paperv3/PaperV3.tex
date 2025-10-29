@@ -501,23 +501,88 @@
 		\captionof{graph}{Hall-Spannung in der ersten Generation des Layout}	
 		\label{hallV1}
 	\end{figure}\paragraph{}
-	In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline
-	In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: %insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing 
+	In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline 
+	Alle Messdaten sind auch im Anhang in Tabelle~1 nachzulesen\newline
+	In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich, wenn separat betrachtet, um etwa $2.50\,mV$ (vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1.25\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $10$ bis $100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer gemacht wären.\newline
+	In den Simulationen ist die wahrscheinlichste Erklärung dieses Effekts ein ungleichmäßiges Mesh, was dazu führen kann, dass an einigen stellen im Modell wesentlich mehr oder wesentlich weniger Rechenoperationen ausgeführt werden. Insbesondere im zweiteren Fall kann das dazu führen, dass bei nur schwachen Potentialänderungen durch das Magnetfdeld diese von stärkeren, lokal dominanten Potentialen in der Dateninterpolation verloren gehen.\paragraph{} 
+	Das genaueste verfügbare Voltmeter für die praktische Umsetzung ist der ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser Messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
+	Deshalb scheint es sinnvoll, das Layout weiter zu verbessern.\paragraph{}
+	
+	Geht man von der Theorie aus, wird die Hall-Spannung nur durch den Strom durch das Hall-Material, die Magnetfeldstärke, Dicke und Ladungsträgereigenschaften des Hall-Materials beeinflusst. Praktisch gesehen spielen aber auch noch andere Werte eine große Rolle. \newline
+	So fällt aus dem Verlauf des Volumenstroms im Sensorlayout der 1. Generation auf, dass die Auslesekontakte weit Abseits der Hauptstromwege liegen, Außerdem werden die Volumenströme zwischen den Vorspannungs- und Erdungskontakten immer schwächer und verteilen sich großflächiger auf die aktive Sensorfläche.\newline
+	Daraus resultiert, dass zum Einen die Hall-Spannungen lokal geringer ausfallen können, weil eben weniger Strom zur Verfügung steht, dessen Ladungsträger verschoben werden könnten und zum Anderen, dass diese bereits schon verringerten Hall-Spannungen nun noch weit entfernt sind von den Auslesekontakten. Dementsprechend ist anzunehmen, dass diese minimalen Änderungen im Stromfluss sich, bis sie bei den Auslesekontakten ankommen, nochmals geringer ausfallen werden, da sie sich nach und nach über die dazwischenliegende Region des Hall-Materials verteilen.\paragraph{}
+	
+	Aus diesen Gründen wurde für die 2. Generation des Sensorlayouts nicht nur der Abstand zwischen den Kontakten verringert, sondern auch deren Positionierung untereinander entsprechend abgeändert.\newline
+	Das Kontaktlayout orientiert sich nun mehr an dem ursprünglichen Layout, dass in \cite{cres18} bei der ersten Vorstellung der X-Hall-Architektur verwendet wurde und unter anderem in Fig.~1 und Fig.~2 dieser Quelle abgebildet wird.\newline
+	Die Abstände der Pads zueinander wurden ebenfalls so weit wie möglich verringert, genaue Maße sind in \textbf{bild hier} ablesbar, bis sie an die ungefähren physikalischen Grenzen der Aufbringungsmethode stoßen. 
+	
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				clip=false,
+				xlabel={Magnetfeldstärke in $mT$},
+				ylabel={Hall-Spannung in $nV$},
+				xmin=0, xmax=0.7,
+				ymin=0, ymax=1000,
+				minor x tick num=1,
+				minor y tick num=3,
+				ymajorgrids=true,
+				grid style=dashed,
+				legend pos=north west
+				]
+				\addplot [
+				color=blue,
+				mark=square,
+				]
+				coordinates {(0,0)(0.05, 6.77051)(0.1, 13.54074)(0.2, 27.081395)(0.3, 40.621945)(0.4, 54.162475)(0.5, 67.70305)(0.6, 81.243465)(0.7, 94.78386)};
+				\addplot [
+				color=red,
+				mark=square,
+				]
+				coordinates {(0,0)(0.05, 43.92441)(0.1, 87.848825)(0.2, 175.697615)(0.3, 263.54643)(0.4, 351.39524)(0.5, 439.244045)(0.6, 527.092845)(0.7, 614.941655)};
+				
+				\legend{1. Generation, 2. Generation}	
+			\end{axis}
+		\end{tikzpicture}
+		\captionsetup{type=graph,name=Graph}
+		\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
+		\label{hallV2}
+	\end{figure}\paragraph{}
+	In Graph~\ref*{hallV2} zeigt sich genau wie für die 1. Generation des Sensorlayouts der Hall-typische lineare, direkt proportionale Zuwachs der Hall-Spannung mit höherem Magnetfeld.\newline 
+	Alle Messdaten sind auch im Anhang in Tabelle~2 nachzulesen\newline
+	Auch in der 2. Generation des Sensorlayouts liegen noch durch ein ungleichmäßiges Mesh bedingte globale Defekte vor. Die Unterschiede der beiden inneren Sonden liegen bei etwa $21.4\,mV$. Unter Anbetracht dessen, dass die gemessene Hall-Spannung in etwa um einen Faktor 7 größer ist als in der vorigen Generation und selbiges für die Sondenunterschiede gilt, ist in diesem Aspekt keine erhebliche Verbesserung oder Verschlechterung zwischen den beiden Generation festzustellen.\newline
+	Auch die Offsetspannung scheint unverändert wie der Rest der Werte zu skalieren.\newline \textbf{RESIM V2 AND FINISH CHAPTER!!!!!!}
+	%insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing, go on about possible problems with values and disparities to expected performance (can calculate wirth rh), need for amp
 	
 	
-	\subsection{Praktische Implementierung des Sensors - begründung für silberpaddaten}
+	\subsection{Praktische Implementierung des Sensors}
+	Im Grundaufbau besteht der geplante X-Hall-Aufbau nur aus einem p-dotierten Wafer als Hall-Material, den auf diesen aufgebrachten Kontakten und Mess- sowie Versorgungselektronik.\newline
+	Die verwendeten Wafer wurden großzügigerweise vom Hersteller \textbf{MicroChemicals GmbH} für Forschungszwecke zur Verfügung gestellt.\newline
+	Bei den Wafern handelt es sich um 5 MicroChemicals ``WSD20279200P1314SNN1'' Prime-Grade Wafer mit einer Dicke von $279\pm20\,\mu{m}$ und einem Duchmesser von $2\,in$. Der Widerstand liegt zwischen $1\,\Omega$ und $10\,\Omega$.\newline
+	Zum Aufbringen der Kontaktpads wird MGChemicals ``842UR'' Farbe mit Leitfähigkeit verwendet, welche nach trocknen einen Widerstand von $1.5\cdot10^{-4}\,\Omega{cm}$ besitzt.\newline
+	Bei dem genutzten Voltmeter handelt es sich um den ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser Messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
+	Um diese Auslesespannungen zu erreichen, wird der TexasInstruments ``INA128U'' Operationsverstärker genutzt, der speziell für die Verstärkung sehr kleiner Potentialunterschiede entwickelt wurde. Metallschichtwiderstände werden verwendet, um den Gain des Verstärkers zu setzen und dieser wird mittels geschirmten 2-Ader-Kabeln mit der Restelektronik verbunden, um Verfälschung der Messwerte zu verhindern.\paragraph{}
+	Für eine spätere praktische Implementierung des Sensors wie in Kapitel 4.2 angedeutet, wird für einen ersten Versuch die 2. Generation des Sensorlayouts verwendet werden.\newline
+	Im ersten Schritt werden die Kontaktpads auf den Wafer aufgebracht werden. Dies wird, aus Gründen des Kontaminationsschutzes und der Giftigkeit der Silberfarbe, unter einer vorher ordentlich gereinigten Abzugshaube geschehen. Durch eine vorher 3D-gedruckte Maske mit dem Layout wird dann im nächsten Schritt mehrfach mit einem Pinsel die Silberfarbe aufgetragen werden. Wenn genug Schichten aufgetragen sind, wird die Silberfarbe anschließend nach Herstellerangaben in einem Ofen getrocknet werden.\newline
+	Aufgrund der Auflösung des für die Maske verwendeten 3D-Druckers und der Pinseldicke sowie durch den händischen Prozess zu erwartende Toleranzen wird die minimal erreichbare Größe von aufgebrachten Merkmalen als $0.4\,mm$ bis $0.5\,$ angenommen.\newline
+	Die nach dem X-Hall-Schema zu verbindenden Auslesekontakte werden nach dem Trocknen der Farbe entweder per Silberfarbe oder angelöteten Kabeln verbunden. Anschließend werden beide Kontaktpaare an den Operationsverstärker angeschlossen werden, dessen Ausgang wiederum mit dem Voltmeter verbunden wird.\newline
+	Sollte man während einer der Schritte Merkmale des Sensors elektrisch nach außen isolieren oder trennen wollen, empfiehlt sich Polyimid-Folie.\newline
+	Die Vorspannungskontakte werden mit einem Netzteil verbunden beziehungsweise geerdet. Der Verstärker wird über 4 AA-Batterien betrieben, so dass die mindestens benötigten $4.5\,V$ Input-Spannung erhält. Fig.~\ref{fig:2} zeigt einen entsprechenden schematischen Schaltplan.\paragraph{}
+	Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case transportfähig gemacht und anschließend mittig zwischen den Helmholtz-Spulen positioniert, wo anschließend die Hall-Spannungen für die in Kapitel 4.2 angegebenen Magnetfelder gemessen werden.
+	%talk about used components and exact specs of them, general build-layout of the system, go on about practical implementation of pads and traces and predicted min values for pad / trace size, go on about additional material / stuff needed like stable transport case, ...
 		
 		
 	\section{Vergleich mit anderen Hall-Sensoren}
 	\subsection{Quantitativer Vergleich}
-	
+	%compare measurements of  datasets measured practically to sims, e.g. accuracy, data wobble (standardabweichung) and short-term stability, sensitivity, offsets not possible to determine for bought sensors, show why some comparisons sadly are not possible(heat, long term drift, etc.), bandwith only partially doable since only one was tested with real sensors
 	\subsection{Qualitativer Vergleich}	
-		
+	%how easy to get / use / implement / integrate into systems, learning curve, range of data read out / readable, easiness to transport / practical use (e.g. additional exquiment for measurements with practical x-hall needed)->e.g. size, susceptability to damage / long term deterioration (x-hall outperforms due to manual imfluence), learning effect	
 	\section{Fazit}
 		
 		
 		
-		
+	%in general mention every possible error in methodology	
 		
 	\section*{%Literaturverzeichnis%
 		}	%\clearpage

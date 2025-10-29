@@ -502,22 +502,27 @@ Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homo
 	\label{hallV1}
 \end{figure}\paragraph{}
 In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline
-In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: %insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing 
+In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich eigentlich, wenn separat betrachtet, um etwa $2.31\,mV$ (vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1.15\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $x10$ bis $x100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer gemacht wären.\newline
+Hier ist 
+ %insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing, go on about possible problems with values and disparities to expected performance, 
 
 
 \subsection{Praktische Implementierung des Sensors - begründung für silberpaddaten}
+%talk about used components and exact specs of them, general build-layout of the system, go on about practical implementation of pads and traces and predicted min values for pad / trace size, go on about additional material / stuff needed like stable transport case, ...
 
 
 \section{Vergleich mit anderen Hall-Sensoren}
 \subsection{Quantitativer Vergleich}
+%compare measurements of  datasets measured practically to sims, e.g. accuracy, data wobble (standardabweichung) and short-term stability, sensitivity, offsets not possible to determine for bought sensors, show why some comparisons sadly are not possible(heat, long term drift, etc.), bandwith only partially doable since only one was tested with real sensors
 
 \subsection{Qualitativer Vergleich}	
+%how easy to get / use / implement / integrate into systems, learning curve, range of data read out / readable, easiness to transport / practical use (e.g. additional exquiment for measurements with practical x-hall needed)->e.g. size, susceptability to damage / long term deterioration (x-hall outperforms due to manual imfluence), learning effect	
 
 \section{Fazit}
 
 
 
-
+%in general mention every possible error in methodology	
 
 \section*{%Literaturverzeichnis%
 }	%\clearpage
