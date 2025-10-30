@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  30 OCT 2025 12:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  31 OCT 2025 00:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -913,16 +913,6 @@ File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 ) (PaperV3Backup.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported on input line 8.
-
-
-LaTeX Warning: Label `hallV2' multiply defined.
-
-
-LaTeX Warning: Label `hallV2' multiply defined.
-
-
-LaTeX Warning: Label `hallV2' multiply defined.
-
 )
 \openout1 = `PaperV3Backup.aux'.
 
@@ -1043,178 +1033,166 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 [2]
+Overfull \hbox (4.79001pt too wide) in paragraph at lines 98--103
+\OT1/cmr/m/n/12 Magnetfeldsensoren sind ein in-te-gra-ler Be-stand-teil mo-der-
+ner Smart-pho-nes und erm[]oglichen
+ []
+
+
 
 [3]
-
-[4]
-<Image Sources/Fig1.1.png, id=165, 182.93344pt x 152.06813pt>
+<Image Sources/Fig1.1.png, id=134, 182.93344pt x 152.06813pt>
 File: Image Sources/Fig1.1.png Graphic file (type png)
 <use Image Sources/Fig1.1.png>
-Package pdftex.def Info: Image Sources/Fig1.1.png  used on input line 161.
+Package pdftex.def Info: Image Sources/Fig1.1.png  used on input line 138.
 (pdftex.def)             Requested size: 171.14238pt x 142.26378pt.
-<Image Sources/Fig1.2.png, id=167, 231.11343pt x 188.20313pt>
+<Image Sources/Fig1.2.png, id=136, 231.11343pt x 188.20313pt>
 File: Image Sources/Fig1.2.png Graphic file (type png)
 <use Image Sources/Fig1.2.png>
-Package pdftex.def Info: Image Sources/Fig1.2.png  used on input line 164.
+Package pdftex.def Info: Image Sources/Fig1.2.png  used on input line 141.
 (pdftex.def)             Requested size: 174.7135pt x 142.26378pt.
 
 
-[5]
+[4]
 
-[6 <./Image Sources/Fig1.1.png> <./Image Sources/Fig1.2.png>]
-<Image Sources/Fig2.png, id=197, 466.74374pt x 246.9225pt>
+[5 <./Image Sources/Fig1.1.png> <./Image Sources/Fig1.2.png>]
+<Image Sources/Fig2.png, id=174, 466.74374pt x 246.9225pt>
 File: Image Sources/Fig2.png Graphic file (type png)
 <use Image Sources/Fig2.png>
-Package pdftex.def Info: Image Sources/Fig2.png  used on input line 184.
+Package pdftex.def Info: Image Sources/Fig2.png  used on input line 161.
 (pdftex.def)             Requested size: 268.90971pt x 142.26378pt.
 
 
-[7 <./Image Sources/Fig2.png>]
+[6 <./Image Sources/Fig2.png>]
+
+[7]
 
 [8]
 
 [9]
-Overfull \hbox (8.60379pt too wide) in paragraph at lines 248--248
+Overfull \hbox (8.60379pt too wide) in paragraph at lines 225--225
  [][] \OT1/cmr/m/n/12 Li-nea-re Sys-te-me wer-den in El-mer ent-we-der di-rekt,
  ite-ra-tiv oder []uber Multilevel-Methoden
  []
 
 
-
-[10]
-Overfull \hbox (6.77533pt too wide) in paragraph at lines 261--261
+Overfull \hbox (6.77533pt too wide) in paragraph at lines 238--238
 []\OT1/cmr/bx/n/14.4 Entwicklung ei-nes Sensor-Layouts - wei-ter un-ter-glie-de
 rn oder
  []
 
 
 
+[10]
+
 [11
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.281 \end{equation}
+l.333 \end{equation}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.333 \end{equation}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.333 \end{equation}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.333 \end{equation}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.333 \end{equation}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.333 \end{equation}
                     ]
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.292 \begin{equation}
+l.347 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.292 \begin{equation}
+l.347 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.292 \begin{equation}
+l.347 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.292 \begin{equation}
+l.347 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.307 \begin{equation}
+l.361 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.307 \begin{equation}
+l.361 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.307 \begin{equation}
+l.361 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.307 \begin{equation}
+l.361 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.322 \begin{equation}
+l.368 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.322 \begin{equation}
+l.368 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.322 \begin{equation}
+l.368 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.322 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.337 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.337 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.337 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.337 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.352 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.352 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.352 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.352 \begin{equation}
+l.368 \begin{equation}
                       
 
 [12
@@ -1222,85 +1200,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.5})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.367 ...hkeit der Simulation abgesehen.\paragraph
-                                                  {}]
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.370 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.370 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.370 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.370 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.384 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.384 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.384 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.384 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.391 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.391 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.391 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.391 \begin{equation}
-                      
+l.372 \end{equation}
+                    ]
+
+LaTeX Warning: Reference `fig:3' on page 13 undefined on input line 385.
+
+
 
 [13]
-
-LaTeX Warning: Reference `fig:3' on page 14 undefined on input line 408.
-
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
@@ -1310,15 +1217,11 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 [15]
 
 [16]
-
-LaTeX Warning: Citation `bowdenDopes' on page 17 undefined on input line 537.
-
+Package hyperref Info: bookmark level for unknown graph defaults to 0 on input 
+line 542.
 
 
 [17]
-Package hyperref Info: bookmark level for unknown graph defaults to 0 on input 
-line 565.
-
 
 [18]
 
@@ -1327,6 +1230,40 @@ line 565.
 [20]
 
 [21]
+
+LaTeX Warning: Citation `ceidari15' on page 22 undefined on input line 635.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.636 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.636 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.636 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.636 \begin{equation}
+                      
+
+LaTeX Warning: Citation `ceidari15' on page 22 undefined on input line 650.
+
+
+
+[22]
 PGFPlots: reading {"Magnetometer Tablet 12.09.2025.csv"}
 
 NOTE: coordinate (0,010462708,50,99094795) has been dropped because of a coordi
@@ -113224,7 +113161,11 @@ NOTE: coordinate (105,0541928,746,1308594) has been dropped because of a coordi
 nate filter. 
 NOTE: coordinate (105,0641238,746,7778931) has been dropped because of a coordi
 nate filter. 
+
+
+[23]
 PGFPlots: reading {"Measurements 12.09.2025 Pasco sensor.csv"}
+
 NOTE: coordinate (0.010,0.441) has been dropped because of a coordinate filter.
  
 NOTE: coordinate (0.020,0.435) has been dropped because of a coordinate filter.
@@ -118254,7 +118195,7 @@ NOTE: coordinate (26.980,6.89) has been dropped because of a coordinate filter.
  
 NOTE: coordinate (26.990,6.90) has been dropped because of a coordinate filter.
  
-NOTE: coordinate (37.000,6.92) has been dropped because of a coordinate filter.
+NOTE: coordinate (27.000,6.92) has been dropped because of a coordinate filter.
  
 PGFPlots: reading {"Measurements 12.09.2025 Pasco sensor.csv"}
 NOTE: coordinate (0.010,-0.428) has been dropped because of a coordinate filter
@@ -123287,7 +123228,7 @@ NOTE: coordinate (26.980,-0.366) has been dropped because of a coordinate filte
 r. 
 NOTE: coordinate (26.990,-0.390) has been dropped because of a coordinate filte
 r. 
-NOTE: coordinate (37.000,-0.387) has been dropped because of a coordinate filte
+NOTE: coordinate (27.000,-0.387) has been dropped because of a coordinate filte
 r. 
 PGFPlots: reading {"Measurements 12.09.2025 Pasco sensor.csv"}
 NOTE: coordinate (0.010,0.0360) has been dropped because of a coordinate filter
@@ -128320,7 +128261,7 @@ NOTE: coordinate (26.980,6.88) has been dropped because of a coordinate filter.
  
 NOTE: coordinate (26.990,6.89) has been dropped because of a coordinate filter.
  
-NOTE: coordinate (37.000,6.91) has been dropped because of a coordinate filter.
+NOTE: coordinate (27.000,6.91) has been dropped because of a coordinate filter.
  
 PGFPlots: reading {"Measurements 12.09.2025 Pasco sensor.csv"}
 NOTE: coordinate (0.010,-0.100) has been dropped because of a coordinate filter
@@ -133353,19 +133294,76 @@ NOTE: coordinate (26.980,0.120) has been dropped because of a coordinate filter
 . 
 NOTE: coordinate (26.990,0.0960) has been dropped because of a coordinate filte
 r. 
-NOTE: coordinate (37.000,0.111) has been dropped because of a coordinate filter
+NOTE: coordinate (27.000,0.111) has been dropped because of a coordinate filter
 . 
 
+LaTeX Warning: Citation `texInsAmp' on page 24 undefined on input line 785.
 
-[22]
 
-[23]
 
 [24]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.800 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.800 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.800 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.800 \begin{equation}
+                      
+
+LaTeX Warning: Citation `texInsAmp' on page 25 undefined on input line 811.
+
+
 
 [25]
 
-[26] (PaperV3Backup.aux)
+[26]
+
+[27]
+
+[28]
+
+[29] (PaperV3Backup.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -133374,43 +133372,46 @@ L3 programming layer <2025-09-02>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `PaperV3Backup.out' has not changed.
-(rerunfilecheck)             Checksum: C757649ADEEEF91AAF873D382DAE9E61;4622.
+(rerunfilecheck)             Checksum: 057CB79F0F51C495206D772D8F8E70CB;3417.
  ) 
 Here is how much of TeX's memory you used:
- 38126 strings out of 468130
- 880224 string characters out of 5430632
- 1726809 words of memory out of 5000000
- 65913 multiletter control sequences out of 15000+600000
- 637552 words of font info for 82 fonts, out of 8000000 for 9000
+ 38152 strings out of 468130
+ 880486 string characters out of 5430632
+ 1720465 words of memory out of 5000000
+ 65925 multiletter control sequences out of 15000+600000
+ 637887 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,105p,895b,2274s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,20n,105p,895b,2274s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-0800.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tcrm1200.pk><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/armin/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/armin/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/armin/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/ar
-min/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
-Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr17.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr7.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/armin/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/armin/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/armin/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on PaperV3Backup.pdf (26 pages, 490907 bytes).
+1000.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\tcrm0800.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\tcrm1200.pk><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/armin/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/armin/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/armin/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/armi
+n/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Us
+ers/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pf
+b><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmmi8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/armin/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/armin/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/armin/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/armin/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Use
+rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+msy8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmtt10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/symbols/msam10.pfb>
+Output written on PaperV3Backup.pdf (29 pages, 552885 bytes).
 PDF statistics:
- 667 PDF objects out of 1000 (max. 8388607)
- 266 named destinations out of 1000 (max. 500000)
- 188 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 709 PDF objects out of 1000 (max. 8388607)
+ 279 named destinations out of 1000 (max. 500000)
+ 164 words of extra memory for PDF output out of 10000 (max. 10000000)
 

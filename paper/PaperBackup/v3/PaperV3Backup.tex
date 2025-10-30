@@ -95,34 +95,11 @@ name=Graph            % caption prefix
 
 
 \section{Einleitung}
-\subsection{Geschichte und Bedeutung von Magnetfeldern und ihrer Messung - Obsolet}
-
-\subsection{Magnetfeldmessungen und der Hall-Effekt - Überarbeiten; Beschreibungen Methoden in Anhang}
-
-Über diese lange Geschichte der Magnetfeldforschung wurden auch dementsprechend viele verschiedene Methoden entwickelt um Magnetfelder zu messen, die von sehr einfachen Methoden bis hin zu hochkomplexen Quantenmethoden reichen. Hier eine kurze Zusammenfassung einiger relevanter Messmethoden:
-\begin{itemize}
-	\item \textbf{Magnetresonanzmessungen:} Wasser, entweder als kleine Probe oder fließend durch eine kleine Röhre, wird in einer Anregungsspule von Radiowellen angeregt. Das magnetische Moment der Wassernukleonen, beeinflusst durch ein externes Magnetfeld, wird entweder über nukleare Induktion\footnote{Induktionseffekte, die durch das magnetische Moment von Nukleonen hervorgerufen werden} oder über Resonanzabsorption ausgelesen
-	\item \textbf{Magnetische Flussmeter:} Durch Änderungen des Magnetfelds wird in einer Messspule eine Spannung induziert. Diese Spannung wird über die Zeit integriert, um den magnetischen Fluss zu bestimmen
-	\item \textbf{Photoelektrische Flussmeter:} Durch ein Magnetfeld wird eine Bewegung erzeugt, die in ein Lichtsignal umgewandelt und von einem Photosensor gemessen wird, um den magnetischen Fluss zu bestimmen
-	\item \textbf{Hall-Methode:} An einen kleinen Metall- oder Halbleiterstreifen wird eine Anregungsspannung angelegt. Wirkt ein Magnetfeld auf die bewegten Ladungsträger, werden diese durch die Lorentzkraft seitlich abgelenkt. Dadurch entsteht eine messbare Hall-Spannung quer zum Stromfluss, aus der die Stärke des Magnetfelds bestimmt werden kann
-	\item \textbf{Fluxgate-Magnetometer:} Um einen ferromagnetischen Kern werden mindestens drei Spulen angebracht:
-	\subitem - Eine Wechselstrom-Anregungsspule, die den Kern  alternierend sättigt 
-	\subitem - Eine Messspule, an der im Idealfall immer eine Nullspannung anliegt
-	\subitem - Eine Gleichstrom-Bias-Spule, die ein externes Magnetfeld ausgleicht, sodass die Messspule wieder Nullspannung ausliest
-	\newline
-	Aus der Höhe des Gleichstroms, der zur Neutralisierung des Feldes benötigt wird, lässt sich die Stärke des externen Magnetfelds bestimmen
-	\item \textbf{Magneto-Resistenz-Messungen:}
-	\item \textbf{Visuelle Magnetfeldkartierung:}
-	\item \textbf{Teilchenstrahl-Beobachtung: }
-	\item \textbf{Atomare Magnetometer:}
-	\item \textbf{Spin-Exchange-Relaxationsfreies (SERF) Magnetometer:}
-	\item \textbf{Optisch gepumptes Magnetometer (OPM):}
-	\item \textbf{Supraleitende Quanteninterferenzgeräte:}
-\end{itemize}
-
-
-\subsection{Projektziel und thematischer Bezug}
-
+Magnetfeldsensoren sind ein integraler Bestandteil moderner Smartphones und ermöglichen Anwendungen wie Kompassfunktionen, Positionsbestimmungen und metallische Objekterkennung. Die physikalische Grundlage vieler solcher Sensoren bildet der Hall-Effekt, der eine präzise Messung magnetischer Flussdichten durch die Detektion von durch Ladungsverschiebungen entstehenden Potentialunterschieden erlaubt.\newline
+Kommerzielle Hall-Sensoren sind technisch sehr ausgereift, jedoch meist nicht in ihren physikalischen Grundlagen nachvollziehbar oder individuell anpassbar. Für den schulischen oder experimentellen Kontext stellt sich daher die Frage, inwieweit ein eigenständig konzipierter Sensor vergleichbare Messungen liefern kann.\newline
+Ziel dieser Arbeit ist es, einen eigenen Hall-Sensor auf Basis der X-Hall-Architektur zu entwerfen und seine Eigenschaften mithilfe numerischer Simulationen zu analysieren. Dabei soll insbesondere untersucht werden, inwieweit ein solcher Sensor als experimentelle Alternative zu in Smartphones integrierten Magnetfeldsensoren oder kommerziell verfügbaren Sensormodulen dienen kann.\newline
+Aufgrund begrenzter Materialverfügbarkeit und des hohen Aufwands praktischer Tests liegt der Schwerpunkt auf der theoretischen Konzeption und der Simulation mithilfe der Finite-Elemente-Methode (FEM). Diese ermöglicht es, Layout, Materialwahl und elektrische Eigenschaften des Sensors bereits im Vorfeld systematisch zu untersuchen.\newline
+Die Arbeit gliedert sich in einen theoretischen Teil, in dem die physikalischen Grundlagen und die Wahl des X-Hall-Layouts erläutert werden, sowie in einen praktischen Abschnitt, der die Konzeption, Simulation und Auswertung des Modells beschreibt. Abschließend werden die Ergebnisse kritisch bewertet und mögliche Weiterentwicklungen aufgezeigt.
 
 \section{Funktionsweise der X-Hall-Architektur}
 Im vorherigen Kapitel wurden bereits die grundlegende Funktionsweise von Hall-Sensoren sowie typische Architekturen solcher Systeme behandelt.\paragraph{}
@@ -379,7 +356,7 @@ In einem Leiter ohne Einfluss eines magnetischen Felds bewegen sich Ladungsträg
 	$J$: Stromdichte, $\sigma_0$: Ruheleitfähigkeit, $E$: Elektrische Feldstärke
 \end{center}
 
-Wirkt nun ein Magnetfeld B, erfahren die Ladungsträger eine Lorentzkraft $F_L$, die sie seitlich ablenkt. Praktisch gesehen bedeutet das, dass die Stromdichte $J$ nicht mehr parallel zu $E$ verläuft. Der Leiter verhält sich also so, als ob er eine anisotrope Leitfähigkeit hätte.\newline
+Wirkt nun ein Magnetfeld H, erfahren die Ladungsträger eine Lorentzkraft $F_L$, die sie seitlich ablenkt. Praktisch gesehen bedeutet das, dass die Stromdichte $J$ nicht mehr parallel zu $E$ verläuft. Der Leiter verhält sich also so, als ob er eine anisotrope Leitfähigkeit hätte.\newline
 Aus dem Drude-Modell für Ladungstransport lässt sich über einige Schritte ableiten, dass für ein Magnetfeld $B_z$ entlang der z-Achse, wie in den Simulationen angenommen wird, sich ergibt:
 \begin{equation}
 	\begin{pmatrix} J_x \\ J_y \\ J_z \end{pmatrix}=\begin{pmatrix} \sigma_0 & -\sigma_H & 0 \\ \sigma_H & \sigma_0 & 0 \\ 0 & 0 & \sigma_0\end{pmatrix} \begin{pmatrix} E_x \\ E_y \\ E_z \end{pmatrix}
@@ -566,7 +543,7 @@ Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homo
 	\label{hallV1}
 \end{figure}\paragraph{}
 In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline 
-Alle Messdaten sind auch im Anhang in Tabelle~1 nachzulesen\newline
+Alle Messdaten sind auch im Anhang in Tabelle~1 nachzulesen.\newline
 In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich, wenn separat betrachtet, um etwa $2.50\,mV$ (vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1.25\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $10$ bis $100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer gemacht wären.\newline
 In den Simulationen ist die wahrscheinlichste Erklärung dieses Effekts ein ungleichmäßiges Mesh, was dazu führen kann, dass an einigen stellen im Modell wesentlich mehr oder wesentlich weniger Rechenoperationen ausgeführt werden. Insbesondere im zweiteren Fall kann das dazu führen, dass bei nur schwachen Potentialänderungen durch das Magnetfdeld diese von stärkeren, lokal dominanten Potentialen in der Dateninterpolation verloren gehen.\paragraph{} 
 Das genaueste verfügbare Voltmeter für die praktische Umsetzung ist der ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser Messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
@@ -639,8 +616,43 @@ Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case tran
 
 
 \section{Vergleich mit anderen Hall-Sensoren}
-\subsection{Quantitativer Vergleich}
 
+
+Die Hauptfrage dieser Arbeit ist, ob sich der Selbstbau eines Magnetfeldsensors wie dem X-Hall-Sensor im Vergleich zu bereits erhältlichen Lösungen lohnt, wenn man möglichst genau für möglichst geringe Kosten Magnetfelder bemessen möchte.\newline
+Die ausgewählten Vergleichsgeräte sind:
+\begin{itemize}
+	\item Magnetometer des iPad 9. Generation mit iPadOS 18.6.2
+	\item Magnetometer des iPhone SE (2022) mit iPhoneOS 18.5
+	\item Pasco Wireless 3-Axis Magnetic Field Sensor (PS-3221) 
+\end{itemize} 
+wobei das iPhone und das iPad stellvertretend für mobile Endgeräte verwendet werden, die heutzutage fast jeder besitzt und der Pasco-Sensor stellvertretend für zukaufbare Sensoren, die theoretisch die Messmöglichkeiten mit mobilen Endgeräten erweitern sollen.
+
+\subsection{Quantitativer Vergleich}
+Zum Test der verwendeten Vergleichssensoren wurden diese 8 beziehungsweise 3 Sekunden lang in einem konstanten magnetischen Feld gehalten und die Wertentwicklung über diese Zeit aufgezeichnet. Danach wurde das magnetische Feld entsprechend vorgegebener Stufen $B=0\,mT$, $B=0.05\,mT$ und $B=0.1\,mT$ bis $B=0.7\,mT$ mit Abständen von je $0.1\,mT$ verändert und die nächste Aufzeichnung gemacht. Die beiden mobilen Endgeräte nutzten zur Datenerfassung PhyPhox, der Pasco-Magnetfeldsensor nutzte die proprietäre SparkVUE Applikation. Alle Sensoren wurden auf ihrer maximalen Bandbreite von $100\,Hz$ betrieben.\newline
+Da mangels programmierbarer Stromregulatoren alle Einstellungen des Stroms an dem Helmholtz-Spulenpaar manuell vorgenommen werden mussten, sind Abweichungen der gemessenen Magnetfelder von den eigentlich angestrebten Feldern möglich.\paragraph{}
+
+Vor dem Vergleich mit anderen Sensoren ein kurzer Vergleich des simulierten X-Hall-Sensors mit den theoretisch erreichbaren Spezifikationen:\newline
+Aufgrund der statischen Natur der Simulationen können primär die Sensitivität und Sensoroffset verglichen werden. Die Sensitivität eines Hall-Sensors kann nach \cite{ceidari15} mit 
+\begin{equation}
+	{S_{A_V}}=\frac{U_{Hall}}{B}
+	\tag{5.1}
+	\label{5.1}
+\end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$S_{A_V}$: Sensitivität $U_{Hall}$: Hallspannung, $B$: Magnetischer Fluss
+\end{center}
+angegeben werden. Setzt man nun für die 2. Generation des Layouts alle $U_{Hall}$ und $B$ ein und nimmt deren Durchschnitt, ergibt sich eine Sensitivität von $0.878\,\frac{mV}{T}$. Im Vergleich dazu steht die Sensitivität des in \cite{cres20} getesteten Mustersensors mit etwa $150\,\frac{mV}{T}$. Da die Simulation ein festes Potential als Randbedingung nutzt, lässt sich der für die Sensitivität entscheidende Vorspannungsstrom nicht direkt bestimmen. Selbst bei großzügiger Abschätzung ist jedoch davon auszugehen, dass die Sensitivität des eigenen Layouts deutlich unter der des Musters liegt.\newline
+Der Offsetspannung von $\Delta{V_{OS}}=-0.27\pm0.64\,mV$ des Musters steht eine Offsetspannung von etwa $10.73\,mV$ des selbst entwickelten Layouts gegenüber.\newline
+Zwar ist die Offsetspannung des selbst entwickelten Layouts nur um einen Faktor von 10 höher als die des Musters, aber dadurch dass die Sensitivität so viel geringer ist, ist diese erhöhte Offsetspannung wesentlich kritischer zu betrachten, da sowieso schon schwache Signale noch schwerer zum Auslesen werden.\newline
+Die wahrscheinlichste Ursache für den starken Unterschied in der Sensitivität ist die Umsetzung des selbst entwickelten Layouts auf makroskopischer statt mikroskopischer Ebene. Unter anderem \cite{ceidari15} geht auch nochmal detaillierter auf Faktoren ein, die die Sensorsensitivität beeinflussen können und Faktoren wie Dicke des Hall-Materials, Abstand der Kontakte, usw. tragen wesentlich zu einer möglichen Verschlechterung dieser bei.\paragraph{}
+
+Um diese theoretischen Ergebnisse in Relation zu real existierenden Sensoren zu setzen, wurden im Folgenden praktische Messungen mit gängigen Vergleichsgeräten durchgeführt
+
+Das Magnetometer des iPad wird in \cite{sensordb} gelistet mit einer Sensorbandbreite von $100\,Hz$. Die Standardabweichung des Sensors soll dabei bei $0.22\,\mu{T}$ liegen. Dieser Wert entspricht auch gleichzeitig dem Grundrauschen des Sensors. Um also realistisch aussagen zu können, dass der Sensor eine Magnetfeldänderung misst und kein Rauschen, sollte die Veränderung mindestens 2 bis 3 mal so groß sein wie das Grundrauschen, also mindestens etwa $0.6\,\mu{T}$. Zur Sensitivität lässt sich mangels Herstellerangaben leider keine Angabe machen.\newline
+Die Messdaten bestätigen diese Angaben ansatzweise, da im Durchschnitt eine Standardabweichung der Messdaten von etwa $0.26\,\mu{T}$ vorliegt. Diese schwankt aber um bis zu $\pm1.65\,\mu{T}$, insbesondere für höhere B ab $400\,\mu{T}$, weshalb man die Empfindlichkeit des Sensors tendenziell höher auf etwa $4\,\mu{T}$ annehmen sollte, sobald man sich in diesem Bereich befindet.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -674,16 +686,16 @@ Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case tran
 			color=orange
 			] 
 			table[y= Magnetic Field z (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Tablet 12.09.2025.csv};			
-			\legend{1. Generation, 2. Generation}	
-		\end{axis}
+			\legend{$B_{Ges}$, $B_X$, $B_Y$, $B_Z$}	
+			\		\end{axis}
 	\end{tikzpicture}
 	\captionsetup{type=graph,name=Graph}
-	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
-	\label{hallV2}
+	\captionof{graph}{Gemessenes Magnetfeldkomponenten mit einem iPad-Magnetometer}	
+	\label{measureTablet}
 \end{figure}\paragraph{}
 
-
-
+Für das iPhone sind die Angaben laut \cite{sensordb} ebenfalls eine Sensorbandbreite von $100\,Hz$ und eine Standardabweichung der Messungen von $0.25\,\mu{T}$. Weitere Angaben lassen sich auch hier mangels Herstellerinformationen nicht machen.\newline
+Die gemessenen Daten weichen jedoch deutlich von den Herstellerangaben ab. Nicht nur liegen die Standardabweichungen des Sensors für kleine Felder bei $0.29\,\mu{T}$ mit Schwankungen bei Feldern ab $400\,\mu{T}$ von bis zu $\pm3.35\,\mu{T}$, was realistische Empfindlichkeit des Sensors ab diesen Bereich sogar von etwa $0.9\,\mu{T}$ auf $\pm7\,\mu{T}$ hebt. Es fällt außerdem auf, dass die gemessenen $B_{Ges}$ Um $+20\,\mu{T}$ mit einer Tendenz von zusätzlichen $+5\,\mu{T}$ pro $100\,\mu{T}$ stärkerem Magnetfeld zu hoch ausfallen, was sich auch unter Berücksichtigung der manuellen Stromregelung nicht plausibel erklären lässt. Mögliche Ursachen könnten höhere Hitzeentwicklung auf dem engeren Raum bei höheren $U_{Hall}$ aber auch magnetische Sättigung und damit nicht mehr ideales Verhalten des Sensors sein.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -717,16 +729,16 @@ Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case tran
 			color=orange
 			] 
 			table[y= Magnetic Field z (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Handy 12.09.2025.csv};			
-			\legend{1. Generation, 2. Generation}	
+			\legend{$B_{Ges}$, $B_X$, $B_Y$, $B_Z$}	
 		\end{axis}
 	\end{tikzpicture}
 	\captionsetup{type=graph,name=Graph}
-	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
-	\label{hallV2}
+	\captionof{graph}{Gemessenes Magnetfeldkomponenten mit einem iPhone-Magnetometer}	
+	\label{measurePhone}
 \end{figure}\paragraph{}
 
-
-
+Pasco gibt für ihren Magnetfeldsensor für Magnetfelder bis zu $0.13\,T$ eine Empfindlichkeit von $\pm100\,\mu{T}$ und für Felder unter $5\,mT$ eine Empfindlichkeit von $\pm1\,\mu{T}$, beides bei einer Bandbreite von $100\,Hz$, an.\newline
+Für den Sensor liegen nur Daten von 3 Sekunden im Magnetfeld vor. Diese zeigen eine über alle Feldstärken konsistente Standardabweichung von $0.87\pm4.95\,\mu{T}$. So ist zwar aufgrund einiger Ausreißer in den Datenpunkten die tatsächliche Empfindlichkeit auf etwa $10\,\mu{T}$ zu schätzen, im Durchschnitt bleiben die Werte auch über längere Messungen im beworbenen Bereich.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -734,7 +746,7 @@ Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case tran
 			unbounded coords=jump,
 			clip=false,
 			xlabel={Zeit in $s$},
-			ylabel={Magnetfeldstärke in $\mu{T}$},
+			ylabel={Magnetfeldstärke in $G\triangleq100\mu{T}$},
 			xmin=0, 
 			ymin=-1, 
 			ytick={-1,0,1,2,3,4,5,6,7},
@@ -760,18 +772,73 @@ Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case tran
 			color=orange
 			] 
 			table[y= Z Magnetic Field Strength (G) Run 1,col sep=comma, each nth point=15]{Measurements 12.09.2025 Pasco sensor.csv};			
-			\legend{1. Generation, 2. Generation}	
+			\legend{$B_{Ges}$, $B_X$, $B_Y$, $B_Z$}	
 		\end{axis}
 	\end{tikzpicture}
 	\captionsetup{type=graph,name=Graph}
-	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
-	\label{hallV2}
+	\captionof{graph}{Gemessenes Magnetfeldkomponenten mit einem kabellosen Pasco-Magnetometer}	
+	\label{measurePasco}
 \end{figure}\paragraph{}
 
-%compare measurements of  datasets measured practically to sims, e.g. accuracy, data wobble (standardabweichung) and short-term stability, sensitivity, offsets not possible to determine for bought sensors, show why some comparisons sadly are not possible(heat, long term drift, etc.), bandwith only partially doable since only one was tested with real sensors
+Aufgrund schlechter Datenlage liegen also nicht nur sehr wenige Informationen über die praktisch getesteten Sensoren vor, sondern da diese direkt Magnetfelder messen und ausgeben ist es auch schwer, diese direkt mit den Simulationen zu vergleichen, welche Hall-Spannungen als Ergebnis haben.\newline
+Im Grunde genommen hängen alle Messwerte des X-Hall-Sensors direkt vom verwendeten Verstärker ab.\newline
+Dementsprechend lässt sich aus \cite{texInsAmp} schließen, dass der X-Hall Sensor eine Bandbreite von bis zu $1.3\,MHz$ haben kann, in etwa das $10,000\,$-fache aller Vergleichssensoren, wobei fragwürdig ist, ob diese Bandbreite überhaupt ausgenutzt werden kann, da mit hoher Bandbreite oft stark verstärktes Rauschen einhergeht.\newline
+Rechnet man nun basierend auf den Verstärker-Spezifikationen ungefähr das Rauschen:
+\begin{equation}
+	B_{noise}=\frac{V_{n,out}}{S_BG}
+	\tag{5.2}
+	\label{5.2}
+\end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$B_{noise}$: Feld-Rauschgrenze $V_{n,out}$: Output-Spannungs-Rauschen, $S_B$: Sensorempfindlichkeit, \newline
+	$G$ = Verstärker-Gain
+\end{center}
+
+\begin{equation}
+	V_{n,out}\approx\sqrt{(e_{n,ia}\sqrt{B}G)^2+(\sqrt{4kTR_SB}G)^2}
+	\tag{5.3}
+	\label{5.3}
+\end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$e_{n,ia}$: Input-bezogene Spannungsrauschendichte $B$: Sensorbandbreite, $G$ = Verstärker-Gain, $k=1.380649\cdot10^{-23}\,\frac{J}{K}$, $T$: Temperatur, $R_S$: Widerstand aller Komponenten bis Verstärker
+\end{center}
+aus, dann ergibt sich für $B=100\,Hz$, $G=100$, $B=300\,K$ und $R_S\approx10\,\Omega$ \footnote{$e_{n,ia}$ findet sich in \cite{texInsAmp}} eine Feld-Rauschgrenze von etwa $92\,\mu{T}$ und damit eine realistische Empfindlichkeit von etwa $200\,\mu{T}$.
+Damit unterliegt er klar dem Pasco-Magnetfeldsensor sowie dem Magnetometer von Tablet und Smartphone.
+
+
+
+%compare measurements of  datasets measured practically to sims, e.g. accuracy, data wobble (standardabweichung) and short-term stability, sensitivity, offsets not possible to determine for bought sensors, show why some comparisons sadly are not possible(heat, long term drift, etc.), bandwith only partially doable since only one was tested with real sensors	
 \subsection{Qualitativer Vergleich}	
+Neben konkreten Leistungswerten können aber auch qualitative Aspekte etwas darüber aussagen, wie geeignet ein Sensor für bestimmte Anwendungen ist.\paragraph{}
+Die Kosten für Sensoren mit möglichst guten Spezifikationen sind zumeist sehr hoch.\newline
+Für den Sensor von Tablet und Handy muss man nichts extra zukaufen, weil die Sensoren schon im Kaufpreis mit inbegriffen sind. So gesehen sind sie also gleichzeitig sehr vielseitig einsetzbar. Für den Pasco ``PS-3221'' zahlt man Stand 30.10.2025 $100\,$\texteuro~ und aufwärts.\newline 
+Für den X-Hall-Sensor belaufen sich die Kosten in Summe auf etwa $125\,$\texteuro ~(ohne Voltmeter)\footnote{$\approx80\,$\texteuro ~für ein Glas Silberleitfarbe, $\approx17\,$\texteuro ~pro Wafer bei Bestellmenge bis 9 Stück, $\approx22\,$\texteuro  ~für den Verstärker und $\approx6\,$\texteuro ~für Kabel, Widerstände, etc.}, wobei die Kosten je nach Anzahl gebauter Sensoren stark sinken können, da einige Einzelteile starke Mengenrabatte haben.\newline
+Es sei aber anzumerken, dass das Anschaffen der Wafer zusätzliche Komplikationen aufweist, da die meisten Zulieferer nur Industrie, Labore und Universitäten beliefern.\paragraph{}
+
+Sowohl Magnetometer von Handy und Tablet als auch der Pasco ``PS-3221'' sind mit den in Kapitel 5.1 genannten Applikationen sehr einfach und ohne jegliches Vorwissen zu bedienen. Es werden außerdem Messdaten direkt visualisiert, aufgezeichnet und gespeichert, so dass auch weitere Arbeit mit den Daten möglichst einfach ist.\newline
+Für das Auslesen des X-Hall-Sensors ist eine aufwendigere Schaltkonstruktion nötig und Datenvisualisierung sowie -aufzeichnung sind zwar je nach verwendetem Voltmeter möglich, aber man hat immer noch ein paar Zwischenschritte bis der Output ebenfalls in magnetischer Flussdichte lesbar ist. Außerdem muss der Sensor vor jedem Einsatz manuell kalibriert werden, was wieder eigene Probleme wie den Bedarf eines eigenen Referenzsensors oder einer Feldquelle mit bekannter, nicht über Zeit abnehmenden Flussdichte. So ergibt sich eine steilere Lernkurve und der Zeitaufwand sowie die Komplexität der Verwendung des Sensors ist wesentlich höher.\paragraph{}
+
+Alle drei Vergleichssensoren haben eine moderate Größe und sind relativ unempfindlich, was ihren Transport und Einsatz in verschiedensten Situationen angeht.\newline
+Dadurch, dass der Wafer aus nur wenige hundert $\mu{m}$ dicken Silicium besteht, das in etwa so empfindlich ist wie sehr dünnes Glas, muss er insbesondere während des Transports aber auch während seiner Nutzung mit extremer Vorsicht behandelt werden und sollte sich stets in einem sturz- und stoßdämpfenden Schutzcase befinden. So wird der Einsatz im Vergleich zu den anderen Sensoren erheblich erschwert und birgt deutlich höheres Risiko, den teuren Sensor zu beschädigen.\paragraph{}
+
+Während die Magnetometer von Handy und Tablet aber schon im Bereich um $1\,mT$ ihre Kalibrierung verlieren und damit erstmal bis zu einer Neukalibrierung durch das Betriebssystem nicht mehr verwendbar sind, funktioniert der Pasco ``PS-3221'' bei Feldern mit einer Flussdichte von bis zu $0.13\,T$ und dem X-Hall-Sensor sind theoretisch keine Grenzen gesetzt, solange ein Voltmeter verwendet wird, dass die dementsprechenden Spannungen erfassen kann.\newline
+Sollten die Handy- und Tabletmagnetometer oder der Pasco Magnetfeldsensor auf einen Langzeitraum nach und nach ihre Genauigkeit oder Kalibrierung verlieren, dann kann man als Privatnutzer diese nicht reparieren oder neu kalibrieren, sie haben also ein eventuelles Lebensende.\newline
+Mit einem selbst gebauten und implementierten Sensor wie den X-Hall-Sensor kann man diesen nicht nur beliebig oft neu kalibrieren, sondern selbst Beschädigungen an Kontakten reparieren, wodurch die Sensoren quasi keine maximale Lebenszeit haben. 
 %how easy to get / use / implement / integrate into systems, learning curve, range of data read out / readable, easiness to transport / practical use (e.g. additional exquiment for measurements with practical x-hall needed)->e.g. size, susceptability to damage / long term deterioration (x-hall outperforms due to manual imfluence), learning effect	
+
 \section{Fazit}
+Im Rahmen dieser Arbeit wurde die Konzeption und Simulation eines X-Hall-Sensors auf Basis eines dotierten Siliziumwafers untersucht, um dessen Potenzial als mögliche Alternative zu in Smartphones verbauten Magnetfeldsensoren zu evaluieren.
+Die Ausarbeitung des Sensorlayouts hat verdeutlicht, wie entscheidend Geometrie, Materialwahl und elektrische Randbedingungen für die Empfindlichkeit und Genauigkeit eines Magnetfeldsensors sind.\newline
+Es ist gelungen, einen Sensor zu entwerfen, der trotz methodischer und materialbedingter Einschränkungen eine realistische Grundlage für zukünftige Optimierungen bietet. Zwar kann der entwickelte Sensor in seiner derzeitigen Form noch nicht mit kommerziell verfügbaren Lösungen konkurrieren, doch stellt er eine solide Basis für weiterführende Entwicklungen dar, wie sie zum Beispiel im Rahmen einer ``Jugend Forscht!'' Arbeit geschehen werden.\newline
+Der qualitative Vergleich zeigt, dass der Sensor in bestimmten Einsatzbereichen potenzielle Nachteile aufweist, jedoch insbesondere durch seine hohe Flexibilität und Langlebigkeit überzeugt.\newline
+Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Aufbau eines Sensors – im Gegensatz zur bloßen Nutzung fertiger Systeme – einen erheblichen Lerneffekt bietet. So kann dieses Projekt auch als exemplarisches Beispiel dafür dienen, wie experimentelles und forschendes Lernen in schulischen Kontexten nicht nur naturwissenschaftliche Kompetenzen, sondern auch intrinsische Motivation und Interesse an wissenschaftlicher Arbeit fördern kann.
+
 
 
 
@@ -818,8 +885,14 @@ Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case tran
 	\bibitem{elmerModel}
 	\textbf{Peter R\aa{back} et al.}, Elmer Models Manual. CSC – IT Center for Science, June 2024
 	
+	\bibitem{bowdenDopes}
+	\textbf{Stuart Bowden, Christiana Honsberg}, https://www.pveducation.org/pvcdrom/materials/general-properties-of-silicon. Solar Power Labs at Arizona State University (ASU), USA, last opened: 30.10.2025, 17:23
 	
+	\bibitem{sensordb}
+	\textbf{no Author}, https://phyphox.org/sensordb/. RWTH Aachen University, Germany, last opened: 30.10.2025, 17:23
 	
+	\bibitem{pascoSense}
+	\textbf{no Author}, https://www.pasco.com/products/sensors/wireless/wireless-magnetic- field-sensor?srsltid=AfmBOoqlAECIZ3CBN0w6JdK8a8RVifiuKzZDyGwl0rw Fo4lWOYByySjP. PASCO Scientific, USA, last opened: 30.10.2025, 20:44
 	
 	
 	
