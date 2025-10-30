@@ -176,8 +176,8 @@ Material 2
 
 
   !current scaling x0, additional oxy x1e3, 0.05mT
-  Electric Conductivity(3,3) = 10   -3.15e-4     0.0
-                              3.15e-4    10  0.0
+  Electric Conductivity(3,3) = 10   -2.25e-4     0.0
+                              2.25e-4    10  0.0
                               0.0     0.0   10
 
 
