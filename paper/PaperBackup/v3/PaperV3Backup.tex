@@ -6,6 +6,10 @@
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{pgfplots}
+\usepgfplotslibrary{patchplots} % optional
+\usepgfplotslibrary{statistics} % optional
+\usepgfplotslibrary{units}      % optional
+\usepgfplotslibrary{fillbetween}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
@@ -237,7 +241,7 @@ Nach Anwendung der Rand- und Übergangsbedingungen wird dieses System gelöst, u
 Elmer kann zwei primäre Arten von Systemen lösen\,\cite{elmerSolve}:
 \begin{itemize}
 	\item Lineare Systeme der Form $Ax=b$
-	\item Nichtlineare Systeme der Form $A(u_{i-1}u_i=b(u_{i-1}))$\footnote{Nichtlineare Systeme werden immer direkt linearisiert, wie hier ersichtlich}
+	\item Nichtlineare Systeme der Form $A(u_{i-1}u_i)=b(u_{i-1})$\footnote{Nichtlineare Systeme werden immer direkt linearisiert, wie hier ersichtlich}
 \end{itemize}
 Es soll sich hier auf die lineare Methode fokussiert werden, da das simulierte Problem  linearer Natur ist.\paragraph{}
 
@@ -275,37 +279,89 @@ Im elektro-quasistatischen Grenzfall\footnote{Sich langsam ändernde elektrische
 	\tag{4.3}
 	\label{4.3}
 \end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$\nabla$: Nabla-Operator, $\vec{D}$: Elektrische Flussdichte, $\vec{E}$: Elektrisches Feld, $\vec{H}$: Magnetisches Feld, $\vec{J}$: Stromdichte, $\rho$: Freie Ladungsdichte, $\frac{\partial\vec{D}}{\partial{t}}$: Verschiebungsstromdichte
+\end{center}
+\raggedright
+
 Das elektrische Feld kann nun als elektrisches, skalares Potential $\phi$ geschrieben werden:
+
 \begin{equation}
 	\vec{E}=-\nabla\phi
 	\tag{4.4}
 	\label{4.4}
 \end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$\vec{E}$: Elektrisches Feld, $\phi$: Elektrisches Potential
+\end{center}
+\raggedright
+
 Aus (\ref{4.1}) und (\ref{4.3}) ergibt sich außerdem die Kontinuitätsgleichung für elektrische Ladungen:
+
 \begin{equation}
 	\frac{\partial\rho}{\partial{t}}+\nabla\cdot\vec{J}=0
 	\tag{4.5}
 	\label{4.5}
 \end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$\vec{J}$: Stromdichte, $\frac{\partial\vec{D}}{\partial{t}}$: Zeitliche Ableitung der Ladungsdichte
+\end{center}
+\raggedright	
+
 Mithilfe des Ohmschen Gesetzes für leitende Materialien ergibt sich für die Beziehung zwischen Stromdichte und elektrischem Feld die Beziehung
+
 \begin{equation}
 	\vec{J}=\sigma\vec{E}
 	\tag{4.6}
 	\label{4.6}
 \end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$\vec{E}$: Elektrisches Feld, $\vec{J}$: Stromdichte, $\sigma$: Elektrische Leitfähigkeit
+\end{center}
+\raggedright
+
 Mit elektrischer Leitfähigkeit $\sigma$. Mit (\ref{4.5}) als Grundlage und mithilfe von (\ref{4.4}) und (\ref{4.6}) ergibt sich schließlich
+
 \begin{equation}
 	-\nabla\cdot\sigma\nabla\phi=\rho_t
 	\tag{4.7}
 	\label{4.7}
 \end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$\sigma$: Elektrische Leitfähigkeit, $\phi$: Elektrisches Potential, $\rho_t$: Quellterm\footnote{bezeichnet lokale Ladungsquellen oder -senken im Material.}
+\end{center}
+\raggedright
+
 beziehungsweise die generalisierte Form
+
 \begin{equation}
-	-\nabla\cdot\vec{J}-\nabla\cdot(\epsilon\frac{\partial\vec{E}}{\partial{t}})=0
+	-\nabla\cdot\vec{J}-\nabla\cdot(\epsilon\frac{\partial\vec{E}}{\partial{t}})=0.
 	\tag{4.8}
 	\label{4.8}
 \end{equation}
-mit Permitivität $\epsilon$. Genaueres zu diesem Thema kann in \cite{elmerModel} nachgelesen werden.\paragraph{}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$\vec{J}$: Stromdichte, $\epsilon$: Permitivität, $\frac{\partial\vec{E}}{\partial{t}}$: Zeitliche Ableitung des elektrischen Felds
+\end{center}
+
+Genaueres zu diesem Thema kann in \cite{elmerModel} nachgelesen werden.\paragraph{}
 
 Es ergeben sich zwei valide Möglichkeiten, mithilfe des StatCurrentSolve-Modells den Hall-Effekt zu simulieren:\paragraph{}
 Die erste Möglichkeit wäre eine Verkopplung des StatCurrentSolve-Models mit einem anderen physikalischen Simulationsmodel. Elmer ist zwar grundlegend dafür ausgelegt, solch eine Verkopplung problemlos zu unterstützen, aber insbesondere für unerfahrene und neue Programmnutzer kann es bereits schwierig sein, Simulationen die auf nur einem einzelnen Modell beruhen fehlerfrei zu bedienen. Daher wird für diese Arbeit von dieser Möglichkeit der Simulation abgesehen.\paragraph{}
@@ -316,6 +372,13 @@ In einem Leiter ohne Einfluss eines magnetischen Felds bewegen sich Ladungsträg
 	\tag{4.9}
 	\label{4.9}
 \end{equation}
+
+\vspace{-0.8em}
+\begin{center}
+	\footnotesize
+	$J$: Stromdichte, $\sigma_0$: Ruheleitfähigkeit, $E$: Elektrische Feldstärke
+\end{center}
+
 Wirkt nun ein Magnetfeld B, erfahren die Ladungsträger eine Lorentzkraft $F_L$, die sie seitlich ablenkt. Praktisch gesehen bedeutet das, dass die Stromdichte $J$ nicht mehr parallel zu $E$ verläuft. Der Leiter verhält sich also so, als ob er eine anisotrope Leitfähigkeit hätte.\newline
 Aus dem Drude-Modell für Ladungstransport lässt sich über einige Schritte ableiten, dass für ein Magnetfeld $B_z$ entlang der z-Achse, wie in den Simulationen angenommen wird, sich ergibt:
 \begin{equation}
@@ -473,7 +536,8 @@ Das mit ``Material 3'' betitelte Material wird in der Simulation für die Ausles
 Es ist auffällig, dass in der Simulations-Konfiguration die veränderte Leitfähigkeit durch $\sigma_H=\sigma\mu{B_Z}$ ausgedrückt wird. Dies ist eine simple Umformulierung von $\sigma_H=\sigma_0^2R_HB_Z$, wobei $\mu$ die Mobilität des Wafers beschreibt.\newline
 Der Widerstand der verwendeten Wafer liegt zwischen $1-10\,\Omega$ pro cm. Da es sich um p-dotierte Wafer handelt, sind die Majoritätsladungsträger Löcher. Laut \cite{bowdenDopes} ergibt sich dementsprechend für einen angenommenen Widerstand von $10\,\Omega$ \footnote{Zur Absicherung wird der maximal erwartbare Widerstand angenommen} ein $\mu_h$ von etwa $450\,\frac{cm^2}{Vs}$ und eine Dotierkonzentration von etwa $1.39\cdot10^{15}\,cm^{-3}$. Aus der Relation $\sigma_0=pq\mu$ folgt schließlich, dass $\sigma_0=10\,\frac{S}{m}$. Diese Werte dienen als Basis des Wertes $\sigma_H$ in den folgenden Simulationen.\paragraph{}
 Ausgewertet wurden Simulationsergebnisse in \textbf{ParaView in der Version 6.0.0-RC1}. Es wurden aus dem Modell die Regionen der Kontaktpads mittels eines ``Clip''-Filters isoliert und anschließend per ``Python Calculator''-Filter der Durchschnitt der Potentialwerte in den einzelnen Clips genommen.\newline
-Da es keinen Unterschied macht, ob die für X-Hall übliche Mittelung der gemessenen Spannungen vor der Berechnung der einzelnen Hall-Spannungen der beiden inneren Sensorsonden oder nach dieser geschieht, wurden hier jeweils zuerst die Potentialdifferenzen zwischen den in Fig.~\ref{fig:1}(a) als ``1'' und ``2'' bezeichneten Kontakten und den als ``3'' und ``4'' bezeichneten Kontakten bestimmt. Von diesen wurde dann der Durchschnitt genommen und von diesem die Offsetspannung, die sich bei $B_Z=0\,T$ ergibt, subtrahiert.\paragraph{}
+Da sich bei der Datenerhebung möglichst nah an der Funktionsweise von X-Hall orientiert werden soll, wurde zuerst der Durchschnitt des Potentials an den in Fig.~\ref{fig:1}(a) als ``1'' und ``3'' bezeichneten Kontakten und den als ``2'' und ``4'' bezeichneten Kontakten berechnet. Anschließend wurde die Differenz dieser beiden Werte bestimmt und die Offsetspannung die sich bei $B_Z=0\,T$ ergibt, subtrahiert.\paragraph{}
+
 
 Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homogenes, stabiles und kontrollierbares Magnetfeld zu schaffen. Da die maximal erreichbare Feldstärke mit diesen bei $0.7\,mT$ liegt, wurden jeweils Messungen und Simulationen für $B=0\,mT$, $B=0.05\,mT$ und $B=0.1\,mT$ bis $B=0.7\,mT$ mit Abständen von je $0.1\,mT$ durchgeführt.
 \begin{figure}
@@ -501,23 +565,212 @@ Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homo
 	\captionof{graph}{Hall-Spannung in der ersten Generation des Layout}	
 	\label{hallV1}
 \end{figure}\paragraph{}
-In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline
-In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich eigentlich, wenn separat betrachtet, um etwa $2.31\,mV$ (vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1.15\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $x10$ bis $x100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer gemacht wären.\newline
-Hier ist 
- %insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing, go on about possible problems with values and disparities to expected performance, 
+In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline 
+Alle Messdaten sind auch im Anhang in Tabelle~1 nachzulesen\newline
+In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich, wenn separat betrachtet, um etwa $2.50\,mV$ (vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1.25\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $10$ bis $100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer gemacht wären.\newline
+In den Simulationen ist die wahrscheinlichste Erklärung dieses Effekts ein ungleichmäßiges Mesh, was dazu führen kann, dass an einigen stellen im Modell wesentlich mehr oder wesentlich weniger Rechenoperationen ausgeführt werden. Insbesondere im zweiteren Fall kann das dazu führen, dass bei nur schwachen Potentialänderungen durch das Magnetfdeld diese von stärkeren, lokal dominanten Potentialen in der Dateninterpolation verloren gehen.\paragraph{} 
+Das genaueste verfügbare Voltmeter für die praktische Umsetzung ist der ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser Messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
+Deshalb scheint es sinnvoll, das Layout weiter zu verbessern.\paragraph{}
+
+Geht man von der Theorie aus, wird die Hall-Spannung nur durch den Strom durch das Hall-Material, die Magnetfeldstärke, Dicke und Ladungsträgereigenschaften des Hall-Materials beeinflusst. Praktisch gesehen spielen aber auch noch andere Werte eine große Rolle. \newline
+So fällt aus dem Verlauf des Volumenstroms im Sensorlayout der 1. Generation auf, dass die Auslesekontakte weit Abseits der Hauptstromwege liegen, Außerdem werden die Volumenströme zwischen den Vorspannungs- und Erdungskontakten immer schwächer und verteilen sich großflächiger auf die aktive Sensorfläche.\newline
+Daraus resultiert, dass zum Einen die Hall-Spannungen lokal geringer ausfallen können, weil eben weniger Strom zur Verfügung steht, dessen Ladungsträger verschoben werden könnten und zum Anderen, dass diese bereits schon verringerten Hall-Spannungen nun noch weit entfernt sind von den Auslesekontakten. Dementsprechend ist anzunehmen, dass diese minimalen Änderungen im Stromfluss sich, bis sie bei den Auslesekontakten ankommen, nochmals geringer ausfallen werden, da sie sich nach und nach über die dazwischenliegende Region des Hall-Materials verteilen.\paragraph{}
+
+Aus diesen Gründen wurde für die 2. Generation des Sensorlayouts nicht nur der Abstand zwischen den Kontakten verringert, sondern auch deren Positionierung untereinander entsprechend abgeändert.\newline
+Das Kontaktlayout orientiert sich nun mehr an dem ursprünglichen Layout, dass in \cite{cres18} bei der ersten Vorstellung der X-Hall-Architektur verwendet wurde und unter anderem in Fig.~1 und Fig.~2 dieser Quelle abgebildet wird.\newline
+Die Abstände der Pads zueinander wurden ebenfalls so weit wie möglich verringert, genaue Maße sind in \textbf{bild hier} ablesbar, bis sie an die ungefähren physikalischen Grenzen der Aufbringungsmethode stoßen. 
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			clip=false,
+			xlabel={Magnetfeldstärke in $mT$},
+			ylabel={Hall-Spannung in $nV$},
+			xmin=0, xmax=0.7,
+			ymin=0, ymax=1000,
+			minor x tick num=1,
+			minor y tick num=3,
+			ymajorgrids=true,
+			grid style=dashed,
+			legend pos=north west
+			]
+			\addplot [
+			color=blue,
+			mark=square,
+			]
+			coordinates {(0,0)(0.05, 6.77051)(0.1, 13.54074)(0.2, 27.081395)(0.3, 40.621945)(0.4, 54.162475)(0.5, 67.70305)(0.6, 81.243465)(0.7, 94.78386)};
+			\addplot [
+			color=red,
+			mark=square,
+			]
+			coordinates {(0,0)(0.05, 43.92441)(0.1, 87.848825)(0.2, 175.697615)(0.3, 263.54643)(0.4, 351.39524)(0.5, 439.244045)(0.6, 527.092845)(0.7, 614.941655)};
+			
+			\legend{1. Generation, 2. Generation}	
+		\end{axis}
+	\end{tikzpicture}
+	\captionsetup{type=graph,name=Graph}
+	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
+	\label{hallV2}
+\end{figure}\paragraph{}
+In Graph~\ref*{hallV2} zeigt sich genau wie für die 1. Generation des Sensorlayouts der Hall-typische lineare, direkt proportionale Zuwachs der Hall-Spannung mit höherem Magnetfeld.\newline 
+Alle Messdaten sind auch im Anhang in Tabelle~2 nachzulesen\newline
+Auch in der 2. Generation des Sensorlayouts liegen noch durch ein ungleichmäßiges Mesh bedingte globale Defekte vor. Die Unterschiede der beiden inneren Sonden liegen bei etwa $21.4\,mV$. Unter Anbetracht dessen, dass die gemessene Hall-Spannung in etwa um einen Faktor 7 größer ist als in der vorigen Generation und selbiges für die Sondenunterschiede gilt, ist in diesem Aspekt keine erhebliche Verbesserung oder Verschlechterung zwischen den beiden Generation festzustellen.\newline
+Bei der Offsetspannung ist aber verhältnismäßig eine starke Verbesserung festzustellen: Für Generation 1 liegt eine Offsetspannung von etwa $5.03\,mV$ vor, während für die 2. Generation des Layouts eine Offsetspannung von etwa $10.73\,mV$ vorliegt. Bei einer Erhöhung der Hall-Spannung um den Faktor 7 ist dies eine zufriedenstellende Entwicklung im Vergleich zur 1. Generation.\paragraph{}
+Die gemessenen Spannungen sind zwar immer noch zu niedrig, um mit dem verwendeten Voltmeter gemessen zu werden, aber nun im Bereich, in dem ein präzisions-Operationsverstärker sie ohne Gefahr größerer Messwertverfälschungen auf das zum Messen benötigte Niveau verstärken kann. Außerdem stellt es sich Aufgrund methodischer Einschränkungen als schwierig heraus, das Layout weiter zu komprimieren. Deshalb sei die 2. Generation des Layouts als Grundlage für den selbst zu bauenden Sensor zu sehen.
+%insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing, go on about possible problems with values and disparities to expected performance (can calculate wirth rh), need for amp
 
 
-\subsection{Praktische Implementierung des Sensors - begründung für silberpaddaten}
+\subsection{Praktische Implementierung des Sensors}
+Im Grundaufbau besteht der geplante X-Hall-Aufbau nur aus einem p-dotierten Wafer als Hall-Material, den auf diesen aufgebrachten Kontakten und Mess- sowie Versorgungselektronik.\newline
+Die verwendeten Wafer wurden großzügigerweise vom Hersteller \textbf{MicroChemicals GmbH} für Forschungszwecke zur Verfügung gestellt.\newline
+Bei den Wafern handelt es sich um 5 MicroChemicals ``WSD20279200P1314SNN1'' Prime-Grade Wafer mit einer Dicke von $279\pm20\,\mu{m}$ und einem Duchmesser von $2\,in$. Der Widerstand liegt zwischen $1\,\Omega$ und $10\,\Omega$.\newline
+Zum Aufbringen der Kontaktpads wird MGChemicals ``842UR'' Farbe mit Leitfähigkeit verwendet, welche nach trocknen einen Widerstand von $1.5\cdot10^{-4}\,\Omega{cm}$ besitzt.\newline
+Bei dem genutzten Voltmeter handelt es sich um den ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser Messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
+Um diese Auslesespannungen zu erreichen, wird der TexasInstruments ``INA128U'' Operationsverstärker genutzt, der speziell für die Verstärkung sehr kleiner Potentialunterschiede entwickelt wurde. Metallschichtwiderstände werden verwendet, um den Gain des Verstärkers zu setzen und dieser wird mittels geschirmten 2-Ader-Kabeln mit der Restelektronik verbunden, um Verfälschung der Messwerte zu verhindern.\paragraph{}
+Für eine spätere praktische Implementierung des Sensors wie in Kapitel 4.2 angedeutet, wird für einen ersten Versuch die 2. Generation des Sensorlayouts verwendet werden.\newline
+Im ersten Schritt werden die Kontaktpads auf den Wafer aufgebracht werden. Dies wird, aus Gründen des Kontaminationsschutzes und der Giftigkeit der Silberfarbe, unter einer vorher ordentlich gereinigten Abzugshaube geschehen. Durch eine vorher 3D-gedruckte Maske mit dem Layout wird dann im nächsten Schritt mehrfach mit einem Pinsel die Silberfarbe aufgetragen werden. Wenn genug Schichten aufgetragen sind, wird die Silberfarbe anschließend nach Herstellerangaben in einem Ofen getrocknet werden.\newline
+Aufgrund der Auflösung des für die Maske verwendeten 3D-Druckers und der Pinseldicke sowie durch den händischen Prozess zu erwartende Toleranzen wird die minimal erreichbare Größe von aufgebrachten Merkmalen als $0.4\,mm$ bis $0.5\,$ angenommen.\newline
+Die nach dem X-Hall-Schema zu verbindenden Auslesekontakte werden nach dem Trocknen der Farbe entweder per Silberfarbe oder angelöteten Kabeln verbunden. Anschließend werden beide Kontaktpaare an den Operationsverstärker angeschlossen werden, dessen Ausgang wiederum mit dem Voltmeter verbunden wird.\newline
+Sollte man während einer der Schritte Merkmale des Sensors elektrisch nach außen isolieren oder trennen wollen, empfiehlt sich Polyimid-Folie.\newline
+Die Vorspannungskontakte werden mit einem Netzteil verbunden beziehungsweise geerdet. Der Verstärker wird über 4 AA-Batterien betrieben, so dass die mindestens benötigten $4.5\,V$ Input-Spannung erhält. Fig.~\ref{fig:2} zeigt einen entsprechenden schematischen Schaltplan.\paragraph{}
+Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case transportfähig gemacht und anschließend mittig zwischen den Helmholtz-Spulen positioniert, wo anschließend die Hall-Spannungen für die in Kapitel 4.2 angegebenen Magnetfelder gemessen werden.
 %talk about used components and exact specs of them, general build-layout of the system, go on about practical implementation of pads and traces and predicted min values for pad / trace size, go on about additional material / stuff needed like stable transport case, ...
 
 
 \section{Vergleich mit anderen Hall-Sensoren}
 \subsection{Quantitativer Vergleich}
-%compare measurements of  datasets measured practically to sims, e.g. accuracy, data wobble (standardabweichung) and short-term stability, sensitivity, offsets not possible to determine for bought sensors, show why some comparisons sadly are not possible(heat, long term drift, etc.), bandwith only partially doable since only one was tested with real sensors
 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			unbounded coords=jump,
+			clip=false,
+			xlabel={Zeit in $s$},
+			ylabel={Magnetfeldstärke in $\mu{T}$},
+			xmin=0, 
+			ymin=-100, 
+			ytick={-100,0,100,200,300,400,500,600,700},
+			minor x tick num=5,
+			minor y tick num=3,
+			ymajorgrids=true,
+			grid style=dashed,
+			legend pos=north west
+			]
+			\addplot [
+			color=blue
+			] 
+			table[x= Time (s),y= Absolute field (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Tablet 12.09.2025.csv};
+			\addplot [
+			color=red
+			] 
+			table[y= Magnetic Field x (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Tablet 12.09.2025.csv};
+			\addplot [
+			color=green
+			] 
+			table[y= Magnetic Field y (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Tablet 12.09.2025.csv};
+			\addplot [
+			color=orange
+			] 
+			table[y= Magnetic Field z (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Tablet 12.09.2025.csv};			
+			\legend{1. Generation, 2. Generation}	
+		\end{axis}
+	\end{tikzpicture}
+	\captionsetup{type=graph,name=Graph}
+	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
+	\label{hallV2}
+\end{figure}\paragraph{}
+
+
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			unbounded coords=jump,
+			clip=false,
+			xlabel={Zeit in $s$},
+			ylabel={Magnetfeldstärke in $\mu{T}$},
+			xmin=0, 
+			ymin=-100, 
+			ytick={-100,0,100,200,300,400,500,600,700},
+			minor x tick num=5,
+			minor y tick num=3,
+			ymajorgrids=true,
+			grid style=dashed,
+			legend pos=north west
+			]
+			\addplot [
+			color=blue
+			] 
+			table[x= Time (s),y= Absolute field (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Handy 12.09.2025.csv};
+			\addplot [
+			color=red
+			] 
+			table[y= Magnetic Field x (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Handy 12.09.2025.csv};
+			\addplot [
+			color=green
+			] 
+			table[y= Magnetic Field y (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Handy 12.09.2025.csv};
+			\addplot [
+			color=orange
+			] 
+			table[y= Magnetic Field z (µT),col sep=semicolon, /pgf/number format/read comma as period, each nth point=35]{Magnetometer Handy 12.09.2025.csv};			
+			\legend{1. Generation, 2. Generation}	
+		\end{axis}
+	\end{tikzpicture}
+	\captionsetup{type=graph,name=Graph}
+	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
+	\label{hallV2}
+\end{figure}\paragraph{}
+
+
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			unbounded coords=jump,
+			clip=false,
+			xlabel={Zeit in $s$},
+			ylabel={Magnetfeldstärke in $\mu{T}$},
+			xmin=0, 
+			ymin=-1, 
+			ytick={-1,0,1,2,3,4,5,6,7},
+			minor x tick num=5,
+			minor y tick num=3,
+			ymajorgrids=true,
+			grid style=dashed,
+			legend pos=north west
+			]
+			\addplot [
+			color=blue
+			] 
+			table[x= Time (s) Run 1,y= |Resultant| Magnetic Field Strength (G) Run 1,col sep=comma, each nth point=15]{Measurements 12.09.2025 Pasco sensor.csv};
+			\addplot [
+			color=red
+			] 
+			table[y= X Magnetic Field Strength (G) Run 1,col sep=comma, each nth point=15]{Measurements 12.09.2025 Pasco sensor.csv};
+			\addplot [
+			color=green
+			] 
+			table[y= Y Magnetic Field Strength (G) Run 1,col sep=comma, each nth point=15]{Measurements 12.09.2025 Pasco sensor.csv};
+			\addplot [
+			color=orange
+			] 
+			table[y= Z Magnetic Field Strength (G) Run 1,col sep=comma, each nth point=15]{Measurements 12.09.2025 Pasco sensor.csv};			
+			\legend{1. Generation, 2. Generation}	
+		\end{axis}
+	\end{tikzpicture}
+	\captionsetup{type=graph,name=Graph}
+	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
+	\label{hallV2}
+\end{figure}\paragraph{}
+
+%compare measurements of  datasets measured practically to sims, e.g. accuracy, data wobble (standardabweichung) and short-term stability, sensitivity, offsets not possible to determine for bought sensors, show why some comparisons sadly are not possible(heat, long term drift, etc.), bandwith only partially doable since only one was tested with real sensors
 \subsection{Qualitativer Vergleich}	
 %how easy to get / use / implement / integrate into systems, learning curve, range of data read out / readable, easiness to transport / practical use (e.g. additional exquiment for measurements with practical x-hall needed)->e.g. size, susceptability to damage / long term deterioration (x-hall outperforms due to manual imfluence), learning effect	
-
 \section{Fazit}
 
 
