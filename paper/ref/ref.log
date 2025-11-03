@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  31 OCT 2025 00:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  2 NOV 2025 00:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -914,7 +914,7 @@ File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count356
 ) (ref.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
-(babel)             Reported on input line 17.
+(babel)             Reported on input line 8.
 )
 \openout1 = `ref.aux'.
 
@@ -1018,64 +1018,72 @@ Overfull \hbox (4.79001pt too wide) in paragraph at lines 91--96
 ner Smart-pho-nes und erm[]oglichen
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 104
+
+
+[1
+
+{C:/Users/armin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 103
 .
+
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 104
+LaTeX Font Info:    Trying to load font information for U+msb on input line 103
 .
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-LaTeX Warning: Citation `cres19' on page 1 undefined on input line 105.
+LaTeX Warning: Citation `cres19' on page 2 undefined on input line 104.
 
 
-LaTeX Warning: Citation `cres18' on page 1 undefined on input line 106.
+LaTeX Warning: Citation `cres18' on page 2 undefined on input line 105.
 
 
-LaTeX Warning: Citation `cres19' on page 1 undefined on input line 106.
+LaTeX Warning: Citation `cres19' on page 2 undefined on input line 105.
 
 
-LaTeX Warning: Citation `cres20' on page 1 undefined on input line 106.
+LaTeX Warning: Citation `cres20' on page 2 undefined on input line 105.
 
 
-LaTeX Warning: Citation `cres21' on page 1 undefined on input line 106.
+LaTeX Warning: Citation `cres21' on page 2 undefined on input line 105.
 
 
-LaTeX Warning: Citation `cres18' on page 1 undefined on input line 106.
+LaTeX Warning: Citation `cres18' on page 2 undefined on input line 105.
 
 
-LaTeX Warning: Citation `cres19' on page 1 undefined on input line 106.
+LaTeX Warning: Citation `cres19' on page 2 undefined on input line 105.
 
 
-LaTeX Warning: Citation `cres21' on page 1 undefined on input line 106.
+LaTeX Warning: Citation `cres21' on page 2 undefined on input line 105.
 
 
-LaTeX Warning: Citation `cres19' on page 1 undefined on input line 107.
+LaTeX Warning: Citation `cres19' on page 2 undefined on input line 106.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--108
+Underfull \hbox (badness 10000) in paragraph at lines 103--107
 
  []
 
 
-
-[1
-
-{C:/Users/armin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (12.21494pt too wide) in paragraph at lines 109--111
+Overfull \hbox (12.21494pt too wide) in paragraph at lines 108--110
 []\OT1/cmr/m/n/12 Aus die-sen []Uberlegungen re-sul-tier-te die Ent-wick-lung d
 er so-ge-nann-ten X-Hall-Architektur 
  []
 
 
-LaTeX Warning: Citation `cres18' on page 2 undefined on input line 113.
+LaTeX Warning: Citation `cres18' on page 2 undefined on input line 112.
 
 
-LaTeX Warning: Citation `cres20' on page 2 undefined on input line 116.
+LaTeX Warning: Citation `cres20' on page 2 undefined on input line 115.
+
+
+LaTeX Warning: Citation `cres19' on page 2 undefined on input line 117.
+
+
+LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 118.
 
 
 LaTeX Warning: Citation `cres19' on page 2 undefined on input line 118.
@@ -1084,390 +1092,421 @@ LaTeX Warning: Citation `cres19' on page 2 undefined on input line 118.
 LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Citation `cres19' on page 2 undefined on input line 119.
+LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 120.
+LaTeX Warning: Citation `cres20' on page 2 undefined on input line 119.
 
 
-LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 120.
-
-
-LaTeX Warning: Citation `cres20' on page 2 undefined on input line 120.
-
-
-LaTeX Warning: Citation `cres21' on page 2 undefined on input line 122.
+LaTeX Warning: Citation `cres21' on page 2 undefined on input line 121.
 
 
 
 [2]
 
+LaTeX Warning: Citation `cres20' on page 3 undefined on input line 132.
+
+
+LaTeX Warning: Citation `cres21' on page 3 undefined on input line 133.
+
+
 LaTeX Warning: Citation `cres20' on page 3 undefined on input line 133.
 
 
-LaTeX Warning: Citation `cres21' on page 3 undefined on input line 134.
-
-
-LaTeX Warning: Citation `cres20' on page 3 undefined on input line 134.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--135
+Underfull \hbox (badness 10000) in paragraph at lines 131--134
 
  []
-
-
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 136.
 
 
 
 [3]
 
-LaTeX Warning: Citation `cres21' on page 4 undefined on input line 146.
+LaTeX Warning: Reference `fig:2' on page 4 undefined on input line 135.
 
 
-LaTeX Warning: Citation `cres21' on page 4 undefined on input line 150.
+LaTeX Warning: Citation `cres21' on page 4 undefined on input line 145.
 
 
-LaTeX Warning: Citation `cres21' on page 4 undefined on input line 156.
+LaTeX Warning: Citation `cres21' on page 4 undefined on input line 149.
 
 
-LaTeX Warning: Citation `cres19' on page 4 undefined on input line 156.
+LaTeX Warning: Citation `cres21' on page 4 undefined on input line 155.
 
 
-LaTeX Warning: Citation `cres22' on page 4 undefined on input line 158.
+LaTeX Warning: Citation `cres19' on page 4 undefined on input line 155.
 
 
 
 [4]
 
-LaTeX Warning: Citation `cres22' on page 5 undefined on input line 159.
+LaTeX Warning: Citation `cres22' on page 5 undefined on input line 157.
 
 
-LaTeX Warning: Citation `cres23' on page 5 undefined on input line 159.
+LaTeX Warning: Citation `cres22' on page 5 undefined on input line 158.
 
 
-LaTeX Warning: Citation `cres21Hall' on page 5 undefined on input line 159.
+LaTeX Warning: Citation `cres23' on page 5 undefined on input line 158.
 
 
-LaTeX Warning: Citation `cres18' on page 5 undefined on input line 165.
+LaTeX Warning: Citation `cres21Hall' on page 5 undefined on input line 158.
+
+
+LaTeX Warning: Citation `cres18' on page 5 undefined on input line 164.
+
+
+LaTeX Warning: Citation `cres23' on page 5 undefined on input line 165.
+
+
+LaTeX Warning: Citation `cres23' on page 5 undefined on input line 165.
+
+
+LaTeX Warning: Citation `cres21' on page 5 undefined on input line 165.
 
 
 LaTeX Warning: Citation `cres23' on page 5 undefined on input line 166.
 
 
-LaTeX Warning: Citation `cres23' on page 5 undefined on input line 166.
+LaTeX Warning: Citation `cres21Hall' on page 5 undefined on input line 167.
 
 
-LaTeX Warning: Citation `cres21' on page 5 undefined on input line 166.
-
-
-LaTeX Warning: Citation `cres23' on page 5 undefined on input line 167.
-
-
-LaTeX Warning: Citation `cres21Hall' on page 5 undefined on input line 168.
-
-
-LaTeX Warning: Citation `cres21' on page 5 undefined on input line 169.
+LaTeX Warning: Citation `cres21' on page 5 undefined on input line 168.
 
 
 
 [5]
 
-LaTeX Warning: Citation `sukumar07' on page 6 undefined on input line 186.
-
-
-LaTeX Warning: Citation `elmerSolve' on page 6 undefined on input line 188.
+LaTeX Warning: Citation `sukumar07' on page 6 undefined on input line 185.
 
 
 
 [6]
-Overfull \hbox (8.60379pt too wide) in paragraph at lines 195--195
+
+LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 187.
+
+
+Overfull \hbox (8.60379pt too wide) in paragraph at lines 194--194
  [][] \OT1/cmr/m/n/12 Li-nea-re Sys-te-me wer-den in El-mer ent-we-der di-rekt,
  ite-ra-tiv oder []uber Multilevel-Methoden
  []
 
 
-LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 197.
+LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 196.
 
 
-LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 200.
+LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 199.
 
 
-Overfull \hbox (6.77533pt too wide) in paragraph at lines 208--208
+
+[7]
+Overfull \hbox (6.77533pt too wide) in paragraph at lines 207--207
 []\OT1/cmr/bx/n/14.4 Entwicklung ei-nes Sensor-Layouts - wei-ter un-ter-glie-de
 rn oder
  []
 
 
-LaTeX Warning: Citation `elmerModel' on page 7 undefined on input line 212.
+LaTeX Warning: Citation `elmerModel' on page 8 undefined on input line 211.
 
 
-
-[7]
 
 [8
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.303 \end{equation}
-                    
+l.278 \end{center}
+                  
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.303 \end{equation}
-                    
+l.278 \end{center}
+                  
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.303 \end{equation}
-                    
+l.278 \end{center}
+                  
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.303 \end{equation}
-                    
+l.278 \end{center}
+                  
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.303 \end{equation}
-                    
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.303 \end{equation}
-                    ]
-
-LaTeX Warning: Citation `elmerModel' on page 9 undefined on input line 311.
-
-
+l.278 \end{center}
+                  ]
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.317 \begin{equation}
+l.283 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.317 \begin{equation}
+l.283 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.317 \begin{equation}
+l.283 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.317 \begin{equation}
+l.283 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.331 \begin{equation}
+l.298 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.331 \begin{equation}
+l.298 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.331 \begin{equation}
+l.298 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.331 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.338 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.338 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.338 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.338 \begin{equation}
+l.298 \begin{equation}
                       
 
-[9
+LaTeX Warning: Citation `elmerModel' on page 9 undefined on input line 310.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.342 \end{equation}
-                    ]
+<to be read again> 
+                   \relax 
+l.316 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.316 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.316 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.316 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.330 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.330 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.330 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.330 \begin{equation}
+                      
 
-LaTeX Warning: Citation `cres23' on page 10 undefined on input line 355.
+[9]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.337 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.337 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.337 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.337 \begin{equation}
+                      
+
+LaTeX Warning: Citation `cres23' on page 10 undefined on input line 354.
 
 
-LaTeX Warning: Reference `fig:3' on page 10 undefined on input line 355.
+LaTeX Warning: Reference `fig:3' on page 10 undefined on input line 354.
 
 
 
 [10]
 
-LaTeX Warning: Citation `bowdenDopes' on page 11 undefined on input line 362.
+LaTeX Warning: Citation `bowdenDopes' on page 11 undefined on input line 361.
 
 
-LaTeX Warning: Reference `fig:1' on page 11 undefined on input line 364.
-
-
-LaTeX Warning: Reference `hallV1' on page 11 undefined on input line 369.
+LaTeX Warning: Reference `fig:1' on page 11 undefined on input line 363.
 
 
 
 [11]
 
-LaTeX Warning: Citation `cres18' on page 12 undefined on input line 381.
+LaTeX Warning: Reference `hallV1' on page 12 undefined on input line 368.
 
 
 
 [12]
 
-LaTeX Warning: Reference `hallV2' on page 13 undefined on input line 384.
+LaTeX Warning: Citation `cres18' on page 13 undefined on input line 380.
+
+
+LaTeX Warning: Reference `hallV2' on page 13 undefined on input line 383.
 
 
 
 [13]
 
-LaTeX Warning: Reference `fig:2' on page 14 undefined on input line 404.
+LaTeX Warning: Reference `fig:2' on page 14 undefined on input line 403.
 
 
 
 [14]
 
-LaTeX Warning: Citation `ceidari15' on page 15 undefined on input line 426.
+LaTeX Warning: Citation `ceidari15' on page 15 undefined on input line 425.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.427 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.427 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.427 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.427 \begin{equation}
-                      
 
 [15]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.426 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.426 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.426 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.426 \begin{equation}
+                      
 
-LaTeX Warning: Citation `cres20' on page 16 undefined on input line 438.
+LaTeX Warning: Citation `cres20' on page 16 undefined on input line 437.
 
 
-LaTeX Warning: Citation `ceidari15' on page 16 undefined on input line 441.
+LaTeX Warning: Citation `ceidari15' on page 16 undefined on input line 440.
 
 
-LaTeX Warning: Citation `sensordb' on page 16 undefined on input line 442.
-
-
-LaTeX Warning: Citation `sensordb' on page 16 undefined on input line 445.
+LaTeX Warning: Citation `sensordb' on page 16 undefined on input line 441.
 
 
 
 [16]
 
-LaTeX Warning: Citation `texInsAmp' on page 17 undefined on input line 453.
+LaTeX Warning: Citation `sensordb' on page 17 undefined on input line 444.
+
+
+LaTeX Warning: Citation `texInsAmp' on page 17 undefined on input line 452.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.455 \begin{equation}
+l.454 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.455 \begin{equation}
+l.454 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.455 \begin{equation}
+l.454 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.455 \begin{equation}
+l.454 \begin{equation}
                       
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.468 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.468 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.468 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.468 \begin{equation}
-                      
-
-LaTeX Warning: Citation `texInsAmp' on page 17 undefined on input line 479.
-
-
 
 [17]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.467 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.467 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.467 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.467 \begin{equation}
+                      
+
+LaTeX Warning: Citation `texInsAmp' on page 18 undefined on input line 478.
+
+
 
 [18]
 
@@ -1486,9 +1525,9 @@ Package rerunfilecheck Info: File `ref.out' has not changed.
 (rerunfilecheck)             Checksum: 8EAA8BF5E2ED004DE21A805333D0B0B9;3160.
  ) 
 Here is how much of TeX's memory you used:
- 36851 strings out of 468130
- 855929 string characters out of 5430632
- 1348496 words of memory out of 5000000
+ 36850 strings out of 468130
+ 855918 string characters out of 5430632
+ 1348497 words of memory out of 5000000
  64803 multiletter control sequences out of 15000+600000
  636004 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1516,9 +1555,9 @@ Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/armin
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Use
 rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 >
-Output written on ref.pdf (20 pages, 313135 bytes).
+Output written on ref.pdf (20 pages, 313516 bytes).
 PDF statistics:
- 380 PDF objects out of 1000 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 112 named destinations out of 1000 (max. 500000)
  133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
