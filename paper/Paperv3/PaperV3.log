@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  3 NOV 2025 13:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  3 NOV 2025 13:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -126988,11 +126988,12 @@ Overfull \hbox (44.38976pt too wide) in paragraph at lines 841--864
  [] 
  []
 
+
+
+[28]
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-
-[28]
 
 [29]
 
@@ -127013,7 +127014,7 @@ Package rerunfilecheck Info: File `PaperV3.out' has not changed.
 Here is how much of TeX's memory you used:
  38443 strings out of 468130
  884957 string characters out of 5430632
- 1784075 words of memory out of 5000000
+ 1769940 words of memory out of 5000000
  66203 multiletter control sequences out of 15000+600000
  638495 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -127043,7 +127044,7 @@ rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
 msy8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on PaperV3.pdf (31 pages, 595319 bytes).
+Output written on PaperV3.pdf (31 pages, 595323 bytes).
 PDF statistics:
  711 PDF objects out of 1000 (max. 8388607)
  285 named destinations out of 1000 (max. 500000)
