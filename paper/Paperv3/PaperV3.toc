@@ -11,7 +11,7 @@
 \contentsline {paragraph}{}{9}{section*.8}%
 \contentsline {paragraph}{}{9}{section*.9}%
 \contentsline {section}{\numberline {3}Praktische Umsetzung des X-Hall-Sensors}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Die Finite Element Methode}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}Die ``Finite Element'' Methode}{10}{subsection.3.1}%
 \contentsline {paragraph}{}{10}{section*.10}%
 \contentsline {paragraph}{}{10}{section*.11}%
 \contentsline {paragraph}{}{10}{section*.12}%
@@ -19,7 +19,7 @@
 \contentsline {paragraph}{}{11}{section*.14}%
 \contentsline {paragraph}{}{11}{section*.15}%
 \contentsline {paragraph}{}{11}{section*.16}%
-\contentsline {subsection}{\numberline {3.2}Entwicklung eines Sensor-Layouts - weiter untergliedern oder umarrangieren?}{11}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Entwicklung eines Sensor-Layouts}{11}{subsection.3.2}%
 \contentsline {paragraph}{}{11}{section*.17}%
 \contentsline {paragraph}{}{13}{section*.26}%
 \contentsline {paragraph}{}{13}{section*.27}%

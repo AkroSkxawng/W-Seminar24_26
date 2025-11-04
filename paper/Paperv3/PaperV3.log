@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  3 NOV 2025 13:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.3)  3 NOV 2025 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1080,12 +1080,12 @@ ner Smart-pho-nes und erm[]oglichen
 
 
 [4]
-<Image Sources/Fig1.1.png, id=127, 182.93344pt x 152.06813pt>
+<Image Sources/Fig1.1.png, id=126, 182.93344pt x 152.06813pt>
 File: Image Sources/Fig1.1.png Graphic file (type png)
 <use Image Sources/Fig1.1.png>
 Package pdftex.def Info: Image Sources/Fig1.1.png  used on input line 151.
 (pdftex.def)             Requested size: 171.14238pt x 142.26378pt.
-<Image Sources/Fig1.2.png, id=129, 581.17125pt x 581.17125pt>
+<Image Sources/Fig1.2.png, id=128, 581.17125pt x 581.17125pt>
 File: Image Sources/Fig1.2.png Graphic file (type png)
 <use Image Sources/Fig1.2.png>
 Package pdftex.def Info: Image Sources/Fig1.2.png  used on input line 154.
@@ -1095,7 +1095,7 @@ Package pdftex.def Info: Image Sources/Fig1.2.png  used on input line 154.
 [5]
 
 [6 <./Image Sources/Fig1.1.png> <./Image Sources/Fig1.2.png>]
-<Image Sources/Fig2.png, id=160, 466.74374pt x 246.9225pt>
+<Image Sources/Fig2.png, id=159, 466.74374pt x 246.9225pt>
 File: Image Sources/Fig2.png Graphic file (type png)
 <use Image Sources/Fig2.png>
 Package pdftex.def Info: Image Sources/Fig2.png  used on input line 174.
@@ -1107,17 +1107,11 @@ Package pdftex.def Info: Image Sources/Fig2.png  used on input line 174.
 [8]
 
 [9]
+
+[10]
 Overfull \hbox (8.60379pt too wide) in paragraph at lines 238--238
  [][] \OT1/cmr/m/n/12 Li-nea-re Sys-te-me wer-den in El-mer ent-we-der di-rekt,
  ite-ra-tiv oder []uber Multilevel-Methoden
- []
-
-
-
-[10]
-Overfull \hbox (6.77533pt too wide) in paragraph at lines 251--251
-[]\OT1/cmr/bx/n/14.4 Entwicklung ei-nes Sensor-Layouts - wei-ter un-ter-glie-de
-rn oder
  []
 
 
@@ -127009,11 +127003,11 @@ L3 programming layer <2025-09-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `PaperV3.out' has not changed.
-(rerunfilecheck)             Checksum: 33898EF4876ECECBCDCD897B5D0FB3E1;3222.
+(rerunfilecheck)             Checksum: 76913D71999DA6507596BACFA4D6E5C0;3012.
  ) 
 Here is how much of TeX's memory you used:
- 38443 strings out of 468130
- 884957 string characters out of 5430632
+ 38444 strings out of 468130
+ 885145 string characters out of 5430633
  1769940 words of memory out of 5000000
  66203 multiletter control sequences out of 15000+600000
  638495 words of font info for 85 fonts, out of 8000000 for 9000
@@ -127044,9 +127038,9 @@ rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
 msy8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on PaperV3.pdf (31 pages, 595323 bytes).
+Output written on PaperV3.pdf (31 pages, 596652 bytes).
 PDF statistics:
- 711 PDF objects out of 1000 (max. 8388607)
- 285 named destinations out of 1000 (max. 500000)
+ 713 PDF objects out of 1000 (max. 8388607)
+ 286 named destinations out of 1000 (max. 500000)
  148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

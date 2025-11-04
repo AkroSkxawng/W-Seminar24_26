@@ -96,7 +96,7 @@ name=Graph            % caption prefix
 \pagebreak
 
 \begin{abstract}
-	In dieser Arbeit wird die Konzeption und Simulation eines Hall-Sensors auf Basis der X-Hall-Architektur vorgestellt, der zur Erfassung magnetischer Flussdichten dient und möglicherweise Potenzial als experimentelle Alternative zu in Smartphones integrierten Magnetfeldsensoren besitzt. Mithilfe der Finite-Elemente-Methode (FEM) wurde das elektrische Verhalten des Sensors analysiert und die Auswirkungen von Geometrie, Materialwahl und Kontaktierung untersucht. Die Simulationsergebnisse zeigen, dass der entworfene Sensor prinzipiell funktionsfähig ist und eine Grundlage für zukünftige Optimierungen bietet. Neben den technischen Ergebnissen unterstreicht die Arbeit den didaktischen Wert eines eigenständig entwickelten Sensors im schulischen oder experimentellen Kontext.
+	In dieser Arbeit wird die Konzeption und Simulation eines Hall-Sensors auf Basis der X-Hall-Architektur vorgestellt, der zur Erfassung magnetischer Flussdichten dient und möglicherweise Potenzial als experimentelle Alternative zu in Smartphones integrierten Magnetfeldsensoren besitzt. Mithilfe der Finite-Elemente Methode (FEM) wurde das elektrische Verhalten des Sensors analysiert und die Auswirkungen von Geometrie, Materialwahl und Kontaktierung untersucht. Die Simulationsergebnisse zeigen, dass der entworfene Sensor prinzipiell funktionsfähig ist und eine Grundlage für zukünftige Optimierungen bietet. (Neben den technischen Ergebnissen unterstreicht die Arbeit den didaktischen Wert eines eigenständig entwickelten Sensors im schulischen oder experimentellen Kontext. - \textbf{applicable?})
 \end{abstract}
 \thispagestyle{empty}
 \pagebreak
@@ -108,11 +108,11 @@ name=Graph            % caption prefix
 
 
 \section{Einleitung}
-Magnetfeldsensoren sind ein integraler Bestandteil moderner Smartphones und ermöglichen Anwendungen wie Kompassfunktionen, Positionsbestimmungen und metallische Objekterkennung. Die physikalische Grundlage vieler solcher Sensoren bildet der Hall-Effekt, der eine präzise Messung magnetischer Flussdichten durch die Detektion von durch Ladungsverschiebungen entstehenden Potentialunterschieden erlaubt.\newline
+Magnetfeldsensoren sind ein integraler Bestandteil moderner Smartphones und ermöglichen Anwendungen wie Kompassfunktionen, Positionsbestimmungen und metallische Objekterkennung. Die physikalische Grundlage vieler solcher Sensoren bildet der Hall-Effekt, der eine präzise Messung magnetischer Felder durch die Detektion von durch Ladungsverschiebungen entstehenden Potentialunterschieden erlaubt.\newline
 Kommerzielle Hall-Sensoren sind technisch sehr ausgereift, jedoch meist nicht in ihren physikalischen Grundlagen nachvollziehbar oder individuell anpassbar. Für den schulischen oder experimentellen Kontext stellt sich daher die Frage, inwieweit ein eigenständig konzipierter Sensor vergleichbare Messungen liefern kann.\newline
 Ziel dieser Arbeit ist es, einen eigenen Hall-Sensor auf Basis der X-Hall-Architektur zu entwerfen und seine Eigenschaften mithilfe numerischer Simulationen zu analysieren. Dabei soll insbesondere untersucht werden, inwieweit ein solcher Sensor als experimentelle Alternative zu in Smartphones integrierten Magnetfeldsensoren oder kommerziell verfügbaren Sensormodulen dienen kann.\newline
-Aufgrund begrenzter Materialverfügbarkeit und des hohen Aufwands praktischer Tests liegt der Schwerpunkt auf der theoretischen Konzeption und der Simulation mithilfe der Finite-Elemente-Methode (FEM). Diese ermöglicht es, Layout, Materialwahl und elektrische Eigenschaften des Sensors bereits im Vorfeld systematisch zu untersuchen.\newline
-Die Arbeit gliedert sich in einen theoretischen Teil, in dem die physikalischen Grundlagen und die Wahl des X-Hall-Layouts erläutert werden, sowie in einen praktischen Abschnitt, der die Konzeption, Simulation und Auswertung des Modells beschreibt. Abschließend werden die Ergebnisse kritisch bewertet und mögliche Weiterentwicklungen aufgezeigt.
+Aufgrund begrenzter Materialverfügbarkeit und des hohen Aufwands praktischer Tests liegt der Schwerpunkt auf der theoretischen Konzeption und der Simulation mithilfe der Finite-Elemente Methode (FEM). Diese ermöglicht es, Layout, Materialwahl und elektrische Eigenschaften des Sensors bereits im Vorfeld systematisch zu untersuchen.\newline
+Die Arbeit gliedert sich in einen theoretischen Teil, in dem die physikalischen Grundlagen und die Wahl des X-Hall-Layouts erläutert werden, sowie in einen praktischen Abschnitt, der die Konzeption, Simulation und Auswertung des Modells beschreibt. Abschließend werden die Ergebnisse kritisch bewertet( und mögliche Weiterentwicklungen aufgezeigt - \textbf{wird es das?}).
 
 
 \section{Funktionsweise der X-Hall-Architektur}
@@ -199,7 +199,7 @@ Praktisch zeigt sich folgendes Bild:\paragraph{}
 Nach \cite{cres21} hat die X-Hall-Architektur das Potential, bis zu 200\,MHz oder mehr Messbandbreite zu realisieren, ohne dabei wie zuvor bestehende Lösungen hochkomplex in der Umsetzung zu sein. In der Praxis wurden bisher jedoch maximal Sensorbandbreiten um  20\,MHz\,\cite{cres19} erreicht.\newline
 Dies lässt sich vor allem dadurch erklären, dass für höhere Bandbreiten keine Stabilität der Messwerte und der Messwertverstärkung mehr zu garantieren ist, insbesondere Aufgrund perturbativer, induzierter Effekte in Anschlusskabeln und parasitärer Effekte.\paragraph{}
 Des Weiteren wird eine frequenzunabhängige Offsetkompensation erreicht, wobei hochentwickelte Spinning-Current-Hall-Sensoren immer noch wesentlich geringere Offsets erreichen können, dafür aber wesentlich geringere Bandbreiten haben. In \cite{cres22} wird konkret von $\Delta{V_{OS}}=116\,\mu{V}\pm1\mu{V}$ für den dort verwendeten X-Hall-Sensor gesprochen, während Spinning-Current-Modelle bis $\Delta{V_{OS}}=15\,\mu{V}$ und niedriger reichen können. Anzumerken ist, dass die von X-Hall-Sensoren erreichten Offsets aber trotzdem verhältnismäßig gering sind, wenn man sie mit anderen Sensoren vergleicht.\paragraph{}
-\cite{cres22} und \cite{cres23} zeigen weiter auf, dass die X-Hall-Architektur verhältnismäßig ``limitierte Sensitivität'' [sic] im Vergleich zu anderen Sensorarchitekturen besitzt. So wird in \cite{cres21Hall} dem X-Hall-Sensor eine Sensitivität von 36\,mv/A zugeordnet, während fast alle anderen dort aufgeführten Hall-Sensoren höhere Sensitivität bis zu 100\,mv/A aufweisen (Hohe Sensibilität ist für Detektion von schwachen Feldern essenziell). 
+\cite{cres22} und \cite{cres23} zeigen weiter auf, dass die X-Hall-Architektur verhältnismäßig ``limitierte Sensitivität'' [sic] im Vergleich zu anderen Sensorarchitekturen besitzt. So wird in \cite{cres21Hall} dem X-Hall-Sensor eine Sensitivität von 36\,mv/A zugeordnet, während fast alle anderen dort aufgeführten Hall-Sensoren höhere Sensitivität bis zu 100\,mv/A aufweisen (Hohe Sensitivität ist für Detektion von schwachen Feldern essenziell). 
 
 
 \subsection{(Erwartete) Leistungscharakteristika der Architektur}
@@ -207,25 +207,25 @@ Aufgrund des noch jungen Entwicklungsstands ist die Architektur bislang kaum ver
 
 Aus \cite{cres18} lässt sich herauslesen, dass für einen Hall-Sensor dieser Spezifikation die durchschnittliche $\Delta{V_{OS}}=-0,27\,mV$, wobei eine sehr hohe Standardabweichung von $\sigma=0,64\,mV$ vorliegt.\newline
 Bei längerer Betriebsdauer sind nach \cite{cres23} Standardabweichungen von etwa $\sigma=26\,mA$ und Offset-Drifts von etwa 0,33\,mA/h zu erwarten, was äquivalent zu Magnetfeldern mit einer Streuung von etwa $\sigma=197\,\mu{T}$ und einem Drift von etwa $2,5\,\mu{T}/h$ ist.\,\footnote{\cite{cres23} nutzt eine modifizierte Variante des Sensors, der statt einer Spannung eine Stromstärke ausgibt; \cite{cres21} bestätigt diese Werte aber in etwa}\newline
-Für die wahrscheinlichere Temperaturregion des Sensors von etwa 30\,°C bis 100\,°C ist ein Temperaturkoeffizient von etwa -4,1\,mA/°C laut \cite{cres23} zu erwarten.\newline
+Für die typischerweise vorliegende Temperaturregion des Sensors von etwa 30\,°C bis 100\,°C\,\footnote{Insbesondere Stromversorgende Kreisläufe, einer der Hauptanwendungen des Sensors arbeiten meist bei hohen internen Temperaturen} ist ein Temperaturkoeffizient von etwa -4,1\,mA/°C laut \cite{cres23} zu erwarten.\newline
 Die Sensitivität liegt nach \cite{cres21Hall} bei etwa 36\,mV/A, die dynamische Reichweite bei 52\,dB \footnote{Verhältnis von etwa 1:398 vom kleinsten zum größten messbaren Magnetfeld} und das Rauschen bei unter 100\,mA RMS / 3,6\,mV RMS.\,\footnote{RMS (Root Mean Square) beschreibt den Effektivwert einer Wechselgröße und dient als Maß für ihre mittlere Leistung}\newline
-Wir nehmen eine Bandbreite des Sensors von etwa 4\,MHz an\,\cite{cres21}. \paragraph{}
+Wir nehmen eine Bandbreite des Sensors von etwa 4\,MHz an, sprich der Sensor kann pro Sekunde 4.000.000 verlässliche Messungen durchführen\,\cite{cres21}. \paragraph{}
 
-Aufgrund der hohen erreichbaren Sensorbandbreite, der frequenzunabhängigen Offsetkompensation und insbesondere der einfachen Architektur und Implementierung im Vergleich zu anderen geeigneten Sensordesigns eignet sich die X-Hall-Architektur besonders gut für experimentelle Eigenentwicklungen, wie sie im weiteren Verlauf dieser Arbeit umgesetzt wird. %/Aufgrund der hohen erreichbaren Bandbreite, der frequenzunabhängigen Offsetkompensation und der vergleichsweise einfachen Implementierung eignet sich die X-Hall-Architektur besonders gut für experimentelle Eigenentwicklungen wie die im Rahmen dieser Arbeit umgesetzte.
+Aufgrund der hohen erreichbaren Sensorbandbreite, der frequenzunabhängigen Offsetkompensation und insbesondere der einfachen Architektur und Implementierung im Vergleich zu anderen geeigneten Sensordesigns eignet sich die X-Hall-Architektur besser für experimentelle Eigenentwicklungen, wie sie im weiteren Verlauf dieser Arbeit beschrieben werden. %/Aufgrund der hohen erreichbaren Bandbreite, der frequenzunabhängigen Offsetkompensation und der vergleichsweise einfachen Implementierung eignet sich die X-Hall-Architektur besonders gut für experimentelle Eigenentwicklungen wie die im Rahmen dieser Arbeit umgesetzte.
 
 \section{Praktische Umsetzung des X-Hall-Sensors}
 Das wichtigste Element einer erfolgreichen praktischen Umsetzung ist eine sorgfältige Planung und Vorbereitung.\newline 
-Da im Rahmen dieser Arbeit der Schwerpunkt aus zeitlichen Einschränkungen auf der Konzeption und technischen Auslegung des Sensors liegt, wird im Folgenden die Planung der Umsetzung vorgestellt. Dabei werden insbesondere die Materialauswahl, die geometrische Gestaltung der Sensorstruktur sowie der geplante elektrische Aufbau behandelt.\newline
-Ein wesentlicher Bestandteil dieser Planungsphase ist die Simulation der Sensorstruktur mithilfe numerischer Verfahren, um die Funktion und Effizienz des Layouts bereits vor der praktischen Realisierung zu überprüfen. (Im Folgenden wird gezeigt, wie solche numerischen Methoden konkret zur Entwicklung eines geeigneten Sensorlayouts eingesetzt werden.)
+Da im Rahmen dieser Arbeit der Schwerpunkt aus zeitlichen Einschränkungen auf der Konzeption und technischen Auslegung des Sensors liegt, wird hier die Planung und Vorbereitung der Umsetzung vorgestellt\,(Eine tatsächliche Umsetzung wird für ``Jugend Forscht!'' 2026 erfolgen). Dabei werden insbesondere die Materialauswahl, die geometrische Gestaltung der Sensorstruktur sowie der geplante elektrische Aufbau behandelt.\newline
+Ein wesentlicher Bestandteil dieser Planungsphase ist die Simulation der Sensorstruktur mithilfe numerischer Verfahren, um die Funktion und Effizienz des Layouts bereits vor der praktischen Realisierung zu überprüfen. Im Folgenden wird gezeigt, wie solche numerischen Methoden konkret zur Entwicklung eines geeigneten Sensorlayouts eingesetzt werden.
 
-\subsection{Die Finite Element Methode}
-Da die Ausgangsmaterialien für den Sensor nicht leicht erhältlich sind, empfiehlt es sich, vor tatsächlichen praktischen Versuchen zunächst den Sensor und dessen Verhalten zu simulieren, um leicht vermeidbare Fehler zu identifizieren und zu vermeiden. In diesem Fall betrifft das insbesondere das Layout des Sensors und seiner Kontakte.\paragraph{}
+\subsection{Die ``Finite Element'' Methode}
+Da die Ausgangsmaterialien für den Sensor nicht leicht erhältlich beziehungsweise teuer sind, empfiehlt es sich, vor tatsächlichen praktischen Versuchen zunächst den Sensor und dessen Verhalten zu simulieren, um vorab Fehler zu identifizieren und zu vermeiden. In diesem Fall betrifft das insbesondere das Layout des Sensors und seiner Kontakte.\paragraph{}
 
-Eine weit verbreitete Methode solche Simulationen durchzuführen sind Programme, die auf der Finite-Elemente-Methode (FEM) basieren. Typische in der Forschung verwendete Programme sind unter anderem Abaqus, Ansys, COMSOL Multiphysics, SimScale und ElmerFEM.\newline
+Eine weit verbreitete Methode solche Simulationen durchzuführen sind Programme, die auf der Finite-Elemente Methode (FEM) basieren. Typische in der Forschung verwendete Programme sind unter anderem Abaqus, Ansys, COMSOL Multiphysics, SimScale und ElmerFEM.\newline
 Für diese Arbeit wurde \textbf{ElmerFEM in der Version 9.0} verwendet, da es eines in der Wissenschaft verbreitetsten OpenSource FEM-Programme ist und ein sehr breites Spektrum für verschiedenste Simulationen bietet.\paragraph{}
 
-Die Finite-Element-Methode ist einfach gesagt ein numerisches Verfahren, um Randwertprobleme zu lösen, die durch partielle Differentialgleichungen beschrieben werden. \newline
-Dabei wird das kontinuierliche physikalische Gebiet zunächst in viele kleine Unterelemente wie beispielsweise Dreiecke oder Tetraeder unterteilt. In jedem dieser Unterelemente wird anschließend die gesuchte physikalische Größe mit einfachen Ansatz- beziehungsweise Formfunktionen angenähert. Aus diesen lokalen Näherungen werden anschließend zuerst lokale Elementgleichungen hergeleitet, bevor diese zu einem globalen Gleichungssystem zusammengesetzt werden. \newline
+Die Finite-Element Methode ist einfach gesagt ein numerisches Verfahren, um Randwertprobleme zu lösen, die durch partielle Differentialgleichungen beschrieben werden. \newline
+Dabei wird das zusammenhängende physikalische Gebiet zunächst in viele kleine Unterelemente wie beispielsweise Dreiecke oder Tetraeder unterteilt. In jedem dieser Unterelemente wird anschließend die gesuchte physikalische Größe mit einfachen Ansatz- beziehungsweise Formfunktionen angenähert. Aus diesen lokalen Näherungen werden anschließend zuerst lokale Elementgleichungen hergeleitet, bevor diese zu einem globalen Gleichungssystem zusammengesetzt werden. \newline
 Nach Anwendung der Rand- und Übergangsbedingungen wird dieses System gelöst, um die Werte an Knotenpunkten zu bestimmen, aus welchen letztendlich die globale, angenäherte Lösung resultiert\,\cite{sukumar07}.\paragraph{}
 
 Elmer kann zwei primäre Arten von Systemen lösen\,\cite{elmerSolve}:
@@ -241,14 +241,14 @@ Direkte Methoden bestimmen die Lösung eines linearen Systems exakt bis zu einer
 Die wichtigsten von Elmer zur Auswahl gestellten direkten Lösungsmethoden sind die Linear Algebra PACKage (LAPACK) Subroutine für Bandmatrizen, die Unsymmetric MultiFrontal Methode (UMFPACK) für dünnbesetzte Systeme und der MUltifrontal Massively Parallel sparse direct Solver (MUMPS) für sehr große, dünnbesetzte Systeme.\paragraph{}
 
 Iterative Methoden generieren eine Sequenz sukzessive genauerer Näherungslösungen. In den meisten Fällen wird die iterative Methode über vorkonditionierte Krylowraum-Methoden gelöst werden. Eine möglichst gute Vorkonditionierung ist hier essenziell, da so das System wesentlich schneller konvergieren kann\,\cite{elmerSolve}.\newline
-Typische iterative Methoden sind die Conjugate Gradient (CG) Methode, die Conjugate Gradient Squared (CGS) Methode, die Biconjugate Gradient Stabilized (BiCGStab) Methode und die Transpose-Free Quasi-Minimal Residual (TFQMR) Methode.\paragraph{}
+(Typische iterative Methoden sind die Conjugate Gradient (CG) Methode, die Conjugate Gradient Squared (CGS) Methode, die Biconjugate Gradient Stabilized (BiCGStab) Methode und die Transpose-Free Quasi-Minimal Residual (TFQMR) Methode. - \textbf{eventuell streichen})\paragraph{}
 
 Bei der für die Simulationen genutzten Solver handelt es sich um den MUMPS-Solver, da so nicht nur möglichst genaue sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa 60.000 Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 
 
 
 
 
-\subsection{Entwicklung eines Sensor-Layouts - weiter untergliedern oder umarrangieren?}
+\subsection{Entwicklung eines Sensor-Layouts}
 Diese Simulationen bilden die Grundlage für die Entwicklung eines optimalen Sensor-Layouts, da die Anordnung der Kontakte entscheidend dafür ist, ob der Sensor zuverlässige und aussagekräftige Messwerte liefert.\paragraph{}
 
 Das für die Simulationen gewählte Modell ist Elmers Static Current Conduction Model, kurz StatCurrentSolve.\newline 
@@ -385,8 +385,8 @@ Dementsprechend wird für die Imitation des Hall-Effekts jeweils ein Leitfähigk
 \end{equation}
 verwendet werden.\paragraph{}
 
-Wie bereits in \textbf{Kapitel 3.1} beschrieben, erfordert die Finite-Elemente-Simulation die Unterteilung einer kontinuierlichen physikalischen Fläche in viele kleine, endlich große Elemente. Dieser Prozess wird als Meshing bezeichnet. Dabei wird die zu simulierende Geometrie in eine Vielzahl einfacher Unterabschnitte zerlegt, auf denen die zugrunde liegenden Gleichungen jeweils lokal gelöst werden können.\newline
-Für die in dieser Arbeit durchgeführten Simulationen wird das Programm \textbf{Gmsh in der Version 4.13.1} verwendet. Es dient sowohl zur Erstellung der 3D-Modelle als auch zur Erzeugung der Finite-Elemente-Netze und ermöglicht damit eine konsistente Vorbereitung der Eingabedaten für Elmer.\paragraph{}
+Wie bereits in \textbf{Kapitel 3.1} beschrieben, erfordert die Finite-Element Simulation die Unterteilung einer kontinuierlichen physikalischen Fläche in viele kleine, endlich große Elemente. Dieser Prozess wird als Meshing bezeichnet. Dabei wird die zu simulierende Geometrie in eine Vielzahl einfacher Unterabschnitte zerlegt, auf denen die zugrunde liegenden Gleichungen jeweils lokal gelöst werden können.\newline
+Für die in dieser Arbeit durchgeführten Simulationen wird das Programm \textbf{Gmsh in der Version 4.13.1} verwendet. Es dient sowohl zur Erstellung der 3D-Modelle als auch zur Erzeugung der Finite-Element Netze und ermöglicht damit eine konsistente Vorbereitung der Eingabedaten für Elmer.\paragraph{}
 
 Als aktives Sensorelement kommen im gesamten Projektverlauf dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5,08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in \textbf{Kapitel 3.3} behandelt.\newline
 Die elektrischen Kontakte werden mithilfe von Silberleitlack als Kontaktpads realisiert, deren Schichtdicke für die Simulation mit $150\,\mu{m}$ angenommen wird. Weitere Details hierzu finden sich ebenfalls in \textbf{Kapitel 3.3}.\paragraph{}
