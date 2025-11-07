@@ -1,62 +1,69 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {1}Einleitung}{4}{section.1}%
-\contentsline {section}{\numberline {2}Funktionsweise der X-Hall-Architektur}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Geschichte und Konzept}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Aufbau und Funktionsweise}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Vorteile und Nachteile der Architektur}{8}{subsection.2.3}%
-\contentsline {paragraph}{}{8}{section*.5}%
-\contentsline {paragraph}{}{8}{section*.6}%
-\contentsline {paragraph}{}{8}{section*.7}%
-\contentsline {subsection}{\numberline {2.4}(Erwartete) Leistungscharakteristika der Architektur}{9}{subsection.2.4}%
+\contentsline {section}{Abbildungsverzeichnis}{4}{Doc-Start}%
+\contentsline {section}{Graphenverzeichnis}{4}{section*.1}%
+\contentsline {section}{\numberline {1}Einleitung}{5}{section.1}%
+\contentsline {section}{\numberline {2}Funktionsweise der X-Hall-Architektur}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Geschichte und Konzept}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Aufbau und Funktionsweise}{6}{subsection.2.2}%
+\contentsline {paragraph}{}{7}{section*.2}%
+\contentsline {paragraph}{}{7}{section*.3}%
+\contentsline {subsection}{\numberline {2.3}Vorteile und Nachteile der Architektur}{9}{subsection.2.3}%
 \contentsline {paragraph}{}{9}{section*.8}%
 \contentsline {paragraph}{}{9}{section*.9}%
-\contentsline {section}{\numberline {3}Praktische Umsetzung des X-Hall-Sensors}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Die ``Finite Element'' Methode}{10}{subsection.3.1}%
-\contentsline {paragraph}{}{10}{section*.10}%
+\contentsline {paragraph}{}{9}{section*.10}%
+\contentsline {subsection}{\numberline {2.4}(Erwartete) Leistungscharakteristika der Architektur}{10}{subsection.2.4}%
 \contentsline {paragraph}{}{10}{section*.11}%
 \contentsline {paragraph}{}{10}{section*.12}%
+\contentsline {section}{\numberline {3}Praktische Umsetzung des X-Hall-Sensors}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Die ``Finite-Elemente''-Methode}{11}{subsection.3.1}%
 \contentsline {paragraph}{}{11}{section*.13}%
 \contentsline {paragraph}{}{11}{section*.14}%
 \contentsline {paragraph}{}{11}{section*.15}%
-\contentsline {paragraph}{}{11}{section*.16}%
-\contentsline {subsection}{\numberline {3.2}Entwicklung eines Sensor-Layouts}{11}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Simulationsmodell und theoretische Grundlage}{11}{subsubsection.3.2.1}%
+\contentsline {paragraph}{}{12}{section*.16}%
+\contentsline {paragraph}{}{12}{section*.17}%
+\contentsline {paragraph}{}{12}{section*.18}%
+\contentsline {subsection}{\numberline {3.2}Entwicklung eines Sensor-Layouts}{12}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Simulationsmodell und theoretische Grundlage}{12}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Abbildung des Hall-Effekts im Simulationsmodell}{13}{subsubsection.3.2.2}%
-\contentsline {paragraph}{}{13}{section*.25}%
-\contentsline {paragraph}{}{13}{section*.26}%
-\contentsline {paragraph}{}{13}{section*.27}%
+\contentsline {paragraph}{}{14}{section*.27}%
+\contentsline {paragraph}{}{14}{section*.28}%
+\contentsline {paragraph}{}{14}{section*.29}%
 \contentsline {subsubsection}{\numberline {3.2.3}Modellaufbau und Meshing}{14}{subsubsection.3.2.3}%
-\contentsline {paragraph}{}{14}{section*.33}%
-\contentsline {paragraph}{}{15}{section*.34}%
-\contentsline {subsubsection}{\numberline {3.2.4}Simulationsergebnisse der 1. Layoutgeneration}{15}{subsubsection.3.2.4}%
-\contentsline {paragraph}{}{16}{section*.37}%
-\contentsline {paragraph}{}{16}{section*.38}%
-\contentsline {paragraph}{}{16}{section*.39}%
+\contentsline {paragraph}{}{15}{section*.35}%
+\contentsline {paragraph}{}{15}{section*.36}%
+\contentsline {paragraph}{}{15}{section*.37}%
+\contentsline {subsubsection}{\numberline {3.2.4}Simulationsergebnisse der 1. Layoutgeneration}{16}{subsubsection.3.2.4}%
 \contentsline {paragraph}{}{16}{section*.40}%
 \contentsline {paragraph}{}{16}{section*.41}%
-\contentsline {paragraph}{}{16}{section*.44}%
-\contentsline {paragraph}{}{17}{section*.45}%
-\contentsline {subsubsection}{\numberline {3.2.5}Analyse und Optimierung des Layouts}{17}{subsubsection.3.2.5}%
+\contentsline {paragraph}{}{17}{section*.42}%
+\contentsline {paragraph}{}{17}{section*.43}%
+\contentsline {paragraph}{}{17}{section*.44}%
+\contentsline {paragraph}{}{17}{section*.47}%
 \contentsline {paragraph}{}{18}{section*.48}%
-\contentsline {subsubsection}{\numberline {3.2.6}Simulationsergebnisse der 2. Layoutgeneration}{18}{subsubsection.3.2.6}%
-\contentsline {paragraph}{}{18}{section*.53}%
-\contentsline {paragraph}{}{20}{section*.54}%
+\contentsline {subsubsection}{\numberline {3.2.5}Analyse und Optimierung des Layouts}{18}{subsubsection.3.2.5}%
+\contentsline {paragraph}{}{18}{section*.51}%
+\contentsline {subsubsection}{\numberline {3.2.6}Simulationsergebnisse der 2. Layoutgeneration}{19}{subsubsection.3.2.6}%
+\contentsline {paragraph}{}{19}{section*.52}%
+\contentsline {paragraph}{}{20}{graph.caption.57}%
 \contentsline {subsection}{\numberline {3.3}Praktische Implementierung des Sensors}{21}{subsection.3.3}%
-\contentsline {paragraph}{}{21}{section*.55}%
-\contentsline {paragraph}{}{22}{section*.56}%
+\contentsline {paragraph}{}{21}{section*.58}%
+\contentsline {paragraph}{}{22}{section*.59}%
+\contentsline {paragraph}{}{22}{section*.60}%
 \contentsline {section}{\numberline {4}Vergleich mit anderen Hall-Sensoren}{22}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Quantitativer Vergleich}{22}{subsection.4.1}%
-\contentsline {paragraph}{}{23}{section*.57}%
-\contentsline {paragraph}{}{23}{section*.59}%
-\contentsline {paragraph}{}{24}{section*.62}%
-\contentsline {paragraph}{}{24}{section*.65}%
-\contentsline {paragraph}{}{25}{section*.68}%
+\contentsline {subsection}{\numberline {4.1}Quantitativer Vergleich}{23}{subsection.4.1}%
+\contentsline {paragraph}{}{23}{section*.61}%
+\contentsline {paragraph}{}{24}{section*.63}%
+\contentsline {paragraph}{}{24}{section*.66}%
 \contentsline {paragraph}{}{25}{section*.69}%
-\contentsline {subsection}{\numberline {4.2}Qualitativer Vergleich}{26}{subsection.4.2}%
 \contentsline {paragraph}{}{26}{section*.72}%
-\contentsline {paragraph}{}{27}{section*.73}%
-\contentsline {paragraph}{}{27}{section*.74}%
-\contentsline {paragraph}{}{27}{section*.75}%
-\contentsline {section}{\numberline {5}Fazit}{28}{section.5}%
-\contentsline {section}{Literaturverzeichnis}{29}{section*.77}%
-\contentsline {section}{Anhang}{32}{section*.78}%
+\contentsline {paragraph}{}{26}{section*.75}%
+\contentsline {paragraph}{}{27}{section*.76}%
+\contentsline {subsection}{\numberline {4.2}Qualitativer Vergleich}{27}{subsection.4.2}%
+\contentsline {paragraph}{}{27}{section*.79}%
+\contentsline {paragraph}{}{28}{section*.80}%
+\contentsline {paragraph}{}{28}{section*.81}%
+\contentsline {paragraph}{}{28}{section*.82}%
+\contentsline {section}{\numberline {5}Fazit}{29}{section.5}%
+\contentsline {section}{Literaturverzeichnis}{31}{section*.85}%
+\contentsline {section}{Verwendung künstlicher Intelligenz}{33}{section*.86}%
+\contentsline {section}{Anhang}{35}{section*.87}%
