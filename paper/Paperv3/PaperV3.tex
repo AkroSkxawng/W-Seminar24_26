@@ -99,7 +99,7 @@ name=Graph            % caption prefix
 \pagebreak
 
 \begin{abstract}
-	In dieser Arbeit werden die Konzeption und Simulation eines Hall-Sensors auf Basis der X-Hall-Architektur vorgestellt. Ziel ist die Erfassung magnetischer Flussdichten und die Untersuchung, ob der Sensor als experimentelle Alternative zu in Smartphones integrierten oder externen Magnetfeldsensoren geeignet ist. Mithilfe der Finite-Elemente-Methode\,(FEM) wurde das elektrische Verhalten des Sensors in einer Computersimulation analysiert und die Auswirkungen von Geometrie, Materialwahl und Gestaltung der Kontakte untersucht. Die Simulationsergebnisse zeigen, dass der entworfene Sensor prinzipiell funktionsfähig sein sollte und eine Grundlage für zukünftige Optimierungen bietet. Neben den technischen Ergebnissen unterstreicht die Arbeit den didaktischen Wert eines eigenständig entwickelten Sensors im schulischen oder experimentellen Kontext, da der Entwicklungsprozess sowohl ein tieferes Verständnis physikalischer Grundlagen als auch Kompetenzen im wissenschaftlichen Arbeiten und in der computergestützten Modellierung physikalischer Probleme fördert.
+	Ziel dieser Arbeit ist die Entwicklung und Bewertung eines selbstgebauten Magnetfeldsensors als experimentelle Alternative zu in Smartphones integrierten und externen Magnetfeldsensoren. Dazu werden die Konzeption und Simulation eines Hall-Sensors auf Basis der X-Hall-Architektur vorgestellt. Im Einzelnen wurde mit Hilfe der Finite-Elemente-Methode\,(FEM) das elektrische Verhalten des Sensors in einer Computersimulation analysiert und die Auswirkungen von Geometrie, Materialwahl und Gestaltung der Kontakte untersucht. Die Simulationsergebnisse zeigen, dass der entworfene Sensor prinzipiell funktionsfähig sein sollte und eine Grundlage für zukünftige Optimierungen bietet. Neben den technischen Ergebnissen unterstreicht die Arbeit den didaktischen Wert eines eigenständig entwickelten Sensors im schulischen oder experimentellen Kontext, da der Entwicklungsprozess sowohl ein tieferes Verständnis physikalischer Grundlagen als auch Kompetenzen im wissenschaftlichen Arbeiten und in der computergestützten Modellierung physikalischer Probleme fördert.
 \end{abstract}
 \thispagestyle{empty}
 \pagebreak
@@ -396,8 +396,8 @@ Dementsprechend wird für die Imitation des Hall-Effekts jeweils ein Leitfähigk
 \end{equation}
 verwendet werden.
 
-\subsubsection{Modellaufbau und Meshing}
-Wie bereits in \textbf{Kapitel 3.1} beschrieben, erfordert die Finite-Elemente-Simulation die Unterteilung einer kontinuierlichen physikalischen Fläche in viele kleine, endlich große Elemente. Dieser Prozess wird als Meshing bezeichnet. Dabei wird die zu simulierende Geometrie in eine Vielzahl einfacher Unterabschnitte zerlegt, auf denen die zugrunde liegenden Gleichungen jeweils lokal gelöst werden können.\newline
+\subsubsection{Modellaufbau und ``Meshing''}
+Wie bereits in \textbf{Kapitel 3.1} beschrieben, erfordert die Finite-Elemente-Simulation die Unterteilung einer kontinuierlichen physikalischen Fläche in viele kleine, endlich große Elemente. Dieser Prozess wird als ``Meshing'' bezeichnet. Dabei wird die zu simulierende Geometrie in eine Vielzahl einfacher Unterabschnitte zerlegt, auf denen die zugrunde liegenden Gleichungen jeweils lokal gelöst werden können.\newline
 Für die in dieser Arbeit durchgeführten Simulationen wird das Programm \textbf{Gmsh in der Version 4.13.1} verwendet. Es dient sowohl zur Erstellung der 3D-Modelle als auch zur Erzeugung der Finite-Elemente-Netze und ermöglicht damit eine konsistente Vorbereitung der Eingabedaten für Elmer. Fig.~\ref{fig:3} zeigt ein Beispiel eines in Gmsh generierten Meshs.
 \begin{figure}
 	\centering
@@ -541,7 +541,7 @@ Die gemessenen Spannungen sind zwar immer noch zu niedrig, um mit dem verwendete
 Deshalb sei die 2. Generation des Layouts als Grundlage für den selbst zu bauenden Sensor zu betrachten.\pagebreak
 
 {\raggedright
-\textbf{Alle für diese Arbeit relevanten Daten und Dokumente werden unter folgendem Link zur Verfügung gestellt:}}
+\textbf{Alle für diese Arbeit relevanten Daten, Code-Dateien und Dokumente werden unter folgendem Link zur Verfügung gestellt:}}
 \begin{center}
 	 \textbf{https://github.com/AkroSkxawng/W-Seminar24\textunderscore26}
 \end{center}
@@ -606,7 +606,7 @@ Der Offsetspannung von $\Delta{V_{OS}}=-0,27\pm0,64\,mV$ des Musters steht eine 
 Zwar ist die Offsetspannung des selbst entwickelten Layouts nur um einen Faktor von 10 höher als die des Musters, aber dadurch, dass die Sensitivität wesentlich geringer ist, ist diese erhöhte Offsetspannung wesentlich kritischer zu betrachten, da sowieso schon schwache Signale noch schwerer zum Auslesen werden.\newline
 Die wahrscheinlichste Ursache für den starken Unterschied in der Sensitivität ist die Umsetzung des selbst entwickelten Layouts auf makroskopischer statt mikroskopischer Ebene. Unter anderem \cite{heidari15} geht auch nochmal detaillierter auf Faktoren ein, die die Sensorsensitivität beeinflussen können, und Faktoren wie Dicke des Hall-Materials, Abstand der Kontakte usw. tragen wesentlich zu einer möglichen Verschlechterung dieser bei.\paragraph{}
 
-Um diese theoretischen Ergebnisse in Relation zu real existierenden Sensoren zu setzen, wurden im Folgenden praktische Messungen mit gängigen Vergleichsgeräten durchgeführt. Der Versuchsaufbau ist am Exempel des iPads in Fig.~\ref{fig:7} dargestellt.\,\footnote{Aufgrund der Positionierung des Sensors im iPad befindet sich dieser mittig zwischen den Spulen}
+Um diese theoretischen Ergebnisse in Relation zu real existierenden Sensoren zu setzen, wurden im Folgenden praktische Messungen mit gängigen Vergleichsgeräten durchgeführt. Der Versuchsaufbau ist am Beispiel des iPads in Fig.~\ref{fig:7} dargestellt.\,\footnote{Aufgrund der Positionierung des Sensors im iPad befindet sich dieser mittig zwischen den Spulen}
 \begin{figure}
 	\centering
 	\includegraphics[height=8cm]{Fig7}
@@ -617,6 +617,7 @@ Um diese theoretischen Ergebnisse in Relation zu real existierenden Sensoren zu 
 \paragraph{}
 
 Das Magnetometer des iPad wird in \cite{sensordb} gelistet mit einer Sensorbandbreite von $100\,Hz$. Die Standardabweichung des Sensors soll dabei bei $0,22\,\mu{T}$ liegen. Dieser Wert entspricht auch gleichzeitig dem Grundrauschen des Sensors. Um also realistisch aussagen zu können, dass der Sensor eine Magnetfeldänderung misst und kein Rauschen, sollte die Veränderung mindestens 2 bis 3 Mal so groß sein wie das Grundrauschen, also mindestens etwa $0,6\,\mu{T}$. Zur Sensitivität lässt sich mangels Herstellerangaben keine Angabe machen.\newline
+$B_X$, $B_Y$ und $B_Z$ bezeichnen die Magnetfeldkomponenten entlang der drei Raumachsen.\newline
 Die Messdaten, visualisiert in Graph~\ref{measureTablet}, bestätigen diese Angaben ansatzweise, da im Durchschnitt eine Standardabweichung der Messdaten von etwa $0,26\,\mu{T}$ vorliegt. Diese schwankt aber um bis zu $\pm1,65\,\mu{T}$, insbesondere für höhere B ab $400\,\mu{T}$, weshalb man die Empfindlichkeit des Sensors tendenziell höher auf etwa $4\,\mu{T}$ annehmen sollte, sobald man sich in diesem Bereich befindet.
 \begin{figure}
 	\centering
@@ -661,7 +662,7 @@ Die Messdaten, visualisiert in Graph~\ref{measureTablet}, bestätigen diese Anga
 \addcontentsline{logr}{figure}{\protect\numberline{3}{Gemessenes Magnetfeldkomponenten mit einem iPad-Magnetometer: Eigene Abbildung}}
 \paragraph{}
 
-Für das iPhone sind die Angaben laut \cite{sensordb} ebenfalls eine Sensorbandbreite von $100\,Hz$ und eine Standardabweichung der Messungen von $0,25\,\mu{T}$. Weitere Angaben lassen sich auch hier mangels Herstellerinformationen nicht machen.\newline
+
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
@@ -704,13 +705,18 @@ Für das iPhone sind die Angaben laut \cite{sensordb} ebenfalls eine Sensorbandb
 \end{figure}
 \addcontentsline{logr}{figure}{\protect\numberline{4}{Gemessenes Magnetfeldkomponenten mit einem iPhone-Magnetometer: Eigene Abbildung}}
 
+Für das iPhone sind die Angaben laut \cite{sensordb} ebenfalls eine Sensorbandbreite von $100\,Hz$ und eine Standardabweichung der Messungen von $0,25\,\mu{T}$. 
+\pagebreak
+
+{\raggedright
+Weitere Angaben lassen sich auch hier mangels Herstellerinformationen nicht machen.}\newline
 {\raggedright
 Die Messdaten, visualisiert in Graph~\ref{measurePhone}, weichen jedoch deutlich von den Herstellerangaben ab}. Nicht nur liegen die Standardabweichungen des Sensors für kleine Felder bei $0,29\,\mu{T}$ mit Schwankungen bei Feldern ab $400\,\mu{T}$ von bis zu $\pm3,35\,\mu{T}$, was die realistische Empfindlichkeit des Sensors ab diesem Bereich sogar von etwa $0,9\,\mu{T}$ auf $\pm7\,\mu{T}$ hebt. Es fällt außerdem auf, dass die gemessenen $B_{Ges}$ um $+20\,\mu{T}$ mit einer Tendenz von zusätzlichen $+5\,\mu{T}$ pro $100\,\mu{T}$ stärkerem Magnetfeld zu hoch ausfallen, was sich auch unter Berücksichtigung der manuellen Stromregelung nicht plausibel erklären lässt. Mögliche Ursachen könnten höhere Hitzeentwicklung auf dem engeren Raum bei höheren $V_{Hall}$ aber auch magnetische Sättigung und damit nicht mehr ideales Verhalten des Sensors sein.
 
 \paragraph{}
 
 Pasco gibt für ihren Magnetfeldsensor für Magnetfelder bis zu $0,13\,T$ eine Empfindlichkeit von $\pm100\,\mu{T}$ und für Felder unter $5\,mT$ eine Empfindlichkeit von $\pm1\,\mu{T}$, beides bei einer Bandbreite von $100\,Hz$, an.\newline
-Die Messdaten des Sensors, visualisiert in Graph~\ref{measurePasco}, zeigen eine über alle Feldstärken konsistente Standardabweichung von $0,87\pm4,95\,\mu{T}$. So ist zwar aufgrund einiger Ausreißer in den Datenpunkten die tatsächliche Empfindlichkeit auf etwa $10\,\mu{T}$ zu schätzen, im Durchschnitt bleiben die Werte aber über längere Messungen im beworbenen Bereich.
+Die Messdaten des Sensors, visualisiert in Graph~\ref{measurePasco}, zeigen eine über alle Feldstärken konsistente Standardabweichung von $0,87\pm4,95\,\mu{T}$. So ist zwar aufgrund einiger Ausreißer in den Datenpunkten die tatsächliche Empfindlichkeit auf etwa $10\,\mu{T}$ zu schätzen, im Durchschnitt bleiben die Werte aber über längere Messungen im beworbenen Bereich.\paragraph{}
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
@@ -752,7 +758,7 @@ Die Messdaten des Sensors, visualisiert in Graph~\ref{measurePasco}, zeigen eine
 	\label{measurePasco}
 \end{figure}
 \addcontentsline{logr}{figure}{\protect\numberline{5}{Gemessenes Magnetfeldkomponenten mit einem kabellosen Pasco Magnetometer: Eigene Abbildung}}
-\paragraph{}
+
 
 Aufgrund schlechter Datenlage liegen also nicht nur sehr wenige Informationen über die praktisch getesteten Sensoren vor, sondern da diese direkt Magnetfelder messen und ausgeben, ist es auch schwer, diese direkt mit den Simulationen zu vergleichen, welche Hall-Spannungen als Ergebnis produzieren.\paragraph{}
 Im Grunde genommen hängen alle Messwerte des X-Hall-Sensors direkt vom verwendeten Verstärker ab. Dementsprechend lässt sich aus \cite{texInsAmp} schließen, dass der X-Hall Sensor eine Bandbreite von bis zu $1,3\,MHz$ haben kann, in etwa das $10.000\,$-fache aller Vergleichssensoren, wobei fragwürdig ist, ob diese Bandbreite überhaupt ausgenutzt werden kann, da mit hoher Bandbreite oft stark verstärktes Rauschen einhergeht.\newline
@@ -808,12 +814,13 @@ Im Gegensatz dazu kann ein selbstgebauter und implementierter Sensor wie der X-H
 
 \section{Fazit}
 Im Rahmen dieser Arbeit wurde die Konzeption und Simulation eines X-Hall-Sensors auf Basis eines dotierten Siliziumwafers untersucht, um dessen Potenzial als mögliche Alternative zu in Smartphones verbauten Magnetfeldsensoren zu bewerten. Die Ausarbeitung des Sensorlayouts hat verdeutlicht, wie entscheidend Geometrie, Materialwahl und elektrische Randbedingungen für die Empfindlichkeit und Genauigkeit eines Magnetfeldsensors sind.\newline
-Es ist in der Simulation gelungen, einen Sensor zu entwerfen, der trotz methodischer und materialbedingter Einschränkungen eine realistische Grundlage für zukünftige Optimierungen bietet. Zwar kann der entwickelte Sensor in seiner derzeitigen Form noch nicht mit kommerziell verfügbaren Lösungen konkurrieren, doch stellt er eine solide Basis für weiterführende Entwicklungen dar, wie sie zum Beispiel im Rahmen einer ``Jugend Forscht!'' Arbeit geschehen werden.\newline
+Es ist in der Simulation gelungen, einen Sensor zu entwerfen, der trotz methodischer und materialbedingter Einschränkungen eine realistische Grundlage für zukünftige Optimierungen bietet. Zwar kann der entwickelte Sensor in seiner derzeitigen Form noch nicht mit kommerziell verfügbaren Lösungen konkurrieren, doch stellt er eine solide Basis für weiterführende Entwicklungen dar, wie sie zum Beispiel im Rahmen einer ``Jugend Forscht!'' Arbeit vorgenommen werden.\newline
 Der qualitative Vergleich zeigt, dass der Sensor in bestimmten Einsatzbereichen potenzielle Einschränkungen aufweist, jedoch insbesondere durch seine hohe Flexibilität, Anpassungsfähigkeit an unterschiedliche Messaufgaben und seine Langlebigkeit überzeugt.\newline
 Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Aufbau eines Sensors – im Gegensatz zur bloßen Nutzung fertiger Systeme – einen erheblichen Lerneffekt bietet. So kann dieses Projekt auch als exemplarisches Beispiel dafür dienen, wie experimentelles und forschendes Lernen in schulischen Kontexten nicht nur naturwissenschaftliche Kompetenzen, sondern auch intrinsische Motivation und Interesse an wissenschaftlicher Arbeit fördern kann.
 \pagebreak
 
 \section*{Danksagung}
+\addcontentsline{toc}{section}{Danksagung}
 An dieser Stelle möchte ich mich bei allen bedanken, die mich bei der Durchführung und Erstellung dieser Arbeit unterstützt haben.\newline
 Mein besonderer Dank gilt insbesondere Herrn Reinhard Schneider, der stets Zeit für mich, mein Projekt und meine Fragen hatte, und Herrn Markus Fiederer, der mich bei der Umsetzung meiner Arbeit tatkräftig unterstützt und inspiriert hat.\newline
 Ebenso möchte ich der Firma MicroChemicals GmbH, insbesondere Herrn Titus Rinke, für die Bereitstellung der erstklassigen Wafer danken, die für dieses Projekt und insbesondere dessen Zukunft von großer Bedeutung sind.\newline

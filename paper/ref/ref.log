@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  7 NOV 2025 02:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  7 NOV 2025 12:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1736,19 +1736,13 @@ L3 programming layer <2025-09-02>
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `ref.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ref.out':
-(rerunfilecheck)             Before: 930DEDD775400BA0274B8B2FB3223264;4525
-(rerunfilecheck)             After:  FEF9BA40D15E5AA18F3EF6CEB6F0BD41;4530.
+Package rerunfilecheck Info: File `ref.out' has not changed.
+(rerunfilecheck)             Checksum: FEF9BA40D15E5AA18F3EF6CEB6F0BD41;4530.
  ) 
 Here is how much of TeX's memory you used:
  38669 strings out of 468130
  893455 string characters out of 5430633
- 1390813 words of memory out of 5000000
+ 1390814 words of memory out of 5000000
  66549 multiletter control sequences out of 15000+600000
  636612 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1776,7 +1770,7 @@ Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/armin
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Use
 rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 >
-Output written on ref.pdf (20 pages, 325867 bytes).
+Output written on ref.pdf (20 pages, 325872 bytes).
 PDF statistics:
  412 PDF objects out of 1000 (max. 8388607)
  123 named destinations out of 1000 (max. 500000)
