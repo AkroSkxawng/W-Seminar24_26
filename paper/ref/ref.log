@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  2 NOV 2025 00:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  7 NOV 2025 12:48
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **./ref.tex
 (ref.tex
@@ -202,8 +202,6 @@ File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen167
 \Gin@req@width=\dimen168
-) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
-Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplots.sty
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.rev
@@ -674,28 +672,137 @@ ikzlibrarydecorations.softclip.code.tex
 gflibraryfillbetween.code.tex)))
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlib
 rarypgfplots.decorations.softclip.code.tex))
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlib
+rarypgfplots.external.code.tex
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer/libra
+ries\tikzlibraryexternal.code.tex
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.st
+y
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzexternalshared.code.tex)))
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
+Package: pdfpages 2025/07/23 v0.6g Insert pages of external PDF documents (AM)
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count329
+\calc@Bcount=\count330
+\calc@Adimen=\dimen289
+\calc@Bdimen=\dimen290
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count331
+\calc@Cskip=\skip56
+)
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
+\ESO@tempdima=\dimen291
+\ESO@tempdimb=\dimen292
+)
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count332
+)
+\AM@pagewidth=\dimen293
+\AM@pageheight=\dimen294
+\AM@fboxrule=\dimen295
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
+File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count333
+\AM@pagebox=\box67
+\AM@global@opts=\toks45
+\AM@pagecnt=\count334
+\AM@toc@title=\toks46
+\AM@lof@heading=\toks47
+\c@AM@survey=\count335
+\AM@templatesizebox=\box68
+) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has section divisions on input line 51.
+\cftparskip=\skip57
+\cftbeforetoctitleskip=\skip58
+\cftaftertoctitleskip=\skip59
+\cftbeforepartskip=\skip60
+\cftpartnumwidth=\skip61
+\cftpartindent=\skip62
+\cftbeforesecskip=\skip63
+\cftsecindent=\skip64
+\cftsecnumwidth=\skip65
+\cftbeforesubsecskip=\skip66
+\cftsubsecindent=\skip67
+\cftsubsecnumwidth=\skip68
+\cftbeforesubsubsecskip=\skip69
+\cftsubsubsecindent=\skip70
+\cftsubsubsecnumwidth=\skip71
+\cftbeforeparaskip=\skip72
+\cftparaindent=\skip73
+\cftparanumwidth=\skip74
+\cftbeforesubparaskip=\skip75
+\cftsubparaindent=\skip76
+\cftsubparanumwidth=\skip77
+\cftbeforeloftitleskip=\skip78
+\cftafterloftitleskip=\skip79
+\cftbeforefigskip=\skip80
+\cftfigindent=\skip81
+\cftfignumwidth=\skip82
+\c@lofdepth=\count336
+\c@lotdepth=\count337
+\cftbeforelottitleskip=\skip83
+\cftafterlottitleskip=\skip84
+\cftbeforetabskip=\skip85
+\cfttabindent=\skip86
+\cfttabnumwidth=\skip87
+)
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count329
-\lst@gtempboxa=\box67
-\lst@token=\toks45
-\lst@length=\count330
-\lst@currlwidth=\dimen289
-\lst@column=\count331
-\lst@pos=\count332
-\lst@lostspace=\dimen290
-\lst@width=\dimen291
-\lst@newlines=\count333
-\lst@lineno=\count334
-\lst@maxwidth=\dimen292
+\lst@mode=\count338
+\lst@gtempboxa=\box69
+\lst@token=\toks48
+\lst@length=\count339
+\lst@currlwidth=\dimen296
+\lst@column=\count340
+\lst@pos=\count341
+\lst@lostspace=\dimen297
+\lst@width=\dimen298
+\lst@newlines=\count342
+\lst@lineno=\count343
+\lst@maxwidth=\dimen299
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count335
-\lst@skipnumbers=\count336
-\lst@framebox=\box68
+\c@lstnumber=\count344
+\lst@skipnumbers=\count345
+\lst@framebox=\box70
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
@@ -704,45 +811,45 @@ Package: listings 2024/09/23 1.10c (Carsten Heinz)
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
-\f@nch@headwidth=\skip54
-\f@nch@offset@elh=\skip55
-\f@nch@offset@erh=\skip56
-\f@nch@offset@olh=\skip57
-\f@nch@offset@orh=\skip58
-\f@nch@offset@elf=\skip59
-\f@nch@offset@erf=\skip60
-\f@nch@offset@olf=\skip61
-\f@nch@offset@orf=\skip62
-\f@nch@height=\skip63
-\f@nch@footalignment=\skip64
-\f@nch@widthL=\skip65
-\f@nch@widthC=\skip66
-\f@nch@widthR=\skip67
-\@temptokenb=\toks46
+\f@nch@headwidth=\skip88
+\f@nch@offset@elh=\skip89
+\f@nch@offset@erh=\skip90
+\f@nch@offset@olh=\skip91
+\f@nch@offset@orh=\skip92
+\f@nch@offset@elf=\skip93
+\f@nch@offset@erf=\skip94
+\f@nch@offset@olf=\skip95
+\f@nch@offset@orf=\skip96
+\f@nch@height=\skip97
+\f@nch@footalignment=\skip98
+\f@nch@widthL=\skip99
+\f@nch@widthC=\skip100
+\f@nch@widthR=\skip101
+\@temptokenb=\toks49
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/titling\titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip68
-\thanksmargin=\skip69
-\droptitle=\skip70
+\thanksmarkwidth=\skip102
+\thanksmargin=\skip103
+\droptitle=\skip104
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen293
-\captionmargin=\dimen294
-\caption@leftmargin=\dimen295
-\caption@rightmargin=\dimen296
-\caption@width=\dimen297
-\caption@indent=\dimen298
-\caption@parindent=\dimen299
-\caption@hangindent=\dimen300
+\caption@tempdima=\dimen300
+\captionmargin=\dimen301
+\caption@leftmargin=\dimen302
+\caption@rightmargin=\dimen303
+\caption@width=\dimen304
+\caption@indent=\dimen305
+\caption@parindent=\dimen306
+\caption@hangindent=\dimen307
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count337
-\c@continuedfloat=\count338
+\c@caption@flags=\count346
+\c@continuedfloat=\count347
 Package caption Info: listings package is loaded.
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/newfloat\newfloat.sty
@@ -751,15 +858,15 @@ Package: newfloat 2023/10/01 v1.2 Defining new floating environments (AR)
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count339
+\c@subfigure=\count348
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count340
+\c@subtable=\count349
 ) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/footmisc\footmisc.sty
 Package: footmisc 2025/05/09 v7.0b a miscellany of footnote facilities
-\FN@temptoken=\toks47
-\footnotemargin=\dimen301
+\FN@temptoken=\toks50
+\footnotemargin=\dimen308
 Package footmisc Info: Declaring symbol style bringhurst on input line 549.
 Package footmisc Info: Declaring symbol style chicago on input line 557.
 Package footmisc Info: Declaring symbol style wiley on input line 566.
@@ -768,14 +875,60 @@ Package footmisc Info: Declaring symbol style lamport-robust on input line 577.
 Package footmisc Info: Declaring symbol style lamport* on input line 597.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 618
 .
+) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/ltablex\ltablex.sty
+Package: ltablex 2014/08/13 v1.1 Modified tabularx
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
+\LTleft=\skip105
+\LTright=\skip106
+\LTpre=\skip107
+\LTpost=\skip108
+\LTchunksize=\count350
+\LTcapwidth=\dimen309
+\LT@head=\box71
+\LT@firsthead=\box72
+\LT@foot=\box73
+\LT@lastfoot=\box74
+\LT@gbox=\box75
+\LT@cols=\count351
+\LT@rows=\count352
+\c@LT@tables=\count353
+\c@LT@chunks=\count354
+\LT@p@ftn=\toks51
 )
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
+\col@sep=\dimen310
+\ar@mcellbox=\box76
+\extrarowheight=\dimen311
+\NC@list=\toks52
+\extratabsurround=\skip109
+\backup@length=\skip110
+\ar@cellbox=\box77
+)
+\TX@col@width=\dimen312
+\TX@old@table=\dimen313
+\TX@old@col=\dimen314
+\TX@target=\dimen315
+\TX@delta=\dimen316
+\TX@cols=\count355
+\TX@ftn=\toks53
+))
+
+Package array Warning: Redefining primitive column r on input line 29.
+
 Package newfloat Info: New float `graph' with options ` fileext=log, listname=L
-iste der Graphen, name=Graph ' on input line 27.
-\c@graph=\count341
-\newfloat@ftype=\count342
-Package newfloat Info: float type `graph'=8 on input line 27.
-Package caption Info: New subtype `subgraph' on input line 27.
-\c@subgraph=\count343
+iste der Graphen, name=Graph ' on input line 35.
+\c@graph=\count356
+\newfloat@ftype=\count357
+Package newfloat Info: float type `graph'=8 on input line 35.
+\c@logdepth=\count358
+Package caption Info: New subtype `subgraph' on input line 35.
+\c@subgraph=\count359
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
 
@@ -789,27 +942,9 @@ Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
 ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-
-(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
-Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-)
-(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
-.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
-ty
-Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-)
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-))
-(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
@@ -822,20 +957,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count344
-)
-(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
-Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count345
+\c@section@level=\count360
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen302
-\Hy@linkcounter=\count346
-\Hy@pagecounter=\count347
+\@linkdim=\dimen317
+\Hy@linkcounter=\count361
+\Hy@pagecounter=\count362
  (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -843,7 +974,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count348
+\Hy@SavedSpaceFactor=\count363
  (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -857,14 +988,14 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count349
+\c@Hy@tempcnt=\count364
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
-\XeTeXLinkMargin=\dimen303
+\XeTeXLinkMargin=\dimen318
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -874,9 +1005,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count350
-\Field@Width=\dimen304
-\Fld@charsize=\dimen305
+\Fld@menulength=\count365
+\Field@Width=\dimen319
+\Fld@charsize=\dimen320
 Package hyperref Info: Hyper figures OFF on input line 6078.
 Package hyperref Info: Link nesting OFF on input line 6083.
 Package hyperref Info: Hyper index ON on input line 6086.
@@ -884,16 +1015,16 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring OFF on input line 6098.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count351
-\c@Item=\count352
-\c@Hfootnote=\count353
+\Hy@abspage=\count366
+\c@Item=\count367
+\c@Hfootnote=\count368
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count354
-\c@bookmark@seq@number=\count355
+\Fld@listcount=\count369
+\c@bookmark@seq@number=\count370
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -906,36 +1037,36 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip71
+\Hy@SectionHShift=\skip111
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count356
+\l__color_backend_stack_int=\count371
 ) (ref.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported on input line 8.
 )
 \openout1 = `ref.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -975,17 +1106,17 @@ LaTeX Font Info:    ... okay on input line 79.
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count357
-\scratchdimen=\dimen306
-\scratchbox=\box69
-\nofMPsegments=\count358
-\nofMParguments=\count359
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count360
-\MPscratchDim=\dimen307
-\MPnumerator=\count361
-\makeMPintoPDFobject=\count362
-\everyMPtoPDFconversion=\toks49
+\scratchcounter=\count372
+\scratchdimen=\dimen321
+\scratchbox=\box78
+\nofMPsegments=\count373
+\nofMParguments=\count374
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count375
+\MPscratchDim=\dimen322
+\MPnumerator=\count376
+\makeMPintoPDFobject=\count377
+\everyMPtoPDFconversion=\toks55
 )
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -997,23 +1128,40 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
-ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
-your preamble.
- on input line 79.
 
-\c@lstlisting=\count363
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nom
+etadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+\c@lstlisting=\count378
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+(C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 79.
+Package hyperref Info: Link coloring OFF on input line 91.
+
 (ref.out) (ref.out)
 \@outlinefile=\write4
 \openout4 = `ref.out'.
 
 
-Overfull \hbox (4.79001pt too wide) in paragraph at lines 91--96
+Overfull \hbox (4.79001pt too wide) in paragraph at lines 98--103
 \OT1/cmr/m/n/12 Magnetfeldsensoren sind ein in-te-gra-ler Be-stand-teil mo-der-
 ner Smart-pho-nes und erm[]oglichen
  []
@@ -1023,188 +1171,170 @@ ner Smart-pho-nes und erm[]oglichen
 [1
 
 {C:/Users/armin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 103
+LaTeX Font Info:    Trying to load font information for U+msa on input line 110
 .
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 103
+LaTeX Font Info:    Trying to load font information for U+msb on input line 110
 .
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-LaTeX Warning: Citation `cres19' on page 2 undefined on input line 104.
-
-
-LaTeX Warning: Citation `cres18' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Citation `cres19' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Citation `cres20' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Citation `cres21' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Citation `cres18' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Citation `cres19' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Citation `cres21' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Citation `cres19' on page 2 undefined on input line 106.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--107
-
- []
-
-
-Overfull \hbox (12.21494pt too wide) in paragraph at lines 108--110
-[]\OT1/cmr/m/n/12 Aus die-sen []Uberlegungen re-sul-tier-te die Ent-wick-lung d
-er so-ge-nann-ten X-Hall-Architektur 
- []
+LaTeX Warning: Citation `cres19' on page 2 undefined on input line 111.
 
 
 LaTeX Warning: Citation `cres18' on page 2 undefined on input line 112.
 
 
-LaTeX Warning: Citation `cres20' on page 2 undefined on input line 115.
+LaTeX Warning: Citation `cres21' on page 2 undefined on input line 112.
 
 
-LaTeX Warning: Citation `cres19' on page 2 undefined on input line 117.
+LaTeX Warning: Citation `cres21' on page 2 undefined on input line 112.
 
 
-LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 118.
-
-
-LaTeX Warning: Citation `cres19' on page 2 undefined on input line 118.
-
-
-LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 119.
-
-
-LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 119.
-
-
-LaTeX Warning: Citation `cres20' on page 2 undefined on input line 119.
-
-
-LaTeX Warning: Citation `cres21' on page 2 undefined on input line 121.
+LaTeX Warning: Citation `cres19' on page 2 undefined on input line 113.
 
 
 
 [2]
 
-LaTeX Warning: Citation `cres20' on page 3 undefined on input line 132.
+LaTeX Warning: Citation `cres18' on page 3 undefined on input line 127.
 
 
-LaTeX Warning: Citation `cres21' on page 3 undefined on input line 133.
+LaTeX Warning: Citation `cres20' on page 3 undefined on input line 130.
 
 
-LaTeX Warning: Citation `cres20' on page 3 undefined on input line 133.
+LaTeX Warning: Citation `cres19' on page 3 undefined on input line 132.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--134
+LaTeX Warning: Reference `fig:1' on page 3 undefined on input line 133.
 
- []
+
+LaTeX Warning: Citation `cres19' on page 3 undefined on input line 133.
+
+
+LaTeX Warning: Reference `fig:1' on page 3 undefined on input line 134.
+
+
+LaTeX Warning: Reference `fig:1' on page 3 undefined on input line 134.
+
+
+LaTeX Warning: Citation `cres20' on page 3 undefined on input line 134.
+
+
+LaTeX Warning: Citation `cres21' on page 3 undefined on input line 136.
 
 
 
 [3]
 
-LaTeX Warning: Reference `fig:2' on page 4 undefined on input line 135.
+LaTeX Warning: Citation `cres20' on page 4 undefined on input line 147.
 
 
-LaTeX Warning: Citation `cres21' on page 4 undefined on input line 145.
+LaTeX Warning: Citation `cres21' on page 4 undefined on input line 148.
 
 
-LaTeX Warning: Citation `cres21' on page 4 undefined on input line 149.
+LaTeX Warning: Citation `cres20' on page 4 undefined on input line 148.
 
 
-LaTeX Warning: Citation `cres21' on page 4 undefined on input line 155.
+Underfull \hbox (badness 10000) in paragraph at lines 146--149
+
+ []
 
 
-LaTeX Warning: Citation `cres19' on page 4 undefined on input line 155.
+LaTeX Warning: Reference `fig:2' on page 4 undefined on input line 150.
+
+
+LaTeX Warning: Citation `cres21' on page 4 undefined on input line 160.
+
+
+LaTeX Warning: Citation `cres21' on page 4 undefined on input line 164.
 
 
 
 [4]
 
-LaTeX Warning: Citation `cres22' on page 5 undefined on input line 157.
+LaTeX Warning: Citation `cres21' on page 5 undefined on input line 170.
 
 
-LaTeX Warning: Citation `cres22' on page 5 undefined on input line 158.
+LaTeX Warning: Citation `cres19' on page 5 undefined on input line 170.
 
 
-LaTeX Warning: Citation `cres23' on page 5 undefined on input line 158.
+Overfull \hbox (0.54196pt too wide) in paragraph at lines 170--171
+ [][] \OT1/cmr/m/n/12 Nach [[]] hat die X-Hall-Architektur das Po-ten-ti-al, Me
+ss-band-brei-ten von bis zu 200$\OML/cmm/m/it/12 MHz$
+ []
 
 
-LaTeX Warning: Citation `cres21Hall' on page 5 undefined on input line 158.
+LaTeX Warning: Citation `cres22' on page 5 undefined on input line 172.
 
 
-LaTeX Warning: Citation `cres18' on page 5 undefined on input line 164.
+LaTeX Warning: Citation `cres22' on page 5 undefined on input line 173.
 
 
-LaTeX Warning: Citation `cres23' on page 5 undefined on input line 165.
+LaTeX Warning: Citation `cres23' on page 5 undefined on input line 173.
 
 
-LaTeX Warning: Citation `cres23' on page 5 undefined on input line 165.
-
-
-LaTeX Warning: Citation `cres21' on page 5 undefined on input line 165.
-
-
-LaTeX Warning: Citation `cres23' on page 5 undefined on input line 166.
-
-
-LaTeX Warning: Citation `cres21Hall' on page 5 undefined on input line 167.
-
-
-LaTeX Warning: Citation `cres21' on page 5 undefined on input line 168.
+LaTeX Warning: Citation `cres21Hall' on page 5 undefined on input line 173.
 
 
 
 [5]
 
-LaTeX Warning: Citation `sukumar07' on page 6 undefined on input line 185.
+LaTeX Warning: Citation `cres18' on page 6 undefined on input line 179.
+
+
+LaTeX Warning: Citation `cres23' on page 6 undefined on input line 180.
+
+
+LaTeX Warning: Citation `cres23' on page 6 undefined on input line 180.
+
+
+LaTeX Warning: Citation `cres21' on page 6 undefined on input line 180.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 181.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 181.
+
+Missing character: There is no ° in font cmr8!
+
+LaTeX Warning: Citation `cres23' on page 6 undefined on input line 181.
+
+
+LaTeX Warning: Citation `cres21Hall' on page 6 undefined on input line 182.
+
+
+LaTeX Warning: Citation `cres21' on page 6 undefined on input line 183.
 
 
 
 [6]
 
-LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 187.
+LaTeX Warning: Citation `sukumar07' on page 7 undefined on input line 199.
 
 
-Overfull \hbox (8.60379pt too wide) in paragraph at lines 194--194
+LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 201.
+
+
+Overfull \hbox (8.60379pt too wide) in paragraph at lines 208--208
  [][] \OT1/cmr/m/n/12 Li-nea-re Sys-te-me wer-den in El-mer ent-we-der di-rekt,
  ite-ra-tiv oder []uber Multilevel-Methoden
  []
 
 
-LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 196.
-
-
-LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 199.
+LaTeX Warning: Citation `elmerSolve' on page 7 undefined on input line 210.
 
 
 
 [7]
-Overfull \hbox (6.77533pt too wide) in paragraph at lines 207--207
-[]\OT1/cmr/bx/n/14.4 Entwicklung ei-nes Sensor-Layouts - wei-ter un-ter-glie-de
-rn oder
- []
 
-
-LaTeX Warning: Citation `elmerModel' on page 8 undefined on input line 211.
+LaTeX Warning: Citation `elmerModel' on page 8 undefined on input line 223.
 
 
 
@@ -1213,302 +1343,387 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.5})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.278 \end{center}
-                  
+l.266 \begin{equation}
+                      
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.278 \end{center}
-                  
+l.266 \begin{equation}
+                      
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.278 \end{center}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.278 \end{center}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.278 \end{center}
-                  ]
+l.266 \begin{equation}
+                      ]
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.283 \begin{equation}
+l.266 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.283 \begin{equation}
+l.266 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.283 \begin{equation}
+l.266 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.283 \begin{equation}
+l.266 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.298 \begin{equation}
+l.281 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.298 \begin{equation}
+l.281 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.298 \begin{equation}
+l.281 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.298 \begin{equation}
+l.281 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.296 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.296 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.296 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.296 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.311 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.311 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.311 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.311 \begin{equation}
                       
 
-LaTeX Warning: Citation `elmerModel' on page 9 undefined on input line 310.
+LaTeX Warning: Citation `elmerModel' on page 9 undefined on input line 323.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.316 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.316 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.316 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.316 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.330 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.330 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.330 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.330 \begin{equation}
-                      
 
 [9]
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.337 \begin{equation}
+l.330 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.337 \begin{equation}
+l.330 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.337 \begin{equation}
+l.330 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.337 \begin{equation}
+l.330 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.344 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.344 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.344 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.344 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.351 \begin{equation}
                       
 
-LaTeX Warning: Citation `cres23' on page 10 undefined on input line 354.
-
-
-LaTeX Warning: Reference `fig:3' on page 10 undefined on input line 354.
+LaTeX Warning: Reference `fig:3' on page 10 undefined on input line 360.
 
 
 
 [10]
 
-LaTeX Warning: Citation `bowdenDopes' on page 11 undefined on input line 361.
+LaTeX Warning: Citation `cres23' on page 11 undefined on input line 371.
 
 
-LaTeX Warning: Reference `fig:1' on page 11 undefined on input line 363.
+LaTeX Warning: Reference `fig:4' on page 11 undefined on input line 371.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
+
+ []
+
+
+LaTeX Warning: Citation `bowdenDopes' on page 11 undefined on input line 379.
 
 
 
 [11]
 
-LaTeX Warning: Reference `hallV1' on page 12 undefined on input line 368.
+LaTeX Warning: Reference `fig:1' on page 12 undefined on input line 381.
+
+
+LaTeX Warning: Reference `hallV1' on page 12 undefined on input line 387.
 
 
 
 [12]
 
-LaTeX Warning: Citation `cres18' on page 13 undefined on input line 380.
+LaTeX Warning: Reference `fig:5' on page 13 undefined on input line 396.
 
 
-LaTeX Warning: Reference `hallV2' on page 13 undefined on input line 383.
+LaTeX Warning: Citation `cres18' on page 13 undefined on input line 403.
+
+
+LaTeX Warning: Reference `fig:6' on page 13 undefined on input line 404.
+
+
+LaTeX Warning: Reference `hallV2' on page 13 undefined on input line 407.
 
 
 
 [13]
 
-LaTeX Warning: Reference `fig:2' on page 14 undefined on input line 403.
+LaTeX Warning: Citation `mcChem' on page 14 undefined on input line 419.
+
+
+LaTeX Warning: Citation `mgChem' on page 14 undefined on input line 420.
 
 
 
 [14]
 
-LaTeX Warning: Citation `ceidari15' on page 15 undefined on input line 425.
+LaTeX Warning: Reference `fig:2' on page 15 undefined on input line 428.
 
 
 
 [15]
+
+LaTeX Warning: Citation `heidari15' on page 16 undefined on input line 450.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.426 \begin{equation}
+l.451 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.426 \begin{equation}
+l.451 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.426 \begin{equation}
+l.451 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.426 \begin{equation}
+l.451 \begin{equation}
                       
 
-LaTeX Warning: Citation `cres20' on page 16 undefined on input line 437.
+LaTeX Warning: Citation `cres20' on page 16 undefined on input line 462.
 
 
-LaTeX Warning: Citation `ceidari15' on page 16 undefined on input line 440.
-
-
-LaTeX Warning: Citation `sensordb' on page 16 undefined on input line 441.
+LaTeX Warning: Citation `heidari15' on page 16 undefined on input line 465.
 
 
 
 [16]
 
-LaTeX Warning: Citation `sensordb' on page 17 undefined on input line 444.
+LaTeX Warning: Citation `sensordb' on page 17 undefined on input line 469.
 
 
-LaTeX Warning: Citation `texInsAmp' on page 17 undefined on input line 452.
+LaTeX Warning: Reference `measureTablet' on page 17 undefined on input line 470
+.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.454 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.454 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.454 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.454 \begin{equation}
-                      
+LaTeX Warning: Citation `sensordb' on page 17 undefined on input line 473.
+
+
+LaTeX Warning: Reference `measurePhone' on page 17 undefined on input line 474.
+
+
+
+LaTeX Warning: Reference `measurePasco' on page 17 undefined on input line 478.
+
+
+
 
 [17]
+
+LaTeX Warning: Citation `texInsAmp' on page 18 undefined on input line 482.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.467 \begin{equation}
+l.484 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.467 \begin{equation}
+l.484 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.467 \begin{equation}
+l.484 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.467 \begin{equation}
+l.484 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.497 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.497 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.497 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.497 \begin{equation}
                       
 
-LaTeX Warning: Citation `texInsAmp' on page 18 undefined on input line 478.
+LaTeX Warning: Citation `analogNoise1' on page 18 undefined on input line 508.
+
+
+LaTeX Warning: Citation `analogNoise2' on page 18 undefined on input line 508.
+
+
+LaTeX Warning: Citation `analogNoise3' on page 18 undefined on input line 508.
+
+
+LaTeX Warning: Citation `texInsAmp' on page 18 undefined on input line 508.
 
 
 
 [18]
+Overfull \hbox (4.07196pt too wide) in paragraph at lines 521--522
+\OT1/cmr/m/n/12 Da-ten-vi-sua-li-sie-rung so-wie -aufzeichnung sind zwar je nac
+h ver-wen-de-tem Volt-me-ter m[]oglich,
+ []
+
+
 
 [19]
 
@@ -1522,16 +1737,16 @@ L3 programming layer <2025-09-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `ref.out' has not changed.
-(rerunfilecheck)             Checksum: 8EAA8BF5E2ED004DE21A805333D0B0B9;3160.
+(rerunfilecheck)             Checksum: FEF9BA40D15E5AA18F3EF6CEB6F0BD41;4530.
  ) 
 Here is how much of TeX's memory you used:
- 36850 strings out of 468130
- 855918 string characters out of 5430632
- 1348497 words of memory out of 5000000
- 64803 multiletter control sequences out of 15000+600000
- 636004 words of font info for 75 fonts, out of 8000000 for 9000
+ 38669 strings out of 468130
+ 893455 string characters out of 5430633
+ 1390814 words of memory out of 5000000
+ 66549 multiletter control sequences out of 15000+600000
+ 636612 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,105p,885b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,8n,105p,1102b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0800.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -1555,9 +1770,9 @@ Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/armin
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Use
 rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 >
-Output written on ref.pdf (20 pages, 313516 bytes).
+Output written on ref.pdf (20 pages, 325872 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
- 133 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 123 named destinations out of 1000 (max. 500000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,6 @@
 \documentclass[12pt, a4paper]{article}
 
+%\usepackage[utf8]{inputenc}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath, amssymb}
@@ -10,6 +11,10 @@
 \usepgfplotslibrary{statistics} % optional
 \usepgfplotslibrary{units}      % optional
 \usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{external}
+\pgfplotsset{compat=1.18}
+\usepackage{pdfpages}
+\usepackage{placeins}
 \usepackage{tocloft}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -20,16 +25,20 @@
 \usepackage{subcaption}
 \usepackage{setspace}
 \usepackage{footmisc}
+\usepackage{ltablex}
+\newcolumntype{r}{>{\raggedright\arraybackslash}X}
+\keepXColumns
 \DeclareFloatingEnvironment[
 fileext=log,          % auxiliary file extension
 listname=Liste der Graphen,  % heading for list of graphs
 name=Graph            % caption prefix
 ]{graph}
 \captionsetup[graph]{labelfont=bf}
-\PrepareListOf{graph}{%
-	\renewcommand{\cftfigpresnum}{Graph }%
-	\addtolength{\cftfignumwidth}{1.5cm}%
+\renewcommand{\listofgraphs}{%
+	\section*{Graphenverzeichnis}%
+	\@starttoc{logr}%
 }
+
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont}
 \captionsetup{justification=centering, singlelinecheck=false}
 \pgfplotsset{width=10cm}
@@ -39,6 +48,7 @@ name=Graph            % caption prefix
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+
 
 \lstdefinestyle{mystyle}{
 	backgroundcolor=\color{backcolour},   
@@ -76,27 +86,20 @@ name=Graph            % caption prefix
 	\renewcommand{\labelenumiii}{\Roman{enumi}.\roman{enumii}.\roman{enumiii}}
 	\renewcommand{\labelenumiv}{\Roman{enumi}.\roman{enumii}.\roman{enumiii}.\roman{enumiv}}
 	
-	
-	
-	\title{W-Seminar}
-	\subtitle{Deckblatt siehe ByCs}
-	\author{Armin Binder }
-	\date{SJ 2024/25}
+
 	
 \begin{document}
 \pagestyle{fancy}
 \fancyhf{} 
 \fancyfoot[C]{\thepage}
-
-%\pagenumbering{arabic}
-%	\fancyhf{}
-%	\fancyfoot[R]{\thepage}
-\maketitle
+\ifdefined\tikzexternalrealjob
+\includepdf[pages={1}]{Deckblatt.pdf}
+\fi
 \thispagestyle{empty}
 \pagebreak
 
 \begin{abstract}
-	In dieser Arbeit wird die Konzeption und Simulation eines Hall-Sensors auf Basis der X-Hall-Architektur vorgestellt, der zur Erfassung magnetischer Flussdichten dient und möglicherweise Potenzial als experimentelle Alternative zu in Smartphones integrierten Magnetfeldsensoren besitzt. Mithilfe der Finite-Elemente Methode (FEM) wurde das elektrische Verhalten des Sensors analysiert und die Auswirkungen von Geometrie, Materialwahl und Kontaktierung untersucht. Die Simulationsergebnisse zeigen, dass der entworfene Sensor prinzipiell funktionsfähig ist und eine Grundlage für zukünftige Optimierungen bietet. (Neben den technischen Ergebnissen unterstreicht die Arbeit den didaktischen Wert eines eigenständig entwickelten Sensors im schulischen oder experimentellen Kontext. - \textbf{applicable?})
+	Ziel dieser Arbeit ist die Entwicklung und Bewertung eines selbstgebauten Magnetfeldsensors als experimentelle Alternative zu in Smartphones integrierten und externen Magnetfeldsensoren. Dazu werden die Konzeption und Simulation eines Hall-Sensors auf Basis der X-Hall-Architektur vorgestellt. Im Einzelnen wurde mit Hilfe der Finite-Elemente-Methode\,(FEM) das elektrische Verhalten des Sensors in einer Computersimulation analysiert und die Auswirkungen von Geometrie, Materialwahl und Gestaltung der Kontakte untersucht. Die Simulationsergebnisse zeigen, dass der entworfene Sensor prinzipiell funktionsfähig sein sollte und eine Grundlage für zukünftige Optimierungen bietet. Neben den technischen Ergebnissen unterstreicht die Arbeit den didaktischen Wert eines eigenständig entwickelten Sensors im schulischen oder experimentellen Kontext, da der Entwicklungsprozess sowohl ein tieferes Verständnis physikalischer Grundlagen als auch Kompetenzen im wissenschaftlichen Arbeiten und in der computergestützten Modellierung physikalischer Probleme fördert.
 \end{abstract}
 \thispagestyle{empty}
 \pagebreak
@@ -105,46 +108,52 @@ name=Graph            % caption prefix
 \thispagestyle{empty}
 \pagebreak
 
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\listofgraphs
+\addcontentsline{toc}{section}{Graphenverzeichnis}
+\pagebreak
+
 
 
 \section{Einleitung}
-Magnetfeldsensoren sind ein integraler Bestandteil moderner Smartphones und ermöglichen Anwendungen wie Kompassfunktionen, Positionsbestimmungen und metallische Objekterkennung. Die physikalische Grundlage vieler solcher Sensoren bildet der Hall-Effekt, der eine präzise Messung magnetischer Felder durch die Detektion von durch Ladungsverschiebungen entstehenden Potentialunterschieden erlaubt.\newline
-Kommerzielle Hall-Sensoren sind technisch sehr ausgereift, jedoch meist nicht in ihren physikalischen Grundlagen nachvollziehbar oder individuell anpassbar. Für den schulischen oder experimentellen Kontext stellt sich daher die Frage, inwieweit ein eigenständig konzipierter Sensor vergleichbare Messungen liefern kann.\newline
+Magnetfeldsensoren sind ein integraler Bestandteil moderner Smartphones und ermöglichen Anwendungen wie Kompassfunktionen, Positionsbestimmungen und Erkennung metallischer Objekte. Die physikalische Grundlage vieler solcher Sensoren bildet der Hall-Effekt, der eine präzise Messung magnetischer Felder durch die Detektion von durch Ladungsverschiebungen entstehenden Potentialunterschieden erlaubt.\newline
+Kommerzielle Hall-Sensoren sind technisch sehr ausgereift, jedoch meist nicht in ihren physikalischen Funktionsweisen nachvollziehbar oder individuell anpassbar. Für den schulischen oder experimentellen Kontext stellt sich daher die Frage, inwieweit ein eigenständig konzipierter Sensor vergleichbare Messungen liefern kann.\newline
 Ziel dieser Arbeit ist es, einen eigenen Hall-Sensor auf Basis der X-Hall-Architektur zu entwerfen und seine Eigenschaften mithilfe numerischer Simulationen zu analysieren. Dabei soll insbesondere untersucht werden, inwieweit ein solcher Sensor als experimentelle Alternative zu in Smartphones integrierten Magnetfeldsensoren oder kommerziell verfügbaren Sensormodulen dienen kann.\newline
-Aufgrund begrenzter Materialverfügbarkeit und des hohen Aufwands praktischer Tests liegt der Schwerpunkt auf der theoretischen Konzeption und der Simulation mithilfe der Finite-Elemente Methode (FEM). Diese ermöglicht es, Layout, Materialwahl und elektrische Eigenschaften des Sensors bereits im Vorfeld systematisch zu untersuchen.\newline
-Die Arbeit gliedert sich in einen theoretischen Teil, in dem die physikalischen Grundlagen und die Wahl des X-Hall-Layouts erläutert werden, sowie in einen praktischen Abschnitt, der die Konzeption, Simulation und Auswertung des Modells beschreibt. Abschließend werden die Ergebnisse kritisch bewertet( und mögliche Weiterentwicklungen aufgezeigt - \textbf{wird es das?}).
+Aufgrund begrenzter Materialverfügbarkeit und des hohen Aufwands praktischer Tests liegt der Schwerpunkt auf der theoretischen Konzeption und der Simulation mithilfe der Finite-Elemente-Methode\,(FEM). Diese ermöglicht es, Layout, Materialwahl und elektrische Eigenschaften des Sensors bereits im Vorfeld systematisch zu untersuchen.\newline
+Die Arbeit gliedert sich in einen theoretischen Teil, in dem die physikalischen Grundlagen und die Wahl des X-Hall-Layouts erläutert werden, sowie in einen praktischen Abschnitt, der die Konzeption, Simulation und Auswertung des Modells beschreibt. Abschließend werden die Ergebnisse kritisch bewertet.
 
 
 \section{Funktionsweise der X-Hall-Architektur}
-Die für diese Arbeit gewählte Architektur, die sogenannte \textbf{X-Hall-Architektur} unterscheidet sich von klassischen Hall-Sensor-Layouts wie Kreuz- oder Linearsensoren in mehreren entscheidenden Aspekten. Im Folgenden soll diese spezifische Architektur vorgestellt werden und auf ihre Vor- sowie Nachteile eingegangen werden, ebenso wie auf die Gründe zur Wahl genau dieser %genauen 
+Die für diese Arbeit gewählte Architektur, die sogenannte \textbf{X-Hall-Architektur}, unterscheidet sich von klassischen Hall-Sensor-Layouts wie Kreuz- oder Linearsensoren in mehreren entscheidenden Aspekten. Im Folgenden soll diese spezifische Architektur vorgestellt werden und auf ihre Vor- sowie Nachteile eingegangen werden, ebenso wie auf die Gründe zur Wahl genau dieser %genauen 
 Architektur für diese Arbeit.
 
 \subsection{Geschichte und Konzept}
 Bei der X-Hall-Architektur handelt es sich um eine recht neue Form des Hall-Sensors. Erstmalig wurde sie gegen Ende des Jahres 2018 auf dem IMEKO\,\footnote{International Measurement Confederation} 
 World Congress vorgestellt\,\cite{cres19}. \newline
-Die Entwicklung dieser neuen Art Hall-Sensor wurde insbesondere durch den Bedarf für Magnetfeldsensoren mit immer größeren Frequenzbandbreiten vorangetrieben, die grundlegende Bestandteile unter anderem von Sicherheitsschaltungen vieler moderner Stromversorgungskreisläufe sind\,\cite{cres18}. Die bisher genutzten Sensortypen und Architekturen, wohlgemerkt nicht exklusiv Hall-Sensoren, wiesen aber bereits durch ihren Aufbau alle gewisse Einschränkungen und Probleme auf, die ihre Einsetzbarkeit limitierten\,\cite{cres21}. \newline
+Die Entwicklung dieser neuen Art Hall-Sensor wurde insbesondere durch den Bedarf nach Magnetfeldsensoren mit immer größeren Frequenzbandbreiten vorangetrieben, die grundlegende Bestandteile unter anderem von Sicherheitsschaltungen vieler moderner Stromversorgungskreisläufe wie Hochfrequenz-Wechselrichtern sind\,\cite{cres18}\,\cite{cres21}. Die bisher genutzten Sensortypen und Architekturen --- wohlgemerkt nicht exklusiv Hall-Sensoren --- wie zum Beispiel Magnetoresistenz-Sensoren oder induktive Messwandler wiesen aber bereits durch ihren Aufbau alle gewisse Einschränkungen und Probleme auf, die ihre Einsetzbarkeit limitierten\,\cite{cres21}. \newline
 Ziel der neuen Sensorarchitektur sollte es also sein, alle Aspekte, die für so einen Magnetfeldsensor relevant sind, in sich zu vereinen\,\cite{cres19}: 
 \begin{itemize}
 	\item Sehr hohe bemessbare Frequenzbandbreiten von Magnetfeldern %Nochmal seperat bestätigen
-	\item Fähigkeiten, Gleichspannung (indirekt) zu messen
+	\item Fähigkeiten, Gleichspannung\,(indirekt) zu messen
 	\item Mögliche CMOS\,\footnote{Complementary Metal-Oxide Semiconductor = komplementärer Metalloxid-Halbleiter}-Integration
 	\item Galvanische Isolation\,\footnote{Elektrische funktionale Sektionen sind so voneinander isoliert, dass es keinen direkten Stromfluss zwischen ihnen gibt}
 	\item Keine Wärmeabstrahlung
 	\item Geringer Flächenbedarf %Kleines Profil
 	\item Geringe Produktionskosten
 \end{itemize} 
-Aus diesen Überlegungen resultierte die Entwicklung der sogenannten X-Hall-Architektur\newline
-Einfach gesagt handelt es sich hierbei um eine Hall-Sonde mit jeweils vier Vorspannungs\,\footnote{Strom der durch den Sensor fließt, um den Hall-Effekt erst zu ermöglichen}- und vier Auslesekontakten (was jeweils das doppelte der jeweiligen Kontaktarten bei typischen Hall-Sensoren ist), die an der aktiven Fläche des Sensors angebracht sind. Durch eine elektrische Verbindung jeweils zweier diagonal gegenüberliegender Auslesekontakte vor dem eigentlichen Auslesevorgang wird gewährleistet, dass mögliche Defekte und Offsetspannungen\,\footnote{Ungewollte Spannungen, die selbst dann gemessen werden können, wenn der theoretische Messwert 0 sein sollte} auf der größeren aktiven Fläche unter anderem durch so entstehende Mittelungseffekte kompensiert werden. Dies führt zu einer einer höheren Genauigkeit und Stabilität der Messwerte.
+Aus diesen Überlegungen resultierte die Entwicklung der sogenannten X-Hall-Architektur.\newline
+Einfach gesagt handelt es sich hierbei um eine Hall-Sonde mit jeweils vier Vorspannungs\,\footnote{Strom der durch den Sensor fließt, um den Hall-Effekt erst zu ermöglichen}- und vier Auslesekontakten\,(was jeweils das Doppelte der jeweiligen Kontaktarten bei typischen Hall-Sensoren ist), die an der aktiven Fläche des Sensors angebracht sind. Durch eine elektrische Verbindung jeweils zweier diagonal gegenüberliegender Auslesekontakte vor dem eigentlichen Auslesevorgang wird gewährleistet, dass mögliche Defekte und Offsetspannungen\,\footnote{Ungewollte Spannungen, die selbst dann gemessen werden können, wenn der theoretische Messwert 0 sein sollte} auf der größeren aktiven Fläche unter anderem durch so entstehende Mittelungseffekte kompensiert werden. Dies führt zu einer höheren Genauigkeit und Stabilität der Messwerte.
 
 \subsection{Aufbau und Funktionsweise}
 Bei der aktiven Fläche eines X-Hall-Sensors handelt es sich in der Regel um einen oktagonal geformten, sogenannten n-Well\,\footnote{n-dotierte ``Halbleitertasche'' innerhalb eines p-dotierten Substrats}\,\cite{cres18}. \newline
 Die n-Dotierung der aktiven Sensorfläche wird aufgrund einer höheren strombezogenen Empfindlichkeit\,\footnote{Begründet durch höhere Elektronenmobilität in n-Typ-Halbleitern} im Gegensatz zu p-dotierten Halbleitern präferiert. %bevorzugt?
 Auch ist die Umschließung des n-Wells mit einem p-dotierten Material zwar für die grundlegende Sensorfunktion nicht essenziell, %auf nichtverwendung in Arbeit aufgrund komplexität hinweisen? 
-sollte jedoch  angestrebt werden, da nur so eine effektive elektrische Isolation gegenüber dem Substrat erreicht werden kann\,\cite{cres20}.\newline
+sollte jedoch  angestrebt werden, da nur so eine effektive elektrische Isolation gegenüber dem Substrat erreicht werden kann\,\cite{cres20}.\paragraph{}
 Der Zugang zur aktiven Fläche erfolgt über insgesamt acht Kontakte, die sich in vier großflächige Vorspannungskontakte und vier möglichst kleine Auslesekontakte unterteilen lassen. Die Vorspannungskontakte profitieren aufgrund ihrer Größe von sehr niedrigen Widerständen beim Anlegen der Vorspannung, während die Auslesekontakte so klein wie möglich sein sollten, da so mögliche parasitäre Kapazitätseffekte\,\footnote{Unerwünschte Kapazität, die durch geringe physische Nähe zwischen elektrischen Bauteilen entsteht} % , ???
 wie Signalverzerrungen oder Rauschen minimiert werden können\,\cite{cres19}.\newline
-An die in Fig.~\ref{fig:1}(a) als B und T bezeichneten Vorspannungskontakte werden nominal gleiche Vorspannungsströme ($I_A=I_B$) angelegt, während die als L und R bezeichneten Kontakte jeweils als Erdungskontakte dienen\,\cite{cres19}. Die Auslesekontakte sind von 1 bis 4 durchnummeriert.\newline
-In der aktuellen Konfiguration kann die gesamte Sensorsonde in zwei innere Sensorsonden untergliedert werden, die in Fig.~\ref{fig:1}(a) als Probe A und Probe B bezeichnet sind. Dies Aufteilung ergibt sich direkt aus der in Fig.~\ref{fig:1}(b) dargestellten Stromstärkeverteilung zwischen den Kontakten auf dem Halbleiter, da der Strom über die Erdung bereits abgeführt wird, bevor er die zweite innere Sonde erreichen kann\,\cite{cres20}.
+An die in Fig.~\ref{fig:1}(a) als B und T bezeichneten Vorspannungskontakte werden nominal gleiche Vorspannungsströme ($I_A=I_B$) angelegt, während die als L und R bezeichneten Kontakte jeweils als Erdungskontakte dienen\,\cite{cres19}. Die Auslesekontakte sind von 1 bis 4 durchnummeriert.\paragraph{}
+In der aktuellen Konfiguration kann die gesamte Sensorsonde in zwei innere Sensorsonden untergliedert werden, die in Fig.~\ref{fig:1}(a) als Probe A und Probe B bezeichnet sind. Diese Aufteilung ergibt sich direkt aus der in Fig.~\ref{fig:1}(b) dargestellten Volumenstromverteilung zwischen den Kontakten auf dem Halbleiter, da der Strom über die Erdung bereits abgeführt wird, bevor er die zweite innere Sonde erreichen kann\,\cite{cres20}.
 \begin{figure}
 	\centering
 	%Fig. 1-a
@@ -153,107 +162,104 @@ In der aktuellen Konfiguration kann die gesamte Sensorsonde in zwei innere Senso
 	%Fig. 1-b
 	\includegraphics[height=5cm]{Fig1.2}
 	\captionsetup{type=figure}
-	\caption[(a) Skizze des Aufbaus der X-Hall-Sonde, (b) Stromstärkeverteilung auf der X-Hall-Sonde; Übernommen aus \cite{cres18}, Fig.~1(a)] {(a) Skizze des Aufbaus der X-Hall-Sonde, (b) Stromstärkeverteilung auf der X-Hall-Sonde}
+	\caption[(a) Skizze des Aufbaus der X-Hall-Sonde: Übernommen aus \cite{cres18}, Fig.~1(a); (b) Volumenstromverteilung auf der X-Hall-Sonde: Eigene Abbildung] {(a) Skizze des Aufbaus der X-Hall-Sonde, (b) Volumenstromverteilung auf der X-Hall-Sonde}
 	\label{fig:1}
 \end{figure}\newline
-Diese inneren Sonden funktionieren, unabhängig voneinander, jeweils wie gewöhnliche stromverzweigende Hall-Sonden, bei denen die jeweilige Stromdichte $J_A$ oder $J_B$ in zwei gleiche Stromdichten $J_{A,L}$ und $J_{A,R}$ beziehungsweise $J_{B,L}$ und $J_{B,R}$ aufgespalten werden. Dementsprechend gilt für jeweiligen Potentiale zwischen den Messkontakten 1 und 2 beziehungsweise 3 und 4 in Abwesenheit eines Magnetfelds: $V_A=V_B=0$\,\cite{cres21}.\newline
-Liegt nun ein Magnetfeld $B_Z$ vor, entsteht aufgrund der Lorentzkräfte die auf die Ladungsträger wirken ein Ungleichgewicht im Stromfluss, was dazu führt, dass nun vereinfacht $V_A=V_\mathrm{Hall}$ und $V_B=-V_\mathrm{Hall}$ (Da der Stromfluss in der zweiten inneren Sonde in die entgegengesetzte Richtung des Stroms von Sonde A verläuft).\newline
-In Realität lassen sich jedoch Asymmetrien in der Sensorstruktur, globale Inhomogenitäten von Materialien und andere Defekte nicht vermeiden, weshalb für die gemessenen Spannungen $V_A$ und $V_B$ tatsächlich gilt:
+Diese inneren Sonden funktionieren, unabhängig voneinander, jeweils wie gewöhnliche stromverzweigende Hall-Sonden, bei denen die jeweilige Stromdichte $J_A$ oder $J_B$ in zwei gleiche Stromdichten $J_{A,L}$ und $J_{A,R}$ beziehungsweise $J_{B,L}$ und $J_{B,R}$ aufgespalten wird. Dementsprechend gilt für die jeweiligen Potentiale zwischen den Messkontakten 1 und 2 beziehungsweise 3 und 4 in Abwesenheit eines Magnetfelds: $V_A=V_B=0$\,\cite{cres21}.\newline
+Liegt nun ein Magnetfeld $B_Z$ vor, entsteht aufgrund der Lorentzkräfte, die auf die Ladungsträger wirken, ein Ungleichgewicht im Stromfluss, was dazu führt, dass nun vereinfacht $V_A=V_{Hall}$ und $V_B=-V_{Hall}$\,(Da der Stromfluss in der zweiten inneren Sonde in die entgegengesetzte Richtung des Stroms von Sonde A verläuft).\newline
+In der Realität lassen sich jedoch Asymmetrien in der Sensorstruktur, globale Inhomogenitäten von Materialien und andere Defekte nicht vermeiden, weshalb für die gemessenen Spannungen $V_A$ und $V_B$ tatsächlich gilt:
 \begin{equation}
-	V_A=V_\mathrm{H,Sonde}+V_\mathrm{OS}^{(A)}
+	V_A=V_{H,Sonde}+V_{OS}^{(A)}
 	\label{eq:1}
 \end{equation}
 \begin{equation}
-	V_B=-V_\mathrm{H,Sonde}+V_\mathrm{OS}^{(B)}
+	V_B=-V_{H,Sonde}+V_{OS}^{(B)}
 	\label{eq:2}
 \end{equation}
-$V_\mathrm{OS}^{(A)}$ und $V_\mathrm{OS}^{(B)}$ sind die Offsetspannungen der jeweiligen inneren Sonde\,\cite{cres20}.\newline
-Da beide inneren Sonden sich nichtsdestotrotz die gleiche aktive Sensorfläche teilen, kann angenommen werden, dass das Vorzeichen von $V_\mathrm{OS}^{(A)}$ und $V_\mathrm{OS}^{(B)}$ identisch ist, auch wenn sich ihre jeweiligen Werte aufgrund lokaler Defekte unterscheiden können\,\cite{cres21}. Deshalb kann angenommen werden, dass die Hauptquelle der Offsets sehr wahrscheinlich für beide inneren Sonden die selbe ist\,\cite{cres20}.\newline
+$V_{OS}^{(A)}$ und $V_{OS}^{(B)}$ sind die Offsetspannungen der jeweiligen inneren Sonde\,\cite{cres20}.\newline
+Da beide inneren Sonden sich nichtsdestotrotz die gleiche aktive Sensorfläche teilen, kann angenommen werden, dass das Vorzeichen von $V_{OS}^{(A)}$ und $V_{OS}^{(B)}$ identisch ist, auch wenn sich ihre jeweiligen Werte aufgrund lokaler Defekte unterscheiden können\,\cite{cres21}. Da sich beide inneren Sonden dieselbe aktive Region teilen, kann angenommen werden, dass die Hauptquelle der Offsets sehr wahrscheinlich für beide inneren Sonden dieselbe ist\,\cite{cres20}.\newline
 \begin{figure}
 	\centering
 	\includegraphics[height=5cm]{Fig2}
 	\captionsetup{type=figure}
-	\caption{Schematischer Schaltplan einer X-Hall-Sonde}
+	\caption[Schematischer Schaltplan einer X-Hall-Sonde: Übernommen aus \cite{cres18}, Fig.~2(a)]{Schematischer Schaltplan einer X-Hall-Sonde}
 	\label{fig:2}
 \end{figure}
-Wie in Fig.~\ref{fig:2} gezeigt besteht die eigentliche und namensgebende Besonderheit der X-Hall-Architektur in einer Überkreuzverbindung der diagonal gegenüberliegenden Paare von Auslesekontakte (1 mit 3 und 2 mit 4). Daraus folgt:
+Wie in Fig.~\ref{fig:2} gezeigt, besteht die eigentliche und namensgebende Besonderheit der X-Hall-Architektur in einer Überkreuzverbindung der diagonal gegenüberliegenden Paare von Auslesekontakten\,(1 mit 3 und 2 mit 4). Daraus folgt:
 \begin{equation}
-	V_A=-V_B=V_\mathrm{H,Sonde}
+	V_A=-V_B=V_{H,Sonde}
 	\label{eq:3}
 \end{equation}
 Unter der Annahme gleicher Vorzeichen beider Offsetspannungen und einer Substitution von (\ref{eq:1}) und (\ref{eq:2}) in (\ref{eq:3}) wird  impliziert:
 \begin{equation}
-	V_\mathrm{OS}^{(A)}=V_\mathrm{OS}^{(B)}=0
+	V_{OS}^{(A)}=V_{OS}^{(B)}=0
 	\label{eq:4}
 \end{equation}
-Physikalisch gesehen erzeugt die Überkreuzverbindung der Auslesekontakte eine  Randbedingung in der aktiven Fläche, welche die Ladungsverteilung so beeinflusst, dass Offsetspannungen minimiert werden\,\cite{cres21}. 
+Physikalisch gesehen erzeugt die Überkreuzverbindung der Auslesekontakte eine Randbedingung in der aktiven Fläche, welche die Ladungsverteilung so beeinflusst, dass Offsetspannungen minimiert werden\,\cite{cres21}. 
 Durch die Überkreuzverbindung sind beide Kontakte elektrisch verbunden, was dazu führt, dass sich die Ströme der beiden Kontakte gegenseitig ausbalancieren. %Dies ist Teil der typischen Ladungsverteilung hin zum energetisch günstigsten Zustand des Systems. 
 Aufgrund dieser ladungsverschiebenden Effekte gleicht das System selbstständig ungewollte Offsets oder Defekte und damit verbundene energetisch ungünstige Ladungsverteilungen – ob lokal oder global – aus. %da das System bestrebt ist, seinen energetisch günstigen Zustand zu erreichen. 
 So werden Anteile dieser ungünstigen Ladungsverteilungen in den tatsächlich ausgelesenen Messwerten minimiert.\newline
-Trotzdem wird es immer vereinzelte lokale Defekte und Offsets geben, die zu einer verbleibenden Offsetspannung führen und jeweils zu $V_A$ und $V_B$ hinzugerechnet werden müssen. Die X-Hall-Architektur strebt also primär an, globale Defekte und Offsets mit starkem Einfluss auf Messergebnisse auszugleichen und nicht, diese vollständig zu eliminieren\,\cite{cres21}.
+Trotzdem wird es immer vereinzelte lokale Defekte und Offsets geben, die zu einer verbleibenden Offsetspannung führen und jeweils zu $V_A$ und $V_B$ hinzugerechnet werden müssen. Die X-Hall-Architektur strebt primär an, globale Defekte und Offsets mit starkem Einfluss auf Messergebnisse auszugleichen, kann sie jedoch nicht vollständig eliminieren\,\cite{cres21}.
 
 \subsection{Vorteile und Nachteile der Architektur}
 Die eigentlichen Anforderungen an die X-Hall-Architektur wurden bereits in \textbf{Kapitel 2.1} behandelt. Auf theoretischer Ebene sollte die Architektur diese auch alle erfüllen.\newline
 Praktisch zeigt sich folgendes Bild:\paragraph{}
 
-Nach \cite{cres21} hat die X-Hall-Architektur das Potential, bis zu 200\,MHz oder mehr Messbandbreite zu realisieren, ohne dabei wie zuvor bestehende Lösungen hochkomplex in der Umsetzung zu sein. In der Praxis wurden bisher jedoch maximal Sensorbandbreiten um  20\,MHz\,\cite{cres19} erreicht.\newline
-Dies lässt sich vor allem dadurch erklären, dass für höhere Bandbreiten keine Stabilität der Messwerte und der Messwertverstärkung mehr zu garantieren ist, insbesondere Aufgrund perturbativer, induzierter Effekte in Anschlusskabeln und parasitärer Effekte.\paragraph{}
-Des Weiteren wird eine frequenzunabhängige Offsetkompensation erreicht, wobei hochentwickelte Spinning-Current-Hall-Sensoren immer noch wesentlich geringere Offsets erreichen können, dafür aber wesentlich geringere Bandbreiten haben. In \cite{cres22} wird konkret von $\Delta{V_{OS}}=116\,\mu{V}\pm1\mu{V}$ für den dort verwendeten X-Hall-Sensor gesprochen, während Spinning-Current-Modelle bis $\Delta{V_{OS}}=15\,\mu{V}$ und niedriger reichen können. Anzumerken ist, dass die von X-Hall-Sensoren erreichten Offsets aber trotzdem verhältnismäßig gering sind, wenn man sie mit anderen Sensoren vergleicht.\paragraph{}
-\cite{cres22} und \cite{cres23} zeigen weiter auf, dass die X-Hall-Architektur verhältnismäßig ``limitierte Sensitivität'' [sic] im Vergleich zu anderen Sensorarchitekturen besitzt. So wird in \cite{cres21Hall} dem X-Hall-Sensor eine Sensitivität von 36\,mv/A zugeordnet, während fast alle anderen dort aufgeführten Hall-Sensoren höhere Sensitivität bis zu 100\,mv/A aufweisen (Hohe Sensitivität ist für Detektion von schwachen Feldern essenziell). 
+Nach \cite{cres21} hat die X-Hall-Architektur das Potenzial, Messbandbreiten von bis zu 200\,$MHz$ oder höher zu realisieren, ohne dabei wie zuvor bestehende Lösungen hochkomplex in der Umsetzung zu sein. In der Praxis wurden bisher jedoch maximal Sensorbandbreiten von etwa 20\,$MHz$\,\cite{cres19} erreicht.\newline
+Dies lässt sich vor allem dadurch erklären, dass für höhere Bandbreiten keine Stabilität der Messwerte und der Messwertverstärkung mehr zu garantieren ist, insbesondere aufgrund perturbativer, induzierter Effekte in Anschlusskabeln und parasitärer Effekte.\paragraph{}
+Des Weiteren wird eine frequenzunabhängige Offsetkompensation erreicht, wobei hochentwickelte Spinning-Current-Hall-Sensoren immer noch wesentlich geringere Offsets erreichen können, dafür aber wesentlich geringere Bandbreiten haben. In \cite{cres22} wird konkret von $\Delta{V_{OS}}=116\,\mu{V}\pm1\mu{V}$ für den dort verwendeten X-Hall-Sensor gesprochen, während Spinning-Current-Modelle bis $\Delta{V_{OS}}=15\,\mu{V}$ und niedriger reichen können. Anzumerken ist, dass die von X-Hall-Sensoren erreichten Offsets aber trotzdem verhältnismäßig gering sind, wenn man sie mit anderen Sensoren und Hall-Architekturen, zum Beispiel planaren und vertikalen Hall-Sensoren, vergleicht.\paragraph{}
+\cite{cres22} und \cite{cres23} zeigen weiter auf, dass die X-Hall-Architektur verhältnismäßig ``limitierte Sensitivität'' [sic] im Vergleich zu anderen Sensorarchitekturen besitzt. So wird in \cite{cres21Hall} dem X-Hall-Sensor eine Sensitivität von 36\,$\frac{mV}{A}$ zugeordnet, während fast alle anderen dort aufgeführten Hall-Sensoren höhere Sensitivitäten bis zu 100\,$\frac{mV}{A}$ aufweisen\,(Hohe Sensitivität ist für die Detektion von schwachen Feldern essenziell). 
 
 
 \subsection{(Erwartete) Leistungscharakteristika der Architektur}
-Aufgrund des noch jungen Entwicklungsstands ist die Architektur bislang kaum verbreitet. Dementsprechend lassen sich die zu erwartenden Leistungscharakteristika am zuverlässigsten aus den bislang realisierten Sensoren in STMicroelectronics BCD\,\footnote{Bipolar-CMOS-DMOS} 160\,nm Technologie ableiten.\paragraph{}
+Aufgrund des noch jungen Entwicklungsstands ist die Architektur bislang kaum verbreitet. Dementsprechend lassen sich die zu erwartenden Leistungscharakteristika am zuverlässigsten aus den bislang realisierten Sensoren in STMicroelectronics BCD\,\footnote{Bipolar-CMOS-DMOS} 160\,nm-Technologie ableiten.\paragraph{}
 
-Aus \cite{cres18} lässt sich herauslesen, dass für einen Hall-Sensor dieser Spezifikation die durchschnittliche $\Delta{V_{OS}}=-0,27\,mV$, wobei eine sehr hohe Standardabweichung von $\sigma=0,64\,mV$ vorliegt.\newline
-Bei längerer Betriebsdauer sind nach \cite{cres23} Standardabweichungen von etwa $\sigma=26\,mA$ und Offset-Drifts von etwa 0,33\,mA/h zu erwarten, was äquivalent zu Magnetfeldern mit einer Streuung von etwa $\sigma=197\,\mu{T}$ und einem Drift von etwa $2,5\,\mu{T}/h$ ist.\,\footnote{\cite{cres23} nutzt eine modifizierte Variante des Sensors, der statt einer Spannung eine Stromstärke ausgibt; \cite{cres21} bestätigt diese Werte aber in etwa}\newline
-Für die typischerweise vorliegende Temperaturregion des Sensors von etwa 30\,°C bis 100\,°C\,\footnote{Insbesondere Stromversorgende Kreisläufe, einer der Hauptanwendungen des Sensors arbeiten meist bei hohen internen Temperaturen} ist ein Temperaturkoeffizient von etwa -4,1\,mA/°C laut \cite{cres23} zu erwarten.\newline
-Die Sensitivität liegt nach \cite{cres21Hall} bei etwa 36\,mV/A, die dynamische Reichweite bei 52\,dB \footnote{Verhältnis von etwa 1:398 vom kleinsten zum größten messbaren Magnetfeld} und das Rauschen bei unter 100\,mA RMS / 3,6\,mV RMS.\,\footnote{RMS (Root Mean Square) beschreibt den Effektivwert einer Wechselgröße und dient als Maß für ihre mittlere Leistung}\newline
-Wir nehmen eine Bandbreite des Sensors von etwa 4\,MHz an, sprich der Sensor kann pro Sekunde 4.000.000 verlässliche Messungen durchführen\,\cite{cres21}. \paragraph{}
+Aus \cite{cres18} lässt sich herauslesen, dass für einen solchen Hall-Sensor das mittlere $\Delta{V_{OS}}=-0,27\,mV$ ist, wobei eine sehr hohe Standardabweichung von $\sigma=0,64\,mV$ vorliegt.\newline
+Bei längerer Betriebsdauer sind nach \cite{cres23} eingangsbezogene Offsets\,\footnote{Auf den Eingang bezogener Offset, der den am Ausgang gemessenen Offset bedingen würde} von $\sigma\approx26\,mA$ und eingangsbezogene Offset-Drifts von etwa 0,33\,$\frac{mA}{h}$ zu erwarten, was äquivalent zu Magnetfeldern mit einer Streuung von etwa $\sigma\approx197\,\mu{T}$ und einem Drift von etwa $2,5\,\frac{\mu{T}}{h}$ ist.\,\footnote{\cite{cres23} nutzt eine modifizierte Variante des Sensors, der statt einer Spannung eine Stromstärke ausgibt; \cite{cres21} bestätigt diese Werte aber in etwa}\newline
+Für die typischerweise vorliegende Temperaturregion des Sensors von etwa 30\,°C bis 100\,°C\,\footnote{Insbesondere stromversorgende Kreisläufe, eine der Hauptanwendungen des Sensors, arbeiten meist bei hohen internen Temperaturen} ist ein Temperaturkoeffizient von etwa -4,1\,$\frac{mA}{°C}$ laut \cite{cres23} zu erwarten.\newline
+Die Sensitivität liegt nach \cite{cres21Hall} bei etwa 36\,$\frac{mV}{A}$, die dynamische Reichweite bei 52\,$dB$ \footnote{Verhältnis von etwa 1:398 vom kleinsten zum größten messbaren Magnetfeld} und das Rauschen bei unter 100\,$mA RMS$ / 3,6\,$mV RMS$.\,\footnote{RMS\,(Root Mean Square) beschreibt den Effektivwert einer Wechselgröße und dient als Maß für ihre mittlere Leistung}\newline
+Wir nehmen eine Bandbreite des Sensors von etwa 4\,$MHz$ an, sprich der Sensor kann pro Sekunde 4.000.000 verlässliche Messungen durchführen\,\cite{cres21}. \paragraph{}
 
-Aufgrund der hohen erreichbaren Sensorbandbreite, der frequenzunabhängigen Offsetkompensation und insbesondere der einfachen Architektur und Implementierung im Vergleich zu anderen geeigneten Sensordesigns eignet sich die X-Hall-Architektur besser für experimentelle Eigenentwicklungen, wie sie im weiteren Verlauf dieser Arbeit beschrieben werden. %/Aufgrund der hohen erreichbaren Bandbreite, der frequenzunabhängigen Offsetkompensation und der vergleichsweise einfachen Implementierung eignet sich die X-Hall-Architektur besonders gut für experimentelle Eigenentwicklungen wie die im Rahmen dieser Arbeit umgesetzte.
+Aufgrund der hohen erreichbaren Sensorbandbreite, der frequenzunabhängigen Offsetkompensation und insbesondere der einfachen Architektur und Implementierung im Vergleich zu anderen geeigneten Sensordesigns, eignet sich die X-Hall-Architektur besser für experimentelle Eigenentwicklungen, wie sie im weiteren Verlauf dieser Arbeit beschrieben werden. %/Aufgrund der hohen erreichbaren Bandbreite, der frequenzunabhängigen Offsetkompensation und der vergleichsweise einfachen Implementierung eignet sich die X-Hall-Architektur besonders gut für experimentelle Eigenentwicklungen wie die im Rahmen dieser Arbeit umgesetzte.
 
 \section{Praktische Umsetzung des X-Hall-Sensors}
-Das wichtigste Element einer erfolgreichen praktischen Umsetzung ist eine sorgfältige Planung und Vorbereitung.\newline 
-Da im Rahmen dieser Arbeit der Schwerpunkt aus zeitlichen Einschränkungen auf der Konzeption und technischen Auslegung des Sensors liegt, wird hier die Planung und Vorbereitung der Umsetzung vorgestellt\,(Eine tatsächliche Umsetzung wird für ``Jugend Forscht!'' 2026 erfolgen). Dabei werden insbesondere die Materialauswahl, die geometrische Gestaltung der Sensorstruktur sowie der geplante elektrische Aufbau behandelt.\newline
-Ein wesentlicher Bestandteil dieser Planungsphase ist die Simulation der Sensorstruktur mithilfe numerischer Verfahren, um die Funktion und Effizienz des Layouts bereits vor der praktischen Realisierung zu überprüfen. Im Folgenden wird gezeigt, wie solche numerischen Methoden konkret zur Entwicklung eines geeigneten Sensorlayouts eingesetzt werden.
+Das wichtigste Element einer erfolgreichen praktischen Umsetzung ist eine sorgfältige Planung und Vorbereitung. Da im Rahmen dieser Arbeit der Schwerpunkt aus zeitlichen Einschränkungen auf der Konzeption und technischen Auslegung des Sensors liegt, wird hier die Planung und Vorbereitung der Umsetzung vorgestellt\,(Eine tatsächliche Umsetzung wird für ``Jugend Forscht!'' 2026 erfolgen). \newline
+Dabei werden insbesondere die Materialauswahl, die geometrische Gestaltung der Sensorstruktur sowie der geplante elektrische Aufbau behandelt. Ein wesentlicher Bestandteil dieser Planungsphase ist auch die Simulation der Sensorstruktur mithilfe numerischer Verfahren, um die Funktion und Effizienz des Layouts bereits vor der praktischen Realisierung zu überprüfen. Im Folgenden wird gezeigt, wie solche numerischen Methoden konkret zur Entwicklung eines geeigneten Sensorlayouts eingesetzt werden.
 
-\subsection{Die ``Finite Element'' Methode}
-Da die Ausgangsmaterialien für den Sensor nicht leicht erhältlich beziehungsweise teuer sind, empfiehlt es sich, vor tatsächlichen praktischen Versuchen zunächst den Sensor und dessen Verhalten zu simulieren, um vorab Fehler zu identifizieren und zu vermeiden. In diesem Fall betrifft das insbesondere das Layout des Sensors und seiner Kontakte.\paragraph{}
+\subsection{Die ``Finite-Elemente''-Methode}
+Da die Ausgangsmaterialien für den Sensor schwer erhältlich beziehungsweise teuer sind, empfiehlt es sich, vor tatsächlichen praktischen Versuchen zunächst den Sensor und dessen Verhalten zu simulieren, um vorab mögliche Fehler zu identifizieren und zu vermeiden. \newline
+In diesem Fall betrifft das insbesondere das Layout des Sensors und seiner Kontakte.\paragraph{}
 
-Eine weit verbreitete Methode solche Simulationen durchzuführen sind Programme, die auf der Finite-Elemente Methode (FEM) basieren. Typische in der Forschung verwendete Programme sind unter anderem Abaqus, Ansys, COMSOL Multiphysics, SimScale und ElmerFEM.\newline
-Für diese Arbeit wurde \textbf{ElmerFEM in der Version 9.0} verwendet, da es eines in der Wissenschaft verbreitetsten OpenSource FEM-Programme ist und ein sehr breites Spektrum für verschiedenste Simulationen bietet.\paragraph{}
+Eine weit verbreitete Methode, solche Simulationen durchzuführen, sind Programme, die auf der Finite-Elemente-Methode\,(FEM) basieren. Typische in der Forschung verwendete Programme sind unter anderem Ansys, COMSOL Multiphysics und ElmerFEM.\newline
+Für diese Arbeit wurde \textbf{ElmerFEM in der Version 9.0} verwendet, da es eines der in der Wissenschaft verbreitetsten Open-Source FEM-Programme ist und ein sehr breites Spektrum für verschiedenste Simulationen bietet.\paragraph{}
 
-Die Finite-Element Methode ist einfach gesagt ein numerisches Verfahren, um Randwertprobleme zu lösen, die durch partielle Differentialgleichungen beschrieben werden. \newline
-Dabei wird das zusammenhängende physikalische Gebiet zunächst in viele kleine Unterelemente wie beispielsweise Dreiecke oder Tetraeder unterteilt. In jedem dieser Unterelemente wird anschließend die gesuchte physikalische Größe mit einfachen Ansatz- beziehungsweise Formfunktionen angenähert. Aus diesen lokalen Näherungen werden anschließend zuerst lokale Elementgleichungen hergeleitet, bevor diese zu einem globalen Gleichungssystem zusammengesetzt werden. \newline
-Nach Anwendung der Rand- und Übergangsbedingungen wird dieses System gelöst, um die Werte an Knotenpunkten zu bestimmen, aus welchen letztendlich die globale, angenäherte Lösung resultiert\,\cite{sukumar07}.\paragraph{}
+Die Finite-Elemente-Methode ist einfach gesagt ein numerisches Verfahren, um Randwertprobleme zu lösen, die durch partielle Differentialgleichungen beschrieben werden. \newline
+Dabei wird das zusammenhängende physikalische Gebiet zunächst in viele kleine Unterelemente wie beispielsweise Dreiecke oder Tetraeder unterteilt. In jedem dieser Unterelemente wird anschließend die gesuchte physikalische Größe mit einfachen Ansatz- beziehungsweise Formfunktionen angenähert. Aus diesen lokalen Näherungen werden anschließend zuerst lokale Elementgleichungen hergeleitet, bevor diese zu einem globalen Gleichungssystem zusammengesetzt werden. Nach Anwendung der Rand- und Übergangsbedingungen wird dieses System gelöst, um die Werte an Knotenpunkten zu bestimmen, aus welchen letztendlich die globale, angenäherte Lösung resultiert\,\cite{sukumar07}.\paragraph{}
 
 Elmer kann zwei primäre Arten von Systemen lösen\,\cite{elmerSolve}:
 \begin{itemize}
 	\item Lineare Systeme der Form $Ax=b$
 	\item Nichtlineare Systeme der Form $A(u_{i-1}u_i)=b(u_{i-1})$ \footnote{Nichtlineare Systeme werden immer direkt linearisiert, wie hier ersichtlich}
 \end{itemize}
-Es soll sich hier auf die lineare Methode fokussiert werden, da das simulierte Problem  linearer Natur ist.\paragraph{}
+Es soll sich hier auf die lineare Methode fokussiert werden, da das simulierte Problem linearer Natur ist.\paragraph{}
 
-Lineare Systeme werden in Elmer entweder direkt, iterativ oder über Multilevel-Methoden gelöst, wobei letztere zu den iterativen Methoden zählen und in den meisten Fällen zu vernachlässigen sind.\paragraph{}
+Lineare Systeme werden in Elmer entweder direkt, iterativ oder über Multilevel-Methoden gelöst, wobei letztere zu den iterativen Methoden zählen und in den meisten Fällen vernachlässigbar sind, da sie nur in wenigen Anwendungsfällen überhaupt Ergebnisse liefern.\paragraph{}
 
 Direkte Methoden bestimmen die Lösung eines linearen Systems exakt bis zu einer vorher definierten Genauigkeit. Sie sind aber sehr rechenintensiv und dementsprechend sollten sie nicht für zu große Systeme verwendet werden\,\cite{elmerSolve}.\newline
-Die wichtigsten von Elmer zur Auswahl gestellten direkten Lösungsmethoden sind die Linear Algebra PACKage (LAPACK) Subroutine für Bandmatrizen, die Unsymmetric MultiFrontal Methode (UMFPACK) für dünnbesetzte Systeme und der MUltifrontal Massively Parallel sparse direct Solver (MUMPS) für sehr große, dünnbesetzte Systeme.\paragraph{}
+Die wichtigsten von Elmer zur Auswahl gestellten direkten Lösungsmethoden sind die Linear Algebra PACKage\,(LAPACK) Subroutine für Bandmatrizen, die Unsymmetric \newline MultiFrontal Methode\,(UMFPACK) für dünnbesetzte Systeme und der MUltifrontal\newline Massively Parallel sparse direct Solver\,(MUMPS) für sehr große, dünnbesetzte Systeme.\paragraph{}
 
-Iterative Methoden generieren eine Sequenz sukzessive genauerer Näherungslösungen. In den meisten Fällen wird die iterative Methode über vorkonditionierte Krylowraum-Methoden gelöst werden. Eine möglichst gute Vorkonditionierung ist hier essenziell, da so das System wesentlich schneller konvergieren kann\,\cite{elmerSolve}.\newline
-(Typische iterative Methoden sind die Conjugate Gradient (CG) Methode, die Conjugate Gradient Squared (CGS) Methode, die Biconjugate Gradient Stabilized (BiCGStab) Methode und die Transpose-Free Quasi-Minimal Residual (TFQMR) Methode. - \textbf{eventuell streichen})\paragraph{}
+%(Typische iterative Methoden sind die Conjugate Gradient (CG) Methode, die Conjugate Gradient Squared (CGS) Methode, die Biconjugate Gradient Stabilized (BiCGStab) Methode und die Transpose-Free Quasi-Minimal Residual (TFQMR) Methode. - \textbf{eventuell streichen})\paragraph{}
 
-Bei der für die Simulationen genutzten Solver handelt es sich um den MUMPS-Solver, da so nicht nur möglichst genaue sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa 60.000 Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 
+Bei dem für die Simulationen genutzten Solver handelt es sich um den MUMPS-Solver, da so nicht nur möglichst genaue, sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa 60.000 Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 
 
 
 
 
 \subsection{Entwicklung eines Sensor-Layouts}
-Diese Simulationen bilden die Grundlage für die Entwicklung eines optimalen Sensor-Layouts, da die Anordnung der Kontakte entscheidend dafür ist, ob der Sensor zuverlässige und aussagekräftige Messwerte liefert.\paragraph{}
-
-Das für die Simulationen gewählte Modell ist Elmers Static Current Conduction Model, kurz StatCurrentSolve.\newline 
-Dieses Modell funktioniert einfach gesagt, indem es die Maxwell-Gleichungen für das elektrostatische Potential in einem leitenden Medium löst. So können nicht nur Verteilung des Potentials selber, sondern auch Volumenströme und Joule-Wärme berechnet werden\,\cite{elmerModel}.\newline
-Im elektro-quasistatischen Grenzfall\,\footnote{Sich langsam ändernde elektrische Felder erlauben eine Vernachlässigung magnetischer Effekte} lauten die Maxwell-Gleichungen wie folgt:
+Diese Simulationen bilden die Grundlage für die Entwicklung eines optimalen Sensor-Layouts, da die Anordnung der Kontakte entscheidend dafür ist, ob der Sensor zuverlässige und aussagekräftige Messwerte liefert.
+\subsubsection{Simulationsmodell und theoretische Grundlage}
+Das für die Simulationen gewählte Modell ist Elmers Static Current Conduction Model, kurz StatCurrentSolve. Dieses Modell funktioniert, einfach gesagt, indem es die Maxwell-Gleichungen für das elektrostatische Potential in einem leitenden Medium löst. So können nicht nur die Verteilung des Potentials selbst, sondern auch Volumenströme und Joule-Wärme berechnet werden\,\cite{elmerModel}.\newline
+Im elektroquasistatischen Grenzfall\,\footnote{Sich langsam ändernde elektrische Felder erlauben eine Vernachlässigung magnetischer Effekte} lauten die Maxwell-Gleichungen wie folgt:
 \begin{equation}
 	\nabla\cdot\vec{D}=\rho
 	\tag{4.1}
@@ -264,6 +270,7 @@ Im elektro-quasistatischen Grenzfall\,\footnote{Sich langsam ändernde elektrisc
 	\tag{4.2}
 	\label{4.2}
 \end{equation}
+\pagebreak
 \begin{equation}
 	\nabla\times\vec{H}=\vec{J}+\frac{\partial\vec{D}}{\partial{t}}
 	\tag{4.3}
@@ -275,10 +282,10 @@ Im elektro-quasistatischen Grenzfall\,\footnote{Sich langsam ändernde elektrisc
 	\footnotesize
 	$\nabla$: Nabla-Operator, $\vec{D}$: Elektrische Flussdichte, $\vec{E}$: Elektrisches Feld, $\vec{H}$: Magnetisches Feld, $\vec{J}$: Stromdichte, $\rho$: Freie Ladungsdichte, $\frac{\partial\vec{D}}{\partial{t}}$: Verschiebungsstromdichte
 \end{center}
-\raggedright
 
+{\raggedright
 Das elektrische Feld kann nun als elektrisches, skalares Potential $\phi$ geschrieben werden:
-
+}
 \begin{equation}
 	\vec{E}=-\nabla\phi
 	\tag{4.4}
@@ -290,9 +297,10 @@ Das elektrische Feld kann nun als elektrisches, skalares Potential $\phi$ geschr
 	\footnotesize
 	$\vec{E}$: Elektrisches Feld, $\phi$: Elektrisches Potential
 \end{center}
-\raggedright
+{\raggedright
 
-Aus (\ref{4.1}) und (\ref{4.3}) ergibt sich außerdem die Kontinuitätsgleichung für elektrische Ladungen:
+
+Aus (\ref{4.1}) und (\ref{4.3}) folgt außerdem die Kontinuitätsgleichung der elektrischen Ladungen:}
 
 \begin{equation}
 	\frac{\partial\rho}{\partial{t}}+\nabla\cdot\vec{J}=0
@@ -303,14 +311,14 @@ Aus (\ref{4.1}) und (\ref{4.3}) ergibt sich außerdem die Kontinuitätsgleichung
 \vspace{-0.8em}
 \begin{center}
 	\footnotesize
-	$\vec{J}$: Stromdichte, $\frac{\partial\vec{D}}{\partial{t}}$: Zeitliche Ableitung der Ladungsdichte
+	$\vec{J}$: Stromdichte, $\frac{\partial\rho}{\partial{t}}$: Zeitliche Ableitung der Ladungsdichte
 \end{center}
-\raggedright	
-
-Mithilfe des Ohmschen Gesetzes für leitende Materialien ergibt sich für die Beziehung zwischen Stromdichte und elektrischem Feld die Beziehung
+	
+{\raggedright
+Mithilfe des Ohmschen Gesetzes für leitende Materialien ergibt sich für die Beziehung zwischen Stromdichte und elektrischem Feld die Beziehung}
 
 \begin{equation}
-	\vec{J}=\sigma\vec{E}
+	\vec{J}=\sigma\vec{E}.
 	\tag{4.6}
 	\label{4.6}
 \end{equation}
@@ -320,9 +328,9 @@ Mithilfe des Ohmschen Gesetzes für leitende Materialien ergibt sich für die Be
 	\footnotesize
 	$\vec{E}$: Elektrisches Feld, $\vec{J}$: Stromdichte, $\sigma$: Elektrische Leitfähigkeit
 \end{center}
-\raggedright
 
-Mit elektrischer Leitfähigkeit $\sigma$. Mit (\ref{4.5}) als Grundlage und mithilfe von (\ref{4.4}) und (\ref{4.6}) ergibt sich schließlich
+{\raggedright
+Mit (\ref{4.5}) als Grundlage und mithilfe von (\ref{4.4}) und (\ref{4.6}) ergibt sich schließlich}
 
 \begin{equation}
 	-\nabla\cdot\sigma\nabla\phi=\rho_t
@@ -335,9 +343,9 @@ Mit elektrischer Leitfähigkeit $\sigma$. Mit (\ref{4.5}) als Grundlage und mith
 	\footnotesize
 	$\sigma$: Elektrische Leitfähigkeit, $\phi$: Elektrisches Potential, $\rho_t$: Quellterm\,\footnote{bezeichnet lokale Ladungsquellen oder -senken im Material.}
 \end{center}
-\raggedright
 
-beziehungsweise die generalisierte Form
+{\raggedright
+beziehungsweise die generalisierte Form}
 
 \begin{equation}
 	-\nabla\cdot\vec{J}-\nabla\cdot(\epsilon\frac{\partial\vec{E}}{\partial{t}})=0.
@@ -351,12 +359,14 @@ beziehungsweise die generalisierte Form
 	$\vec{J}$: Stromdichte, $\epsilon$: Permitivität, $\frac{\partial\vec{E}}{\partial{t}}$: Zeitliche Ableitung des elektrischen Felds
 \end{center}
 
-Genaueres zu diesem Thema kann in \cite{elmerModel} nachgelesen werden.\paragraph{}
+{\raggedright
+Genaueres zu diesem Thema kann in \cite{elmerModel} nachgelesen werden.}
 
+\subsubsection{Abbildung des Hall-Effekts im Simulationsmodell}
 Es ergeben sich zwei valide Möglichkeiten, mithilfe des StatCurrentSolve-Modells den Hall-Effekt zu simulieren:\paragraph{}
-Die erste Möglichkeit wäre eine Verkopplung des StatCurrentSolve-Models mit einem anderen physikalischen Simulationsmodel. Elmer ist zwar grundlegend dafür ausgelegt, solch eine Verkopplung problemlos zu unterstützen, aber insbesondere für unerfahrene und neue Programmnutzer kann es bereits schwierig sein, Simulationen die auf nur einem einzelnen Modell beruhen fehlerfrei zu bedienen. Daher wird für diese Arbeit von dieser Möglichkeit der Simulation abgesehen.\paragraph{}
-Bei der zweiten, für diese Arbeit gewählten, Simulationsoption handelt es sich zwar immer noch um eine Art Verkopplung, diese findet aber im StatCurrentSolve-Modell selbst statt.\newline
-In einem Leiter ohne Einfluss eines magnetischen Felds bewegen sich Ladungsträger unter Einfluss des elektrischen Feldes. Die sich ergebende Stromdichte ist parallel zum Feld
+Die erste Möglichkeit wäre eine Verkopplung des StatCurrentSolve-Modells mit einem anderen physikalischen Simulationsmodell. Elmer ist zwar grundsätzlich dafür ausgelegt, eine solche Verkopplung problemlos zu unterstützen, aber insbesondere für unerfahrene und neue Programmnutzer kann es bereits schwierig sein, Simulationen, die auf nur einem einzelnen Modell beruhen, fehlerfrei zu bedienen. Daher wird für diese Arbeit von dieser Möglichkeit der Simulation abgesehen.\paragraph{}
+Bei der zweiten für diese Arbeit gewählten Simulationsoption handelt es sich zwar immer noch um eine Art Verkopplung, diese findet aber im StatCurrentSolve-Modell selbst statt.\paragraph{}
+In einem Leiter, der keinem äußeren magnetischen Feld ausgesetzt ist, bewegen sich die Ladungsträger unter Einfluss des elektrischen Feldes. Die resultierende Stromdichte verläuft parallel zum Feld
 \begin{equation}
 	J=\sigma_0E.
 	\tag{4.9}
@@ -368,43 +378,64 @@ In einem Leiter ohne Einfluss eines magnetischen Felds bewegen sich Ladungsträg
 	\footnotesize
 	$J$: Stromdichte, $\sigma_0$: Ruheleitfähigkeit, $E$: Elektrische Feldstärke
 \end{center}
-
-Wirkt nun ein Magnetfeld H, erfahren die Ladungsträger eine Lorentzkraft $F_L$, die sie seitlich ablenkt. Praktisch gesehen bedeutet das, dass die Stromdichte $J$ nicht mehr parallel zu $E$ verläuft. Der Leiter verhält sich also so, als ob er eine anisotrope Leitfähigkeit hätte.\newline
-Aus dem Drude-Modell für Ladungstransport lässt sich über einige Schritte ableiten, dass für ein Magnetfeld $B_z$ entlang der z-Achse, wie in den Simulationen angenommen wird, sich ergibt:
+{
+\raggedright
+Wirkt nun ein Magnetfeld $H$, erfahren die Ladungsträger eine Lorentzkraft $F_L$, die sie seitlich ablenkt. Praktisch bedeutet dies, dass die Stromdichte $J$ nicht mehr parallel zu $E$ verläuft. Der Leiter verhält sich also, als hätte er eine anisotrope Leitfähigkeit.}\newline
+Aus dem Drude-Modell für den Ladungstransport lässt sich über einige Schritte ableiten, dass für ein Magnetfeld $B_z$ entlang der z-Achse, wie in den Simulationen angenommen, gilt:
 \begin{equation}
 	\begin{pmatrix} J_x \\ J_y \\ J_z \end{pmatrix}=\begin{pmatrix} \sigma_0 & -\sigma_H & 0 \\ \sigma_H & \sigma_0 & 0 \\ 0 & 0 & \sigma_0\end{pmatrix} \begin{pmatrix} E_x \\ E_y \\ E_z \end{pmatrix}
 	\tag{4.10}
 	\label{4.10}
 \end{equation}
-wobei $\sigma_H=\sigma_0^2R_HB_Z$ die Leitfähigkeitsänderung im Sinne des Hall Effekts darstellt.\newline%paragraph?
+wobei $\sigma_H=\sigma_0^2R_HB_Z$ die Leitfähigkeitsänderung im Sinne des Hall-Effekts darstellt.\newline%paragraph?
 Dementsprechend wird für die Imitation des Hall-Effekts jeweils ein Leitfähigkeitstensor 
 \begin{equation}
 	\sigma=\begin{pmatrix} \sigma_0 & -\sigma_H & 0 \\ \sigma_H & \sigma_0 & 0 \\ 0 & 0 & \sigma_0\end{pmatrix}
 	\tag{4.11}
 	\label{4.11}
 \end{equation}
-verwendet werden.\paragraph{}
+verwendet werden.
 
-Wie bereits in \textbf{Kapitel 3.1} beschrieben, erfordert die Finite-Element Simulation die Unterteilung einer kontinuierlichen physikalischen Fläche in viele kleine, endlich große Elemente. Dieser Prozess wird als Meshing bezeichnet. Dabei wird die zu simulierende Geometrie in eine Vielzahl einfacher Unterabschnitte zerlegt, auf denen die zugrunde liegenden Gleichungen jeweils lokal gelöst werden können.\newline
-Für die in dieser Arbeit durchgeführten Simulationen wird das Programm \textbf{Gmsh in der Version 4.13.1} verwendet. Es dient sowohl zur Erstellung der 3D-Modelle als auch zur Erzeugung der Finite-Element Netze und ermöglicht damit eine konsistente Vorbereitung der Eingabedaten für Elmer.\paragraph{}
+\subsubsection{Modellaufbau und ``Meshing''}
+Wie bereits in \textbf{Kapitel 3.1} beschrieben, erfordert die Finite-Elemente-Simulation die Unterteilung einer kontinuierlichen physikalischen Fläche in viele kleine, endlich große Elemente. Dieser Prozess wird als ``Meshing'' bezeichnet. Dabei wird die zu simulierende Geometrie in eine Vielzahl einfacher Unterabschnitte zerlegt, auf denen die zugrunde liegenden Gleichungen jeweils lokal gelöst werden können.\newline
+Für die in dieser Arbeit durchgeführten Simulationen wird das Programm \textbf{Gmsh in der Version 4.13.1} verwendet. Es dient sowohl zur Erstellung der 3D-Modelle als auch zur Erzeugung der Finite-Elemente-Netze und ermöglicht damit eine konsistente Vorbereitung der Eingabedaten für Elmer. Fig.~\ref{fig:3} zeigt ein Beispiel eines in Gmsh generierten Meshs.
+\begin{figure}
+	\centering
+	%Fig. 1-a
+	\includegraphics[height=5cm]{Fig3.1}	
+	\hspace{0.5cm}
+	%Fig. 1-b
+	\includegraphics[height=5cm]{Fig3.2}
+	\captionsetup{type=figure}
+	\caption[(a) Beispielhaftes in Gmsh generiertes Mesh: Eigene Abbildung; (b) Zoom auf das Beispielmesh: Eigene Abbildung] {(a) Beispielhaftes in Gmsh generiertes Mesh, (b) Zoom auf das Beispielmesh}
+	\label{fig:3}
+\end{figure}\paragraph{}
 
 Als aktives Sensorelement kommen im gesamten Projektverlauf dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5,08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in \textbf{Kapitel 3.3} behandelt.\newline
 Die elektrischen Kontakte werden mithilfe von Silberleitlack als Kontaktpads realisiert, deren Schichtdicke für die Simulation mit $150\,\mu{m}$ angenommen wird. Weitere Details hierzu finden sich ebenfalls in \textbf{Kapitel 3.3}.\paragraph{}
 
 Für jedes Modell werden zunächst Wafer und Kontakte separat konstruiert, korrekt positioniert und anschließend mittels Boolean-Operation zusammengefügt, um die Kontaktübergänge zwischen Wafer und Pads in der Simulation korrekt abzubilden. Abschließend wird das 3D-Modell in Tetraederelemente unterteilt.\paragraph{}
 
-Da die praktischen Verarbeitungsmethoden für den Wafer aus Kosten- und Komplexitätsgründen stark eingeschränkt sind, ist die Größe des Sensors – anders als in den Referenzarbeiten – auf eine makroskopische Skala beschränkt.\paragraph{}
+Da die praktischen Verarbeitungsmethoden für den Wafer aus Kosten- und Komplexitätsgründen stark eingeschränkt sind, ist die Größe des Sensors --- anders als in den Referenzarbeiten --- auf eine makroskopische Skala beschränkt.\pagebreak
 
-Die erste Generation des Sensorlayouts orientiert sich an Fig. 3 aus \cite{cres23}. Die für dieses Layout gewählten Maße sind in \ref{fig:3} (\textbf{unbedingt lösung gegen verwirring finden!}) dargestellt.\newline
-Aufgrund der begrenzten Angaben zu konkreten Kontaktgrößen, -abständen und weiteren geometrischen Parametern in der Literatur wurden die Abmessungen der ersten Layoutgeneration auf Grundlage allgemeiner Verarbeitungsüberlegungen - nachzulesen in \textbf{Kapitel 3.3} - festgelegt und dienen als Ausgangspunkt für spätere Optimierungen.\paragraph{}
+\subsubsection{Simulationsergebnisse der 1. Layoutgeneration}
+Die erste Generation des Sensorlayouts orientiert sich an Fig. 3 aus \cite{cres23}. Die für dieses Layout gewählten Maße sind in Fig.~\ref{fig:4} dargestellt.\newline
+\begin{figure}
+	\centering
+	\includegraphics[height=15cm]{Fig4}
+	\captionsetup{type=figure}
+	\caption[Abmessungen der 1. Generation des Sensorlayouts: Eigene Abbildung]{Abmessungen der 1. Generation des Sensorlayouts}
+	\label{fig:4}
+\end{figure}
+Aufgrund der begrenzten Angaben zu konkreten Kontaktgrößen, -abständen und weiteren geometrischen Parametern in der Literatur wurden die Abmessungen der ersten Layoutgeneration exemplarisch festgelegt und dienen als Ausgangspunkt für weiterführende Optimierungen in kommenden Entwürfen.\paragraph{} %Aufgrund begrenzter Angaben zu Kontaktgrößen, -abständen und weiteren geometrischen Parametern in der Literatur wurden die Abmessungen der ersten Layoutgeneration exemplarisch festgelegt und dienen als Basis späterer Optimierungen.
 
-Das in rund 75.000 Elemente unterteilte Modell wurde anschließend in Elmer importiert. Im Anhang zu finden ist die zugehörige Solver-Konfiguration dargestellt.\paragraph{}
+Das in rund 75.000 Elemente unterteilte Modell wurde anschließend in Elmer importiert. Im Anhang ist die zugehörige Solver-Konfiguration dargestellt.\paragraph{}
 
-Das mit ``Material 3'' betitelte Material wird in der Simulation für die Auslesekontakte genutzt. Es imitiert den Anschluss dieser an ein Voltmeter mit verlustfreier Spannungsmessung.\paragraph{}
+Das mit ``Material 3'' betitelte Material wird in der Simulation für die Auslesekontakte genutzt. Es imitiert den Anschluss dieser an ein verlustfreies Voltmeter.\paragraph{}
 Es ist auffällig, dass in der Simulations-Konfiguration die veränderte Leitfähigkeit durch $\sigma_H=\sigma\mu{B_Z}$ ausgedrückt wird. Dies ist eine simple Umformulierung von $\sigma_H=\sigma_0^2R_HB_Z$, wobei $\mu$ die Mobilität des Wafers beschreibt.\newline
-Der Widerstand der verwendeten Wafer liegt zwischen $1-10\,\Omega$ pro cm. Da es sich um p-dotierte Wafer handelt, sind die Majoritätsladungsträger Löcher. Laut \cite{bowdenDopes} ergibt sich dementsprechend für einen angenommenen Widerstand von $10\,\Omega$ \footnote{Zur Absicherung wird der maximal erwartbare Widerstand angenommen} ein $\mu_h$ von etwa $450\,\frac{cm^2}{Vs}$ und eine Dotierkonzentration von etwa $1,39\cdot10^{15}\,cm^{-3}$. Aus der Relation $\sigma_0=pq\mu$ folgt schließlich, dass $\sigma_0=10\,\frac{S}{m}$. Diese Werte dienen als Basis des Wertes $\sigma_H$ in den folgenden Simulationen.\paragraph{}
+Der Widerstand der verwendeten Wafer liegt zwischen $1\Omega$ und $10\,\Omega$ pro cm. Da es sich um n-dotierte Wafer handelt, sind die Majoritätsladungsträger Elektronen. Laut \cite{bowdenDopes} ergibt sich dementsprechend für einen angenommenen Widerstand von $10\,\Omega$ \footnote{Zur Absicherung wird der maximal erwartbare Widerstand angenommen} ein $\mu_h$ von etwa $450\,\frac{cm^2}{Vs}$ und eine Dotierkonzentration von etwa $1,39\cdot10^{15}\,cm^{-3}$. Aus der Relation $\sigma_0=pq\mu$ folgt schließlich, dass $\sigma_0=10\,\frac{S}{m}$. Diese Werte dienen als Basis des Wertes $\sigma_H$ in den folgenden Simulationen.\paragraph{}
 Ausgewertet wurden Simulationsergebnisse in \textbf{ParaView in der Version 6.0.0-RC1}. Es wurden aus dem Modell die Regionen der Kontaktpads mittels eines ``Clip''-Filters isoliert und anschließend per ``Python Calculator''-Filter der Durchschnitt der Potentialwerte in den einzelnen Clips genommen.\newline
-Da sich bei der Datenerhebung möglichst nah an der Funktionsweise von X-Hall orientiert werden soll, wurde zuerst der Durchschnitt des Potentials an den in Fig.~\ref{fig:1}(a) als ``1'' und ``3'' bezeichneten Kontakten und den als ``2'' und ``4'' bezeichneten Kontakten berechnet. Anschließend wurde die Differenz dieser beiden Werte bestimmt und die Offsetspannung die sich bei $B_Z=0\,T$ ergibt, subtrahiert.\paragraph{}
+Da sich bei der Datenerhebung möglichst nah an der Funktionsweise von X-Hall orientiert werden soll, wurde zuerst der Durchschnitt des Potentials an den in Fig.~\ref{fig:1}(a) als ``1'' und ``3'' bezeichneten Kontakten und den als ``2'' und ``4'' bezeichneten Kontakten berechnet. Anschließend wurde die Differenz dieser beiden Werte bestimmt und die Offsetspannung, die sich bei $B_Z=0\,T$ ergibt, subtrahiert.\paragraph{}
 
 
 Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homogenes, stabiles und kontrollierbares Magnetfeld zu schaffen. Da die maximal erreichbare magnetische Flussdichte mit diesen bei $0,7\,mT$ liegt, wurden jeweils Messungen und Simulationen für $B=0\,mT$, $B=0,05\,mT$ und $B=0,1\,mT$ bis $B=0,7\,mT$ mit Abständen von je $0,1\,mT$ durchgeführt.
@@ -432,22 +463,45 @@ Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homo
 	\captionsetup{type=graph,name=Graph}
 	\captionof{graph}{Hall-Spannung in der ersten Generation des Layout}	
 	\label{hallV1}
-\end{figure}\paragraph{}
-In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, die man für eine zunehmende Magnetfeldstärke erwartet.\newline 
-Alle Messdaten sind auch im Anhang in Tabelle~1 nachzulesen.\newline
-In den Daten zeigt sich auch die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich, wenn separat betrachtet, um etwa $2,50\,mV$ (vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1,25\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $10$ bis $100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer gemacht wären.\newline
-In den Simulationen ist die wahrscheinlichste Erklärung dieses Effekts ein ungleichmäßiges Mesh, was dazu führen kann, dass an einigen stellen im Modell wesentlich mehr oder wesentlich weniger Rechenoperationen ausgeführt werden. Insbesondere im zweiteren Fall kann das dazu führen, dass bei nur schwachen Potentialänderungen durch das Magnetfdeld diese von stärkeren, lokal dominanten Potentialen in der Dateninterpolation verloren gehen.\paragraph{} 
-Das genaueste verfügbare Voltmeter für die praktische Umsetzung ist der ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser Messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
-Deshalb scheint es sinnvoll, das Layout weiter zu verbessern.\paragraph{}
+\end{figure}
+\addcontentsline{logr}{figure}{\protect\numberline{1}{Hall-Spannung in der ersten Generation des Layout: Eigene Abbildung}}
+\paragraph{}
 
-Geht man von der Theorie aus, wird die Hall-Spannung nur durch den Strom durch das Hall-Material, die Magnetfeldstärke, Dicke und Ladungsträgereigenschaften des Hall-Materials beeinflusst. Praktisch gesehen spielen aber auch noch andere Werte eine große Rolle. \newline
-So fällt aus dem Verlauf des Volumenstroms im Sensorlayout der 1. Generation auf, dass die Auslesekontakte weit Abseits der Hauptstromwege liegen, Außerdem werden die Volumenströme zwischen den Vorspannungs- und Erdungskontakten immer schwächer und verteilen sich großflächiger auf die aktive Sensorfläche.\newline
-Daraus resultiert, dass zum Einen die Hall-Spannungen lokal geringer ausfallen können, weil eben weniger Strom zur Verfügung steht, dessen Ladungsträger verschoben werden könnten und zum Anderen, dass diese bereits schon verringerten Hall-Spannungen nun noch weit entfernt sind von den Auslesekontakten. Dementsprechend ist anzunehmen, dass diese minimalen Änderungen im Stromfluss sich, bis sie bei den Auslesekontakten ankommen, nochmals geringer ausfallen werden, da sie sich nach und nach über die dazwischenliegende Region des Hall-Materials verteilen.\paragraph{}
+In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, den man für eine zunehmende Magnetfeldstärke erwartet.\newline 
+Alle Messdaten sind auch zusammengefasst im Anhang in Tabelle~1 nachzulesen.\newline
+In den Daten zeigt sich bereits die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich, wenn separat betrachtet, um etwa $2,50\,mV$\,(vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1,25\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $10$ bis $100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und Unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer hergestellt wären.\newline
+In den Simulationen ist die wahrscheinlichste Erklärung dieses Effekts ein ungleichmäßiges Mesh, was dazu führen kann, dass an einigen Stellen im Modell wesentlich mehr oder wesentlich weniger Rechenoperationen ausgeführt werden. Insbesondere im letzteren Fall, sprich bei weniger ausgeführten Rechenoperationen, kann das dazu führen, dass bei nur schwachen Potentialänderungen durch das Magnetfeld diese von stärkeren, lokal dominanten Potentialen in der Dateninterpolation verloren gehen.\paragraph{} 
+Das genaueste verfügbare Voltmeter für die praktische Umsetzung ist der ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser messen kann, liegen im einstelligen $\mu{V}$-Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
+Deshalb scheint es sinnvoll, das Layout weiter zu verbessern.
 
+\subsubsection{Analyse und Optimierung des Layouts}
+Theoretisch hängt die Hall-Spannung nur vom Strom durch das Hall-Material, der Magnetfeldstärke, der Dicke des Hall-Materials und den Ladungsträgereigenschaften ab. In der Praxis wirken jedoch auch andere Größen mit. \newline
+So fällt im Verlauf des Volumenstroms im Sensorlayout der 1. Generation --- abgebildet in Fig.~\ref{fig:5} --- auf, dass die Auslesekontakte weit abseits der Hauptstromwege liegen. Außerdem werden die Volumenströme zwischen den Vorspannungs- und Erdungskontakten immer schwächer und verteilen sich großflächiger auf die aktive Sensorfläche.
+\begin{figure}
+	\centering
+	\includegraphics[height=5cm]{Fig5}
+	\captionsetup{type=figure}
+	\caption[Volumenstromverteilung auf der 1. Generation des Sensorlayouts: Eigene Abbildung]{Volumenstromverteilung auf der 1. Generation des Sensorlayouts}
+	\label{fig:5}
+\end{figure}
+\paragraph{}
+Daraus resultiert, dass zum einen die Hall-Spannungen lokal geringer ausfallen können, weil eben weniger Strom zur Verfügung steht, dessen Ladungsträger verschoben werden könnten, und zum anderen, dass diese bereits schon verringerten Hall-Spannungen nun noch weit entfernt sind von den Auslesekontakten. Dementsprechend ist anzunehmen, dass diese minimalen Änderungen im Stromfluss, bis sie bei den Auslesekontakten ankommen, nochmals geringer ausfallen werden, da sie sich nach und nach über die dazwischenliegende Region des Hall-Materials verteilen.
+
+\subsubsection{Simulationsergebnisse der 2. Layoutgeneration}
 Aus diesen Gründen wurde für die 2. Generation des Sensorlayouts nicht nur der Abstand zwischen den Kontakten verringert, sondern auch deren Positionierung untereinander entsprechend abgeändert.\newline
-Das Kontaktlayout orientiert sich nun mehr an dem ursprünglichen Layout, dass in \cite{cres18} bei der ersten Vorstellung der X-Hall-Architektur verwendet wurde und unter anderem in Fig.~1 und Fig.~2 dieser Quelle abgebildet wird.\newline
-Die Abstände der Pads zueinander wurden ebenfalls so weit wie möglich verringert, genaue Maße sind in \textbf{bild hier} ablesbar, bis sie an die ungefähren physikalischen Grenzen der Aufbringungsmethode stoßen. 
-
+Das Kontaktlayout orientiert sich nun mehr an dem ursprünglichen Layout, das in \cite{cres18} bei der ersten Vorstellung der X-Hall-Architektur verwendet wurde und unter anderem in Fig.~1 und Fig.~2 dieser Quelle abgebildet wird.\newline
+Die Abstände der Pads zueinander wurden ebenfalls so weit wie möglich verringert, genaue Maße sind in Fig.~\ref{fig:6} ablesbar, bis sie an die ungefähren physischen Grenzen der Aufbringungsmethode stoßen. \paragraph{}
+In Graph~\ref*{hallV2} zeigt sich genau wie für die 1. Generation des Sensorlayouts der Hall-typische lineare, direkt proportionale Zuwachs der Hall-Spannung mit höherem Magnetfeld.\newline
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=15cm]{Fig6}
+	\captionsetup{type=figure}
+	\caption[Abmessungen der 2. Generation des Sensorlayouts: Eigene Abbildung]{Abmessungen der 2. Generation des Sensorlayouts}
+	\label{fig:6}
+\end{figure}
+Alle Messdaten sind zusammengefasst im Anhang in Tabelle~2 nachzulesen.\newline
+Auch in der 2. Generation des Sensorlayouts liegen noch durch ein ungleichmäßiges Mesh bedingte globale Defekte vor. Die Unterschiede der beiden inneren Sonden liegen bei \newline etwa $21,4\,mV$. In Anbetracht dessen, dass die gemessene Hall-Spannung in etwa um einen Faktor 7 größer ist als in der vorigen Generation und selbiges für die Sondenunterschiede gilt, ist in diesem Aspekt keine erhebliche Verbesserung oder Verschlechterung zwischen den beiden Generationen festzustellen.\newline
+Bei der Offsetspannung ist aber eine verhältnismäßig starke Verbesserung festzustellen: Für Generation 1 liegt eine Offsetspannung von etwa $5,03\,mV$ vor, während für die \newline 2. Generation des Layouts eine Offsetspannung von etwa $10,73\,mV$ vorliegt. Bei einer Erhöhung der Hall-Spannung um den Faktor 7 ist dies eine zufriedenstellende Entwicklung im Vergleich zur 1. Generation.\paragraph{}
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -480,50 +534,59 @@ Die Abstände der Pads zueinander wurden ebenfalls so weit wie möglich verringe
 	\captionsetup{type=graph,name=Graph}
 	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
 	\label{hallV2}
-\end{figure}\paragraph{}
-In Graph~\ref*{hallV2} zeigt sich genau wie für die 1. Generation des Sensorlayouts der Hall-typische lineare, direkt proportionale Zuwachs der Hall-Spannung mit höherem Magnetfeld.\newline 
-Alle Messdaten sind auch im Anhang in Tabelle~2 nachzulesen\newline
-Auch in der 2. Generation des Sensorlayouts liegen noch durch ein ungleichmäßiges Mesh bedingte globale Defekte vor. Die Unterschiede der beiden inneren Sonden liegen bei etwa $21,4\,mV$. Unter Anbetracht dessen, dass die gemessene Hall-Spannung in etwa um einen Faktor 7 größer ist als in der vorigen Generation und selbiges für die Sondenunterschiede gilt, ist in diesem Aspekt keine erhebliche Verbesserung oder Verschlechterung zwischen den beiden Generation festzustellen.\newline
-Bei der Offsetspannung ist aber verhältnismäßig eine starke Verbesserung festzustellen: Für Generation 1 liegt eine Offsetspannung von etwa $5,03\,mV$ vor, während für die 2. Generation des Layouts eine Offsetspannung von etwa $10,73\,mV$ vorliegt. Bei einer Erhöhung der Hall-Spannung um den Faktor 7 ist dies eine zufriedenstellende Entwicklung im Vergleich zur 1. Generation.\paragraph{}
-Die gemessenen Spannungen sind zwar immer noch zu niedrig, um mit dem verwendeten Voltmeter gemessen zu werden, aber nun im Bereich, in dem ein präzisions-Operationsverstärker sie ohne Gefahr größerer Messwertverfälschungen auf das zum Messen benötigte Niveau verstärken kann. Außerdem stellt es sich Aufgrund methodischer Einschränkungen als schwierig heraus, das Layout weiter zu komprimieren. Deshalb sei die 2. Generation des Layouts als Grundlage für den selbst zu bauenden Sensor zu sehen.
+\end{figure}
+\addcontentsline{logr}{figure}{\protect\numberline{2}{Hall-Spannung in der zweiten Generation des Layout: Eigene Abbildung}}
+
+Die gemessenen Spannungen sind zwar immer noch zu niedrig, um mit dem verwendeten Voltmeter erfasst zu werden, aber nun in einem Bereich, in dem ein Präzisions-Operationsverstärker sie ohne Gefahr größerer Messwertverfälschungen auf das benötigte Niveau verstärken kann. Außerdem stellt es sich aufgrund methodischer Einschränkungen als schwierig heraus, das Layout weiter zu komprimieren. \newline
+Deshalb sei die 2. Generation des Layouts als Grundlage für den selbst zu bauenden Sensor zu betrachten.\pagebreak
+
+{\raggedright
+\textbf{Alle für diese Arbeit relevanten Daten, Code-Dateien und Dokumente werden unter folgendem Link zur Verfügung gestellt:}}
+\begin{center}
+	 \textbf{https://github.com/AkroSkxawng/W-Seminar24\textunderscore26}
+\end{center}
+
 %insert values, explain possible reasons in sim, state that measurements could be higher due to readout difficulties at such low values, go to V2 and do dame thing, go on about possible problems with values and disparities to expected performance (can calculate wirth rh), need for amp
 
 
 \subsection{Praktische Implementierung des Sensors}
-Im Grundaufbau besteht der geplante X-Hall-Aufbau nur aus einem p-dotierten Wafer als Hall-Material, den auf diesen aufgebrachten Kontakten und Mess- sowie Versorgungselektronik.\newline
+Im Grundaufbau besteht der geplante X-Hall-Aufbau lediglich aus einem n-dotierten Wafer als Hall-Material, den darauf aufgebrachten Kontakten sowie der zugehörigen Mess- und Versorgungselektronik.\paragraph{}
 Die verwendeten Wafer wurden großzügigerweise vom Hersteller \textbf{MicroChemicals GmbH} für Forschungszwecke zur Verfügung gestellt.\newline
-Bei den Wafern handelt es sich um 5 MicroChemicals ``WSD20279200P1314SNN1'' Prime-Grade Wafer mit einer Dicke von $279\pm20\,\mu{m}$ und einem Duchmesser von $2\,in$. Der Widerstand liegt zwischen $1\,\Omega$ und $10\,\Omega$.\newline
-Zum Aufbringen der Kontaktpads wird MGChemicals ``842UR'' Farbe mit Leitfähigkeit verwendet, welche nach trocknen einen Widerstand von $1,5\cdot10^{-4}\,\Omega{cm}$ besitzt.\newline
-Bei dem genutzten Voltmeter handelt es sich um den ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser Messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
-Um diese Auslesespannungen zu erreichen, wird der TexasInstruments ``INA128U'' Operationsverstärker genutzt, der speziell für die Verstärkung sehr kleiner Potentialunterschiede entwickelt wurde. Metallschichtwiderstände werden verwendet, um den Gain des Verstärkers zu setzen und dieser wird mittels geschirmten 2-Ader-Kabeln mit der Restelektronik verbunden, um Verfälschung der Messwerte zu verhindern.\paragraph{}
-Für eine spätere praktische Implementierung des Sensors wie in \textbf{Kapitel 3.2} angedeutet, wird für einen ersten Versuch die 2. Generation des Sensorlayouts verwendet werden.\newline
+Bei den Wafern handelt es sich um 5 MicroChemicals ``WSD20279200P1314SNN1'' Prime-Grade Wafer mit einer Dicke von $279\pm20\,\mu{m}$ und einem Durchmesser von $2\,in$. Der Widerstand liegt zwischen $1\,\Omega$ und $10\,\Omega$\,\cite{mcChem}.\newline
+Zum Aufbringen der Kontaktpads wird MGChemicals ``842UR'' Farbe mit Leitfähigkeit verwendet, welche nach Trocknen einen Widerstand von $1,5\cdot10^{-4}\,\Omega{cm}$ besitzt\,\cite{mgChem}.\newline
+Bei dem genutzten Voltmeter handelt es sich um den ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
+Um diese Auslesespannungen zu erreichen, wird der TexasInstruments ``INA128U'' Operationsverstärker genutzt, der speziell für die Verstärkung sehr kleiner Potentialunterschiede entwickelt wurde. Metallschichtwiderstände werden verwendet, um den Grad der Verstärkung zu festzulegen, und der Verstärker wird mittels geschirmter 2-Ader-Kabel mit der Restelektronik verbunden, um Verfälschungen der Messwerte zu verhindern.\paragraph{}
+Für eine spätere praktische Implementierung des Sensors, wie in \textbf{Kapitel 3.2} angedeutet, wird für einen ersten Versuch die 2. Generation des Sensorlayouts verwendet werden.\newline
 Im ersten Schritt werden die Kontaktpads auf den Wafer aufgebracht werden. Dies wird, aus Gründen des Kontaminationsschutzes und der Giftigkeit der Silberfarbe, unter einer vorher ordentlich gereinigten Abzugshaube geschehen. Durch eine vorher 3D-gedruckte Maske mit dem Layout wird dann im nächsten Schritt mehrfach mit einem Pinsel die Silberfarbe aufgetragen werden. Wenn genug Schichten aufgetragen sind, wird die Silberfarbe anschließend nach Herstellerangaben in einem Ofen getrocknet werden.\newline
-Aufgrund der Auflösung des für die Maske verwendeten 3D-Druckers und der Pinseldicke sowie durch den händischen Prozess zu erwartende Toleranzen wird die minimal erreichbare Größe von aufgebrachten Merkmalen als $0,4\,mm$ bis $0,5\,mm$ angenommen.\newline
-Die nach dem X-Hall-Schema zu verbindenden Auslesekontakte werden nach dem Trocknen der Farbe entweder per Silberfarbe oder angelöteten Kabeln verbunden. Anschließend werden beide Kontaktpaare an den Operationsverstärker angeschlossen werden, dessen Ausgang wiederum mit dem Voltmeter verbunden wird.\newline
+Aufgrund der Auflösung des für die Maske verwendeten 3D-Druckers und der Pinseldicke sowie durch den händischen Prozess zu erwartender Toleranzen wird die minimal erreichbare Größe von aufgebrachten Merkmalen als $0,4\,mm$ bis $0,5\,mm$ angenommen.\newline
+Die nach dem X-Hall-Schema zu verbindenden Auslesekontakte werden nach dem Trocknen der Farbe entweder per Silberfarbe oder durch Anlöten von Kabeln verbunden. Anschließend werden beide Kontaktpaare an den Operationsverstärker angeschlossen werden, dessen Ausgang wiederum mit dem Voltmeter verbunden wird.\newline
 Sollte man während einer der Schritte Merkmale des Sensors elektrisch nach außen isolieren oder trennen wollen, empfiehlt sich Polyimid-Folie.\newline
-Die Vorspannungskontakte werden mit einem Netzteil verbunden beziehungsweise geerdet. Der Verstärker wird über 4 AA-Batterien betrieben, so dass die mindestens benötigten $4,5\,V$ Input-Spannung erhält. Fig.~\ref{fig:2} zeigt einen entsprechenden schematischen Schaltplan.\paragraph{}
-Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Case transportfähig gemacht und anschließend mittig zwischen den Helmholtz-Spulen positioniert, wo anschließend die Hall-Spannungen für die in \textbf{Kapitel 3.2} angegebenen Magnetfelder gemessen werden.
+Die Vorspannungskontakte werden mit einem Netzteil verbunden beziehungsweise geerdet. Der Verstärker wird über 4 AA-Batterien betrieben, so dass die mindestens benötigten $4,5\,V$ Input-Spannung bereitgestellt werden. Fig.~\ref{fig:2} zeigt einen entsprechenden schematischen Schaltplan.\paragraph{}
+Das Sensorpaket wird im Anschluss zum Beispiel durch ein vorbereitetes Gehäuse transportfähig gemacht und anschließend mittig zwischen den Helmholtzspulen positioniert, wo anschließend die Hall-Spannungen für die in \textbf{Kapitel 3.2} angegebenen Magnetfelder gemessen werden.
 %talk about used components and exact specs of them, general build-layout of the system, go on about practical implementation of pads and traces and predicted min values for pad / trace size, go on about additional material / stuff needed like stable transport case, ...
 
 
 \section{Vergleich mit anderen Hall-Sensoren}
 
 
-Die Hauptfrage dieser Arbeit ist, ob sich der Selbstbau eines Magnetfeldsensors wie dem X-Hall-Sensor im Vergleich zu bereits erhältlichen Lösungen lohnt, wenn man möglichst genau für möglichst geringe Kosten Magnetfelder bemessen möchte.\newline
-Die ausgewählten Vergleichsgeräte sind:
+Die Hauptfrage dieser Arbeit ist, ob sich der Selbstbau eines Magnetfeldsensors wie dem X-Hall-Sensor im Vergleich zu bereits erhältlichen Lösungen lohnt, wenn man Magnetfelder möglichst genau für möglichst geringe Kosten bemessen möchte. 
+\pagebreak
+
+{\raggedright 
+Die ausgewählten Vergleichsgeräte sind:}
 \begin{itemize}
 	\item Magnetometer des iPad 9. Generation mit iPadOS 18.6.2
-	\item Magnetometer des iPhone SE (2022) mit iPhoneOS 18.5
-	\item Pasco Wireless 3-Axis Magnetic Field Sensor (PS-3221) 
+	\item Magnetometer des iPhone SE\,(2022) mit iPhoneOS 18.5
+	\item Pasco Wireless 3-Axis Magnetic Field Sensor\,(PS-3221) 
 \end{itemize} 
-wobei das iPhone und das iPad stellvertretend für mobile Endgeräte verwendet werden, die heutzutage fast jeder besitzt und der Pasco-Sensor stellvertretend für zukaufbare Sensoren, die theoretisch die Messmöglichkeiten mit mobilen Endgeräten erweitern sollen.
+wobei das iPhone und das iPad stellvertretend für mobile Endgeräte verwendet werden, die heutzutage fast jeder besitzt, und der Pasco Sensor stellvertretend für zukaufbare Sensoren, die theoretisch die Messmöglichkeiten von mobilen Endgeräten erweitern sollen.
 
 \subsection{Quantitativer Vergleich}
-Zum Test der verwendeten Vergleichssensoren wurden diese 8 beziehungsweise 3 Sekunden lang in einem konstanten magnetischen Feld gehalten und die Wertentwicklung über diese Zeit aufgezeichnet. Danach wurde das magnetische Feld entsprechend vorgegebener Stufen $B=0\,mT$, $B=0,05\,mT$ und $B=0,1\,mT$ bis $B=0,7\,mT$ mit Abständen von je $0,1\,mT$ verändert und die nächste Aufzeichnung gemacht. Die beiden mobilen Endgeräte nutzten zur Datenerfassung PhyPhox, der Pasco-Magnetfeldsensor nutzte die proprietäre SparkVUE Applikation. Alle Sensoren wurden auf ihrer maximalen Bandbreite von $100\,Hz$ betrieben.\newline
-Da mangels programmierbarer Stromregulatoren alle Einstellungen des Stroms an dem Helmholtz-Spulenpaar manuell vorgenommen werden mussten, sind Abweichungen der gemessenen Magnetfelder von den eigentlich angestrebten Feldern möglich.\paragraph{}
+Zum Test der Vergleichssensoren wurden diese in einem konstanten magnetischen Feld gehalten und die Wertentwicklung über Zeit aufgezeichnet. Dafür wurde das magnetische Feld entsprechend vorgegebener Stufen $B=0\,mT$, $B=0,05\,mT$ und $B=0,1\,mT$ bis $B=0,7\,mT$ mit Abständen von je $0,1\,mT$ verändert und eine Aufzeichnung mit dem jeweiligen Sensor gemacht. Die beiden mobilen Endgeräte nutzten zur Datenerfassung \textbf{PhyPhox}, der Pasco Magnetfeldsensor nutzte die proprietäre \textbf{SparkVUE} Applikation. Alle Sensoren wurden auf ihrer maximalen Bandbreite von $100\,Hz$ betrieben.\newline
+Da mangels programmierbarer Stromregulatoren alle Einstellungen des Stroms an dem Helmholtzspulenpaar manuell vorgenommen werden mussten, sind Abweichungen der gemessenen Magnetfelder von den eigentlich angestrebten Feldern möglich.\paragraph{}
 
 Vor dem Vergleich mit anderen Sensoren ein kurzer Vergleich des simulierten X-Hall-Sensors mit den theoretisch erreichbaren Spezifikationen:\newline
-Aufgrund der statischen Natur der Simulationen können primär die Sensitivität und Sensoroffset verglichen werden. Die Sensitivität eines Hall-Sensors kann nach \cite{heidari15} mit 
+Aufgrund der statischen Natur der Simulationen können primär die Sensitivität und das Sensoroffset verglichen werden. Die Sensitivität eines Hall-Sensors kann nach \cite{heidari15} mit 
 \begin{equation}
 	{S_{A_V}}=\frac{V_{Hall}}{B}
 	\tag{5.1}
@@ -535,15 +598,27 @@ Aufgrund der statischen Natur der Simulationen können primär die Sensitivität
 	\footnotesize
 	$S_{A_V}$: Spannungsabhängige Sensitivität, $V_{Hall}$: Hallspannung, $B$: Magnetischer Fluss
 \end{center}
-angegeben werden. Setzt man nun für die 2. Generation des Layouts alle $V _{Hall}$ und $B$ ein und nimmt deren Durchschnitt, ergibt sich eine Sensitivität von $0,878\,\frac{mV}{T}$. Im Vergleich dazu steht die Sensitivität des in \cite{cres20} getesteten Mustersensors mit etwa $150\,\frac{mV}{T}$. Da die Simulation ein festes Potential als Randbedingung nutzt, lässt sich der für die Sensitivität entscheidende Vorspannungsstrom nicht direkt bestimmen. Selbst bei großzügiger Abschätzung ist jedoch davon auszugehen, dass die Sensitivität des eigenen Layouts deutlich unter der des Musters liegt.\newline
-Der Offsetspannung von $\Delta{V_{OS}}=-0,27\pm0,64\,mV$ des Musters steht eine Offsetspannung von etwa $10,73\,mV$ des selbst entwickelten Layouts gegenüber.\newline
-Zwar ist die Offsetspannung des selbst entwickelten Layouts nur um einen Faktor von 10 höher als die des Musters, aber dadurch dass die Sensitivität so viel geringer ist, ist diese erhöhte Offsetspannung wesentlich kritischer zu betrachten, da sowieso schon schwache Signale noch schwerer zum Auslesen werden.\newline
-Die wahrscheinlichste Ursache für den starken Unterschied in der Sensitivität ist die Umsetzung des selbst entwickelten Layouts auf makroskopischer statt mikroskopischer Ebene. Unter anderem \cite{heidari15} geht auch nochmal detaillierter auf Faktoren ein, die die Sensorsensitivität beeinflussen können und Faktoren wie Dicke des Hall-Materials, Abstand der Kontakte, usw. tragen wesentlich zu einer möglichen Verschlechterung dieser bei.\paragraph{}
+angegeben werden. Setzt man nun für die 2. Generation des Layouts alle $V _{Hall}$ und $B$ ein und nimmt deren Durchschnitt, ergibt sich eine Sensitivität von $0,878\,\frac{mV}{T}$. Im Vergleich dazu steht die Sensitivität des in \cite{cres20} getesteten Mustersensors mit etwa $150\,\frac{mV}{T}$. Da die Simulation ein festes Potential als Randbedingung nutzt, lässt sich der für die Sensitivität entscheidende Vorspannungsstrom nicht direkt bestimmen. Selbst bei großzügiger Abschätzung ist jedoch davon auszugehen, dass die Sensitivität des eigenen Layouts deutlich unter der des Musters liegt.
+\pagebreak
 
-Um diese theoretischen Ergebnisse in Relation zu real existierenden Sensoren zu setzen, wurden im Folgenden praktische Messungen mit gängigen Vergleichsgeräten durchgeführt
+{\raggedright
+Der Offsetspannung von $\Delta{V_{OS}}=-0,27\pm0,64\,mV$ des Musters steht eine Offsetspannung von etwa $10,73\,mV$ des selbst entwickelten Layouts gegenüber.}\newline
+Zwar ist die Offsetspannung des selbst entwickelten Layouts nur um einen Faktor von 10 höher als die des Musters, aber dadurch, dass die Sensitivität wesentlich geringer ist, ist diese erhöhte Offsetspannung wesentlich kritischer zu betrachten, da sowieso schon schwache Signale noch schwerer zum Auslesen werden.\newline
+Die wahrscheinlichste Ursache für den starken Unterschied in der Sensitivität ist die Umsetzung des selbst entwickelten Layouts auf makroskopischer statt mikroskopischer Ebene. Unter anderem \cite{heidari15} geht auch nochmal detaillierter auf Faktoren ein, die die Sensorsensitivität beeinflussen können, und Faktoren wie Dicke des Hall-Materials, Abstand der Kontakte usw. tragen wesentlich zu einer möglichen Verschlechterung dieser bei.\paragraph{}
 
-Das Magnetometer des iPad wird in \cite{sensordb} gelistet mit einer Sensorbandbreite von $100\,Hz$. Die Standardabweichung des Sensors soll dabei bei $0,22\,\mu{T}$ liegen. Dieser Wert entspricht auch gleichzeitig dem Grundrauschen des Sensors. Um also realistisch aussagen zu können, dass der Sensor eine Magnetfeldänderung misst und kein Rauschen, sollte die Veränderung mindestens 2 bis 3 mal so groß sein wie das Grundrauschen, also mindestens etwa $0,6\,\mu{T}$. Zur Sensitivität lässt sich mangels Herstellerangaben leider keine Angabe machen.\newline
-Die Messdaten bestätigen diese Angaben ansatzweise, da im Durchschnitt eine Standardabweichung der Messdaten von etwa $0,26\,\mu{T}$ vorliegt. Diese schwankt aber um bis zu $\pm1,65\,\mu{T}$, insbesondere für höhere B ab $400\,\mu{T}$, weshalb man die Empfindlichkeit des Sensors tendenziell höher auf etwa $4\,\mu{T}$ annehmen sollte, sobald man sich in diesem Bereich befindet.
+Um diese theoretischen Ergebnisse in Relation zu real existierenden Sensoren zu setzen, wurden im Folgenden praktische Messungen mit gängigen Vergleichsgeräten durchgeführt. Der Versuchsaufbau ist am Beispiel des iPads in Fig.~\ref{fig:7} dargestellt.\,\footnote{Aufgrund der Positionierung des Sensors im iPad befindet sich dieser mittig zwischen den Spulen}
+\begin{figure}
+	\centering
+	\includegraphics[height=8cm]{Fig7}
+	\captionsetup{type=figure}
+	\caption[Beispielhafter Versuchsaufbau mit iPad: Eigene Abbildung]{Beispielhafter Versuchsaufbau mit iPad}
+	\label{fig:7}
+\end{figure}
+\paragraph{}
+
+Das Magnetometer des iPad wird in \cite{sensordb} gelistet mit einer Sensorbandbreite von $100\,Hz$. Die Standardabweichung des Sensors soll dabei bei $0,22\,\mu{T}$ liegen. Dieser Wert entspricht auch gleichzeitig dem Grundrauschen des Sensors. Um also realistisch aussagen zu können, dass der Sensor eine Magnetfeldänderung misst und kein Rauschen, sollte die Veränderung mindestens 2 bis 3 Mal so groß sein wie das Grundrauschen, also mindestens etwa $0,6\,\mu{T}$. Zur Sensitivität lässt sich mangels Herstellerangaben keine Angabe machen.\newline
+$B_X$, $B_Y$ und $B_Z$ bezeichnen die Magnetfeldkomponenten entlang der drei Raumachsen.\newline
+Die Messdaten, visualisiert in Graph~\ref{measureTablet}, bestätigen diese Angaben ansatzweise, da im Durchschnitt eine Standardabweichung der Messdaten von etwa $0,26\,\mu{T}$ vorliegt. Diese schwankt aber um bis zu $\pm1,65\,\mu{T}$, insbesondere für höhere B ab $400\,\mu{T}$, weshalb man die Empfindlichkeit des Sensors tendenziell höher auf etwa $4\,\mu{T}$ annehmen sollte, sobald man sich in diesem Bereich befindet.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -583,11 +658,12 @@ Die Messdaten bestätigen diese Angaben ansatzweise, da im Durchschnitt eine Sta
 	\captionsetup{type=graph,name=Graph}
 	\captionof{graph}{Gemessenes Magnetfeldkomponenten mit einem iPad-Magnetometer}	
 	\label{measureTablet}
-\end{figure}\paragraph{}
+\end{figure}
+\addcontentsline{logr}{figure}{\protect\numberline{3}{Gemessenes Magnetfeldkomponenten mit einem iPad-Magnetometer: Eigene Abbildung}}
+\paragraph{}
 
-Für das iPhone sind die Angaben laut \cite{sensordb} ebenfalls eine Sensorbandbreite von $100\,Hz$ und eine Standardabweichung der Messungen von $0,25\,\mu{T}$. Weitere Angaben lassen sich auch hier mangels Herstellerinformationen nicht machen.\newline
-Die gemessenen Daten weichen jedoch deutlich von den Herstellerangaben ab. Nicht nur liegen die Standardabweichungen des Sensors für kleine Felder bei $0,29\,\mu{T}$ mit Schwankungen bei Feldern ab $400\,\mu{T}$ von bis zu $\pm3,35\,\mu{T}$, was realistische Empfindlichkeit des Sensors ab diesen Bereich sogar von etwa $0,9\,\mu{T}$ auf $\pm7\,\mu{T}$ hebt. Es fällt außerdem auf, dass die gemessenen $B_{Ges}$ Um $+20\,\mu{T}$ mit einer Tendenz von zusätzlichen $+5\,\mu{T}$ pro $100\,\mu{T}$ stärkerem Magnetfeld zu hoch ausfallen, was sich auch unter Berücksichtigung der manuellen Stromregelung nicht plausibel erklären lässt. Mögliche Ursachen könnten höhere Hitzeentwicklung auf dem engeren Raum bei höheren $U_{Hall}$ aber auch magnetische Sättigung und damit nicht mehr ideales Verhalten des Sensors sein.
-\begin{figure}
+
+\begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -626,11 +702,22 @@ Die gemessenen Daten weichen jedoch deutlich von den Herstellerangaben ab. Nicht
 	\captionsetup{type=graph,name=Graph}
 	\captionof{graph}{Gemessenes Magnetfeldkomponenten mit einem iPhone-Magnetometer}	
 	\label{measurePhone}
-\end{figure}\paragraph{}
+\end{figure}
+\addcontentsline{logr}{figure}{\protect\numberline{4}{Gemessenes Magnetfeldkomponenten mit einem iPhone-Magnetometer: Eigene Abbildung}}
+
+Für das iPhone sind die Angaben laut \cite{sensordb} ebenfalls eine Sensorbandbreite von $100\,Hz$ und eine Standardabweichung der Messungen von $0,25\,\mu{T}$. 
+\pagebreak
+
+{\raggedright
+Weitere Angaben lassen sich auch hier mangels Herstellerinformationen nicht machen.}\newline
+{\raggedright
+Die Messdaten, visualisiert in Graph~\ref{measurePhone}, weichen jedoch deutlich von den Herstellerangaben ab}. Nicht nur liegen die Standardabweichungen des Sensors für kleine Felder bei $0,29\,\mu{T}$ mit Schwankungen bei Feldern ab $400\,\mu{T}$ von bis zu $\pm3,35\,\mu{T}$, was die realistische Empfindlichkeit des Sensors ab diesem Bereich sogar von etwa $0,9\,\mu{T}$ auf $\pm7\,\mu{T}$ hebt. Es fällt außerdem auf, dass die gemessenen $B_{Ges}$ um $+20\,\mu{T}$ mit einer Tendenz von zusätzlichen $+5\,\mu{T}$ pro $100\,\mu{T}$ stärkerem Magnetfeld zu hoch ausfallen, was sich auch unter Berücksichtigung der manuellen Stromregelung nicht plausibel erklären lässt. Mögliche Ursachen könnten höhere Hitzeentwicklung auf dem engeren Raum bei höheren $V_{Hall}$ aber auch magnetische Sättigung und damit nicht mehr ideales Verhalten des Sensors sein.
+
+\paragraph{}
 
 Pasco gibt für ihren Magnetfeldsensor für Magnetfelder bis zu $0,13\,T$ eine Empfindlichkeit von $\pm100\,\mu{T}$ und für Felder unter $5\,mT$ eine Empfindlichkeit von $\pm1\,\mu{T}$, beides bei einer Bandbreite von $100\,Hz$, an.\newline
-Für den Sensor liegen nur Daten von 3 Sekunden im Magnetfeld vor. Diese zeigen eine über alle Feldstärken konsistente Standardabweichung von $0,87\pm4,95\,\mu{T}$. So ist zwar aufgrund einiger Ausreißer in den Datenpunkten die tatsächliche Empfindlichkeit auf etwa $10\,\mu{T}$ zu schätzen, im Durchschnitt bleiben die Werte auch über längere Messungen im beworbenen Bereich.
-\begin{figure}
+Die Messdaten des Sensors, visualisiert in Graph~\ref{measurePasco}, zeigen eine über alle Feldstärken konsistente Standardabweichung von $0,87\pm4,95\,\mu{T}$. So ist zwar aufgrund einiger Ausreißer in den Datenpunkten die tatsächliche Empfindlichkeit auf etwa $10\,\mu{T}$ zu schätzen, im Durchschnitt bleiben die Werte aber über längere Messungen im beworbenen Bereich.\paragraph{}
+\begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -667,14 +754,15 @@ Für den Sensor liegen nur Daten von 3 Sekunden im Magnetfeld vor. Diese zeigen 
 		\end{axis}
 	\end{tikzpicture}
 	\captionsetup{type=graph,name=Graph}
-	\captionof{graph}{Gemessenes Magnetfeldkomponenten mit einem kabellosen Pasco-Magnetometer}	
+	\captionof{graph}{Gemessenes Magnetfeldkomponenten mit einem kabellosen Pasco Magnetometer}	
 	\label{measurePasco}
-\end{figure}\paragraph{}
+\end{figure}
+\addcontentsline{logr}{figure}{\protect\numberline{5}{Gemessenes Magnetfeldkomponenten mit einem kabellosen Pasco Magnetometer: Eigene Abbildung}}
 
-Aufgrund schlechter Datenlage liegen also nicht nur sehr wenige Informationen über die praktisch getesteten Sensoren vor, sondern da diese direkt Magnetfelder messen und ausgeben ist es auch schwer, diese direkt mit den Simulationen zu vergleichen, welche Hall-Spannungen als Ergebnis haben.\newline
-Im Grunde genommen hängen alle Messwerte des X-Hall-Sensors direkt vom verwendeten Verstärker ab.\newline
-Dementsprechend lässt sich aus \cite{texInsAmp} schließen, dass der X-Hall Sensor eine Bandbreite von bis zu $1,3\,MHz$ haben kann, in etwa das $10.000\,$-fache aller Vergleichssensoren, wobei fragwürdig ist, ob diese Bandbreite überhaupt ausgenutzt werden kann, da mit hoher Bandbreite oft stark verstärktes Rauschen einhergeht.\newline
-Rechnet man nun basierend auf den Verstärker-Spezifikationen ungefähr das Rauschen:
+
+Aufgrund schlechter Datenlage liegen also nicht nur sehr wenige Informationen über die praktisch getesteten Sensoren vor, sondern da diese direkt Magnetfelder messen und ausgeben, ist es auch schwer, diese direkt mit den Simulationen zu vergleichen, welche Hall-Spannungen als Ergebnis produzieren.\paragraph{}
+Im Grunde genommen hängen alle Messwerte des X-Hall-Sensors direkt vom verwendeten Verstärker ab. Dementsprechend lässt sich aus \cite{texInsAmp} schließen, dass der X-Hall Sensor eine Bandbreite von bis zu $1,3\,MHz$ haben kann, in etwa das $10.000\,$-fache aller Vergleichssensoren, wobei fragwürdig ist, ob diese Bandbreite überhaupt ausgenutzt werden kann, da mit hoher Bandbreite oft stark verstärktes Rauschen einhergeht.\newline
+Rechnet man nun basierend auf den Verstärker-Spezifikationen ungefähr das Rauschen
 \begin{equation}
 	B_{noise}=\frac{V_{n,out}}{S_BG}
 	\tag{5.2}
@@ -699,37 +787,45 @@ Rechnet man nun basierend auf den Verstärker-Spezifikationen ungefähr das Raus
 	\footnotesize
 	$e_{n,ia}$: Input-bezogene Spannungsrauschendichte $B$: Sensorbandbreite, $G$ = Verstärker-Gain, $k=1,380649\cdot10^{-23}\,\frac{J}{K}$, $T$: Temperatur, $R_S$: Widerstand aller Komponenten bis Verstärker
 \end{center}
-aus, dann ergibt sich für $B=100\,Hz$, $G=100$, $B=300\,K$ und $R_S\approx10\,\Omega$ \footnote{$e_{n,ia}$ findet sich in \cite{texInsAmp}} eine Feld-Rauschgrenze von etwa $92\,\mu{T}$ und damit eine realistische Empfindlichkeit von etwa $200\,\mu{T}$.
-Damit unterliegt er klar dem Pasco-Magnetfeldsensor sowie dem Magnetometer von Tablet und Smartphone.
+aus\,\cite{analogNoise1}\,\cite{analogNoise2}\,\cite{analogNoise3}, dann ergibt sich für $B=100\,Hz$, $G=100$, $B=300\,K$ und $R_S\approx10\,\Omega$ \footnote{$e_{n,ia}$ findet sich in \cite{texInsAmp}} eine Feld-Rauschgrenze von etwa $92\,\mu{T}$ und damit eine realistische Empfindlichkeit von etwa $200\,\mu{T}$.
+Damit unterliegt er klar dem Pasco Magnetfeldsensor sowie dem Magnetometer von Tablet und Smartphone.
 
 
 
 %compare measurements of  datasets measured practically to sims, e.g. accuracy, data wobble (standardabweichung) and short-term stability, sensitivity, offsets not possible to determine for bought sensors, show why some comparisons sadly are not possible(heat, long term drift, etc.), bandwith only partially doable since only one was tested with real sensors	
 \subsection{Qualitativer Vergleich}	
 Neben konkreten Leistungswerten können aber auch qualitative Aspekte etwas darüber aussagen, wie geeignet ein Sensor für bestimmte Anwendungen ist.\paragraph{}
-Die Kosten für Sensoren mit möglichst guten Spezifikationen sind zumeist sehr hoch.\newline
-Für den Sensor von Tablet und Handy muss man nichts extra zukaufen, weil die Sensoren schon im Kaufpreis mit inbegriffen sind. So gesehen sind sie also gleichzeitig sehr vielseitig einsetzbar. Für den Pasco ``PS-3221'' zahlt man Stand 30.10.2025 $100\,$\texteuro~ und aufwärts.\newline 
-Für den X-Hall-Sensor belaufen sich die Kosten in Summe auf etwa $125\,$\texteuro ~(ohne Voltmeter)\,\footnote{$\approx80\,$\texteuro ~für ein Glas Silberleitfarbe, $\approx17\,$\texteuro ~pro Wafer bei Bestellmenge bis 9 Stück, $\approx22\,$\texteuro  ~für den Verstärker und $\approx6\,$\texteuro ~für Kabel, Widerstände, etc.}, wobei die Kosten je nach Anzahl gebauter Sensoren stark sinken können, da einige Einzelteile starke Mengenrabatte haben.\newline
+Die Kosten für Sensoren mit hohen Spezifikationen sind in der Regel erheblich.\newline
+Im Fall der Sensoren von Tablet und Smartphone fallen aber keine zusätzlichen Anschaffungskosten an, da diese bereits im Kaufpreis der Geräte enthalten sind. Dadurch steht ein Sensor zur Verfügung, der auch für weitere Anwendungen vielseitig genutzt werden kann. Für den Pasco ``PS-3221'' zahlt man Stand 30.10.2025 etwa $100,$\texteuro~ und aufwärts.\newline 
+Für den X-Hall-Sensor belaufen sich die Kosten in Summe auf etwa $125\,$\texteuro ~(ohne\newline Voltmeter)\,\footnote{$\approx80\,$\texteuro ~für ein Glas Silberleitfarbe, $\approx17\,$\texteuro ~pro Wafer bei Bestellmenge bis 9 Stück, $\approx22\,$\texteuro  ~für den Verstärker und $\approx6\,$\texteuro ~für Kabel, Widerstände, etc.}, wobei die Kosten je nach Anzahl gebauter Sensoren stark sinken können, da einige Einzelteile starke Mengenrabatte haben.\newline
 Es sei aber anzumerken, dass das Anschaffen der Wafer zusätzliche Komplikationen aufweist, da die meisten Zulieferer nur Industrie, Labore und Universitäten beliefern.\paragraph{}
 
-Sowohl Magnetometer von Handy und Tablet als auch der Pasco ``PS-3221'' sind mit den in \textbf{Kapitel 4.1} genannten Applikationen sehr einfach und ohne jegliches Vorwissen zu bedienen. Es werden außerdem Messdaten direkt visualisiert, aufgezeichnet und gespeichert, so dass auch weitere Arbeit mit den Daten möglichst einfach ist.\newline
-Für das Auslesen des X-Hall-Sensors ist eine aufwendigere Schaltkonstruktion nötig und Datenvisualisierung sowie -aufzeichnung sind zwar je nach verwendetem Voltmeter möglich, aber man hat immer noch ein paar Zwischenschritte bis der Output ebenfalls in magnetischer Flussdichte lesbar ist. Außerdem muss der Sensor vor jedem Einsatz manuell kalibriert werden, was wieder eigene Probleme wie den Bedarf eines eigenen Referenzsensors oder einer Feldquelle mit bekannter, nicht über Zeit abnehmenden Flussdichte. So ergibt sich eine steilere Lernkurve und der Zeitaufwand sowie die Komplexität der Verwendung des Sensors ist wesentlich höher.\paragraph{}
+Sowohl Magnetometer von Handy und Tablet als auch der Pasco ``PS-3221'' sind mit den in \textbf{Kapitel 4.1} genannten Applikationen sehr einfach und ohne jegliches Vorwissen zu bedienen. Es werden außerdem Messdaten direkt visualisiert, aufgezeichnet und gespeichert, so dass auch weitere Arbeit mit den Daten möglichst einfach gestaltet ist.\newline
+Für das Auslesen des X-Hall-Sensors ist eine aufwendigere Schaltkonstruktion nötig und Datenvisualisierung sowie -aufzeichnung sind zwar je nach verwendetem Voltmeter möglich, aber man hat immer noch ein paar Zwischenschritte, bis der Output ebenfalls als magnetische Flussdichte lesbar ist. Außerdem muss der Sensor vor jedem Einsatz manuell kalibriert werden, was wieder eigene Probleme wie den Bedarf eines eigenen Referenzsensors oder einer Feldquelle mit bekannter, nicht über Zeit abnehmender Flussdichte mit sich bringt. So ergibt sich eine steilere Lernkurve und der Zeitaufwand sowie die Komplexität der Verwendung des Sensors sind wesentlich höher.\paragraph{}
 
 Alle drei Vergleichssensoren haben eine moderate Größe und sind relativ unempfindlich, was ihren Transport und Einsatz in verschiedensten Situationen angeht.\newline
-Dadurch, dass der Wafer aus nur wenige hundert $\mu{m}$ dicken Silicium besteht, das in etwa so empfindlich ist wie sehr dünnes Glas, muss er insbesondere während des Transports aber auch während seiner Nutzung mit extremer Vorsicht behandelt werden und sollte sich stets in einem sturz- und stoßdämpfenden Schutzcase befinden. So wird der Einsatz im Vergleich zu den anderen Sensoren erheblich erschwert und birgt deutlich höheres Risiko, den teuren Sensor zu beschädigen.\paragraph{}
+Dadurch, dass der Wafer aus nur wenigen hundert $\mu{m}$ dicken Silicium besteht, das in etwa so empfindlich ist wie sehr dünnes Glas, muss er insbesondere während des Transports, aber auch während seiner Nutzung mit extremer Vorsicht behandelt werden und sollte sich stets in einem sturz- und stoßdämpfenden Schutzgehäuse befinden. So wird der Einsatz im Vergleich zu den anderen Sensoren erheblich erschwert und birgt ein deutlich höheres Risiko, den teuren Sensor zu beschädigen.\paragraph{}
 
-Während die Magnetometer von Handy und Tablet aber schon im Bereich um $1\,mT$ ihre Kalibrierung verlieren und damit erstmal bis zu einer Neukalibrierung durch das Betriebssystem nicht mehr verwendbar sind, funktioniert der Pasco ``PS-3221'' bei Feldern mit einer Flussdichte von bis zu $0,13\,T$ und dem X-Hall-Sensor sind theoretisch keine Grenzen gesetzt, solange ein Voltmeter verwendet wird, dass die dementsprechenden Spannungen erfassen kann.\newline
-Sollten die Handy- und Tabletmagnetometer oder der Pasco Magnetfeldsensor auf einen Langzeitraum nach und nach ihre Genauigkeit oder Kalibrierung verlieren, dann kann man als Privatnutzer diese nicht reparieren oder neu kalibrieren, sie haben also ein eventuelles Lebensende.\newline
-Mit einem selbst gebauten und implementierten Sensor wie den X-Hall-Sensor kann man diesen nicht nur beliebig oft neu kalibrieren, sondern selbst Beschädigungen an Kontakten reparieren, wodurch die Sensoren quasi keine maximale Lebenszeit haben. 
+Während die Magnetometer von Handy und Tablet aber schon im Bereich um $1\,mT$ ihre Kalibrierung verlieren und damit bis zu einer Neukalibrierung durch das Betriebssystem nicht mehr verwendbar sind, funktioniert der Pasco ``PS-3221'' bei Feldern mit einer Flussdichte von bis zu $0,13\,T$ und dem X-Hall-Sensor ist theoretisch sogar keine Messobergrenze gesetzt, solange ein Voltmeter verwendet wird, das die damit verbundenen Spannungen erfassen kann.\newline
+Sollten die Magnetometer von Smartphone und Tablet oder der Pasco Magnetfeldsensor über längere Zeit an Genauigkeit verlieren oder ihre Kalibrierung verändern, ist eine Reparatur oder Neukalibrierung durch Privatnutzer nicht möglich, sodass ein potenzielles Lebensende der Geräte gegeben ist.\newline
+Im Gegensatz dazu kann ein selbstgebauter und implementierter Sensor wie der X-Hall-Sensor nicht nur beliebig oft neu kalibriert werden, sondern ermöglicht auch die Reparatur beschädigter Kontakte, sodass die Sensoren praktisch keine feste Lebensdauer besitzen. 
+\pagebreak
 %how easy to get / use / implement / integrate into systems, learning curve, range of data read out / readable, easiness to transport / practical use (e.g. additional exquiment for measurements with practical x-hall needed)->e.g. size, susceptability to damage / long term deterioration (x-hall outperforms due to manual imfluence), learning effect	
 
 \section{Fazit}
-Im Rahmen dieser Arbeit wurde die Konzeption und Simulation eines X-Hall-Sensors auf Basis eines dotierten Siliziumwafers untersucht, um dessen Potenzial als mögliche Alternative zu in Smartphones verbauten Magnetfeldsensoren zu evaluieren.
-Die Ausarbeitung des Sensorlayouts hat verdeutlicht, wie entscheidend Geometrie, Materialwahl und elektrische Randbedingungen für die Empfindlichkeit und Genauigkeit eines Magnetfeldsensors sind.\newline
-Es ist gelungen, einen Sensor zu entwerfen, der trotz methodischer und materialbedingter Einschränkungen eine realistische Grundlage für zukünftige Optimierungen bietet. Zwar kann der entwickelte Sensor in seiner derzeitigen Form noch nicht mit kommerziell verfügbaren Lösungen konkurrieren, doch stellt er eine solide Basis für weiterführende Entwicklungen dar, wie sie zum Beispiel im Rahmen einer ``Jugend Forscht!'' Arbeit geschehen werden.\newline
-Der qualitative Vergleich zeigt, dass der Sensor in bestimmten Einsatzbereichen potenzielle Nachteile aufweist, jedoch insbesondere durch seine hohe Flexibilität und Langlebigkeit überzeugt.\newline
-Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Aufbau eines Sensors – im Gegensatz zur bloßen Nutzung fertiger Systeme – einen erheblichen Lerneffekt bietet. So kann dieses Projekt auch als exemplarisches Beispiel dafür dienen, wie experimentelles und forschendes Lernen in schulischen Kontexten nicht nur naturwissenschaftliche Kompetenzen, sondern auch intrinsische Motivation und Interesse an wissenschaftlicher Arbeit fördern kann.\pagebreak
+Im Rahmen dieser Arbeit wurde die Konzeption und Simulation eines X-Hall-Sensors auf Basis eines dotierten Siliziumwafers untersucht, um dessen Potenzial als mögliche Alternative zu in Smartphones verbauten Magnetfeldsensoren zu bewerten. Die Ausarbeitung des Sensorlayouts hat verdeutlicht, wie entscheidend Geometrie, Materialwahl und elektrische Randbedingungen für die Empfindlichkeit und Genauigkeit eines Magnetfeldsensors sind.\newline
+Es ist in der Simulation gelungen, einen Sensor zu entwerfen, der trotz methodischer und materialbedingter Einschränkungen eine realistische Grundlage für zukünftige Optimierungen bietet. Zwar kann der entwickelte Sensor in seiner derzeitigen Form noch nicht mit kommerziell verfügbaren Lösungen konkurrieren, doch stellt er eine solide Basis für weiterführende Entwicklungen dar, wie sie zum Beispiel im Rahmen einer ``Jugend Forscht!'' Arbeit vorgenommen werden.\newline
+Der qualitative Vergleich zeigt, dass der Sensor in bestimmten Einsatzbereichen potenzielle Einschränkungen aufweist, jedoch insbesondere durch seine hohe Flexibilität, Anpassungsfähigkeit an unterschiedliche Messaufgaben und seine Langlebigkeit überzeugt.\newline
+Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Aufbau eines Sensors – im Gegensatz zur bloßen Nutzung fertiger Systeme – einen erheblichen Lerneffekt bietet. So kann dieses Projekt auch als exemplarisches Beispiel dafür dienen, wie experimentelles und forschendes Lernen in schulischen Kontexten nicht nur naturwissenschaftliche Kompetenzen, sondern auch intrinsische Motivation und Interesse an wissenschaftlicher Arbeit fördern kann.
+\pagebreak
 
+\section*{Danksagung}
+\addcontentsline{toc}{section}{Danksagung}
+An dieser Stelle möchte ich mich bei allen bedanken, die mich bei der Durchführung und Erstellung dieser Arbeit unterstützt haben.\newline
+Mein besonderer Dank gilt insbesondere Herrn Reinhard Schneider, der stets Zeit für mich, mein Projekt und meine Fragen hatte, und Herrn Markus Fiederer, der mich bei der Umsetzung meiner Arbeit tatkräftig unterstützt und inspiriert hat.\newline
+Ebenso möchte ich der Firma MicroChemicals GmbH, insbesondere Herrn Titus Rinke, für die Bereitstellung der erstklassigen Wafer danken, die für dieses Projekt und insbesondere dessen Zukunft von großer Bedeutung sind.\newline
+Ein besonderer Dank gilt außerdem meiner Familie, die mir nicht nur ermöglicht hat, unzählige Stunden in dieses Projekt zu investieren, sondern auch bereitwillig das Lektorat meiner Arbeit übernommen hat.\newline
+Natürlich gilt auch allen anderen, die auf die eine oder andere Weise an diesem Projekt beteiligt waren, mein herzlicher Dank. Nur durch ihre Hilfe konnte diese Arbeit diesen Stand erreichen.\pagebreak
 
 
 
@@ -740,8 +836,9 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 \begin{thebibliography}{}
 	\addcontentsline{toc}{section}{Literaturverzeichnis}
 	
-	\bibitem{paun13}
-	\textbf{Maria-Alexandra Paun, JM. Salesse, M. Kayal}, Hall Effect Sensors Design, Integration and Behavior Analysis. Journal of Sensors and Actuator Networks, vol. 2, no. 1, pp. 85-97, 2013, doi: 10.3390/jsan2010085
+	
+	%\bibitem{paun13}
+	%\textbf{Maria-Alexandra Paun, JM. Salesse, M. Kayal}, Hall Effect Sensors Design, Integration and Behavior Analysis. Journal of Sensors and Actuator Networks, vol. 2, no. 1, pp. 85-97, 2013, doi: 10.3390/jsan2010085
 	
 	\bibitem{cres18}
 	\textbf{M. Crescenti et. al.}, Bandwith enhancement in Hall Probe by X-Hall DC biasing. XXII World Congress of International Measurement Confederation (IMEKO 2018), Journal of Physics: Conf. Series \textbf{1065} (2018) 052031, Belfast, United Kingdom, September $3^{rd}$ 2018 to September $6^{th}$ 2018, doi: 10.1088/1742-6596/1065/5/052031
@@ -766,8 +863,8 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 	\textbf{M. Crescenti et. al.}, A Wideband and Low-Noise CMOS-Integrated X-Hall Current Sensor Operating in Current Mode. IEEE Transactions on Instrumentation and Measurement, vol. 72, pp. 1-11, 2023, Art no. 2005211, doi: 10.1109/TIM.2023.3284055
 	
 	\bibitem{sukumar07}
-	\textbf{N. Sukumar}, Short Introduction to Finite Elements in One
-	Dimension. Department of Civil and Environmental Engineering, University of California, Davis, CA, USA, September 2007, https://web.archive.org/web/20180218232929/ https://imechanica.org/files/femintro.pdf, last opened: 03.11.2025, 11:44 
+	\textbf{N. Sukumar}, Short Introduction to Finite Elements in One Dimension. \newline Department of Civil and Environmental Engineering, University of California, \newline Davis, CA, USA, September 2007, https://web.archive.org/web/20180218232929/\newline
+	https://imechanica.org/files/femintro.pdf, last opened: 03.11.2025, 11:44 
 	
 	\bibitem{heidari15}
 	\textbf{Hadi Heidari, Umberto Gatti, Franco Maloberti}, Sensitivity Characteristics of Horizontal and Vertical
@@ -780,7 +877,7 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 	\textbf{Peter R\aa{back} et al.}, Elmer Models Manual. CSC – IT Center for Science, June 2024, https://www.nic.funet.fi/pub/sci/physics/elmer/doc/, last opened: 03.11.2025, 11:49
 	
 	\bibitem{bowdenDopes}
-	\textbf{Stuart Bowden, Christiana Honsberg}, https://www.pveducation.org/pvcdrom/materials/general-properties-of-silicon. Solar Power Labs at Arizona State University (ASU), USA, last opened: 30.10.2025, 17:23
+	\textbf{Stuart Bowden, Christiana Honsberg}, https://www.pveducation.org/pvcdrom /materials/general-properties-of-silicon. Solar Power Labs at Arizona State University (ASU), USA, last opened: 30.10.2025, 17:23
 	
 	\bibitem{sensordb}
 	\textbf{no Author}, https://phyphox.org/sensordb/. RWTH Aachen University, Germany, last opened: 30.10.2025, 17:23
@@ -791,12 +888,46 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 	\bibitem{texInsAmp}
 	\textbf{no Author}, INA12x Precision, Low-Power Instrumentation Amplifiers. Texas Instruments, USA, October 1995, Revised May 2022, https://www.ti.com/lit/pdf/SBOS051, last opened: 03.11.2025, 11:43
 	
+	\bibitem{analogNoise1}
+	\textbf{no Author}, https://www.analog.com/media/en/training-seminars/tutorials/MT-047.pdf. Analog Devices, Inc., Cambridge, USA, 2009, last opened: 06.11.2025, 16:15
+	
+	\bibitem{analogNoise2}
+	\textbf{no Author}, https://www.analog.com/media/en/training-seminars/tutorials/MT-048.pdf. Analog Devices, Inc., Cambridge, USA, 2009, last opened: 06.11.2025, 16:23
+	
+	\bibitem{analogNoise3}
+	\textbf{G. Brisebois}, Op Amp Selection Guide for Optimum Noise Performance. Design Note 355, Linear Technology Corporation, California, USA, 2005, https://www.analog.com/media/en/reference-design-documentation/design-notes/ dn355f.pdf, last opened: 06.11.2025, 16:26
+	
+	
+	\bibitem{mcChem}
+	\textbf{no Author}, https://www.microchemicals.com/de/CZ-Si-wafer-2-inch-0279-m-100-SSP-P-doped/WSD20279200P1314SNN1. MicroChemicals GmbH, Germany, last opened: 06.11.2025, 11:58
+	
+	\bibitem{mgChem}
+	\textbf{no Author}, https://mgchemicals.com/downloads/tds/tds-842ur-l.pdf. MG Chemicals Ltd., Burlington, Ontario, Canada, last opened: 06.11.2025, 11:58
+	
 	
 \end{thebibliography}
 
-\listoffigures
-
-
+\section*{Verwendung künstlicher Intelligenz}
+\addcontentsline{toc}{section}{Verwendung künstlicher Intelligenz}
+Die künstliche Intelligenz wurde während des etwa 14-monatigen Projektzeitraums verteilt über alle Kapitel für verschiedene Zwecke eingesetzt. Eine detaillierte Auflistung jeder einzelnen Verwendung, inklusive Prompt, Datum und exakter Uhrzeit, wird aus Gründen der Praktikabilität und der inhärenten Dynamik der KI-Systeme nicht vorgenommen. Die Antworten der KI hängen nicht nur vom bisherigen Gesprächskontext ab, sondern auch von der jeweils aktuellen Version des Modells und dessen Trainingszustand, sodass eine exakte Rekonstruktion einzelner Interaktionen auf anderen Geräten nicht möglich wäre. Die Tabelle gibt daher nur eine zusammenfassende Übersicht über die generellen Einsatzgebiete der KI während der Entstehungszeit der Arbeit.
+\begin{center}
+	\begin{tabularx}{\textwidth}{||r|r|r||} 
+		\hline
+		Modell & Verwendungszweck & Ergänzende Hinweise\\ [0.5ex] 
+		\hline\hline
+		ChatGPT; GPT-3.5, GPT-4, GPT-4-turbo, GPT-4-mini, GPT-5, GPT-5-mini; OpenAI, https://openai.com/  & Quellensuche und Unterstützung bei Literatur  & Hilfe bei der Suche nach möglichen Quellen, Verständnishilfe bei Literaturpassagen, Übersetzungsfunktionen, Unterstützung bei Material- und Anbietersuche      \\ 
+		\hline
+		ChatGPT; GPT-3.5, GPT-4, GPT-4-turbo, GPT-4-mini, GPT-5, GPT-5-mini; OpenAI, https://openai.com/  & Programmierung und Debugging & Unterstützung bei Implementierung und beim Debugging der Simulationen, Hilfe bei LaTeX-Debugging, Ergänzung von unvollständiger bzw. mangelhafter Dokumentation\\
+		\hline
+		ChatGPT; GPT-3.5, GPT-4, GPT-4-turbo, GPT-4-mini, GPT-5, GPT-5-mini; OpenAI, https://openai.com/  & Projektplanung & Erstellung und Bewertung von Projektzeitplänen, Aufzeigen von Alternativrouten, Risikoassessment \\
+		\hline
+		ChatGPT; GPT-3.5, GPT-4, GPT-4-turbo, GPT-4-mini, GPT-5, GPT-5-mini; OpenAI, https://openai.com/  & Lektorat & Kontrollieren der Arbeit auf grammatikalische Fehler, Prüfen von Satzstrukturen, Kürzung einiger Abschnitte, Hilfe mit schematischem Aufbau einer wissenschaftlichen Arbeit und ihrer einzelnen Abschnitte \\
+		\hline
+		Scribbr; Grammatik- Check; Learneo, https://www.scribbr.de/ grammatik-check/  & Grammatikalische Textprüfung & \\   [1ex] 
+		\hline
+	\end{tabularx}
+\end{center}
+%Von einer genauen Angabe von Prompt, Verwendungsdatum und Zeit wird hier insbesondere Aufgrund der statistischen Natur der verwendeten Applikationen wird hier abgesehen. Statistische Natur bedeutet hier, dass die Antworten der künstlichen Intelligenz nicht nur auf Basis vorheriger Gespräche sondern auch auf Basis von spezifischen Konversationskontexten und anderen Faktoren abhängig sind und eine genaue Rekonstruktion der Antworten auf einem anderen Gerät nicht möglich wären. Dies würde weiterhin erschwert dadurch, dass stets die neuesten Modelle der Applikationen genutzt wurden, was dazu führt, dass die Trainingssets der künstlichen Intelligenz sich schon während der Nutzung verändert haben, wodurch eine Rekonstruktion nochmals erschwert wird.
 	%\item \textbf{Fig. 1-a}: Übernommen aus \cite{cres18}, Fig. 1a
 	%\item \textbf{Fig. 1-b}: Übernommen aus \cite{cres20}, Fig. 2
 	%\item \textbf{Fig. 2}: Übernommen aus \cite{cres18}, Fig. 2a
@@ -804,6 +935,7 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 
 \pagebreak
 \section*{Anhang}
+\addcontentsline{toc}{section}{Anhang}
 	\subsection*{Messergebnisse der 1. Generation des Layouts}
 		\begin{center}
 			\begin{tabular}{||c c c c c c||} 
@@ -833,7 +965,7 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 		\vspace{-0.8em}
 		\begin{center}
 			\footnotesize
-			$V_{Vor}$:Vorspannung, $B$: Magnetische Flussdichte, $\sigma_H$: Leitfähigkeitsveränderung durch den all-Effekt, $V_{Out,1}$: Durchschnitt der $V_{Out}$ der Kontakte ``1'' und ``3'', $V_{Out,2}$: Durchschnitt der $V_{Out}$ der Kontakte ``2'' und ``4'', $V_{Hall}$: Hall-Spannung
+			$V_{Vor}$:Vorspannung, $B$: Magnetische Flussdichte, $\sigma_H$: Leitfähigkeitsveränderung durch den Hall-Effekt, $V_{Out,1}$: Durchschnitt der $V_{Out}$ der Kontakte ``1'' und ``3'', $V_{Out,2}$: Durchschnitt der $V_{Out}$ der Kontakte ``2'' und ``4'', $V_{Hall}$: Hall-Spannung
 		\end{center}
 	
 	\subsection*{Messergebnisse der 2. Generation des Layouts}
@@ -865,7 +997,7 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 		\vspace{-0.8em}
 		\begin{center}
 			\footnotesize
-			$V_{Vor}$:Vorspannung, $B$: Magnetische Flussdichte, $\sigma_H$: Leitfähigkeitsveränderung durch den all-Effekt, $V_{Out,1}$: Durchschnitt der $V_{Out}$ der Kontakte ``1'' und ``3'', $V_{Out,2}$: Durchschnitt der $V_{Out}$ der Kontakte ``2'' und ``4'', $V_{Hall}$: Hall-Spannung
+			$V_{Vor}$:Vorspannung, $B$: Magnetische Flussdichte, $\sigma_H$: Leitfähigkeitsveränderung durch den Hall-Effekt, $V_{Out,1}$: Durchschnitt der $V_{Out}$ der Kontakte ``1'' und ``3'', $V_{Out,2}$: Durchschnitt der $V_{Out}$ der Kontakte ``2'' und ``4'', $V_{Hall}$: Hall-Spannung
 		\end{center}\pagebreak
 
 	\subsection*{ElmerFEM Solver-Konfiguration}
@@ -970,7 +1102,8 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 			# sxy = -sigma*mu*Bz
 			# syx =  sigma*mu*Bz
 			
-			Electric Conductivity(3,3) = sxx  sxy  0.0
+			Electric Conductivity(3,3) = 
+			sxx  sxy  0.0
 			syx  syy  0.0
 			0.0   0.0   szz
 			End
@@ -992,5 +1125,10 @@ Darüber hinaus verdeutlicht die Arbeit, dass der eigenständige Entwurf und Auf
 			Potential = 0
 			# Grenzwertbedingung fuer geerdete Kontakte
 			End	\end{lstlisting}
-	
+			
+
+\ifdefined\tikzexternalrealjob
+\includepdf[pages={1}]{Schlusserklärung.pdf}
+\fi
+\addcontentsline{toc}{section}{Schlusserklärung}	
 \end{document}
