@@ -24,6 +24,7 @@
 \usepackage{newfloat}
 \usepackage{subcaption}
 \usepackage{setspace}
+\usepackage{gensymb}
 \usepackage{footmisc}
 \usepackage{ltablex}
 \newcolumntype{r}{>{\raggedright\arraybackslash}X}
@@ -121,11 +122,11 @@ Magnetfeldsensoren sind ein integraler Bestandteil moderner Smartphones und erm�
 Kommerzielle Hall-Sensoren sind technisch sehr ausgereift, jedoch meist nicht in ihren physikalischen Funktionsweisen nachvollziehbar oder individuell anpassbar. Für den schulischen oder experimentellen Kontext stellt sich daher die Frage, inwieweit ein eigenständig konzipierter Sensor vergleichbare Messungen liefern kann.\newline
 Ziel dieser Arbeit ist es, einen eigenen Hall-Sensor auf Basis der X-Hall-Architektur zu entwerfen und seine Eigenschaften mithilfe numerischer Simulationen zu analysieren. Dabei soll insbesondere untersucht werden, inwieweit ein solcher Sensor als experimentelle Alternative zu in Smartphones integrierten Magnetfeldsensoren oder kommerziell verfügbaren Sensormodulen dienen kann.\newline
 Aufgrund begrenzter Materialverfügbarkeit und des hohen Aufwands praktischer Tests liegt der Schwerpunkt auf der theoretischen Konzeption und der Simulation mithilfe der Finite-Elemente-Methode\,(FEM). Diese ermöglicht es, Layout, Materialwahl und elektrische Eigenschaften des Sensors bereits im Vorfeld systematisch zu untersuchen.\newline
-Die Arbeit gliedert sich in einen theoretischen Teil, in dem die physikalischen Grundlagen und die Wahl des X-Hall-Layouts erläutert werden, sowie in einen praktischen Abschnitt, der die Konzeption, Simulation und Auswertung des Modells beschreibt. Abschließend werden die Ergebnisse kritisch bewertet.
+Die Arbeit gliedert sich in einen theoretischen Teil, in dem die physikalischen Grundlagen und die Wahl der X-Hall-Architektur erläutert werden, sowie in einen praktischen Abschnitt, der die Konzeption, die Simulation und die Auswertung des Modells beschreibt. Abschließend werden die Ergebnisse kritisch bewertet.
 
 
 \section{Funktionsweise der X-Hall-Architektur}
-Die für diese Arbeit gewählte Architektur, die sogenannte \textbf{X-Hall-Architektur}, unterscheidet sich von klassischen Hall-Sensor-Layouts wie Kreuz- oder Linearsensoren in mehreren entscheidenden Aspekten. Im Folgenden soll diese spezifische Architektur vorgestellt werden und auf ihre Vor- sowie Nachteile eingegangen werden, ebenso wie auf die Gründe zur Wahl genau dieser %genauen 
+Die für diese Arbeit gewählte Architektur, die sogenannte \textbf{X-Hall-Architektur}, unterscheidet sich von klassischen Hall-Sensor-Architekturen wie Kreuz- oder Linearsensoren in mehreren entscheidenden Aspekten. Im Folgenden soll diese spezifische Architektur vorgestellt werden und auf ihre Vor- sowie Nachteile eingegangen werden, ebenso wie auf die Gründe zur Wahl genau dieser %genauen 
 Architektur für diese Arbeit.
 
 \subsection{Geschichte und Konzept}
@@ -146,7 +147,7 @@ Aus diesen Überlegungen resultierte die Entwicklung der sogenannten X-Hall-Arch
 Einfach gesagt handelt es sich hierbei um eine Hall-Sonde mit jeweils vier Vorspannungs\,\footnote{Strom der durch den Sensor fließt, um den Hall-Effekt erst zu ermöglichen}- und vier Auslesekontakten\,(was jeweils das Doppelte der jeweiligen Kontaktarten bei typischen Hall-Sensoren ist), die an der aktiven Fläche des Sensors angebracht sind. Durch eine elektrische Verbindung jeweils zweier diagonal gegenüberliegender Auslesekontakte vor dem eigentlichen Auslesevorgang wird gewährleistet, dass mögliche Defekte und Offsetspannungen\,\footnote{Ungewollte Spannungen, die selbst dann gemessen werden können, wenn der theoretische Messwert 0 sein sollte} auf der größeren aktiven Fläche unter anderem durch so entstehende Mittelungseffekte kompensiert werden. Dies führt zu einer höheren Genauigkeit und Stabilität der Messwerte.
 
 \subsection{Aufbau und Funktionsweise}
-Bei der aktiven Fläche eines X-Hall-Sensors handelt es sich in der Regel um einen oktagonal geformten, sogenannten n-Well\,\footnote{n-dotierte ``Halbleitertasche'' innerhalb eines p-dotierten Substrats}\,\cite{cres18}. \newline
+Bei der aktiven Fläche eines X-Hall-Sensors handelt es sich in der Regel um einen oktagonal geformten, sogenannten ``n-Well''\,\footnote{n-dotierte ``Halbleitertasche'' innerhalb eines p-dotierten Substrats}\,\cite{cres18}. \newline
 Die n-Dotierung der aktiven Sensorfläche wird aufgrund einer höheren strombezogenen Empfindlichkeit\,\footnote{Begründet durch höhere Elektronenmobilität in n-Typ-Halbleitern} im Gegensatz zu p-dotierten Halbleitern präferiert. %bevorzugt?
 Auch ist die Umschließung des n-Wells mit einem p-dotierten Material zwar für die grundlegende Sensorfunktion nicht essenziell, %auf nichtverwendung in Arbeit aufgrund komplexität hinweisen? 
 sollte jedoch  angestrebt werden, da nur so eine effektive elektrische Isolation gegenüber dem Substrat erreicht werden kann\,\cite{cres20}.\paragraph{}
@@ -216,7 +217,7 @@ Aufgrund des noch jungen Entwicklungsstands ist die Architektur bislang kaum ver
 
 Aus \cite{cres18} lässt sich herauslesen, dass für einen solchen Hall-Sensor das mittlere $\Delta{V_{OS}}=-0,27\,mV$ ist, wobei eine sehr hohe Standardabweichung von $\sigma=0,64\,mV$ vorliegt.\newline
 Bei längerer Betriebsdauer sind nach \cite{cres23} eingangsbezogene Offsets\,\footnote{Auf den Eingang bezogener Offset, der den am Ausgang gemessenen Offset bedingen würde} von $\sigma\approx26\,mA$ und eingangsbezogene Offset-Drifts von etwa 0,33\,$\frac{mA}{h}$ zu erwarten, was äquivalent zu Magnetfeldern mit einer Streuung von etwa $\sigma\approx197\,\mu{T}$ und einem Drift von etwa $2,5\,\frac{\mu{T}}{h}$ ist.\,\footnote{\cite{cres23} nutzt eine modifizierte Variante des Sensors, der statt einer Spannung eine Stromstärke ausgibt; \cite{cres21} bestätigt diese Werte aber in etwa}\newline
-Für die typischerweise vorliegende Temperaturregion des Sensors von etwa 30\,°C bis 100\,°C\,\footnote{Insbesondere stromversorgende Kreisläufe, eine der Hauptanwendungen des Sensors, arbeiten meist bei hohen internen Temperaturen} ist ein Temperaturkoeffizient von etwa -4,1\,$\frac{mA}{°C}$ laut \cite{cres23} zu erwarten.\newline
+Für die typischerweise vorliegende Temperaturregion des Sensors von etwa $30\,\degree{C}$ bis $100\,\degree{C}$ \footnote{Insbesondere stromversorgende Kreisläufe, eine der Hauptanwendungen des Sensors, arbeiten meist bei hohen internen Temperaturen} ist ein Temperaturkoeffizient von etwa -4,1\,$\frac{mA}{\degree{C}}$ laut \cite{cres23} zu erwarten.\newline
 Die Sensitivität liegt nach \cite{cres21Hall} bei etwa 36\,$\frac{mV}{A}$, die dynamische Reichweite bei 52\,$dB$ \footnote{Verhältnis von etwa 1:398 vom kleinsten zum größten messbaren Magnetfeld} und das Rauschen bei unter 100\,$mA RMS$ / 3,6\,$mV RMS$.\,\footnote{RMS\,(Root Mean Square) beschreibt den Effektivwert einer Wechselgröße und dient als Maß für ihre mittlere Leistung}\newline
 Wir nehmen eine Bandbreite des Sensors von etwa 4\,$MHz$ an, sprich der Sensor kann pro Sekunde 4.000.000 verlässliche Messungen durchführen\,\cite{cres21}. \paragraph{}
 
@@ -250,7 +251,7 @@ Die wichtigsten von Elmer zur Auswahl gestellten direkten Lösungsmethoden sind 
 
 %(Typische iterative Methoden sind die Conjugate Gradient (CG) Methode, die Conjugate Gradient Squared (CGS) Methode, die Biconjugate Gradient Stabilized (BiCGStab) Methode und die Transpose-Free Quasi-Minimal Residual (TFQMR) Methode. - \textbf{eventuell streichen})\paragraph{}
 
-Bei dem für die Simulationen genutzten Solver handelt es sich um den MUMPS-Solver, da so nicht nur möglichst genaue, sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa 60.000 Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 
+Bei dem für die Simulationen genutzten Solver handelt es sich um den MUMPS-Solver, da so nicht nur möglichst genaue, sondern auch einfach reproduzierbare Ergebnisse erzielbar sind. Aufgrund der kleinen Größe des Systems mit etwa $75.000$ Elementen sind Rechenzeit und Ressourcenbedarf vernachlässigbar gering. 
 
 
 
@@ -411,7 +412,7 @@ Für die in dieser Arbeit durchgeführten Simulationen wird das Programm \textbf
 	\label{fig:3}
 \end{figure}\paragraph{}
 
-Als aktives Sensorelement kommen im gesamten Projektverlauf dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5,08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in \textbf{Kapitel 3.3} behandelt.\newline
+Als aktives Sensorelement kommen im gesamten Projektverlauf n-dotierte Siliziumwafer mit einer Dicke von $279\,\mu{m}$ und einem Durchmesser von $2\,in=5,08\,cm$ zum Einsatz; genauere Materialeigenschaften werden in \textbf{Kapitel 3.3} behandelt.\newline
 Die elektrischen Kontakte werden mithilfe von Silberleitlack als Kontaktpads realisiert, deren Schichtdicke für die Simulation mit $150\,\mu{m}$ angenommen wird. Weitere Details hierzu finden sich ebenfalls in \textbf{Kapitel 3.3}.\paragraph{}
 
 Für jedes Modell werden zunächst Wafer und Kontakte separat konstruiert, korrekt positioniert und anschließend mittels Boolean-Operation zusammengefügt, um die Kontaktübergänge zwischen Wafer und Pads in der Simulation korrekt abzubilden. Abschließend wird das 3D-Modell in Tetraederelemente unterteilt.\paragraph{}
@@ -461,16 +462,16 @@ Für praktische Messungen wurde ein Paar Helmholtz-Spulen verwendet, um ein homo
 		\end{axis}
 	\end{tikzpicture}
 	\captionsetup{type=graph,name=Graph}
-	\captionof{graph}{Hall-Spannung in der ersten Generation des Layout}	
+	\captionof{graph}{Hall-Spannung in der ersten Generation des Layouts}	
 	\label{hallV1}
 \end{figure}
-\addcontentsline{logr}{figure}{\protect\numberline{1}{Hall-Spannung in der ersten Generation des Layout: Eigene Abbildung}}
+\addcontentsline{logr}{figure}{\protect\numberline{1}{Hall-Spannung in der ersten Generation des Layouts: Eigene Abbildung}}
 \paragraph{}
 
 In Graph~\ref*{hallV1} zeigt sich der typische lineare Zuwachs der Hall-Spannung, den man für eine zunehmende Magnetfeldstärke erwartet.\newline 
 Alle Messdaten sind auch zusammengefasst im Anhang in Tabelle~1 nachzulesen.\newline
 In den Daten zeigt sich bereits die Stärke der X-Hall-Architektur bei der Kompensation globaler Defekte: Die gemessene Hall-Spannung in den beiden inneren Sensorsonden unterscheidet sich, wenn separat betrachtet, um etwa $2,50\,mV$\,(vor Abzug der Offsetspannung). Das ist ein globaler Defekt, der eine Standardabweichung der Messwerte von $\sigma=1,25\,mV$ impliziert, was unter Anbetracht der um etwa einen Faktor von $10$ bis $100$ kleineren Hall-Spannungen abzüglich Offsetspannung zu starken Messfehlern und Unterschieden in normalen Hall-Sensoren ohne zweite innere Sonde führen würde, selbst wenn beide aus dem gleichen Wafer hergestellt wären.\newline
-In den Simulationen ist die wahrscheinlichste Erklärung dieses Effekts ein ungleichmäßiges Mesh, was dazu führen kann, dass an einigen Stellen im Modell wesentlich mehr oder wesentlich weniger Rechenoperationen ausgeführt werden. Insbesondere im letzteren Fall, sprich bei weniger ausgeführten Rechenoperationen, kann das dazu führen, dass bei nur schwachen Potentialänderungen durch das Magnetfeld diese von stärkeren, lokal dominanten Potentialen in der Dateninterpolation verloren gehen.\paragraph{} 
+In den Simulationen ist die wahrscheinlichste Erklärung dieses Effekts ein ungleichmäßiges Mesh, was dazu führen kann, dass an einigen Stellen im Modell wesentlich mehr oder wesentlich weniger Rechenoperationen ausgeführt werden. Insbesondere im letzteren Fall, sprich bei weniger ausgeführten Rechenoperationen, kann das dazu führen, dass bei nur schwachen Potentialänderungen durch das Magnetfeld diese von stärkeren, lokal dominanten Potentialen in der Dateninterpolation überlagert werden.\paragraph{} 
 Das genaueste verfügbare Voltmeter für die praktische Umsetzung ist der ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser messen kann, liegen im einstelligen $\mu{V}$-Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
 Deshalb scheint es sinnvoll, das Layout weiter zu verbessern.
 
@@ -485,12 +486,12 @@ So fällt im Verlauf des Volumenstroms im Sensorlayout der 1. Generation --- abg
 	\label{fig:5}
 \end{figure}
 \paragraph{}
-Daraus resultiert, dass zum einen die Hall-Spannungen lokal geringer ausfallen können, weil eben weniger Strom zur Verfügung steht, dessen Ladungsträger verschoben werden könnten, und zum anderen, dass diese bereits schon verringerten Hall-Spannungen nun noch weit entfernt sind von den Auslesekontakten. Dementsprechend ist anzunehmen, dass diese minimalen Änderungen im Stromfluss, bis sie bei den Auslesekontakten ankommen, nochmals geringer ausfallen werden, da sie sich nach und nach über die dazwischenliegende Region des Hall-Materials verteilen.
+Daraus resultiert, dass zum einen die Hall-Spannungen lokal geringer ausfallen können, weil eben weniger Strom zur Verfügung steht, dessen Ladungsträger verschoben werden könnten, und zum anderen, dass diese bereits schon verringerten Hall-Spannungen nun noch weit entfernt sind von den Auslesekontakten. Dementsprechend ist anzunehmen, dass die magnetisch herbeigeführten, minimalen Änderungen im Stromfluss, bis sie bei den Auslesekontakten ankommen, nochmals geringer ausfallen werden, da sie sich nach und nach über die dazwischenliegende Region des Hall-Materials verteilen.
 
 \subsubsection{Simulationsergebnisse der 2. Layoutgeneration}
 Aus diesen Gründen wurde für die 2. Generation des Sensorlayouts nicht nur der Abstand zwischen den Kontakten verringert, sondern auch deren Positionierung untereinander entsprechend abgeändert.\newline
 Das Kontaktlayout orientiert sich nun mehr an dem ursprünglichen Layout, das in \cite{cres18} bei der ersten Vorstellung der X-Hall-Architektur verwendet wurde und unter anderem in Fig.~1 und Fig.~2 dieser Quelle abgebildet wird.\newline
-Die Abstände der Pads zueinander wurden ebenfalls so weit wie möglich verringert, genaue Maße sind in Fig.~\ref{fig:6} ablesbar, bis sie an die ungefähren physischen Grenzen der Aufbringungsmethode stoßen. \paragraph{}
+Die Abstände der Pads zueinander wurden ebenfalls so weit wie möglich verringert --- genaue Maße sind in Fig.~\ref{fig:6} ablesbar --- bis sie an die ungefähren physischen Grenzen der Aufbringungsmethode stoßen. \paragraph{}
 In Graph~\ref*{hallV2} zeigt sich genau wie für die 1. Generation des Sensorlayouts der Hall-typische lineare, direkt proportionale Zuwachs der Hall-Spannung mit höherem Magnetfeld.\newline
 \begin{figure}[h]
 	\centering
@@ -535,7 +536,7 @@ Bei der Offsetspannung ist aber eine verhältnismäßig starke Verbesserung fest
 	\captionof{graph}{Hall-Spannung in der zweiten Generation des Layouts im Vergleich zur ersten Generation}	
 	\label{hallV2}
 \end{figure}
-\addcontentsline{logr}{figure}{\protect\numberline{2}{Hall-Spannung in der zweiten Generation des Layout: Eigene Abbildung}}
+\addcontentsline{logr}{figure}{\protect\numberline{2}{Hall-Spannung in der zweiten Generation des Layouts: Eigene Abbildung}}
 
 Die gemessenen Spannungen sind zwar immer noch zu niedrig, um mit dem verwendeten Voltmeter erfasst zu werden, aber nun in einem Bereich, in dem ein Präzisions-Operationsverstärker sie ohne Gefahr größerer Messwertverfälschungen auf das benötigte Niveau verstärken kann. Außerdem stellt es sich aufgrund methodischer Einschränkungen als schwierig heraus, das Layout weiter zu komprimieren. \newline
 Deshalb sei die 2. Generation des Layouts als Grundlage für den selbst zu bauenden Sensor zu betrachten.\pagebreak
@@ -555,7 +556,7 @@ Die verwendeten Wafer wurden großzügigerweise vom Hersteller \textbf{MicroChem
 Bei den Wafern handelt es sich um 5 MicroChemicals ``WSD20279200P1314SNN1'' Prime-Grade Wafer mit einer Dicke von $279\pm20\,\mu{m}$ und einem Durchmesser von $2\,in$. Der Widerstand liegt zwischen $1\,\Omega$ und $10\,\Omega$\,\cite{mcChem}.\newline
 Zum Aufbringen der Kontaktpads wird MGChemicals ``842UR'' Farbe mit Leitfähigkeit verwendet, welche nach Trocknen einen Widerstand von $1,5\cdot10^{-4}\,\Omega{cm}$ besitzt\,\cite{mgChem}.\newline
 Bei dem genutzten Voltmeter handelt es sich um den ``$\mu{V}$-Sensor S'' von Leybold\textsuperscript{\textregistered} für das ``Sensor-Cassy 2''. Die niedrigsten Spannungen, die dieser messen kann, liegen im einstelligen $\mu{V}$ Bereich, wirklich stabil werden die Messwerte aber erst ab mehreren Dutzend bis Hundert $\mu{V}$.\newline
-Um diese Auslesespannungen zu erreichen, wird der TexasInstruments ``INA128U'' Operationsverstärker genutzt, der speziell für die Verstärkung sehr kleiner Potentialunterschiede entwickelt wurde. Metallschichtwiderstände werden verwendet, um den Grad der Verstärkung zu festzulegen, und der Verstärker wird mittels geschirmter 2-Ader-Kabel mit der Restelektronik verbunden, um Verfälschungen der Messwerte zu verhindern.\paragraph{}
+Um diese Auslesespannungen zu erreichen, wird der TexasInstruments ``INA128U'' Operationsverstärker genutzt, der speziell für die Verstärkung sehr kleiner Potentialunterschiede entwickelt wurde. Metallschichtwiderstände werden verwendet, um den Grad der Verstärkung festzulegen, und der Verstärker wird mittels geschirmter 2-Ader-Kabel mit der Restelektronik verbunden, um Verfälschungen der Messwerte zu verhindern.\paragraph{}
 Für eine spätere praktische Implementierung des Sensors, wie in \textbf{Kapitel 3.2} angedeutet, wird für einen ersten Versuch die 2. Generation des Sensorlayouts verwendet werden.\newline
 Im ersten Schritt werden die Kontaktpads auf den Wafer aufgebracht werden. Dies wird, aus Gründen des Kontaminationsschutzes und der Giftigkeit der Silberfarbe, unter einer vorher ordentlich gereinigten Abzugshaube geschehen. Durch eine vorher 3D-gedruckte Maske mit dem Layout wird dann im nächsten Schritt mehrfach mit einem Pinsel die Silberfarbe aufgetragen werden. Wenn genug Schichten aufgetragen sind, wird die Silberfarbe anschließend nach Herstellerangaben in einem Ofen getrocknet werden.\newline
 Aufgrund der Auflösung des für die Maske verwendeten 3D-Druckers und der Pinseldicke sowie durch den händischen Prozess zu erwartender Toleranzen wird die minimal erreichbare Größe von aufgebrachten Merkmalen als $0,4\,mm$ bis $0,5\,mm$ angenommen.\newline
@@ -806,7 +807,7 @@ Für das Auslesen des X-Hall-Sensors ist eine aufwendigere Schaltkonstruktion n�
 Alle drei Vergleichssensoren haben eine moderate Größe und sind relativ unempfindlich, was ihren Transport und Einsatz in verschiedensten Situationen angeht.\newline
 Dadurch, dass der Wafer aus nur wenigen hundert $\mu{m}$ dicken Silicium besteht, das in etwa so empfindlich ist wie sehr dünnes Glas, muss er insbesondere während des Transports, aber auch während seiner Nutzung mit extremer Vorsicht behandelt werden und sollte sich stets in einem sturz- und stoßdämpfenden Schutzgehäuse befinden. So wird der Einsatz im Vergleich zu den anderen Sensoren erheblich erschwert und birgt ein deutlich höheres Risiko, den teuren Sensor zu beschädigen.\paragraph{}
 
-Während die Magnetometer von Handy und Tablet aber schon im Bereich um $1\,mT$ ihre Kalibrierung verlieren und damit bis zu einer Neukalibrierung durch das Betriebssystem nicht mehr verwendbar sind, funktioniert der Pasco ``PS-3221'' bei Feldern mit einer Flussdichte von bis zu $0,13\,T$ und dem X-Hall-Sensor ist theoretisch sogar keine Messobergrenze gesetzt, solange ein Voltmeter verwendet wird, das die damit verbundenen Spannungen erfassen kann.\newline
+Während die Magnetometer von Handy und Tablet aber schon im Bereich um $1\,mT$ ihre Kalibrierung verlieren und damit bis zu einer Neukalibrierung durch das Betriebssystem nicht mehr verwendbar sind, funktioniert der Pasco ``PS-3221'' bei Feldern mit einer Flussdichte von bis zu $0,13\,T$ und dem X-Hall-Sensor ist theoretisch sogar keine Mess-obergrenze gesetzt, solange ein Voltmeter verwendet wird, das die damit verbundenen Spannungen erfassen kann.\newline
 Sollten die Magnetometer von Smartphone und Tablet oder der Pasco Magnetfeldsensor über längere Zeit an Genauigkeit verlieren oder ihre Kalibrierung verändern, ist eine Reparatur oder Neukalibrierung durch Privatnutzer nicht möglich, sodass ein potenzielles Lebensende der Geräte gegeben ist.\newline
 Im Gegensatz dazu kann ein selbstgebauter und implementierter Sensor wie der X-Hall-Sensor nicht nur beliebig oft neu kalibriert werden, sondern ermöglicht auch die Reparatur beschädigter Kontakte, sodass die Sensoren praktisch keine feste Lebensdauer besitzen. 
 \pagebreak
