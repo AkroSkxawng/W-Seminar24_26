@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.18)  20 OCT 2025 01:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  9 NOV 2025 22:12
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
-**./Paper.tex
-(Paper.tex
+**./seminararbeit_Versuch1.tex
+(seminararbeit_Versuch1.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -402,11 +402,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count316
-) (Paper.aux
+) (seminararbeit_Versuch1.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported on input line 8.
 )
-\openout1 = `Paper.aux'.
+\openout1 = `seminararbeit_Versuch1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
@@ -491,9 +491,9 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 42.
- (Paper.out) (Paper.out)
+ (seminararbeit_Versuch1.out) (seminararbeit_Versuch1.out)
 \@outlinefile=\write3
-\openout3 = `Paper.out'.
+\openout3 = `seminararbeit_Versuch1.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
 
@@ -510,9 +510,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [1
 
-{C:/Users/armin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (Paper.toc)
+{C:/Users/armin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+(seminararbeit_Versuch1.toc)
 \tf@toc=\write4
-\openout4 = `Paper.toc'.
+\openout4 = `seminararbeit_Versuch1.toc'.
 
 
 
@@ -597,22 +598,23 @@ Overfull \hbox (21.25496pt too wide) in paragraph at lines 309--310
 
 
 
-[14] (Paper.aux)
+[14] (seminararbeit_Versuch1.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
-Package rerunfilecheck Info: File `Paper.out' has not changed.
+Package rerunfilecheck Info: File `seminararbeit_Versuch1.out' has not changed.
+
 (rerunfilecheck)             Checksum: B05B0C155DCFB6A8ADF2E7BF3283F57E;4065.
  ) 
 Here is how much of TeX's memory you used:
  13498 strings out of 468130
- 217492 string characters out of 5430632
- 642340 words of memory out of 5000000
+ 218092 string characters out of 5430633
+ 642374 words of memory out of 5000000
  41882 multiletter control sequences out of 15000+600000
  637047 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,889b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,906b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -629,7 +631,7 @@ cm/cmr7.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmr8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Paper.pdf (14 pages, 683130 bytes).
+Output written on seminararbeit_Versuch1.pdf (14 pages, 683130 bytes).
 PDF statistics:
  368 PDF objects out of 1000 (max. 8388607)
  76 named destinations out of 1000 (max. 500000)

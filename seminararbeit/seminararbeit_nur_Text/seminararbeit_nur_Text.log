@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  7 NOV 2025 12:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  9 NOV 2025 22:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**./ref.tex
-(ref.tex
+**./seminararbeit_nur_Text.tex
+(seminararbeit_nur_Text.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -1043,11 +1043,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count371
-) (ref.aux
+) (seminararbeit_nur_Text.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported on input line 8.
 )
-\openout1 = `ref.aux'.
+\openout1 = `seminararbeit_nur_Text.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
 LaTeX Font Info:    ... okay on input line 91.
@@ -1156,9 +1156,9 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 91.
 
-(ref.out) (ref.out)
+(seminararbeit_nur_Text.out) (seminararbeit_nur_Text.out)
 \@outlinefile=\write4
-\openout4 = `ref.out'.
+\openout4 = `seminararbeit_nur_Text.out'.
 
 
 Overfull \hbox (4.79001pt too wide) in paragraph at lines 98--103
@@ -1727,7 +1727,7 @@ h ver-wen-de-tem Volt-me-ter m[]oglich,
 
 [19]
 
-[20] (ref.aux)
+[20] (seminararbeit_nur_Text.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -1736,17 +1736,18 @@ L3 programming layer <2025-09-02>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `ref.out' has not changed.
+Package rerunfilecheck Info: File `seminararbeit_nur_Text.out' has not changed.
+
 (rerunfilecheck)             Checksum: FEF9BA40D15E5AA18F3EF6CEB6F0BD41;4530.
  ) 
 Here is how much of TeX's memory you used:
- 38669 strings out of 468130
- 893455 string characters out of 5430633
- 1390814 words of memory out of 5000000
+ 38670 strings out of 468130
+ 894000 string characters out of 5430633
+ 1390852 words of memory out of 5000000
  66549 multiletter control sequences out of 15000+600000
  636612 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,8n,105p,1102b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,8n,105p,1121b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0800.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -1770,7 +1771,7 @@ Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/armin
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Use
 rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 >
-Output written on ref.pdf (20 pages, 325872 bytes).
+Output written on seminararbeit_nur_Text.pdf (20 pages, 325872 bytes).
 PDF statistics:
  412 PDF objects out of 1000 (max. 8388607)
  123 named destinations out of 1000 (max. 500000)

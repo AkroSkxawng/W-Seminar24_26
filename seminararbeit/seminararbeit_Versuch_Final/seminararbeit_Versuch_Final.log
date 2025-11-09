@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  7 NOV 2025 16:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  9 NOV 2025 22:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**./PaperV3.tex
-(PaperV3.tex
+**./seminararbeit_Versuch_Final.tex
+(seminararbeit_Versuch_Final.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -1047,11 +1047,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count371
-) (PaperV3.aux
+) (seminararbeit_Versuch_Final.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported on input line 8.
 )
-\openout1 = `PaperV3.aux'.
+\openout1 = `seminararbeit_Versuch_Final.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
 LaTeX Font Info:    ... okay on input line 92.
@@ -1171,9 +1171,9 @@ Package gensymb Info: Using \Omega for \ohm on input line 92.
 Package gensymb Warning: Not defining \micro.
 
 Package hyperref Info: Link coloring OFF on input line 92.
-(PaperV3.out) (PaperV3.out)
+(seminararbeit_Versuch_Final.out) (seminararbeit_Versuch_Final.out)
 \@outlinefile=\write4
-\openout4 = `PaperV3.out'.
+\openout4 = `seminararbeit_Versuch_Final.out'.
 
 
 
@@ -1226,7 +1226,7 @@ Package pdftex.def Info: Image Sources/Deckblatt.pdf , page1 used on input line
  <./Image Sources/Deckblatt.pdf>]
 
 [2{C:/Users/armin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(PaperV3.toc
+(seminararbeit_Versuch_Final.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 
 (C:\Users\armin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1238,17 +1238,17 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write5
-\openout5 = `PaperV3.toc'.
+\openout5 = `seminararbeit_Versuch_Final.toc'.
 
 
 
-[3] (PaperV3.lof)
+[3] (seminararbeit_Versuch_Final.lof)
 \tf@lof=\write6
-\openout6 = `PaperV3.lof'.
+\openout6 = `seminararbeit_Versuch_Final.lof'.
 
- (PaperV3.logr)
+ (seminararbeit_Versuch_Final.logr)
 \tf@logr=\write7
-\openout7 = `PaperV3.logr'.
+\openout7 = `seminararbeit_Versuch_Final.logr'.
 
 
 
@@ -127410,22 +127410,23 @@ nput line 1132.
 (pdftex.def)             Requested size: 597.57834pt x 845.1138pt.
 [39
 
- <./Image Sources/Schlusserklärung.pdf>] (PaperV3.aux)
+ <./Image Sources/Schlusserklärung.pdf>] (seminararbeit_Versuch_Final.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
-Package rerunfilecheck Info: File `PaperV3.out' has not changed.
+Package rerunfilecheck Info: File `seminararbeit_Versuch_Final.out' has not cha
+nged.
 (rerunfilecheck)             Checksum: 960CC9A49B25508B662E14B2383C9669;5377.
  ) 
 Here is how much of TeX's memory you used:
  40241 strings out of 468130
- 923860 string characters out of 5430633
- 1808930 words of memory out of 5000000
+ 924812 string characters out of 5430633
+ 1808970 words of memory out of 5000000
  67897 multiletter control sequences out of 15000+600000
  636949 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,20n,105p,1101b,2294s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,20n,105p,1121b,2294s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm0800.pk> <C:\Users\armin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -127451,7 +127452,7 @@ rs/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
 msy8.pfb><C:/Users/armin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on PaperV3.pdf (39 pages, 4116983 bytes).
+Output written on seminararbeit_Versuch_Final.pdf (39 pages, 4116983 bytes).
 PDF statistics:
  927 PDF objects out of 1000 (max. 8388607)
  321 named destinations out of 1000 (max. 500000)
